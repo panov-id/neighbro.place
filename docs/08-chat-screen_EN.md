@@ -14,7 +14,8 @@ The private conversation screen between two matched users.
 
 - The conversation history exists only for these two participants — nowhere else.
 - Unlike feed messages, the conversation doesn't disappear after 4 hours 20 minutes — it lives longer, for as long as the chat stays open.
-- Every sent message goes through the same AI check as feed messages (see the Moderation section).
+- Every sent message goes through the same AI check as feed messages (see the Moderation section), but without the captcha/rate limit — those apply only to publishing in the feed (see screen 4).
+- History is stored on-device in IndexedDB, encrypted with the Web Crypto API before being written (see the Privacy section in the README) — not in some separate "secure" browser storage, which doesn't exist.
 
 ## Open questions
 
