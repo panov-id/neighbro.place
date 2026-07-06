@@ -1,0 +1,44 @@
+name: Deploy UAT
+
+# Merge/push to main → cut a dated release tag → deploy that tag to UAT.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: tag
+        name: Create release tag
+        run: |
+          TAG="v$(date +%Y.%m.%d)-${GITHUB_SHA::7}"
+          git tag "$TAG"
+          git push origin "$TAG"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Created release $TAG"
+
+  deploy:
+    needs: release
+    runs-on: ubuntu-latest
+    environment: uat
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release.outputs.tag }}
+      - name: Deploy landing
+        env:
+          BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
+          BUNNY_STORAGE_API_KEY: ${{ secrets.BUNNY_STORAGE_API_KEY }}
+          BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
+          BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: bash deploy/deploy-landing.sh

@@ -1,0 +1,27 @@
+name: Deploy prod
+
+# Manual promotion: pick a release tag (already validated on UAT) → deploy prod.
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Release tag to deploy (e.g. v2026.07.06-abc1234)"
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - name: Deploy landing
+        env:
+          BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
+          BUNNY_STORAGE_API_KEY: ${{ secrets.BUNNY_STORAGE_API_KEY }}
+          BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
+          BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: bash deploy/deploy-landing.sh

@@ -1,0 +1,22 @@
+name: Deploy dev
+
+# Push to dev → deploy the landing to the dev environment.
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy landing
+        env:
+          BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
+          BUNNY_STORAGE_API_KEY: ${{ secrets.BUNNY_STORAGE_API_KEY }}
+          BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
+          BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: bash deploy/deploy-landing.sh
