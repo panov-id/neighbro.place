@@ -49,9 +49,17 @@ cat > "$STAGE/config.js" <<EOF
 window.__XOR_CONFIG__ = {
   supabaseUrl: "${SUPABASE_URL}",
   supabaseAnonKey: "${SUPABASE_ANON_KEY}",
+  alphaUrl: "${ALPHA_URL:-}",
+  vapidPublicKey: "${VAPID_PUBLIC_KEY:-}",
 };
 EOF
-rm -f "$STAGE"/SPEC_*.md
+rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip
+
+# Bust the service-worker cache: stamp the build id into sw.js.
+if [ -f "$STAGE/sw.js" ]; then
+  BUILD=$(git -C "$ROOT_DIR" rev-parse --short HEAD 2>/dev/null || date +%s)
+  sed -i "s/__BUILD__/${BUILD}/g" "$STAGE/sw.js"
+fi
 
 echo "Deploying landing → Bunny zone '${BUNNY_STORAGE_ZONE}'"
 ( cd "$STAGE" && find . -type f -print0 | while IFS= read -r -d '' f; do
