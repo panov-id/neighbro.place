@@ -252,9 +252,14 @@
 </div>
 
 <script>
-  // TODO: fill in once the real Supabase project exists.
-  const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-  const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
+  // Same-origin: the xor.ad gateway (nginx) proxies /rest, /auth, etc. to
+  // the shared Supabase backend, so the page talks to its own host — no
+  // cross-origin, no hardcoded backend domain. The anon key is public by
+  // design (RLS lets anon insert into waitlist only). For a real deploy,
+  // swap the key for the production project's anon key.
+  const SUPABASE_URL = "";
+  const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE";
   const TABLE = "waitlist";
 
   const translations = {
