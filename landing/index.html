@@ -139,6 +139,47 @@
   }
   .step p { color: var(--muted); line-height: 1.5; }
 
+  /* Feed preview */
+  .feed-preview { margin: 20px 0 10px; display: flex; justify-content: center; }
+  .feed-frame {
+    width: 100%; max-width: 480px;
+    border: 1px solid var(--border); background: var(--panel);
+    box-shadow: 0 40px 120px -40px rgba(198,162,78,0.18);
+  }
+  .feed-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 20px; border-bottom: 1px solid var(--border); color: var(--muted);
+  }
+  .feed-bar .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(198,162,78,0.6); animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(198,162,78,0.5); }
+    70% { box-shadow: 0 0 0 10px rgba(198,162,78,0); }
+    100% { box-shadow: 0 0 0 0 rgba(198,162,78,0); }
+  }
+  .feed-list { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+  .msg {
+    border: 1px solid var(--border); border-left: 3px solid var(--muted-2);
+    background: var(--bg); padding: 14px 16px;
+  }
+  .msg.new { border-left-color: var(--accent); }
+  .msg p { line-height: 1.4; margin-bottom: 10px; }
+  .msg .meta {
+    display: flex; gap: 16px; color: var(--muted-2);
+    font-size: 0.64rem; letter-spacing: 0.12em;
+  }
+  .msg .meta .like { color: var(--accent); }
+  .feed-input {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-top: 1px solid var(--border); color: var(--muted-2);
+  }
+  .feed-input .send {
+    color: #1a1509; background: var(--accent); width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+  }
+
   .moments {
     margin: 74px 0; border: 1px solid var(--border); background: var(--panel);
     padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px;
@@ -269,6 +310,31 @@
     </div>
   </section>
 
+  <section class="feed-preview">
+    <div class="feed-frame">
+      <div class="feed-bar mono"><span class="dot"></span><span data-i18n="feedTitle"></span></div>
+      <div class="feed-list">
+        <div class="msg">
+          <p data-i18n="m1"></p>
+          <div class="meta"><span>◍ 180 m</span><span class="like">♥ 3</span><span>2h 40m</span></div>
+        </div>
+        <div class="msg">
+          <p data-i18n="m2"></p>
+          <div class="meta"><span>◍ 320 m</span><span class="like">♥ 6</span><span>1h 05m</span></div>
+        </div>
+        <div class="msg">
+          <p data-i18n="m3"></p>
+          <div class="meta"><span>◍ 90 m</span><span class="like">♥ 2</span><span>3h 58m</span></div>
+        </div>
+        <div class="msg new">
+          <p data-i18n="m4"></p>
+          <div class="meta"><span>◍ 60 m</span><span class="like">♥ 1</span><span>4h 12m</span></div>
+        </div>
+      </div>
+      <div class="feed-input mono"><span data-i18n="sayPh"></span><span class="send">→</span></div>
+    </div>
+  </section>
+
   <section class="moments">
     <div>
       <div class="label mono" data-i18n="momentsLabel"></div>
@@ -341,6 +407,11 @@
       afterTitle: "You're on the list.", afterSub: "We'll let you know the moment the neighborhood opens.",
       alphaBtn: "Enter the alpha →", notifyBtn: "Notify me when we launch", notifyDone: "You'll be notified",
       statusErr: "Couldn't submit that. Try again in a bit.",
+      feedTitle: "Neighborhood feed", sayPh: "say something…",
+      m1: "Anyone up for morning espresso before work?",
+      m2: "Looking for a tennis partner this weekend 🎾",
+      m3: "Wine on my terrace tonight, two of us — join?",
+      m4: "Just moved in on the 4th floor. Say hi 👋",
     },
     ru: {
       headerStatus: "По приглашению · Скоро", eyebrow: "Искусство быть рядом",
@@ -357,6 +428,11 @@
       afterTitle: "Ты в списке.", afterSub: "Сообщим, как только район откроется.",
       alphaBtn: "Войти в альфу →", notifyBtn: "Уведомить о запуске", notifyDone: "Уведомим",
       statusErr: "Не получилось отправить. Попробуй чуть позже.",
+      feedTitle: "Лента района", sayPh: "скажи что-нибудь…",
+      m1: "Кто на утренний эспрессо перед работой?",
+      m2: "Ищу партнёра по теннису на выходные 🎾",
+      m3: "Вино на моей террасе сегодня, нас двое — присоединишься?",
+      m4: "Только въехал на 4-й этаж. Заходите поздороваться 👋",
     },
     fr: {
       headerStatus: "Sur invitation · Bientôt", eyebrow: "L'art d'être tout près",
@@ -373,6 +449,11 @@
       afterTitle: "Tu es sur la liste.", afterSub: "On te prévient dès que le quartier ouvre.",
       alphaBtn: "Entrer dans l'alpha →", notifyBtn: "Me prévenir au lancement", notifyDone: "Tu seras prévenu",
       statusErr: "Échec de l'envoi. Réessaie dans un instant.",
+      feedTitle: "Fil du quartier", sayPh: "dis quelque chose…",
+      m1: "Quelqu'un pour un espresso avant le boulot ?",
+      m2: "Je cherche un partenaire de tennis ce week-end 🎾",
+      m3: "Du vin sur ma terrasse ce soir, on est deux — tu viens ?",
+      m4: "Je viens d'emménager au 4e. Passez dire bonjour 👋",
     },
     de: {
       headerStatus: "Auf Einladung · Bald", eyebrow: "Die Kunst, nah zu sein",
@@ -389,6 +470,11 @@
       afterTitle: "Du stehst auf der Liste.", afterSub: "Wir sagen Bescheid, sobald die Nachbarschaft öffnet.",
       alphaBtn: "In die Alpha →", notifyBtn: "Beim Start benachrichtigen", notifyDone: "Du wirst benachrichtigt",
       statusErr: "Senden fehlgeschlagen. Versuch es gleich noch mal.",
+      feedTitle: "Nachbarschafts-Feed", sayPh: "sag etwas…",
+      m1: "Jemand Lust auf einen Morgen-Espresso vor der Arbeit?",
+      m2: "Suche einen Tennispartner fürs Wochenende 🎾",
+      m3: "Wein auf meiner Terrasse heute Abend, wir sind zwei — dabei?",
+      m4: "Bin gerade im 4. Stock eingezogen. Sagt Hallo 👋",
     },
     es: {
       headerStatus: "Por invitación · Pronto", eyebrow: "El arte de estar cerca",
@@ -405,6 +491,11 @@
       afterTitle: "Estás en la lista.", afterSub: "Te avisaremos en cuanto el vecindario abra.",
       alphaBtn: "Entrar a la alfa →", notifyBtn: "Avísame en el lanzamiento", notifyDone: "Te avisaremos",
       statusErr: "No se pudo enviar. Inténtalo de nuevo en un momento.",
+      feedTitle: "Feed del vecindario", sayPh: "di algo…",
+      m1: "¿Alguien para un espresso antes del trabajo?",
+      m2: "Busco pareja de tenis este fin de semana 🎾",
+      m3: "Vino en mi terraza esta noche, somos dos — ¿te unes?",
+      m4: "Acabo de mudarme al 4º. Pasad a saludar 👋",
     },
     el: {
       headerStatus: "Με πρόσκληση · Σύντομα", eyebrow: "Η τέχνη του να είσαι κοντά",
@@ -421,6 +512,11 @@
       afterTitle: "Είσαι στη λίστα.", afterSub: "Θα σου πούμε μόλις ανοίξει η γειτονιά.",
       alphaBtn: "Μπες στην alpha →", notifyBtn: "Ειδοποίησέ με στο λανσάρισμα", notifyDone: "Θα ειδοποιηθείς",
       statusErr: "Η αποστολή απέτυχε. Δοκίμασε ξανά σε λίγο.",
+      feedTitle: "Ροή γειτονιάς", sayPh: "πες κάτι…",
+      m1: "Κανείς για πρωινό espresso πριν τη δουλειά;",
+      m2: "Ψάχνω παρτενέρ για τένις το Σαββατοκύριακο 🎾",
+      m3: "Κρασί στη βεράντα μου απόψε, είμαστε δύο — έρχεσαι;",
+      m4: "Μόλις μετακόμισα στον 4ο. Πείτε ένα γεια 👋",
     },
   };
   const SUPPORTED = Object.keys(T);
