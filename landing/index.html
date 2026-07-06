@@ -40,7 +40,6 @@
   }
   .accent { color: var(--accent); }
 
-  /* Header */
   header.top {
     display: flex; align-items: center; justify-content: space-between;
     padding: 28px 0 24px;
@@ -55,9 +54,15 @@
     font-family: "Unbounded", sans-serif; font-weight: 800;
     letter-spacing: 0.02em; font-size: 1rem;
   }
+  .header-right { display: flex; align-items: center; gap: 22px; }
   header.top .status { color: var(--muted); }
+  .lang-select {
+    background: transparent; color: var(--muted); cursor: pointer;
+    border: 1px solid var(--border); padding: 6px 8px;
+    font-family: "JetBrains Mono", monospace; text-transform: uppercase;
+    letter-spacing: 0.1em; font-size: 0.68rem;
+  }
 
-  /* Hero */
   .hero { text-align: center; padding: 84px 0 12px; }
   .hero .eyebrow { color: var(--accent); margin-bottom: 26px; }
   h1 {
@@ -76,7 +81,6 @@
     font-size: 1.12rem; line-height: 1.5;
   }
 
-  /* Waitlist form */
   form.waitlist-form {
     display: flex; max-width: 460px; margin: 44px auto 0;
     border: 1px solid var(--border);
@@ -100,7 +104,6 @@
   .status.err { color: var(--err); }
   .status.ok { color: var(--ok); }
 
-  /* Post-signup panel */
   .after { max-width: 460px; margin: 40px auto 0; display: none; }
   .after.show { display: block; }
   .after h3 {
@@ -118,7 +121,6 @@
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
   .btn[hidden] { display: none; }
 
-  /* Divider */
   .divider {
     display: flex; align-items: center; gap: 22px;
     margin: 88px 0 64px; color: var(--accent);
@@ -127,7 +129,6 @@
     content: ""; height: 1px; background: var(--border); flex: 1;
   }
 
-  /* Steps */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
   .step { padding: 0 34px; border-left: 1px solid var(--border); }
   .step:first-child { border-left: none; padding-left: 0; }
@@ -138,7 +139,6 @@
   }
   .step p { color: var(--muted); line-height: 1.5; }
 
-  /* Moments */
   .moments {
     margin: 74px 0; border: 1px solid var(--border); background: var(--panel);
     padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px;
@@ -156,7 +156,6 @@
   }
   .moments .timer .cap { color: var(--muted-2); margin-top: 8px; }
 
-  /* Closing CTA */
   .closing { text-align: center; padding: 40px 0 20px; }
   .closing h2 {
     font-family: "Unbounded", sans-serif; font-weight: 900;
@@ -164,7 +163,6 @@
   }
   .closing h2 .accent { display: block; }
 
-  /* Footer */
   footer.bottom {
     display: flex; align-items: center; justify-content: space-between;
     padding: 34px 0; margin-top: 60px; border-top: 1px solid var(--border);
@@ -206,27 +204,37 @@
       </span>
       <span class="name">NEIGHBRO.PLACE</span>
     </div>
-    <div class="status mono">By invitation · Soon</div>
+    <div class="header-right">
+      <div class="status mono" data-i18n="headerStatus"></div>
+      <select id="lang-select" class="lang-select" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="ru">RU</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="es">ES</option>
+        <option value="el">EL</option>
+      </select>
+    </div>
   </header>
 
   <section class="hero">
-    <div class="eyebrow mono">The art of being nearby</div>
-    <h1>Good neighbors.<span class="outline">No small talk.</span></h1>
-    <p class="sub">Meet interesting people who live near you. Say something, match, talk — and let it fade. No profile. No feed. No noise.</p>
+    <div class="eyebrow mono" data-i18n="eyebrow"></div>
+    <h1><span data-i18n="h1a"></span><span class="outline" data-i18n="h1b"></span></h1>
+    <p class="sub" data-i18n="sub"></p>
 
     <form id="waitlist-form-1" class="waitlist-form">
-      <input type="email" name="email" placeholder="your email" required autocomplete="email">
-      <button type="submit">Request access</button>
+      <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder">
+      <button type="submit" data-i18n="cta"></button>
     </form>
-    <div class="note mono">First members get the founding status</div>
+    <div class="note mono" data-i18n="note"></div>
     <div class="status" data-status-for="waitlist-form-1"></div>
 
     <div class="after" data-after-for="waitlist-form-1">
-      <h3>You're on the list.</h3>
-      <p>We'll let you know the moment the neighborhood opens.</p>
+      <h3 data-i18n="afterTitle"></h3>
+      <p data-i18n="afterSub"></p>
       <div class="cta-row">
-        <a class="btn btn-primary" data-alpha hidden>Enter the alpha →</a>
-        <button class="btn btn-ghost" data-notify hidden type="button">Notify me when we launch</button>
+        <a class="btn btn-primary" data-alpha hidden data-i18n="alphaBtn"></a>
+        <button class="btn btn-ghost" data-notify hidden type="button" data-i18n="notifyBtn"></button>
       </div>
     </div>
   </section>
@@ -245,63 +253,62 @@
 
   <section class="steps">
     <div class="step">
-      <div class="k mono">I — Say</div>
-      <h2>Your words reach the neighborhood</h2>
-      <p>One short line goes to people close to you. Quiet, local, in the moment.</p>
+      <div class="k mono" data-i18n="s1k"></div>
+      <h2 data-i18n="s1t"></h2>
+      <p data-i18n="s1d"></p>
     </div>
     <div class="step">
-      <div class="k mono">II — Match</div>
-      <h2>A mutual like opens the door</h2>
-      <p>A private chat appears only when both of you want it. Your attention is protected.</p>
+      <div class="k mono" data-i18n="s2k"></div>
+      <h2 data-i18n="s2t"></h2>
+      <p data-i18n="s2d"></p>
     </div>
     <div class="step">
-      <div class="k mono">III — Fade</div>
-      <h2>Nothing stays forever</h2>
-      <p>Every message dissolves after a few hours. What remains is the people you met.</p>
+      <div class="k mono" data-i18n="s3k"></div>
+      <h2 data-i18n="s3t"></h2>
+      <p data-i18n="s3d"></p>
     </div>
   </section>
 
   <section class="moments">
     <div>
-      <div class="label mono">Moments</div>
+      <div class="label mono" data-i18n="momentsLabel"></div>
       <div class="tags">
-        <span class="tag">morning espresso company</span>
-        <span class="tag">a partner for tennis</span>
-        <span class="tag">wine on the terrace</span>
-        <span class="tag">new in the city</span>
+        <span class="tag" data-i18n="tag1"></span>
+        <span class="tag" data-i18n="tag2"></span>
+        <span class="tag" data-i18n="tag3"></span>
+        <span class="tag" data-i18n="tag4"></span>
       </div>
     </div>
     <div class="timer">
       <div class="big">3H</div>
-      <div class="cap mono">Then it is gone</div>
+      <div class="cap mono" data-i18n="timerCap"></div>
     </div>
   </section>
 
   <section class="closing">
-    <h2>The neighborhood<span class="accent">is waiting</span></h2>
+    <h2><span data-i18n="closeA"></span><span class="accent" data-i18n="closeB"></span></h2>
     <form id="waitlist-form-2" class="waitlist-form">
-      <input type="email" name="email" placeholder="your email" required autocomplete="email">
-      <button type="submit">Request access</button>
+      <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder">
+      <button type="submit" data-i18n="cta"></button>
     </form>
     <div class="status" data-status-for="waitlist-form-2"></div>
     <div class="after" data-after-for="waitlist-form-2">
-      <h3>You're on the list.</h3>
+      <h3 data-i18n="afterTitle"></h3>
       <div class="cta-row">
-        <a class="btn btn-primary" data-alpha hidden>Enter the alpha →</a>
-        <button class="btn btn-ghost" data-notify hidden type="button">Notify me when we launch</button>
+        <a class="btn btn-primary" data-alpha hidden data-i18n="alphaBtn"></a>
+        <button class="btn btn-ghost" data-notify hidden type="button" data-i18n="notifyBtn"></button>
       </div>
     </div>
   </section>
 
   <footer class="bottom mono">
-    <span>© 2026 Neighbro.place</span>
+    <span data-i18n="footerCopy"></span>
     <a href="mailto:hello@neighbro.place">hello@neighbro.place</a>
   </footer>
 
 </div>
 
 <script>
-  // Register the PWA service worker; reload once a new version takes over.
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js").catch(() => {});
     let refreshing = false;
@@ -318,45 +325,155 @@
   const TABLE = "waitlist";
   const SOURCE = "neighbro.place-landing";
 
-  // Reveal the post-signup CTAs based on config flags ("чик и полетело").
+  const T = {
+    en: {
+      headerStatus: "By invitation · Soon", eyebrow: "The art of being nearby",
+      h1a: "Good neighbors.", h1b: "No small talk.",
+      sub: "Meet interesting people who live near you. Say something, match, talk — and let it fade. No profile. No feed. No noise.",
+      emailPlaceholder: "your email", cta: "Request access",
+      note: "First members get the founding status",
+      s1k: "I — Say", s1t: "Your words reach the neighborhood", s1d: "One short line goes to people close to you. Quiet, local, in the moment.",
+      s2k: "II — Match", s2t: "A mutual like opens the door", s2d: "A private chat appears only when both of you want it. Your attention is protected.",
+      s3k: "III — Fade", s3t: "Nothing stays forever", s3d: "Every message dissolves after a few hours. What remains is the people you met.",
+      momentsLabel: "Moments", tag1: "morning espresso company", tag2: "a partner for tennis", tag3: "wine on the terrace", tag4: "new in the city",
+      timerCap: "Then it is gone", closeA: "The neighborhood", closeB: "is waiting",
+      footerCopy: "© 2026 Neighbro.place",
+      afterTitle: "You're on the list.", afterSub: "We'll let you know the moment the neighborhood opens.",
+      alphaBtn: "Enter the alpha →", notifyBtn: "Notify me when we launch", notifyDone: "You'll be notified",
+      statusErr: "Couldn't submit that. Try again in a bit.",
+    },
+    ru: {
+      headerStatus: "По приглашению · Скоро", eyebrow: "Искусство быть рядом",
+      h1a: "Хорошие соседи.", h1b: "Без болтовни.",
+      sub: "Знакомься с интересными людьми, что живут рядом. Скажи что-то, совпади, поговори — и отпусти. Без профиля. Без ленты. Без шума.",
+      emailPlaceholder: "твоя почта", cta: "Запросить доступ",
+      note: "Первые участники получают статус основателя",
+      s1k: "I — Скажи", s1t: "Твои слова долетают до района", s1d: "Одна короткая строка уходит людям рядом. Тихо, локально, в моменте.",
+      s2k: "II — Совпало", s2t: "Взаимный лайк открывает дверь", s2d: "Приватный чат появляется, только когда оба этого хотят. Твоё внимание под защитой.",
+      s3k: "III — Исчезло", s3t: "Ничто не остаётся навсегда", s3d: "Каждое сообщение растворяется через несколько часов. Остаются люди, которых ты встретил.",
+      momentsLabel: "Моменты", tag1: "компания за утренним эспрессо", tag2: "партнёр по теннису", tag3: "вино на террасе", tag4: "новичок в городе",
+      timerCap: "Потом это исчезнет", closeA: "Район", closeB: "ждёт",
+      footerCopy: "© 2026 Neighbro.place",
+      afterTitle: "Ты в списке.", afterSub: "Сообщим, как только район откроется.",
+      alphaBtn: "Войти в альфу →", notifyBtn: "Уведомить о запуске", notifyDone: "Уведомим",
+      statusErr: "Не получилось отправить. Попробуй чуть позже.",
+    },
+    fr: {
+      headerStatus: "Sur invitation · Bientôt", eyebrow: "L'art d'être tout près",
+      h1a: "Bons voisins.", h1b: "Zéro blabla.",
+      sub: "Rencontre des gens intéressants qui vivent près de toi. Dis un mot, matche, parle — puis laisse ça s'effacer. Pas de profil. Pas de fil. Pas de bruit.",
+      emailPlaceholder: "ton e-mail", cta: "Demander l'accès",
+      note: "Les premiers membres obtiennent le statut de fondateur",
+      s1k: "I — Dis", s1t: "Tes mots atteignent le quartier", s1d: "Une courte ligne part vers les gens tout près. Discret, local, dans l'instant.",
+      s2k: "II — Match", s2t: "Un like mutuel ouvre la porte", s2d: "Un chat privé n'apparaît que si vous le voulez tous les deux. Ton attention est protégée.",
+      s3k: "III — Efface", s3t: "Rien ne dure toujours", s3d: "Chaque message se dissout après quelques heures. Ce qui reste, ce sont les gens rencontrés.",
+      momentsLabel: "Moments", tag1: "compagnie pour l'espresso du matin", tag2: "un partenaire de tennis", tag3: "un verre sur la terrasse", tag4: "nouveau en ville",
+      timerCap: "Puis ça disparaît", closeA: "Le quartier", closeB: "attend",
+      footerCopy: "© 2026 Neighbro.place",
+      afterTitle: "Tu es sur la liste.", afterSub: "On te prévient dès que le quartier ouvre.",
+      alphaBtn: "Entrer dans l'alpha →", notifyBtn: "Me prévenir au lancement", notifyDone: "Tu seras prévenu",
+      statusErr: "Échec de l'envoi. Réessaie dans un instant.",
+    },
+    de: {
+      headerStatus: "Auf Einladung · Bald", eyebrow: "Die Kunst, nah zu sein",
+      h1a: "Gute Nachbarn.", h1b: "Kein Smalltalk.",
+      sub: "Triff interessante Menschen aus deiner Nähe. Sag etwas, matche, rede — und lass es verblassen. Kein Profil. Kein Feed. Kein Lärm.",
+      emailPlaceholder: "deine E-Mail", cta: "Zugang anfragen",
+      note: "Die ersten Mitglieder erhalten den Gründerstatus",
+      s1k: "I — Sag", s1t: "Deine Worte erreichen die Nachbarschaft", s1d: "Eine kurze Zeile geht an Menschen ganz in der Nähe. Leise, lokal, im Moment.",
+      s2k: "II — Match", s2t: "Ein beidseitiges Like öffnet die Tür", s2d: "Ein privater Chat erscheint nur, wenn ihr es beide wollt. Deine Aufmerksamkeit ist geschützt.",
+      s3k: "III — Verblasse", s3t: "Nichts bleibt für immer", s3d: "Jede Nachricht löst sich nach ein paar Stunden auf. Es bleiben die Menschen, die du getroffen hast.",
+      momentsLabel: "Momente", tag1: "Gesellschaft für den Morgen-Espresso", tag2: "ein Tennispartner", tag3: "Wein auf der Terrasse", tag4: "neu in der Stadt",
+      timerCap: "Dann ist es weg", closeA: "Die Nachbarschaft", closeB: "wartet",
+      footerCopy: "© 2026 Neighbro.place",
+      afterTitle: "Du stehst auf der Liste.", afterSub: "Wir sagen Bescheid, sobald die Nachbarschaft öffnet.",
+      alphaBtn: "In die Alpha →", notifyBtn: "Beim Start benachrichtigen", notifyDone: "Du wirst benachrichtigt",
+      statusErr: "Senden fehlgeschlagen. Versuch es gleich noch mal.",
+    },
+    es: {
+      headerStatus: "Por invitación · Pronto", eyebrow: "El arte de estar cerca",
+      h1a: "Buenos vecinos.", h1b: "Sin charla vacía.",
+      sub: "Conoce a gente interesante que vive cerca de ti. Di algo, haz match, habla — y deja que se desvanezca. Sin perfil. Sin feed. Sin ruido.",
+      emailPlaceholder: "tu correo", cta: "Solicitar acceso",
+      note: "Los primeros miembros obtienen el estatus de fundador",
+      s1k: "I — Di", s1t: "Tus palabras llegan al vecindario", s1d: "Una línea corta llega a la gente cercana. Discreto, local, en el momento.",
+      s2k: "II — Match", s2t: "Un like mutuo abre la puerta", s2d: "Un chat privado aparece solo cuando ambos queréis. Tu atención está protegida.",
+      s3k: "III — Desvanece", s3t: "Nada permanece para siempre", s3d: "Cada mensaje se disuelve tras unas horas. Lo que queda es la gente que conociste.",
+      momentsLabel: "Momentos", tag1: "compañía para el espresso de la mañana", tag2: "una pareja de tenis", tag3: "vino en la terraza", tag4: "nuevo en la ciudad",
+      timerCap: "Luego desaparece", closeA: "El vecindario", closeB: "está esperando",
+      footerCopy: "© 2026 Neighbro.place",
+      afterTitle: "Estás en la lista.", afterSub: "Te avisaremos en cuanto el vecindario abra.",
+      alphaBtn: "Entrar a la alfa →", notifyBtn: "Avísame en el lanzamiento", notifyDone: "Te avisaremos",
+      statusErr: "No se pudo enviar. Inténtalo de nuevo en un momento.",
+    },
+    el: {
+      headerStatus: "Με πρόσκληση · Σύντομα", eyebrow: "Η τέχνη του να είσαι κοντά",
+      h1a: "Καλοί γείτονες.", h1b: "Χωρίς ψιλοκουβέντες.",
+      sub: "Γνώρισε ενδιαφέροντες ανθρώπους που ζουν κοντά σου. Πες κάτι, ταίριαξε, μίλα — και άφησέ το να σβήσει. Χωρίς προφίλ. Χωρίς ροή. Χωρίς θόρυβο.",
+      emailPlaceholder: "το email σου", cta: "Ζήτησε πρόσβαση",
+      note: "Τα πρώτα μέλη αποκτούν το status του ιδρυτή",
+      s1k: "I — Πες", s1t: "Τα λόγια σου φτάνουν στη γειτονιά", s1d: "Μια σύντομη γραμμή πάει σε ανθρώπους κοντά σου. Ήσυχα, τοπικά, στη στιγμή.",
+      s2k: "II — Ταίριασμα", s2t: "Ένα αμοιβαίο like ανοίγει την πόρτα", s2d: "Ένα ιδιωτικό chat εμφανίζεται μόνο όταν το θέλετε και οι δύο. Η προσοχή σου προστατεύεται.",
+      s3k: "III — Σβήσε", s3t: "Τίποτα δεν μένει για πάντα", s3d: "Κάθε μήνυμα διαλύεται μετά από λίγες ώρες. Μένουν οι άνθρωποι που γνώρισες.",
+      momentsLabel: "Στιγμές", tag1: "παρέα για πρωινό espresso", tag2: "παρτενέρ για τένις", tag3: "κρασί στη βεράντα", tag4: "νέος στην πόλη",
+      timerCap: "Μετά χάνεται", closeA: "Η γειτονιά", closeB: "περιμένει",
+      footerCopy: "© 2026 Neighbro.place",
+      afterTitle: "Είσαι στη λίστα.", afterSub: "Θα σου πούμε μόλις ανοίξει η γειτονιά.",
+      alphaBtn: "Μπες στην alpha →", notifyBtn: "Ειδοποίησέ με στο λανσάρισμα", notifyDone: "Θα ειδοποιηθείς",
+      statusErr: "Η αποστολή απέτυχε. Δοκίμασε ξανά σε λίγο.",
+    },
+  };
+  const SUPPORTED = Object.keys(T);
+  let LANG = "en";
+
+  function detectLang() {
+    const stored = localStorage.getItem("lang");
+    if (stored && SUPPORTED.includes(stored)) return stored;
+    const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+    return SUPPORTED.includes(nav) ? nav : "en";
+  }
+
+  function applyLang(lang) {
+    LANG = SUPPORTED.includes(lang) ? lang : "en";
+    const d = T[LANG];
+    document.documentElement.lang = LANG;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const v = d[el.getAttribute("data-i18n")];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
+      const v = d[el.getAttribute("data-i18n-ph")];
+      if (v != null) el.setAttribute("placeholder", v);
+    });
+    document.getElementById("lang-select").value = LANG;
+    localStorage.setItem("lang", LANG);
+  }
+
+  applyLang(detectLang());
+  document.getElementById("lang-select").addEventListener("change", (e) => applyLang(e.target.value));
+
   function showAfter(formId) {
     const after = document.querySelector(`[data-after-for="${formId}"]`);
     if (!after) return;
     const alpha = after.querySelector("[data-alpha]");
     if (CFG.alphaUrl) { alpha.href = CFG.alphaUrl; alpha.hidden = false; }
-    const notify = after.querySelector("[data-notify]");
-    if (CFG.vapidPublicKey) notify.hidden = false;
+    if (CFG.vapidPublicKey) after.querySelector("[data-notify]").hidden = false;
     after.classList.add("show");
   }
 
   async function subscribePush(btn) {
     try {
       if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
-      const perm = await Notification.requestPermission();
-      if (perm !== "granted") return;
+      if ((await Notification.requestPermission()) !== "granted") return;
       const reg = await navigator.serviceWorker.ready;
-      const sub = await reg.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: CFG.vapidPublicKey,
-      });
-      const json = sub.toJSON();
+      const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: CFG.vapidPublicKey });
+      const j = sub.toJSON();
       await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-          Prefer: "return=minimal",
-        },
-        body: JSON.stringify({
-          endpoint: json.endpoint,
-          p256dh: json.keys.p256dh,
-          auth: json.keys.auth,
-          source: SOURCE,
-          lang: (navigator.language || "en").slice(0, 2),
-        }),
+        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, Prefer: "return=minimal" },
+        body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys.p256dh, auth: j.keys.auth, source: SOURCE, lang: LANG }),
       });
-      btn.textContent = "You'll be notified";
+      btn.textContent = T[LANG].notifyDone;
       btn.disabled = true;
     } catch (e) { /* ignore */ }
   }
@@ -376,20 +493,14 @@
       try {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-            Prefer: "return=minimal",
-          },
+          headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, Prefer: "return=minimal" },
           body: JSON.stringify({ email, source: SOURCE, early_access: true }),
         });
         if (!res.ok) throw new Error("request failed");
-        status.textContent = "";
         form.style.display = "none";
         showAfter(form.id);
       } catch (err) {
-        status.textContent = "Couldn't submit that. Try again in a bit.";
+        status.textContent = T[LANG].statusErr;
         status.className = "status err";
         btn.disabled = false;
       }
