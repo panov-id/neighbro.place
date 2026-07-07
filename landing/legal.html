@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP: strictly same-origin (fonts are self-hosted). Legal docs are fetched
+     same-origin (connect-src 'self'); inline script/style need 'unsafe-inline'. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
 <title>NEIGHBRO — Legal</title>
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <meta name="theme-color" content="#0c0b09">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <style>
   :root {
     --bg: #0c0b09; --panel: #14120e; --panel-2: #26221a; --border: #3a331f;
@@ -161,18 +162,37 @@
     : (["en", "ru"].includes(stored) ? stored : ((navigator.language || "en").slice(0, 2).toLowerCase() === "ru" ? "ru" : "en"));
 
   const docEl = document.getElementById("doc");
+  // Fetch one doc with a timeout so a hung request can't spin forever.
+  async function fetchMd(doc, lang, timeoutMs = 8000) {
+    const file = "legal/" + FILES[doc] + "_" + lang.toUpperCase() + ".md";
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(file, { cache: "no-cache", signal: ctrl.signal });
+      if (!res.ok) throw new Error("not found");
+      return await res.text();
+    } finally {
+      clearTimeout(timer);
+    }
+  }
   async function load() {
     document.querySelectorAll("#docSeg button").forEach((b) => b.classList.toggle("on", b.dataset.doc === DOC));
     document.querySelectorAll("#langSeg button").forEach((b) => b.classList.toggle("on", b.dataset.lang === LANG));
     document.documentElement.lang = LANG;
     docEl.innerHTML = '<p class="loading mono">Loading…</p>';
-    const file = "legal/" + FILES[DOC] + "_" + LANG.toUpperCase() + ".md";
     try {
-      const res = await fetch(file, { cache: "no-cache" });
-      if (!res.ok) throw new Error("not found");
-      docEl.innerHTML = renderMd(await res.text());
+      let md;
+      try {
+        md = await fetchMd(DOC, LANG);
+      } catch (e) {
+        // Missing translation or a transient failure — fall back to English
+        // rather than showing an error (not all docs exist in every language).
+        if (LANG !== "en") md = await fetchMd(DOC, "en");
+        else throw e;
+      }
+      docEl.innerHTML = renderMd(md);
     } catch (e) {
-      docEl.innerHTML = '<p class="loading mono">Could not load ' + esc(file) + '.</p>';
+      docEl.innerHTML = '<p class="loading mono">Could not load this document. Please try again.</p>';
     }
     window.scrollTo(0, 0);
   }

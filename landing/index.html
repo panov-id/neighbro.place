@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP: strictly same-origin. Fonts are self-hosted, so no external hosts are
+     needed. Supabase is reached same-origin through the gateway (/rest, /auth…),
+     so connect-src 'self' covers the waitlist + push fetches. Inline
+     scripts/styles are used, hence 'unsafe-inline'. If a deploy ever points
+     config.js at a cross-origin Supabase host, add it to connect-src. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
 <title>NEIGHBRO.PLACE — Good neighbors. Real moments.</title>
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,9 +38,11 @@
     window.__nb = { accentIndex: ai, accentChosen: chosen, ACC: ACC };
   })();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Self-hosted fonts (see scripts/fetch-fonts.sh). Preload the above-the-fold
+     latin faces (body + display), then the full @font-face set. -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/q5uCsoe9Lv5t7Meb31EcExN8hA.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/Yq6W-LOTXCb04q32xlpwu8Zf.woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <style>
   :root {
     --bg: #0c0b09;
@@ -43,7 +51,7 @@
     --border: #3a331f;
     --fg: #ede8dd;
     --muted: #8a8172;
-    --muted-2: #6e6858;
+    --muted-2: #928979; /* raised to meet 4.5:1 on the dark ground */
     --accent: #c6a24e;
     --accent-ink: #1a1509;
     --err: #ff8a80;
@@ -52,7 +60,7 @@
   /* Light mode — dark text + hard dark borders on a light concrete ground (accent untouched). */
   [data-mode="light"] {
     --bg: #e9e6dd; --panel: #f4f1e8; --panel-2: #ded9cc;
-    --border: #1e1b14; --fg: #181510; --muted: #5f5a4e; --muted-2: #7f7a6a;
+    --border: #1e1b14; --fg: #181510; --muted: #5f5a4e; --muted-2: #5c5749; /* darkened to meet 4.5:1 on the light ground */
   }
   /* Accent themes — a curated subset, cycled by clicking the logo. */
   [data-theme="crimson"] { --accent: #e0342b; --accent-ink: #fdeceb; }
@@ -92,7 +100,18 @@
   .splash .s-name { font-family: "Unbounded", sans-serif; font-weight: 900; font-size: clamp(1.8rem, 8vw, 2.6rem); text-transform: uppercase; color: var(--fg); margin-top: 16px; letter-spacing: 0.04em; }
   .splash .s-by { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.64rem; color: var(--muted); margin-top: 10px; }
   .splash .s-by b { color: var(--accent); font-weight: 400; }
-  @media (prefers-reduced-motion: reduce) { .splash .disc { animation: none; transform: scale(1); } .splash .bm { animation: none; opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    /* Neutralize all motion: no infinite pulse, no animated hover transforms. */
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    /* Land the splash on its final state; stop the pulsing dot outright. */
+    .splash .disc { animation: none; transform: scale(1); }
+    .splash .bm { animation: none; opacity: 1; }
+    .dot { animation: none; }
+  }
 
   header.top {
     display: flex; align-items: center; justify-content: space-between;
@@ -142,9 +161,13 @@
     overflow-wrap: break-word;
   }
   h1 .outline {
-    color: transparent;
+    color: var(--accent); /* fallback: visible if text-stroke is unsupported */
     -webkit-text-stroke: 1.4px var(--accent);
     display: block;
+  }
+  /* Where the stroke renders, hollow the fill out. */
+  @supports (-webkit-text-stroke: 1px currentColor) {
+    h1 .outline { color: transparent; }
   }
   .hero p.sub {
     max-width: 520px; margin: 30px auto 0; color: var(--muted);
@@ -403,7 +426,7 @@
       <button type="submit" data-i18n="cta"></button>
     </form>
     <div class="note mono" data-i18n="note"></div>
-    <div class="status" data-status-for="waitlist-form-1"></div>
+    <div class="status" data-status-for="waitlist-form-1" role="status" aria-live="polite"></div>
 
     <div class="after" data-after-for="waitlist-form-1">
       <h3 data-i18n="afterTitle"></h3>
@@ -528,7 +551,7 @@
       <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder">
       <button type="submit" data-i18n="cta"></button>
     </form>
-    <div class="status" data-status-for="waitlist-form-2"></div>
+    <div class="status" data-status-for="waitlist-form-2" role="status" aria-live="polite"></div>
     <div class="after" data-after-for="waitlist-form-2">
       <h3 data-i18n="afterTitle"></h3>
       <div class="cta-row">
@@ -552,10 +575,16 @@
 
 <script>
   if ("serviceWorker" in navigator) {
+    // Whether a SW already controlled this page at load time. On the very
+    // first install there is none, so the controllerchange that follows is
+    // the initial claim — reloading then is a pointless flash.
+    const hadController = !!navigator.serviceWorker.controller;
     navigator.serviceWorker.register("sw.js").catch(() => {});
     let refreshing = false;
     navigator.serviceWorker.addEventListener("controllerchange", () => {
-      if (!refreshing) { refreshing = true; location.reload(); }
+      if (!hadController || refreshing) return;
+      refreshing = true;
+      location.reload();
     });
   }
 </script>
@@ -583,7 +612,7 @@
       afterTitle: "You're on the list.", afterSub: "We'll let you know the moment the neighborhood opens.",
       alphaBtn: "Enter the alpha →", notifyBtn: "Notify me when we launch", notifyDone: "You'll be notified",
       statusErr: "Couldn't submit that. Try again in a bit.",
-      feedTitle: "Neighborhood feed", sayPh: "say something…",
+      feedTitle: "Neighborhood feed",
       m1: "Anyone up for morning espresso before work?",
       m2: "Looking for a tennis partner this weekend 🎾",
       m3: "Wine on my terrace tonight, two of us — join?",
@@ -610,7 +639,7 @@
       afterTitle: "Ты в списке.", afterSub: "Сообщим, как только район откроется.",
       alphaBtn: "Войти в альфу →", notifyBtn: "Уведомить о запуске", notifyDone: "Уведомим",
       statusErr: "Не получилось отправить. Попробуй чуть позже.",
-      feedTitle: "Лента района", sayPh: "скажи что-нибудь…",
+      feedTitle: "Лента района",
       m1: "Кто на утренний эспрессо перед работой?",
       m2: "Ищу партнёра по теннису на выходные 🎾",
       m3: "Вино на моей террасе сегодня, нас двое — присоединишься?",
@@ -637,7 +666,7 @@
       afterTitle: "Tu es sur la liste.", afterSub: "On te prévient dès que le quartier ouvre.",
       alphaBtn: "Entrer dans l'alpha →", notifyBtn: "Me prévenir au lancement", notifyDone: "Tu seras prévenu",
       statusErr: "Échec de l'envoi. Réessaie dans un instant.",
-      feedTitle: "Fil du quartier", sayPh: "dis quelque chose…",
+      feedTitle: "Fil du quartier",
       m1: "Quelqu'un pour un espresso avant le boulot ?",
       m2: "Je cherche un partenaire de tennis ce week-end 🎾",
       m3: "Du vin sur ma terrasse ce soir, on est deux — tu viens ?",
@@ -664,7 +693,7 @@
       afterTitle: "Du stehst auf der Liste.", afterSub: "Wir sagen Bescheid, sobald die Nachbarschaft öffnet.",
       alphaBtn: "In die Alpha →", notifyBtn: "Beim Start benachrichtigen", notifyDone: "Du wirst benachrichtigt",
       statusErr: "Senden fehlgeschlagen. Versuch es gleich noch mal.",
-      feedTitle: "Nachbarschafts-Feed", sayPh: "sag etwas…",
+      feedTitle: "Nachbarschafts-Feed",
       m1: "Jemand Lust auf einen Morgen-Espresso vor der Arbeit?",
       m2: "Suche einen Tennispartner fürs Wochenende 🎾",
       m3: "Wein auf meiner Terrasse heute Abend, wir sind zwei — dabei?",
@@ -691,7 +720,7 @@
       afterTitle: "Estás en la lista.", afterSub: "Te avisaremos en cuanto el vecindario abra.",
       alphaBtn: "Entrar a la alfa →", notifyBtn: "Avísame en el lanzamiento", notifyDone: "Te avisaremos",
       statusErr: "No se pudo enviar. Inténtalo de nuevo en un momento.",
-      feedTitle: "Feed del vecindario", sayPh: "di algo…",
+      feedTitle: "Feed del vecindario",
       m1: "¿Alguien para un espresso antes del trabajo?",
       m2: "Busco pareja de tenis este fin de semana 🎾",
       m3: "Vino en mi terraza esta noche, somos dos — ¿te unes?",
@@ -718,7 +747,7 @@
       afterTitle: "Είσαι στη λίστα.", afterSub: "Θα σου πούμε μόλις ανοίξει η γειτονιά.",
       alphaBtn: "Μπες στην alpha →", notifyBtn: "Ειδοποίησέ με στο λανσάρισμα", notifyDone: "Θα ειδοποιηθείς",
       statusErr: "Η αποστολή απέτυχε. Δοκίμασε ξανά σε λίγο.",
-      feedTitle: "Ροή γειτονιάς", sayPh: "πες κάτι…",
+      feedTitle: "Ροή γειτονιάς",
       m1: "Κανείς για πρωινό espresso πριν τη δουλειά;",
       m2: "Ψάχνω παρτενέρ για τένις το Σαββατοκύριακο 🎾",
       m3: "Κρασί στη βεράντα μου απόψε, είμαστε δύο — έρχεσαι;",
@@ -751,7 +780,8 @@
     });
     document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
       const v = d[el.getAttribute("data-i18n-ph")];
-      if (v != null) el.setAttribute("placeholder", v);
+      // Also expose it as the accessible name — the input has no visible label.
+      if (v != null) { el.setAttribute("placeholder", v); el.setAttribute("aria-label", v); }
     });
     document.getElementById("lang-select").value = LANG;
     if (persist) localStorage.setItem("lang", LANG); // remember only a manual choice
@@ -783,9 +813,19 @@
   }
   document.getElementById("modeBtn").addEventListener("click", () => applyMode(document.documentElement.dataset.mode === "light" ? "dark" : "light", true));
 
-  // Splash — hold briefly, then wipe to reveal the page.
+  // Splash — hold briefly on the first view of a session, then wipe. Repeat
+  // views and reduced-motion skip the hold so content paints immediately (LCP).
   const splash = document.getElementById("splash");
-  if (splash) setTimeout(() => { splash.classList.add("done"); setTimeout(() => splash.remove(), 500); }, 1700);
+  if (splash) {
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const seen = sessionStorage.getItem("nb-splash-seen");
+    sessionStorage.setItem("nb-splash-seen", "1");
+    const hold = reduce || seen ? 0 : 1400;
+    setTimeout(() => {
+      splash.classList.add("done");
+      setTimeout(() => splash.remove(), reduce ? 0 : 500);
+    }, hold);
+  }
 
   function showAfter(formId) {
     const after = document.querySelector(`[data-after-for="${formId}"]`);
@@ -797,20 +837,28 @@
   }
 
   async function subscribePush(btn) {
+    const original = btn.textContent;
+    // Give the user feedback instead of silently doing nothing on failure.
+    const fail = (msg) => { btn.textContent = msg; btn.disabled = false; };
     try {
-      if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
-      if ((await Notification.requestPermission()) !== "granted") return;
+      if (!("serviceWorker" in navigator) || !("PushManager" in window)) { fail("Not supported here"); return; }
+      if ((await Notification.requestPermission()) !== "granted") { fail("Notifications are blocked"); return; }
+      btn.disabled = true;
+      btn.textContent = original;
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: CFG.vapidPublicKey });
       const j = sub.toJSON();
-      await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions`, {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions`, {
         method: "POST",
         headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, Prefer: "return=minimal" },
         body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys.p256dh, auth: j.keys.auth, source: SOURCE, lang: LANG }),
       });
+      if (!res.ok) throw new Error("save failed"); // don't swallow a backend failure
       btn.textContent = T[LANG].notifyDone;
       btn.disabled = true;
-    } catch (e) { /* ignore */ }
+    } catch (e) {
+      fail("Couldn't set that up — try again");
+    }
   }
 
   document.querySelectorAll(".waitlist-form").forEach((form) => {
@@ -831,7 +879,9 @@
           headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, Prefer: "return=minimal" },
           body: JSON.stringify({ email, source: SOURCE, early_access: true }),
         });
-        if (!res.ok) throw new Error("request failed");
+        // 409 = unique violation: the email is already on the list. That's a
+        // returning visitor, not a failure — show the same success state.
+        if (!res.ok && res.status !== 409) throw new Error("request failed");
         form.style.display = "none";
         showAfter(form.id);
       } catch (err) {

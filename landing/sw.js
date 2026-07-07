@@ -3,10 +3,12 @@
 // The deploy step replaces __BUILD__ with the git hash so a new deploy
 // invalidates the old cache.
 const CACHE = 'neighbro-__BUILD__';
+// config.js is deliberately NOT precached: it carries the environment's
+// Supabase target and can change without a new build hash, so it is served
+// network-first (see the fetch handler) to avoid pinning a stale backend.
 const PRECACHE = [
   '/',
-  '/index.html',
-  '/config.js',
+  '/fonts.css',
   '/manifest.json',
   '/icons/icon.svg',
   '/icons/icon-192.png',
@@ -29,6 +31,23 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+
+  // config.js: network-first so an environment/target change takes effect
+  // without waiting for a new build hash; fall back to cache when offline.
+  const url = new URL(event.request.url);
+  if (url.origin === location.origin && url.pathname === '/config.js') {
+    event.respondWith(
+      fetch(event.request).then((res) => {
+        if (res.ok) {
+          const clone = res.clone();
+          caches.open(CACHE).then((c) => c.put(event.request, clone));
+        }
+        return res;
+      }).catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const net = fetch(event.request).then((res) => {
@@ -37,7 +56,12 @@ self.addEventListener('fetch', (event) => {
           caches.open(CACHE).then((c) => c.put(event.request, clone));
         }
         return res;
-      }).catch(() => cached);
+      }).catch(() => {
+        // Offline and uncached: for a page navigation, fall back to the
+        // precached app shell ('/') so we never show the browser error page.
+        if (event.request.mode === 'navigate') return caches.match('/');
+        return cached;
+      });
       return cached || net;
     })
   );
