@@ -21,9 +21,20 @@
     --muted: #8a8172;
     --muted-2: #6e6858;
     --accent: #c6a24e;
+    --accent-ink: #1a1509;
     --err: #ff8a80;
     --ok: #9ecb7a;
   }
+  /* Light mode — dark text + hard dark borders on a light concrete ground (accent untouched). */
+  [data-mode="light"] {
+    --bg: #e9e6dd; --panel: #f4f1e8; --panel-2: #ded9cc;
+    --border: #1e1b14; --fg: #181510; --muted: #5f5a4e; --muted-2: #7f7a6a;
+  }
+  /* Accent themes — a curated subset, cycled by clicking the logo. */
+  [data-theme="crimson"] { --accent: #e0342b; --accent-ink: #fdeceb; }
+  [data-theme="teal"]    { --accent: #1fb39a; --accent-ink: #04201c; }
+  [data-theme="azure"]   { --accent: #3d84d6; --accent-ink: #eaf2ff; }
+  [data-theme="violet"]  { --accent: #9b5de5; --accent-ink: #f3ecfd; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--bg);
@@ -49,7 +60,22 @@
   .brand .mark {
     width: 34px; height: 34px; color: var(--accent);
     display: flex; align-items: center; justify-content: center;
+    background: none; border: none; padding: 0; cursor: pointer;
+    transition: transform .3s cubic-bezier(.2,.8,.2,1);
   }
+  .brand .mark:hover { transform: rotate(-6deg) scale(1.06); }
+  .brand .mark:active { transform: scale(.92); }
+  .icon-btn {
+    background: transparent; color: var(--muted); cursor: pointer;
+    border: 1px solid var(--border); width: 32px; height: 30px;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: border-color .15s, color .15s;
+  }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .icon-btn svg { width: 15px; height: 15px; }
+  .icon-btn .moon { display: none; }
+  [data-mode="light"] .icon-btn .sun { display: none; }
+  [data-mode="light"] .icon-btn .moon { display: inline; }
   .brand .name {
     font-family: "Unbounded", sans-serif; font-weight: 800;
     letter-spacing: 0.02em; font-size: 1rem;
@@ -93,7 +119,7 @@
   form.waitlist-form input::placeholder { color: var(--muted-2); }
   form.waitlist-form button {
     border: none; cursor: pointer;
-    background: var(--accent); color: #1a1509;
+    background: var(--accent); color: var(--accent-ink);
     font-family: "JetBrains Mono", monospace; font-weight: 500;
     text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.8rem;
     padding: 0 28px;
@@ -117,7 +143,7 @@
     font-family: "JetBrains Mono", monospace; text-transform: uppercase;
     letter-spacing: 0.14em; font-size: 0.8rem; padding: 16px;
   }
-  .btn-primary { background: var(--accent); color: #1a1509; border: none; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); border: none; }
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
   .btn[hidden] { display: none; }
 
@@ -167,16 +193,21 @@
   .msg.new { border-left-color: var(--accent); }
   .msg p { line-height: 1.4; margin-bottom: 10px; }
   .msg .meta {
-    display: flex; gap: 16px; color: var(--muted-2);
+    display: flex; align-items: center; gap: 16px; color: var(--muted-2);
     font-size: 0.64rem; letter-spacing: 0.12em;
   }
-  .msg .meta .like { color: var(--accent); }
+  .msg .meta .ppl { color: var(--accent); }
+  .msg .meta .plus {
+    margin-left: auto; color: var(--accent);
+    border: 1px solid var(--border); width: 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem;
+  }
   .feed-input {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 20px; border-top: 1px solid var(--border); color: var(--muted-2);
   }
   .feed-input .send {
-    color: #1a1509; background: var(--accent); width: 26px; height: 26px;
+    color: var(--accent-ink); background: var(--accent); width: 26px; height: 26px;
     display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
   }
 
@@ -232,21 +263,25 @@
 
   <header class="top">
     <div class="brand">
-      <span class="mark">
+      <button class="mark" id="logoBtn" aria-label="Change accent">
         <svg width="34" height="34" viewBox="0 0 96 96">
           <circle cx="48" cy="48" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
           <g transform="translate(16.3,16.8) scale(0.88)">
             <rect x="50" y="10" width="7" height="14" rx="2" fill="currentColor"/>
             <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-            <rect x="22" y="32" width="18" height="5" rx="2.5" fill="#0c0b09"/>
-            <rect x="22" y="43" width="27" height="5" rx="2.5" fill="#0c0b09"/>
+            <rect x="22" y="32" width="18" height="5" rx="2.5" style="fill:var(--bg)"/>
+            <rect x="22" y="43" width="27" height="5" rx="2.5" style="fill:var(--bg)"/>
           </g>
         </svg>
-      </span>
+      </button>
       <span class="name">NEIGHBRO.PLACE</span>
     </div>
     <div class="header-right">
       <div class="status mono" data-i18n="headerStatus"></div>
+      <button class="icon-btn" id="modeBtn" aria-label="Toggle light / dark">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
       <select id="lang-select" class="lang-select" aria-label="Language">
         <option value="en">EN</option>
         <option value="ru">RU</option>
@@ -286,8 +321,8 @@
       <g transform="translate(16.3,16.8) scale(0.88)">
         <rect x="50" y="10" width="7" height="14" rx="2" fill="currentColor"/>
         <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-        <rect x="22" y="32" width="18" height="5" rx="2.5" fill="#0c0b09"/>
-        <rect x="22" y="43" width="27" height="5" rx="2.5" fill="#0c0b09"/>
+        <rect x="22" y="32" width="18" height="5" rx="2.5" style="fill:var(--bg)"/>
+        <rect x="22" y="43" width="27" height="5" rx="2.5" style="fill:var(--bg)"/>
       </g>
     </svg>
   </div>
@@ -316,19 +351,19 @@
       <div class="feed-list">
         <div class="msg">
           <p data-i18n="m1"></p>
-          <div class="meta"><span>◍ 180 m</span><span class="like">♥ 3</span><span>2h 40m</span></div>
+          <div class="meta"><span class="ppl">👥 1</span><span>2h 40m</span><span class="plus">+</span></div>
         </div>
         <div class="msg">
           <p data-i18n="m2"></p>
-          <div class="meta"><span>◍ 320 m</span><span class="like">♥ 6</span><span>1h 05m</span></div>
+          <div class="meta"><span class="ppl">👥 1</span><span>1h 05m</span><span class="plus">+</span></div>
         </div>
         <div class="msg">
           <p data-i18n="m3"></p>
-          <div class="meta"><span>◍ 90 m</span><span class="like">♥ 2</span><span>3h 58m</span></div>
+          <div class="meta"><span class="ppl">👥 2</span><span>3h 58m</span><span class="plus">+</span></div>
         </div>
         <div class="msg new">
           <p data-i18n="m4"></p>
-          <div class="meta"><span>◍ 60 m</span><span class="like">♥ 1</span><span>4h 12m</span></div>
+          <div class="meta"><span class="ppl">👥 1</span><span>4h 12m</span><span class="plus">+</span></div>
         </div>
       </div>
       <div class="feed-input mono"><span data-i18n="sayPh"></span><span class="send">→</span></div>
@@ -368,7 +403,7 @@
   </section>
 
   <footer class="bottom mono">
-    <span data-i18n="footerCopy"></span>
+    <span><span data-i18n="footerCopy"></span> · by <span class="accent">PSYTICAN</span></span>
     <a href="mailto:hello@neighbro.place">hello@neighbro.place</a>
   </footer>
 
@@ -547,6 +582,26 @@
 
   applyLang(detectLang());
   document.getElementById("lang-select").addEventListener("change", (e) => applyLang(e.target.value));
+
+  // Theme — accent cycle on the logo (curated subset), light/dark next to language.
+  const ACCENTS = ["", "crimson", "teal", "azure", "violet"];
+  function applyAccent(i) {
+    const id = ACCENTS[((i % ACCENTS.length) + ACCENTS.length) % ACCENTS.length];
+    if (id) document.documentElement.dataset.theme = id; else delete document.documentElement.dataset.theme;
+    localStorage.setItem("nb-accent", String(i));
+  }
+  let accentIndex = parseInt(localStorage.getItem("nb-accent") || "0", 10) || 0;
+  applyAccent(accentIndex);
+  document.getElementById("logoBtn").addEventListener("click", () => { accentIndex = (accentIndex + 1) % ACCENTS.length; applyAccent(accentIndex); });
+
+  function applyMode(m) {
+    if (m === "light") document.documentElement.dataset.mode = "light"; else delete document.documentElement.dataset.mode;
+    localStorage.setItem("nb-mode", m);
+    const tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.setAttribute("content", m === "light" ? "#e9e6dd" : "#0c0b09");
+  }
+  applyMode(localStorage.getItem("nb-mode") || "dark");
+  document.getElementById("modeBtn").addEventListener("click", () => applyMode(document.documentElement.dataset.mode === "light" ? "dark" : "light"));
 
   function showAfter(formId) {
     const after = document.querySelector(`[data-after-for="${formId}"]`);
