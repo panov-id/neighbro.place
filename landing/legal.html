@@ -80,6 +80,7 @@
       <div class="seg" id="docSeg">
         <button data-doc="terms" class="on">Terms</button>
         <button data-doc="privacy">Privacy</button>
+        <button data-doc="rules">Rules</button>
       </div>
       <div class="seg" id="langSeg">
         <button data-lang="en" class="on">EN</button>
@@ -136,8 +137,9 @@
     return html;
   }
 
+  const FILES = { terms: "terms", privacy: "privacy", rules: "community-guidelines" };
   const params = new URLSearchParams(location.search);
-  let DOC = ["terms", "privacy"].includes(params.get("doc")) ? params.get("doc") : "terms";
+  let DOC = Object.keys(FILES).includes(params.get("doc")) ? params.get("doc") : "terms";
   const stored = localStorage.getItem("lang");
   let LANG = ["en", "ru"].includes(params.get("lang")) ? params.get("lang")
     : (["en", "ru"].includes(stored) ? stored : ((navigator.language || "en").slice(0, 2).toLowerCase() === "ru" ? "ru" : "en"));
@@ -148,7 +150,7 @@
     document.querySelectorAll("#langSeg button").forEach((b) => b.classList.toggle("on", b.dataset.lang === LANG));
     document.documentElement.lang = LANG;
     docEl.innerHTML = '<p class="loading mono">Loading…</p>';
-    const file = "legal/" + DOC + "_" + LANG.toUpperCase() + ".md";
+    const file = "legal/" + FILES[DOC] + "_" + LANG.toUpperCase() + ".md";
     try {
       const res = await fetch(file, { cache: "no-cache" });
       if (!res.ok) throw new Error("not found");

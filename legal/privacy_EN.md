@@ -6,7 +6,7 @@
 
 ## 1. Who we are (controller)
 
-Neighbro (the "**Service**", at **neighbro.place** and its apps) is operated by **Evgenii Panov**, acting as a private individual under the brands **PSYTICAN & PEJEDED** (ARC 0500694444), Limassol, Cyprus, the **data controller**.
+Neighbro (the "**Service**", at **neighbro.place** and its apps) is operated by **Evgenii Panov**, acting as a private individual under the brands **PSYTICAN & PEJEDED**, Limassol, Cyprus, the **data controller**.
 
 Contact for privacy: **support@neighbro.place**
 

@@ -6,7 +6,7 @@
 
 ## 1. Who we are
 
-Neighbro (the "**Service**", available at **neighbro.place** and its apps) is operated by **Evgenii Panov**, acting as a private individual under the brands **PSYTICAN & PEJEDED** (ARC 0500694444), Limassol, Cyprus ("**we**", "**us**", "**PSYTICAN & PEJEDED**").
+Neighbro (the "**Service**", available at **neighbro.place** and its apps) is operated by **Evgenii Panov**, acting as a private individual under the brands **PSYTICAN & PEJEDED**, Limassol, Cyprus ("**we**", "**us**", "**PSYTICAN & PEJEDED**").
 
 Contact: **support@neighbro.place**
 
@@ -52,17 +52,18 @@ Neighbro helps people connect nearby, and interactions may move offline. **You d
 
 ## 8. Acceptable use
 
-You agree **not** to use the Service to:
+Neighbro is meant to feel like good neighbors — respectful and sociable. You agree **not** to use the Service to:
 
-- harass, threaten, bully, stalk, or defame anyone;
+- **harass, bully, shame, intimidate, threaten, stalk, or defame** anyone, or otherwise behave in an anti-social, cruel, or degrading way toward others;
 - post hateful, discriminatory, violent, or illegal content;
 - post sexual content, solicit sex, or engage in any sexual conduct involving minors (zero tolerance — such content will be reported to authorities);
 - share other people's private information without consent;
-- spam, scam, phish, or run unsolicited commercial promotion outside the approved advertising channel;
+- **sell or advertise goods or services, solicit, fundraise, recruit, or run any promotion** — any commercial or promotional content is allowed **only** through the paid advertising block (§9), never in ordinary messages, chats, or as a user's posts;
+- spam, scam, phish, or send unsolicited commercial messages;
 - attempt to exchange images through message content, or bypass the text-only limitation;
 - probe, disrupt, reverse-engineer, or overload the Service or its infrastructure.
 
-We may remove content and suspend or block access at our discretion, especially for safety or legal reasons.
+These community rules are also set out, in plain language, in our **Community Guidelines**. Content may be **moderated before it is published**; posting quotas, reports, and blocks help enforce the rules. We may remove content and suspend or block access at our discretion, especially for safety or legal reasons.
 
 ## 9. Content and ephemerality
 
