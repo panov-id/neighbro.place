@@ -51,6 +51,20 @@
   }
   .accent { color: var(--accent); }
 
+  /* Splash — accent ground overtaken by a circle of the main color; logo + brand in the center. */
+  .splash { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: var(--accent); overflow: hidden; }
+  .splash.done { animation: splashout .45s ease forwards; pointer-events: none; }
+  @keyframes splashout { to { opacity: 0; visibility: hidden; } }
+  .splash .disc { position: absolute; width: 160vmax; height: 160vmax; border-radius: 50%; background: var(--bg); transform: scale(0); animation: discgrow .8s cubic-bezier(.7,0,.3,1) forwards; }
+  @keyframes discgrow { to { transform: scale(1); } }
+  .splash .bm { position: relative; text-align: center; opacity: 0; animation: bmin .55s ease .5s forwards; }
+  @keyframes bmin { from { opacity: 0; transform: translateY(12px) scale(.95); } to { opacity: 1; transform: none; } }
+  .splash .s-logo { width: 84px; height: 84px; color: var(--accent); display: block; margin: 0 auto; }
+  .splash .s-name { font-family: "Unbounded", sans-serif; font-weight: 900; font-size: clamp(1.8rem, 8vw, 2.6rem); text-transform: uppercase; color: var(--fg); margin-top: 16px; letter-spacing: 0.04em; }
+  .splash .s-by { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.64rem; color: var(--muted); margin-top: 10px; }
+  .splash .s-by b { color: var(--accent); font-weight: 400; }
+  @media (prefers-reduced-motion: reduce) { .splash .disc { animation: none; transform: scale(1); } .splash .bm { animation: none; opacity: 1; } }
+
   header.top {
     display: flex; align-items: center; justify-content: space-between;
     padding: 28px 0 24px;
@@ -177,13 +191,13 @@
 
   /* Device mockups — live app UI, recolors with theme */
   .mockups { margin: 24px 0 10px; }
-  .mock-stage { position: relative; display: flex; justify-content: center; align-items: flex-end; min-height: 540px; }
+  .mock-stage { position: relative; width: 720px; max-width: 100%; margin: 0 auto; min-height: 520px; }
   .mock-cap { text-align: center; color: var(--accent); margin-top: 30px; }
 
   .device-wide {
-    position: absolute; left: 50%; top: 6px; transform: translateX(-60%);
-    width: 560px; border: 2px solid var(--border); background: var(--panel);
-    box-shadow: 16px 16px 0 rgba(0,0,0,0.4);
+    position: absolute; left: 0; top: 26px; width: 452px; max-width: 64%;
+    border: 2px solid var(--border); background: var(--panel);
+    box-shadow: 14px 14px 0 rgba(0,0,0,0.4);
   }
   .dw-bar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 2px solid var(--border); color: var(--muted); }
   .dw-body { display: grid; grid-template-columns: 1fr 210px; min-height: 330px; }
@@ -199,9 +213,9 @@
   .bub.me { align-self: flex-end; background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: -3px 3px 0 rgba(0,0,0,0.4); }
 
   .device-phone {
-    position: relative; z-index: 2; width: 288px; transform: translateX(32%);
+    position: absolute; right: 0; top: 0; z-index: 2; width: 288px;
     border: 3px solid var(--fg); border-radius: 42px; background: var(--bg); padding: 12px;
-    box-shadow: 18px 18px 0 var(--accent);
+    box-shadow: 16px 16px 0 var(--accent);
   }
   .p-screen { border: 2px solid var(--border); border-radius: 30px; overflow: hidden; background: var(--bg); }
   .p-top { display: flex; align-items: center; gap: 8px; padding: 14px 15px 12px; border-bottom: 2px solid var(--border); color: var(--fg); font-size: 0.6rem; }
@@ -220,9 +234,9 @@
   .p-nav span { flex: 1; text-align: center; padding: 12px 2px; font-size: 0.5rem; letter-spacing: 0.08em; color: var(--muted); border-right: 2px solid var(--border); text-transform: uppercase; }
   .p-nav span:last-child { border-right: none; }
   .p-nav span.on { background: var(--accent); color: var(--accent-ink); }
-  @media (max-width: 900px) {
+  @media (max-width: 820px) {
     .device-wide { display: none; }
-    .device-phone { transform: none; }
+    .device-phone { position: static; margin: 0 auto; }
     .mock-stage { min-height: 0; }
   }
 
@@ -294,6 +308,23 @@
 </style>
 </head>
 <body>
+<div class="splash" id="splash" aria-hidden="true">
+  <div class="disc"></div>
+  <div class="bm">
+    <svg class="s-logo" viewBox="0 0 96 96">
+      <circle cx="48" cy="48" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <g transform="translate(16.3,16.8) scale(0.88)">
+        <rect x="50" y="10" width="7" height="14" rx="2" fill="currentColor"/>
+        <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="22" y="32" width="18" height="5" rx="2.5" style="fill:var(--bg)"/>
+        <rect x="22" y="43" width="27" height="5" rx="2.5" style="fill:var(--bg)"/>
+      </g>
+    </svg>
+    <div class="s-name">Neighbro</div>
+    <div class="s-by">by <b>PSYTICAN</b></div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <header class="top">
@@ -713,6 +744,10 @@
   }
   applyMode(localStorage.getItem("nb-mode") || "dark");
   document.getElementById("modeBtn").addEventListener("click", () => applyMode(document.documentElement.dataset.mode === "light" ? "dark" : "light"));
+
+  // Splash — hold briefly, then wipe to reveal the page.
+  const splash = document.getElementById("splash");
+  if (splash) setTimeout(() => { splash.classList.add("done"); setTimeout(() => splash.remove(), 500); }, 1700);
 
   function showAfter(formId) {
     const after = document.querySelector(`[data-after-for="${formId}"]`);
