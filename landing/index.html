@@ -226,6 +226,24 @@
     .mock-stage { min-height: 0; }
   }
 
+  /* Features — why it feels different */
+  .features { margin: 84px 0 30px; }
+  .feat-eyebrow { color: var(--accent); margin-bottom: 30px; text-align: center; }
+  .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--border); }
+  .feat { padding: 30px 32px; border-right: 2px solid var(--border); border-bottom: 2px solid var(--border); }
+  .feat:nth-child(2n) { border-right: none; }
+  .feat:nth-child(n+3) { border-bottom: none; }
+  .feat h3 {
+    font-family: "Unbounded", sans-serif; font-weight: 800; text-transform: uppercase;
+    font-size: 1.02rem; line-height: 1.16; margin-bottom: 12px;
+  }
+  .feat p { color: var(--muted); line-height: 1.5; }
+  @media (max-width: 760px) {
+    .feat-grid { grid-template-columns: 1fr; }
+    .feat { border-right: none; border-bottom: 2px solid var(--border); }
+    .feat:last-child { border-bottom: none; }
+  }
+
   .moments {
     margin: 74px 0; border: 1px solid var(--border); background: var(--panel);
     padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px;
@@ -411,6 +429,16 @@
     <p class="mock-cap mono">Say · Match · Fade</p>
   </section>
 
+  <section class="features">
+    <div class="feat-eyebrow mono" data-i18n="featEyebrow"></div>
+    <div class="feat-grid">
+      <div class="feat"><h3 data-i18n="f1t"></h3><p data-i18n="f1d"></p></div>
+      <div class="feat"><h3 data-i18n="f2t"></h3><p data-i18n="f2d"></p></div>
+      <div class="feat"><h3 data-i18n="f3t"></h3><p data-i18n="f3d"></p></div>
+      <div class="feat"><h3 data-i18n="f4t"></h3><p data-i18n="f4d"></p></div>
+    </div>
+  </section>
+
   <section class="moments">
     <div>
       <div class="label mono" data-i18n="momentsLabel"></div>
@@ -488,6 +516,11 @@
       m2: "Looking for a tennis partner this weekend 🎾",
       m3: "Wine on my terrace tonight, two of us — join?",
       m4: "Just moved in on the 4th floor. Say hi 👋",
+      featEyebrow: "Why it feels different",
+      f1t: "By area, not meters", f1d: "We connect you by the area you choose — never your exact location.",
+      f2t: "Join or skip", f2d: "Swipe right to join a message, left to skip it. No endless feed to scroll.",
+      f3t: "See why you matched", f3d: "When a like is mutual, you see the very lines that pulled you together.",
+      f4t: "Games, no rules", f4d: "Dominoes, checkers, chess — no built-in rules, you invent them together.",
     },
     ru: {
       headerStatus: "По приглашению · Скоро", eyebrow: "Искусство быть рядом",
@@ -509,6 +542,11 @@
       m2: "Ищу партнёра по теннису на выходные 🎾",
       m3: "Вино на моей террасе сегодня, нас двое — присоединишься?",
       m4: "Только въехал на 4-й этаж. Заходите поздороваться 👋",
+      featEyebrow: "Почему это ощущается иначе",
+      f1t: "По району, не по метрам", f1d: "Сводим по выбранному району — никогда по точному месту.",
+      f2t: "Плюс или пропуск", f2d: "Свайп вправо — присоединиться, влево — пропустить. Никакой бесконечной ленты.",
+      f3t: "Видно, почему совпали", f3d: "Когда лайк взаимный, ты видишь те самые строки, что вас свели.",
+      f4t: "Игры без правил", f4d: "Домино, шашки, шахматы — правил нет, придумываете сами.",
     },
     fr: {
       headerStatus: "Sur invitation · Bientôt", eyebrow: "L'art d'être tout près",
@@ -530,6 +568,11 @@
       m2: "Je cherche un partenaire de tennis ce week-end 🎾",
       m3: "Du vin sur ma terrasse ce soir, on est deux — tu viens ?",
       m4: "Je viens d'emménager au 4e. Passez dire bonjour 👋",
+      featEyebrow: "Pourquoi c'est différent",
+      f1t: "Par quartier, pas au mètre", f1d: "On te relie au quartier que tu choisis — jamais à ta position exacte.",
+      f2t: "Rejoins ou passe", f2d: "Glisse à droite pour rejoindre, à gauche pour passer. Pas de fil sans fin.",
+      f3t: "Vois pourquoi ça matche", f3d: "Quand le like est mutuel, tu vois les lignes qui vous ont rapprochés.",
+      f4t: "Des jeux, sans règles", f4d: "Dominos, dames, échecs — aucune règle intégrée, vous les inventez.",
     },
     de: {
       headerStatus: "Auf Einladung · Bald", eyebrow: "Die Kunst, nah zu sein",
@@ -551,6 +594,11 @@
       m2: "Suche einen Tennispartner fürs Wochenende 🎾",
       m3: "Wein auf meiner Terrasse heute Abend, wir sind zwei — dabei?",
       m4: "Bin gerade im 4. Stock eingezogen. Sagt Hallo 👋",
+      featEyebrow: "Warum es sich anders anfühlt",
+      f1t: "Nach Gegend, nicht nach Metern", f1d: "Wir verbinden dich über die gewählte Gegend — nie über deinen genauen Ort.",
+      f2t: "Mitmachen oder überspringen", f2d: "Wisch nach rechts zum Mitmachen, nach links zum Überspringen. Kein endloser Feed.",
+      f3t: "Sieh, warum es passt", f3d: "Bei einem beidseitigen Like siehst du genau die Zeilen, die euch zusammenbrachten.",
+      f4t: "Spiele, keine Regeln", f4d: "Domino, Dame, Schach — keine festen Regeln, ihr erfindet sie selbst.",
     },
     es: {
       headerStatus: "Por invitación · Pronto", eyebrow: "El arte de estar cerca",
@@ -572,6 +620,11 @@
       m2: "Busco pareja de tenis este fin de semana 🎾",
       m3: "Vino en mi terraza esta noche, somos dos — ¿te unes?",
       m4: "Acabo de mudarme al 4º. Pasad a saludar 👋",
+      featEyebrow: "Por qué se siente distinto",
+      f1t: "Por zona, no por metros", f1d: "Te conectamos por la zona que eliges — nunca por tu ubicación exacta.",
+      f2t: "Únete o pasa", f2d: "Desliza a la derecha para unirte, a la izquierda para pasar. Sin feed infinito.",
+      f3t: "Ve por qué hubo match", f3d: "Cuando el like es mutuo, ves las líneas que os unieron.",
+      f4t: "Juegos, sin reglas", f4d: "Dominó, damas, ajedrez — sin reglas fijas, las inventáis vosotros.",
     },
     el: {
       headerStatus: "Με πρόσκληση · Σύντομα", eyebrow: "Η τέχνη του να είσαι κοντά",
@@ -593,6 +646,11 @@
       m2: "Ψάχνω παρτενέρ για τένις το Σαββατοκύριακο 🎾",
       m3: "Κρασί στη βεράντα μου απόψε, είμαστε δύο — έρχεσαι;",
       m4: "Μόλις μετακόμισα στον 4ο. Πείτε ένα γεια 👋",
+      featEyebrow: "Γιατί μοιάζει διαφορετικό",
+      f1t: "Ανά περιοχή, όχι ανά μέτρο", f1d: "Σε συνδέουμε με την περιοχή που διαλέγεις — ποτέ με την ακριβή θέση σου.",
+      f2t: "Μπες ή προσπέρνα", f2d: "Σύρε δεξιά για να μπεις, αριστερά για να προσπεράσεις. Χωρίς ατέλειωτη ροή.",
+      f3t: "Δες γιατί ταιριάξατε", f3d: "Όταν το like είναι αμοιβαίο, βλέπεις τις γραμμές που σας έφεραν κοντά.",
+      f4t: "Παιχνίδια, χωρίς κανόνες", f4d: "Ντόμινο, ντάμα, σκάκι — χωρίς έτοιμους κανόνες, τους εφευρίσκετε.",
     },
   };
   const SUPPORTED = Object.keys(T);
