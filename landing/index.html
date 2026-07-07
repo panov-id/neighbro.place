@@ -8,6 +8,30 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0c0b09">
+<script>
+  // Resolve theme before first paint (no flash on the splash):
+  //  - light/dark from the OS default (prefers-color-scheme) unless the user has chosen it;
+  //  - accent: the user's saved choice, otherwise a random one that differs from last visit.
+  (function () {
+    var ACC = ["", "crimson", "teal", "azure", "violet"];
+    var d = document.documentElement;
+    var m = localStorage.getItem("nb-mode");
+    if (!m) m = (window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+    if (m === "light") d.setAttribute("data-mode", "light");
+    var saved = localStorage.getItem("nb-accent"), chosen = saved !== null, ai;
+    if (chosen) { ai = parseInt(saved, 10) || 0; }
+    else {
+      var prev = parseInt(localStorage.getItem("nb-accent-prev"), 10);
+      do { ai = Math.floor(Math.random() * ACC.length); } while (ACC.length > 1 && ai === prev);
+      localStorage.setItem("nb-accent-prev", String(ai));
+    }
+    if (ACC[ai]) d.setAttribute("data-theme", ACC[ai]);
+    sessionStorage.setItem("nb-accent-active", String(ai));
+    var tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.setAttribute("content", m === "light" ? "#e9e6dd" : "#0c0b09");
+    window.__nb = { accentIndex: ai, accentChosen: chosen, ACC: ACC };
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -36,6 +60,11 @@
   [data-theme="azure"]   { --accent: #3d84d6; --accent-ink: #eaf2ff; }
   [data-theme="violet"]  { --accent: #9b5de5; --accent-ink: #f3ecfd; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Keyboard focus must be visible on every interactive element. */
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  /* The email field is borderless inside a pill, so show focus on the pill. */
+  form.waitlist-form input[type="email"]:focus-visible { outline: none; }
+  form.waitlist-form:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
   body {
     background: var(--bg);
     color: var(--fg);
@@ -712,7 +741,7 @@
     return SUPPORTED.includes(nav) ? nav : "en";
   }
 
-  function applyLang(lang) {
+  function applyLang(lang, persist) {
     LANG = SUPPORTED.includes(lang) ? lang : "en";
     const d = T[LANG];
     document.documentElement.lang = LANG;
@@ -725,31 +754,34 @@
       if (v != null) el.setAttribute("placeholder", v);
     });
     document.getElementById("lang-select").value = LANG;
-    localStorage.setItem("lang", LANG);
+    if (persist) localStorage.setItem("lang", LANG); // remember only a manual choice
   }
 
-  applyLang(detectLang());
-  document.getElementById("lang-select").addEventListener("change", (e) => applyLang(e.target.value));
+  // Auto: follow the browser default until the user picks a language themselves.
+  applyLang(detectLang(), false);
+  document.getElementById("lang-select").addEventListener("change", (e) => applyLang(e.target.value, true));
 
-  // Theme — accent cycle on the logo (curated subset), light/dark next to language.
-  const ACCENTS = ["", "crimson", "teal", "azure", "violet"];
-  function applyAccent(i) {
-    const id = ACCENTS[((i % ACCENTS.length) + ACCENTS.length) % ACCENTS.length];
+  // Theme — already resolved before paint by the head script; here we only wire the toggles.
+  // Accent: random per session until the user picks one (logo click), then their choice sticks.
+  const ACCENTS = (window.__nb && window.__nb.ACC) || ["", "crimson", "teal", "azure", "violet"];
+  let accentIndex = (window.__nb && window.__nb.accentIndex) || 0;
+  function applyAccent(i, persist) {
+    accentIndex = ((i % ACCENTS.length) + ACCENTS.length) % ACCENTS.length;
+    const id = ACCENTS[accentIndex];
     if (id) document.documentElement.dataset.theme = id; else delete document.documentElement.dataset.theme;
-    localStorage.setItem("nb-accent", String(i));
+    sessionStorage.setItem("nb-accent-active", String(accentIndex));
+    if (persist) localStorage.setItem("nb-accent", String(accentIndex)); // becomes the fixed choice
   }
-  let accentIndex = parseInt(localStorage.getItem("nb-accent") || "0", 10) || 0;
-  applyAccent(accentIndex);
-  document.getElementById("logoBtn").addEventListener("click", () => { accentIndex = (accentIndex + 1) % ACCENTS.length; applyAccent(accentIndex); });
+  document.getElementById("logoBtn").addEventListener("click", () => applyAccent(accentIndex + 1, true));
 
-  function applyMode(m) {
+  // Light/dark: default from the OS (applied in head); persist only a manual toggle.
+  function applyMode(m, persist) {
     if (m === "light") document.documentElement.dataset.mode = "light"; else delete document.documentElement.dataset.mode;
-    localStorage.setItem("nb-mode", m);
     const tc = document.querySelector('meta[name="theme-color"]');
     if (tc) tc.setAttribute("content", m === "light" ? "#e9e6dd" : "#0c0b09");
+    if (persist) localStorage.setItem("nb-mode", m);
   }
-  applyMode(localStorage.getItem("nb-mode") || "dark");
-  document.getElementById("modeBtn").addEventListener("click", () => applyMode(document.documentElement.dataset.mode === "light" ? "dark" : "light"));
+  document.getElementById("modeBtn").addEventListener("click", () => applyMode(document.documentElement.dataset.mode === "light" ? "dark" : "light", true));
 
   // Splash — hold briefly, then wipe to reveal the page.
   const splash = document.getElementById("splash");
