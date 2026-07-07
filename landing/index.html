@@ -81,7 +81,7 @@
   .brand .mark:active { transform: scale(.92); }
   .icon-btn {
     background: transparent; color: var(--muted); cursor: pointer;
-    border: 1px solid var(--border); width: 32px; height: 30px;
+    border: 1px solid var(--border); width: 34px; height: 32px; flex-shrink: 0;
     display: inline-flex; align-items: center; justify-content: center;
     transition: border-color .15s, color .15s;
   }
@@ -94,14 +94,15 @@
     font-family: "Unbounded", sans-serif; font-weight: 800;
     letter-spacing: 0.02em; font-size: 1rem;
   }
-  .header-right { display: flex; align-items: center; gap: 22px; }
-  header.top .status { color: var(--muted); }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  header.top .tagline { color: var(--muted); font-size: 0.66rem; }
   .lang-select {
     background: transparent; color: var(--muted); cursor: pointer;
-    border: 1px solid var(--border); padding: 6px 8px;
+    border: 1px solid var(--border); height: 32px; padding: 0 8px 0 10px; flex-shrink: 0;
     font-family: "JetBrains Mono", monospace; text-transform: uppercase;
     letter-spacing: 0.1em; font-size: 0.68rem;
   }
+  .lang-select:hover { border-color: var(--accent); color: var(--accent); }
 
   .hero { text-align: center; padding: 84px 0 12px; }
   .hero .eyebrow { color: var(--accent); margin-bottom: 26px; }
@@ -296,7 +297,11 @@
     .step { border-left: none; padding: 0; }
     .moments { flex-direction: column; align-items: flex-start; }
     .moments .timer { text-align: left; }
-    header.top .status { display: none; }
+    header.top .tagline { display: none; }
+  }
+  @media (max-width: 560px) {
+    .brand .tld { display: none; }
+    .header-right { gap: 12px; }
   }
   @media (max-width: 360px) {
     .wrap { padding: 0 16px; }
@@ -340,10 +345,10 @@
           </g>
         </svg>
       </button>
-      <span class="name">NEIGHBRO.PLACE</span>
+      <span class="name">NEIGHBRO<span class="tld">.PLACE</span></span>
     </div>
     <div class="header-right">
-      <div class="status mono" data-i18n="headerStatus"></div>
+      <div class="tagline mono" data-i18n="headerStatus"></div>
       <button class="icon-btn" id="modeBtn" aria-label="Toggle light / dark">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
