@@ -8,7 +8,7 @@
      so connect-src 'self' covers the waitlist + push fetches. Inline
      scripts/styles are used, hence 'unsafe-inline'. If a deploy ever points
      config.js at a cross-origin Supabase host, add it to connect-src. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://api.dev.neighbro.panov.id https://api.uat.neighbro.panov.id https://api.neighbro.place https://*.supabase.co; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
 <title>NEIGHBRO.PLACE — Good neighbors. Real moments.</title>
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -596,6 +596,43 @@
   const TABLE = "waitlist";
   const SOURCE = "neighbro.place-landing";
 
+  // Lightweight client error logger → posts to Supabase *directly* (not via the
+  // api.* proxy) so we still capture errors if the proxy/DNS is what's broken.
+  const ERR_ENDPOINT = (() => {
+    try { return "https://" + JSON.parse(atob(SUPABASE_ANON_KEY.split(".")[1])).ref + ".supabase.co/rest/v1/client_errors"; }
+    catch (e) { return ""; }
+  })();
+  function currentEnv() {
+    const h = location.hostname;
+    if (h.startsWith("dev.") || h.includes("-dev")) return "dev";
+    if (h.startsWith("uat.") || h.includes("-uat")) return "uat";
+    if (h === "neighbro.place" || h.endsWith(".neighbro.place")) return "prod";
+    return "local";
+  }
+  function logClientError(kind, err, extra) {
+    if (!ERR_ENDPOINT || !SUPABASE_ANON_KEY) return;
+    try {
+      const payload = {
+        kind,
+        message: (err && (err.message || String(err))) || null,
+        stack: err && err.stack ? String(err.stack).slice(0, 2000) : null,
+        page_url: location.href,
+        user_agent: navigator.userAgent,
+        source: SOURCE,
+        extra: Object.assign({ env: currentEnv() }, extra || {}),
+      };
+      fetch(ERR_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: "Bearer " + SUPABASE_ANON_KEY, Prefer: "return=minimal" },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      }).catch(() => {});
+    } catch (e) { /* the logger must never throw */ }
+  }
+  window.__logClientError = logClientError;
+  addEventListener("error", (e) => logClientError("window.onerror", e.error || { message: e.message }, { filename: e.filename, lineno: e.lineno, colno: e.colno }));
+  addEventListener("unhandledrejection", (e) => logClientError("unhandledrejection", e.reason, null));
+
   const T = {
     en: {
       headerStatus: "By invitation · Soon", eyebrow: "The art of being nearby",
@@ -881,11 +918,14 @@
         });
         // 409 = unique violation: the email is already on the list. That's a
         // returning visitor, not a failure — show the same success state.
-        if (!res.ok && res.status !== 409) throw new Error("request failed");
+        if (!res.ok && res.status !== 409) throw new Error("HTTP " + res.status);
         form.style.display = "none";
         showAfter(form.id);
       } catch (err) {
-        status.textContent = T[LANG].statusErr;
+        logClientError("waitlist-submit", err, { target: SUPABASE_URL + "/rest/v1/" + TABLE });
+        // Surface the real reason (network / TLS / CORS / HTTP code) — helps debugging on mobile.
+        const why = (err && (err.message || err.name)) || "network";
+        status.textContent = T[LANG].statusErr + " [" + why + "]";
         status.className = "status err";
         btn.disabled = false;
       }
