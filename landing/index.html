@@ -918,7 +918,13 @@
         const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}`, {
           method: "POST",
           headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, Prefer: "return=minimal" },
-          body: JSON.stringify({ email, source: SOURCE, early_access: true }),
+          // Carry language + colour theme so the welcome email matches the site.
+          body: JSON.stringify({
+            email, source: SOURCE, early_access: true,
+            lang: LANG,
+            accent: ACCENTS[accentIndex] || "",
+            mode: document.documentElement.getAttribute("data-mode") === "light" ? "light" : "dark",
+          }),
         });
         // 409 = unique violation: the email is already on the list. That's a
         // returning visitor, not a failure — show the same success state.
