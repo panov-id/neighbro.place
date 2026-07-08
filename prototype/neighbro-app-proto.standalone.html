@@ -1,4 +1,10 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 <title>NEIGHBRO — app screen prototype</title>
 <style>
   /* Single deliberate visual world: dark concrete + gold. Brutalist. */
@@ -1187,7 +1193,7 @@
       '<p class="full">Full text: neighbro.place/legal/terms</p>' },
     privacy: { title: 'Privacy Policy', html:
       '<h4>Summary</h4><p>We process the minimum data needed for an ephemeral, area-based, low-identity service.</p>' +
-      '<h4>What we use</h4><p>A device-based identity, the area you choose (not exact location), your age band, and the content you post — most of which is deleted automatically as it fades.</p>' +
+      '<h4>What we use</h4><p>A device-based identity, the area you choose (not exact location), your age band, the content you post — most of which is deleted automatically as it fades — and technical error logs (message, page, user agent) used only to fix bugs.</p>' +
       '<h4>Your rights</h4><p>Under the GDPR you can access, correct, erase, restrict, object to, or port your data. Write to support@neighbro.place.</p>' +
       '<h4>Controller</h4><p>PSYTICAN &amp; PEJEDED (Evgenii Panov), Limassol, Cyprus.</p>' +
       '<p class="full">Full text: neighbro.place/legal/privacy</p>' },
@@ -1204,4 +1210,5 @@
   document.getElementById('legalClose').addEventListener('click', closeLegal);
   legalModal.addEventListener('click', (e) => { if (e.target === legalModal) closeLegal(); });
 </script>
-</body></html>
+</body>
+</html>

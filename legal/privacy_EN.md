@@ -24,6 +24,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **Waitlist email.** If you request access, your email address and the source of the request.
 - **Push subscription.** If you opt in to notifications, the push endpoint and keys, plus your language.
 - **Technical data.** Basic logs (e.g. IP, timestamp, user agent) needed for security and to run the Service.
+- **Error logs.** When something breaks, we record a technical error report (error message, page URL, your browser's user agent, and non-identifying context) so we can diagnose and fix it. Used only for reliability, not profiling.
 
 ## 4. Why we process it (legal bases)
 
