@@ -1,0 +1,12 @@
+{
+  "name": "neighbro-wallpapers",
+  "private": true,
+  "type": "module",
+  "description": "Brand wallpaper & banner generator for NEIGHBRO",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "23.11.1"
+  }
+}

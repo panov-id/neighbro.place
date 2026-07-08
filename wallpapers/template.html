@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Fonts are self-hosted in ../landing/fonts/. fonts.css uses relative
+     url(fonts/...) which resolves against the CSS file's own location, so a
+     plain link keeps working under file:// during headless render. -->
+<link rel="stylesheet" href="../landing/fonts.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  #stage {
+    position: relative; width: 100vw; height: 100vh; overflow: hidden;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Golos Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  #bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #bg svg, #bg img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #bg img { object-fit: cover; }
+  /* Vignette + legibility scrim sits above the art, below the text. */
+  #scrim { position: absolute; inset: 0; pointer-events: none; }
+
+  #brand {
+    position: absolute; display: flex; flex-direction: column; gap: 0.9em;
+    z-index: 2;
+  }
+  #brand.center { left: 50%; top: 50%; transform: translate(-50%, -50%); align-items: center; text-align: center; }
+  #brand.upper  { left: 50%; top: 28%; transform: translate(-50%, -50%); align-items: center; text-align: center; }
+  #brand.lower  { left: 8%; bottom: 9%; align-items: flex-start; text-align: left; }
+  #brand.left   { left: 8%; top: 50%; transform: translateY(-50%); align-items: flex-start; text-align: left; }
+  #brand.right  { right: 8%; top: 50%; transform: translateY(-50%); align-items: flex-end; text-align: right; }
+
+  .logo { display: block; color: var(--accent); }
+  .wordmark {
+    font-family: "Unbounded", sans-serif; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--fg);
+    line-height: 0.95;
+  }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace; text-transform: uppercase;
+    letter-spacing: 0.3em; color: var(--muted2);
+  }
+  .headline {
+    font-family: "Unbounded", sans-serif; font-weight: 600;
+    line-height: 1.02; color: var(--fg); letter-spacing: -0.01em;
+  }
+  .headline .b { color: var(--accent); display: block; }
+  /* Present-tense product loop — reads as a live product, not "coming soon". */
+  .loop {
+    font-family: "JetBrains Mono", monospace; text-transform: uppercase;
+    letter-spacing: 0.26em; color: var(--muted2); font-weight: 400;
+  }
+  .loop b { color: var(--accent); font-weight: 400; }
+  /* Moment chip — a small "real post" pill, the playful easter-egg touch. */
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.6em;
+    border: 1.5px solid var(--accent); border-radius: 999px;
+    padding: 0.5em 0.95em 0.5em 0.9em; color: var(--fg);
+    font-family: "Golos Text", sans-serif; font-weight: 500; line-height: 1;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+  .chip .dot { width: 0.5em; height: 0.5em; border-radius: 50%; background: var(--accent); flex: none; }
+  .chip .arrow { color: var(--accent); font-weight: 700; }
+  #brand.right .chip, #brand.right .loop { align-self: flex-end; }
+
+  /* Splash style — centered brand + a "by" line, floating neighbor messages. */
+  #brand .byline {
+    font-family: "JetBrains Mono", monospace; text-transform: uppercase;
+    letter-spacing: 0.32em; color: var(--muted); font-weight: 400;
+  }
+  #brand .byline b { color: var(--accent); font-weight: 400; }
+  .bubbles { position: absolute; inset: 0; overflow: hidden; }
+  .bubble {
+    position: absolute; white-space: nowrap;
+    font-family: "Golos Text", sans-serif; font-weight: 500; line-height: 1;
+    padding: 0.62em 0.95em; border-radius: 999px;
+    border: 1px solid var(--border); background: color-mix(in srgb, var(--panel) 82%, transparent);
+    color: var(--fg); display: inline-flex; align-items: center; gap: 0.55em;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.28);
+  }
+  .bubble.accent { border-color: var(--accent); }
+  .bubble .d { width: 0.5em; height: 0.5em; border-radius: 50%; background: var(--accent); flex: none; opacity: 0.9; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="scrim"></div>
+  <div id="brand"></div>
+</div>
+
+<script type="module">
+import { palette, COPY, FORMATS, MODES } from "./catalog.mjs";
+const MODES_LIGHT = MODES.light, MODES_DARK = MODES.dark;
+
+// Neighbor messages from the chat prototype — the ambient feed on the splash.
+const PHRASES = [
+  "Anyone up for a morning espresso before work?",
+  "Looking for a tennis partner this weekend?",
+  "Wine on my terrace tonight, two of us — join?",
+  "Just moved in on the 4th floor. Say hi.",
+  "Board games later? I'll host, no rules.",
+  "Sunset from the roof, three of us, one spot left.",
+  "Dog walk in 20 min, my golden needs friends.",
+  "Free concert in the park at 7, anyone?",
+  "Swapping books on the bench by the square.",
+  "Morning run at 6:30, easy pace, join.",
+  "Quiet coworking somewhere close?",
+  "Bakery ran out of the good bread. Where to now?",
+  "Anyone with a bike pump? Near the metro.",
+  "Two tickets to tonight's game, face value.",
+];
+
+// Deterministic PRNG so the same spec always draws the same background.
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function hashStr(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+
+const HOUSE = (fill) => `
+  <rect x="50" y="10" width="7" height="14" rx="2" fill="${fill}"/>
+  <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="${fill}" stroke="${fill}" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="22" y="32" width="18" height="5" rx="2.5" fill="var(--bg-ink)"/>
+  <rect x="22" y="43" width="27" height="5" rx="2.5" fill="var(--bg-ink)"/>`;
+
+// The framed ring+house logo, colored by currentColor (accent).
+function logoSvg(px) {
+  return `<svg class="logo" width="${px}" height="${px}" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+    <circle cx="48" cy="48" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <g transform="translate(16.3,16.8) scale(0.88)" fill="currentColor" style="--bg-ink:var(--bg)">${HOUSE("currentColor")}</g>
+  </svg>`;
+}
+
+// ---- Background style renderers. Each returns an <svg> string in a W×H box. ----
+function bgPlain(p, W, H) {
+  const cx = W * 0.72, cy = H * 0.28, r = Math.max(W, H);
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <defs><radialGradient id="g" cx="${cx}" cy="${cy}" r="${r}" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="${p.panel}"/><stop offset="1" stop-color="${p.bg}"/>
+    </radialGradient></defs>
+    <rect width="${W}" height="${H}" fill="url(#g)"/></svg>`;
+}
+function bgGlow(p, W, H) {
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <radialGradient id="a" cx="0.75" cy="0.25" r="0.9">
+        <stop offset="0" stop-color="${p.accent}" stop-opacity="0.42"/>
+        <stop offset="0.55" stop-color="${p.accent}" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="b" cx="0.15" cy="0.9" r="0.8">
+        <stop offset="0" stop-color="${p.panel2}" stop-opacity="0.9"/>
+        <stop offset="1" stop-color="${p.panel2}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>
+    <rect width="${W}" height="${H}" fill="url(#b)"/>
+    <rect width="${W}" height="${H}" fill="url(#a)"/></svg>`;
+}
+function bgMesh(p, W, H, seed) {
+  const rnd = mulberry32(seed);
+  const cols = [p.accent, p.panel2, p.accent, p.panel];
+  let blobs = "";
+  for (let i = 0; i < 5; i++) {
+    const x = rnd() * W, y = rnd() * H, r = (0.25 + rnd() * 0.35) * Math.min(W, H);
+    const c = cols[i % cols.length], op = i === 0 ? 0.38 : 0.22 + rnd() * 0.16;
+    blobs += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${r.toFixed(0)}" fill="${c}" opacity="${op.toFixed(2)}" filter="url(#blur)"/>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <defs><filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="${(Math.min(W,H)*0.09).toFixed(0)}"/></filter></defs>
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>${blobs}</svg>`;
+}
+function bgGrid(p, W, H) {
+  const gap = Math.round(Math.min(W, H) / 26);
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="dots" width="${gap}" height="${gap}" patternUnits="userSpaceOnUse">
+        <circle cx="1.5" cy="1.5" r="1.5" fill="${p.border}"/>
+      </pattern>
+      <radialGradient id="fade" cx="0.72" cy="0.3" r="0.9">
+        <stop offset="0" stop-color="${p.accent}" stop-opacity="0.16"/>
+        <stop offset="0.7" stop-color="${p.accent}" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>
+    <rect width="${W}" height="${H}" fill="url(#dots)"/>
+    <rect width="${W}" height="${H}" fill="url(#fade)"/></svg>`;
+}
+function bgRings(p, W, H) {
+  const cx = W * 0.74, cy = H * 0.3, step = Math.min(W, H) / 12;
+  let rings = "";
+  for (let i = 1; i <= 14; i++) {
+    const op = Math.max(0.05, 0.5 - i * 0.033);
+    rings += `<circle cx="${cx}" cy="${cy}" r="${(i*step).toFixed(0)}" fill="none" stroke="${p.accent}" stroke-width="1.5" opacity="${op.toFixed(2)}"/>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>${rings}</svg>`;
+}
+function bgContour(p, W, H, seed) {
+  const rnd = mulberry32(seed);
+  let paths = "";
+  const lines = 16;
+  for (let i = 0; i < lines; i++) {
+    const baseY = (i / lines) * H * 1.15 - H * 0.05;
+    const amp = (0.04 + rnd() * 0.06) * H;
+    const phase = rnd() * Math.PI * 2, freq = 1 + rnd() * 1.5;
+    let d = `M -20 ${(baseY).toFixed(0)}`;
+    const seg = 14;
+    for (let s = 1; s <= seg; s++) {
+      const x = (-20) + (W + 40) * (s / seg);
+      const y = baseY + Math.sin(phase + (s / seg) * Math.PI * 2 * freq) * amp;
+      d += ` L ${x.toFixed(0)} ${y.toFixed(0)}`;
+    }
+    const op = 0.10 + (i % 4 === 0 ? 0.22 : 0.06);
+    const col = i % 4 === 0 ? p.accent : p.border;
+    paths += `<path d="${d}" fill="none" stroke="${col}" stroke-width="${i%4===0?2:1.4}" opacity="${op.toFixed(2)}"/>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>${paths}</svg>`;
+}
+function bgHouses(p, W, H) {
+  const tile = Math.round(Math.min(W, H) / 7);
+  const s = tile / 96 * 0.6, off = tile * 0.2;
+  const house = `<g transform="translate(${off},${off}) scale(${s})" opacity="0.5">
+    <circle cx="48" cy="48" r="46" fill="none" stroke="${p.border}" stroke-width="3"/>
+    <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="none" stroke="${p.border}" stroke-width="3" stroke-linejoin="round"/></g>`;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <defs><pattern id="h" width="${tile}" height="${tile}" patternUnits="userSpaceOnUse">${house}</pattern>
+      <radialGradient id="v" cx="0.72" cy="0.3" r="1">
+        <stop offset="0" stop-color="${p.accent}" stop-opacity="0.14"/><stop offset="0.7" stop-color="${p.bg}" stop-opacity="0"/>
+      </radialGradient></defs>
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>
+    <rect width="${W}" height="${H}" fill="url(#h)"/>
+    <rect width="${W}" height="${H}" fill="url(#v)"/></svg>`;
+}
+function bgSteps(p, W, H) {
+  // Three glyph roman numerals I / II / III softly placed as a rhythm.
+  const cy = H * 0.72, big = Math.min(W, H) * 0.16;
+  const xs = [W * 0.2, W * 0.5, W * 0.8];
+  const nums = ["I", "II", "III"];
+  let g = "";
+  xs.forEach((x, i) => {
+    g += `<text x="${x}" y="${cy}" font-family="Unbounded, sans-serif" font-weight="900" font-size="${big}" fill="${p.accent}" opacity="${0.10 + i*0.02}" text-anchor="middle">${nums[i]}</text>`;
+    g += `<circle cx="${x}" cy="${cy - big*0.7}" r="${big*0.06}" fill="${p.accent}" opacity="0.5"/>`;
+  });
+  const linkY = cy - big * 0.7;
+  g += `<line x1="${xs[0]}" y1="${linkY}" x2="${xs[2]}" y2="${linkY}" stroke="${p.border}" stroke-width="2" opacity="0.6"/>`;
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>${g}</svg>`;
+}
+
+const BG = { plain: bgPlain, glow: bgGlow, mesh: bgMesh, grid: bgGrid, rings: bgRings, contour: bgContour, houses: bgHouses, steps: bgSteps };
+
+function scrimCss(p, portrait) {
+  // A gentle darkening (dark mode) / lightening (light mode) so overlay text
+  // stays legible over any art or busy pattern.
+  if (p.mode === "dark") {
+    return portrait
+      ? `linear-gradient(180deg, ${p.bg}cc 0%, ${p.bg}22 40%, ${p.bg}22 60%, ${p.bg}ee 100%)`
+      : `radial-gradient(120% 120% at 72% 40%, ${p.bg}00 30%, ${p.bg}aa 100%)`;
+  }
+  return portrait
+    ? `linear-gradient(180deg, ${p.bg}dd 0%, ${p.bg}22 45%, ${p.bg}cc 100%)`
+    : `radial-gradient(120% 120% at 72% 40%, ${p.bg}00 35%, ${p.bg}bb 100%)`;
+}
+
+// Directional legibility washes for photo art, keyed by spec.scrim. The ground
+// color (dark bg or light bg) is chosen from the tone so text stays readable.
+function scrimVariant(kind, ink) {
+  const c = ink; // hex of the wash color (near-black or cream)
+  switch (kind) {
+    case "none":   return "none";
+    case "soft":   return `radial-gradient(120% 120% at 50% 50%, ${c}00 40%, ${c}99 100%)`;
+    case "strong": return `linear-gradient(0deg, ${c}dd 0%, ${c}55 50%, ${c}22 100%)`;
+    case "bottom": return `linear-gradient(0deg, ${c}f2 0%, ${c}aa 22%, ${c}22 48%, ${c}00 70%)`;
+    case "top":    return `linear-gradient(180deg, ${c}f0 0%, ${c}99 25%, ${c}22 50%, ${c}00 72%)`;
+    case "left":   return `linear-gradient(90deg, ${c}f2 0%, ${c}aa 30%, ${c}22 58%, ${c}00 80%)`;
+    case "right":  return `linear-gradient(270deg, ${c}f2 0%, ${c}aa 30%, ${c}22 58%, ${c}00 80%)`;
+    default:       return "none";
+  }
+}
+
+// Draw the splash composition. Center holds the brand; the rest of the canvas is
+// an ambient scatter of neighbor messages fading toward the middle.
+function renderSplash(spec, p, W, H, portrait, seed) {
+  const minSide = Math.min(W, H);
+  const rnd = mulberry32(seed);
+  const bgEl = document.getElementById("bg");
+  const scrimEl = document.getElementById("scrim");
+  const brand = document.getElementById("brand");
+
+  // Ambient background: warm ground + a soft accent glow behind the mark.
+  bgEl.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
+    <defs><radialGradient id="sg" cx="0.5" cy="0.46" r="0.62">
+      <stop offset="0" stop-color="${p.accent}" stop-opacity="0.20"/>
+      <stop offset="0.5" stop-color="${p.accent}" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="${p.accent}" stop-opacity="0"/>
+    </radialGradient></defs>
+    <rect width="${W}" height="${H}" fill="${p.bg}"/>
+    <rect width="${W}" height="${H}" fill="url(#sg)"/></svg>`;
+
+  // Floating message pills, avoiding a central clear ellipse so the brand reads.
+  const cx = 50, cy = portrait ? 42 : 47;
+  const rx = portrait ? 44 : 24, ry = portrait ? 22 : 30; // clear-zone radii (%)
+  const bubblePx = Math.round(minSide * (portrait ? 0.026 : 0.02));
+  const placed = [];
+  const wrap = document.createElement("div");
+  wrap.className = "bubbles";
+  const shuffled = PHRASES.map((t, i) => ({ t, r: (mulberry32(seed + i * 7)() ) })).sort((a, b) => a.r - b.r);
+  for (const { t } of shuffled) {
+    let x, y, tries = 0, ok = false;
+    do {
+      x = 6 + rnd() * 88; y = 6 + rnd() * 88;
+      const insideClear = ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 < 1;
+      const tooClose = placed.some((q) => Math.hypot(q.x - x, (q.y - y) * (W / H)) < 16);
+      ok = !insideClear && !tooClose;
+    } while (!ok && ++tries < 40);
+    if (!ok) continue;
+    placed.push({ x, y });
+    // Fade with distance from center; nearer the middle = fainter.
+    const dist = Math.hypot((x - cx) / 50, (y - cy) / 50);
+    const op = Math.max(0.28, Math.min(0.92, 0.3 + dist * 0.85));
+    const tilt = (rnd() - 0.5) * 6;
+    const accent = rnd() < 0.28;
+    const el = document.createElement("div");
+    el.className = "bubble" + (accent ? " accent" : "");
+    el.style.cssText = `left:${x}%; top:${y}%; transform:translate(-50%,-50%) rotate(${tilt.toFixed(1)}deg); font-size:${bubblePx}px; opacity:${op.toFixed(2)}`;
+    el.innerHTML = `<span class="d"></span>${t}`;
+    wrap.appendChild(el);
+  }
+  bgEl.appendChild(wrap);
+
+  // Keep every pill fully inside the frame — nudge horizontally by measured width.
+  const pad = W * 0.02;
+  for (const el of wrap.children) {
+    const halfPct = (el.offsetWidth / 2 + pad) / W * 100;
+    const cur = parseFloat(el.style.left);
+    el.style.left = Math.max(halfPct, Math.min(100 - halfPct, cur)) + "%";
+  }
+
+  // Width-aware de-overlap: push colliding pills apart vertically, away from center.
+  const gap = H * 0.014;
+  const items = [...wrap.children].map((el) => ({ el, r: el.getBoundingClientRect() }));
+  const midY = H * (cy / 100);
+  for (let i = 0; i < items.length; i++) {
+    for (let j = 0; j < i; j++) {
+      const a = items[i].r, b = items[j].r;
+      const hit = !(a.right < b.left - gap || a.left > b.right + gap || a.bottom < b.top - gap || a.top > b.bottom + gap);
+      if (!hit) continue;
+      const ac = (a.top + a.bottom) / 2;
+      const down = ac >= midY;
+      const deltaPx = down ? (b.bottom + gap - a.top) : -(a.bottom + gap - b.top);
+      const el = items[i].el;
+      el.style.top = (parseFloat(el.style.top) + deltaPx / H * 100) + "%";
+      items[i].r = el.getBoundingClientRect();
+    }
+  }
+
+  // Central scrim so bubbles dissolve into the brand.
+  scrimEl.style.background = `radial-gradient(${portrait ? "60% 34%" : "40% 46%"} at 50% ${cy}%, ${p.bg}ff 42%, ${p.bg}dd 62%, ${p.bg}00 100%)`;
+
+  // Centered brand: big logo, wordmark, eyebrow, and a "by" line.
+  const c = COPY[spec.lang] || COPY.en;
+  const logoPx = Math.round(minSide * (portrait ? 0.2 : 0.15));
+  const wordPx = Math.round(minSide * (portrait ? 0.1 : 0.082));
+  const eyePx = Math.round(minSide * (portrait ? 0.02 : 0.0155));
+  brand.className = "center";
+  brand.style.top = cy + "%";
+  brand.innerHTML = logoSvg(logoPx)
+    + `<div class="wordmark" style="font-size:${wordPx}px; margin-top:0.15em">NEIGHBRO</div>`
+    + `<div class="eyebrow" style="font-size:${eyePx}px">${c.eyebrow}</div>`
+    + `<div class="byline" style="font-size:${Math.round(eyePx*0.92)}px; margin-top:0.5em">by <b>PSYTICAN</b></div>`;
+}
+
+// ---- Main render entry. spec: {theme, mode, lang, style, content, format, artUrl?} ----
+export function render(spec) {
+  const fmt = FORMATS[spec.format];
+  const W = fmt.w, H = fmt.h;
+  const p = palette(spec.theme, spec.mode);
+  const stage = document.getElementById("stage");
+  const root = document.documentElement;
+  root.style.setProperty("--bg", p.bg);
+  root.style.setProperty("--panel", p.panel);
+  root.style.setProperty("--panel2", p.panel2);
+  root.style.setProperty("--border", p.border);
+  root.style.setProperty("--fg", p.fg);
+  root.style.setProperty("--muted", p.muted);
+  root.style.setProperty("--muted2", p.muted2);
+  root.style.setProperty("--accent", p.accent);
+
+  // Photo art can dictate text tone independent of the color mode: a light
+  // (cream) photo needs dark ink text, a dark photo needs cream text.
+  const tone = spec.tone || (spec.mode === "light" ? "light" : "dark");
+  if (spec.style === "art") {
+    if (tone === "light") {
+      root.style.setProperty("--fg", MODES_LIGHT.fg);
+      root.style.setProperty("--muted2", MODES_LIGHT.muted2);
+    } else {
+      root.style.setProperty("--fg", MODES_DARK.fg);
+      root.style.setProperty("--muted2", MODES_DARK.muted2);
+    }
+  }
+  const portrait = H > W;
+  const seed = hashStr(spec.theme + spec.style + spec.format);
+
+  // ---- Splash style: floating neighbor feed + centered brand + "by" line. ----
+  if (spec.style === "splash") {
+    renderSplash(spec, p, W, H, portrait, seed);
+    document.title = "ready:" + spec.format;
+    window.__RENDERED__ = true;
+    return;
+  }
+
+  // Background layer.
+  const bgEl = document.getElementById("bg");
+  if (spec.style === "art") {
+    bgEl.innerHTML = spec.artUrl
+      ? `<img src="${spec.artUrl}" alt="">`
+      : bgGlow(p, W, H); // graceful fallback if no art supplied yet
+  } else {
+    bgEl.innerHTML = (BG[spec.style] || bgGlow)(p, W, H, seed);
+  }
+
+  // Legibility scrim. Art uses directional washes keyed by spec.scrim; the wash
+  // color follows the text tone (dark ink wash for light text, near-black for
+  // cream text uses the dark ground).
+  const scrimEl = document.getElementById("scrim");
+  if (spec.style === "art") {
+    const ink = tone === "light" ? MODES_LIGHT.bg : MODES_DARK.bg;
+    scrimEl.style.background = scrimVariant(spec.scrim || (portrait ? "top" : "bottom"), ink);
+  } else {
+    scrimEl.style.background =
+      spec.content === "mark" ? "none" : scrimCss(p, portrait);
+  }
+
+  // Overlay brand block.
+  const minSide = Math.min(W, H);
+  const logoPx = Math.round(minSide * (portrait ? 0.16 : 0.11));
+  const wordPx = Math.round(minSide * (portrait ? 0.075 : 0.06));
+  const eyePx = Math.round(minSide * (portrait ? 0.021 : 0.016));
+  const headPx = Math.round(minSide * (portrait ? 0.05 : 0.045));
+  const c = COPY[spec.lang];
+
+  const placement = spec.placement || (portrait ? "upper"
+    : (fmt.category === "banner" ? "left" : "center"));
+  const brand = document.getElementById("brand");
+  brand.className = placement;
+
+  let html = logoSvg(logoPx);
+  html += `<div class="wordmark" style="font-size:${wordPx}px">NEIGHBRO</div>`;
+  if (spec.content === "brand" || spec.content === "full") {
+    html += `<div class="eyebrow" style="font-size:${eyePx}px">${c.eyebrow}</div>`;
+  }
+  if (spec.content === "full") {
+    html += `<div class="headline" style="font-size:${headPx}px">${c.h1a}<span class="b">${c.h1b}</span></div>`;
+    // Loop line: the live product loop, in accent-dotted mono.
+    const loop = c.loop.replace(/·/g, '<b>·</b>');
+    html += `<div class="loop" style="font-size:${Math.round(eyePx*0.95)}px; margin-top:0.5em">${loop}</div>`;
+  }
+  if (spec.content === "brand") {
+    // Moment chip easter egg: a real-looking neighborhood post as a pill.
+    const idx = (spec.chip == null ? (seed % c.tags.length) : spec.chip);
+    const tag = c.tags[idx % c.tags.length];
+    html += `<div class="chip" style="font-size:${Math.round(eyePx*1.05)}px; margin-top:0.5em">`
+      + `<span class="dot"></span>${tag}<span class="arrow">↗</span></div>`;
+  }
+  brand.innerHTML = html;
+
+  // Signal to the renderer that layout is committed.
+  document.title = "ready:" + spec.format;
+  window.__RENDERED__ = true;
+}
+
+// Allow standalone preview via ?spec=<base64 json>.
+const q = new URLSearchParams(location.search).get("spec");
+if (q) {
+  try { render(JSON.parse(decodeURIComponent(escape(atob(q))))); } catch (e) { console.error(e); }
+}
+window.__render = render;
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+node_modules/
+
+# Generated / heavy binaries — regenerable from the sources below, kept local only.
+output/
+art/*.png
+art/*.jpg
+art/*.webp
+ai-prompts/*.png
+ai-prompts/*.jpg
+ai-prompts/*.webp
+
+# Tracked sources kept despite the image rules above:
+#   art/prepare.sh, art/manifest.mjs — how art is built from ai-prompts
+#   ai-prompts/PROMPTS_*.md          — the AI prompts themselves
+#   *.mjs, template.html, docker/    — the render pipeline
