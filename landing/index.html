@@ -46,7 +46,7 @@
   //  - light/dark from the OS default (prefers-color-scheme) unless the user has chosen it;
   //  - accent: the user's saved choice, otherwise a random one that differs from last visit.
   (function () {
-    var ACC = ["", "crimson"];
+    var ACC = ["", "crimson", "teal", "azure", "violet"];
     var d = document.documentElement;
     var m = localStorage.getItem("nb-mode");
     if (!m) m = (window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
