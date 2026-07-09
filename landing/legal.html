@@ -85,9 +85,8 @@
         <button data-doc="privacy">Privacy</button>
         <button data-doc="rules">Rules</button>
       </div>
-      <div class="seg" id="langSeg">
+      <div class="seg" id="langSeg" hidden>
         <button data-lang="en" class="on">EN</button>
-        <button data-lang="ru">RU</button>
       </div>
     </div>
   </header>
@@ -157,9 +156,8 @@
   const FILES = { terms: "terms", privacy: "privacy", rules: "community-guidelines" };
   const params = new URLSearchParams(location.search);
   let DOC = Object.keys(FILES).includes(params.get("doc")) ? params.get("doc") : "terms";
-  const stored = localStorage.getItem("lang");
-  let LANG = ["en", "ru"].includes(params.get("lang")) ? params.get("lang")
-    : (["en", "ru"].includes(stored) ? stored : ((navigator.language || "en").slice(0, 2).toLowerCase() === "ru" ? "ru" : "en"));
+  // Legal documents are maintained in English only (single authoritative version).
+  let LANG = "en";
 
   const docEl = document.getElementById("doc");
   // Fetch one doc with a timeout so a hung request can't spin forever.

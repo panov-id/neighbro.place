@@ -2,8 +2,6 @@
 
 **Last updated: 7 July 2026**
 
-> Draft. This document is a working draft prepared for the operator and is **not legal advice**. Have it reviewed by a qualified lawyer (in particular for EU/GDPR compliance) before publishing.
-
 ## 1. Who we are (controller)
 
 Neighbro (the "**Service**", at **neighbro.place** and its apps) is operated by **Evgenii Panov**, acting as a private individual under the brands **PSYTICAN & PEJEDED**, Limassol, Cyprus, the **data controller**.
