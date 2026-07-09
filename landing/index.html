@@ -421,6 +421,18 @@
   /* full-bleed backdrops for a couple of blocks (like sosed) */
   .hero::before,.hero::after{left:50%;right:auto;width:100vw;margin-left:-50vw}
   .closing{width:100vw;margin-left:calc(50% - 50vw);padding:56px 24px 34px;box-sizing:border-box}
+
+  /* visible neighborhood feed wall (like sosed) */
+  .feedwall{margin:72px 0 8px}
+  .fw-head{color:var(--accent);margin-bottom:22px}
+  .fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .fw-card{position:relative;border:2px solid var(--border);background:var(--panel);padding:18px 20px;box-shadow:4px 4px 0 rgba(0,0,0,.32);transition:transform .16s ease,border-color .16s ease}
+  .fw-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .fw-card p{line-height:1.4;font-size:1rem;padding-right:28px}
+  .fw-meta{display:flex;align-items:center;gap:12px;margin-top:14px;color:var(--muted-2);font-size:.56rem;letter-spacing:.08em}
+  .fw-meta .ppl{color:var(--accent)}
+  .fw-meta .plus{margin-left:auto;color:var(--accent);border:1px solid var(--border);width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center}
+  .fw-card:hover .plus{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -436,7 +448,7 @@
         <rect x="22" y="43" width="27" height="5" rx="2.5" style="fill:var(--bg)"/>
       </g>
     </svg>
-    <div class="s-name">Neighbro</div>
+    <div class="s-name" data-i18n="brand">Neighbro</div>
     <div class="s-by">by <b>PSYTICAN</b></div>
   </div>
 </div>
@@ -456,7 +468,7 @@
           </g>
         </svg>
       </button>
-      <span class="name">NEIGHBRO<span class="tld">.PLACE</span></span>
+      <span class="name"><span data-i18n="brand">NEIGHBRO</span></span>
     </div>
     <div class="header-right">
       <div class="tagline mono" data-i18n="headerStatus"></div>
@@ -543,6 +555,13 @@
             <div class="dw-card"><p data-i18n="m7"></p><div class="dw-meta mono"><span class="ppl">👥 3</span> · 0h 42m</div></div>
             <div class="dw-card"><p data-i18n="m5"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 1h 20m</div></div>
             <div class="dw-card"><p data-i18n="m9"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 2h 05m</div></div>
+            <div class="dw-card"><p data-i18n="m12"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 0h 18m</div></div>
+            <div class="dw-card"><p data-i18n="m15"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 1h 33m</div></div>
+            <div class="dw-card"><p data-i18n="m11"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 0h 55m</div></div>
+            <div class="dw-card"><p data-i18n="m17"></p><div class="dw-meta mono"><span class="ppl">👥 4</span> · 2h 47m</div></div>
+            <div class="dw-card"><p data-i18n="m13"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 1h 12m</div></div>
+            <div class="dw-card"><p data-i18n="m18"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 0h 26m</div></div>
+            <div class="dw-card"><p data-i18n="m20"></p><div class="dw-meta mono"><span class="ppl">👥 3</span> · 3h 09m</div></div>
           </div>
           <div class="dw-chat">
             <div class="dw-chat-h mono">CHAT · 3H 40M</div>
@@ -576,6 +595,12 @@
             <article class="p-card"><p data-i18n="m3"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span>3h 58m</span><span class="plus">+</span></div></article>
             <article class="p-card"><p data-i18n="m6"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>0h 30m</span><span class="plus">+</span></div></article>
             <article class="p-card"><p data-i18n="m8"></p><div class="p-meta mono"><span class="ppl">👥 4</span><span>1h 10m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m14"></p><div class="p-meta mono"><span class="ppl">👥 3</span><span>0h 40m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m16"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>2h 20m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m19"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span>1h 02m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m11"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>0h 15m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m13"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>1h 44m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m20"></p><div class="p-meta mono"><span class="ppl">👥 3</span><span>0h 33m</span><span class="plus">+</span></div></article>
           </div>
           <div class="p-nav mono">
             <span>Feed</span><span>Chats</span><span class="on">+ Say</span><span>Me</span>
@@ -586,6 +611,26 @@
     <p class="mock-cap mono">Say · Match · Fade</p>
   </section>
 
+  <section class="feedwall">
+      <div class="fw-head mono" data-i18n="feedTitle"></div>
+      <div class="fw-grid">
+        <article class="fw-card"><p data-i18n="m1"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>2h 40m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m7"></p><div class="fw-meta mono"><span class="ppl">👥 3</span><span>0h 42m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m3"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>3h 58m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m11"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>0h 55m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m12"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>0h 18m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m5"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>1h 20m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m13"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>1h 12m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m17"></p><div class="fw-meta mono"><span class="ppl">👥 4</span><span>2h 47m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m2"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>1h 05m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m18"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>0h 26m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m15"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>1h 33m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m9"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>2h 05m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m20"></p><div class="fw-meta mono"><span class="ppl">👥 3</span><span>3h 09m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m19"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>1h 02m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m6"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>0h 30m</span><span class="plus">+</span></div></article>
+      </div>
+  </section>
   <section class="features">
     <div class="feat-eyebrow mono" data-i18n="featEyebrow"></div>
     <div class="feat-grid">
@@ -727,6 +772,17 @@
       m8: "Cycling to the old town on Sunday — join the ride 🚲",
       m9: "Spare ticket to the philharmonic tonight — anyone? 🎻",
       m10: "Farmers market at the square this morning — need a buddy 🧺",
+      brand: "NEIGHBRO",
+      m11: "Anyone lending a ladder for the afternoon? 🪜",
+      m12: "Coffee and chess in the courtyard this evening ♟️",
+      m13: "Fresh tomatoes from my balcony garden — come take some 🍅",
+      m14: "Tram strike tomorrow — anyone carpooling to the centre? 🚗",
+      m15: "Vinyl listening night at mine — bring a record 🎶",
+      m16: "Lost cat near the square — ginger, answers to Miso 🐈",
+      m17: "Sunday flea market at the port — hunt for treasures together? 🛍️",
+      m18: "Rooftop sunset drinks at eight — two spots left 🌇",
+      m19: "Anyone up for a swim at the lido before it gets cold? 🏊",
+      m20: "Baking focaccia tonight — swing by for a slice 🍞",
       featEyebrow: "Why it feels different",
       footerTerms: "Terms", footerPrivacy: "Privacy", footerRules: "Rules",
       f1t: "By area, not meters", f1d: "We connect you by the area you choose — never your exact location.",
@@ -760,6 +816,17 @@
       m8: "В воскресенье на велах в старый город — присоединяйся 🚲",
       m9: "Лишний билет в филармонию на вечер — кому? 🎻",
       m10: "Фермерский рынок на площади с утра — нужна компания 🧺",
+      brand: "НЕЙБРО",
+      m11: "Одолжите стремянку на пару часов? 🪜",
+      m12: "Кофе и шахматы во дворе сегодня вечером ♟️",
+      m13: "Свежие помидоры с балконного огорода — забирайте 🍅",
+      m14: "Завтра забастовка трамваев — подвезёте до центра? 🚗",
+      m15: "Виниловый вечер у меня — приноси пластинку 🎶",
+      m16: "Пропал рыжий кот у площади, отзывается на Мисо 🐈",
+      m17: "В воскресенье барахолка у порта — пойдём за сокровищами? 🛍️",
+      m18: "Закат с напитками на крыше в восемь — есть два места 🌇",
+      m19: "Кто на заплыв в лидо, пока не похолодало? 🏊",
+      m20: "Пеку фокаччу вечером — заходи за куском 🍞",
       featEyebrow: "Почему это ощущается иначе",
       footerTerms: "Условия", footerPrivacy: "Приватность", footerRules: "Правила",
       f1t: "По району, не по метрам", f1d: "Сводим по выбранному району — никогда по точному месту.",
@@ -793,6 +860,17 @@
       m8: "Vélo jusqu’à la vieille ville dimanche — rejoins le groupe 🚲",
       m9: "Place en trop pour la philharmonie ce soir — quelqu’un ? 🎻",
       m10: "Marché fermier sur la place ce matin — besoin d’un compagnon 🧺",
+      brand: "NEIGHBRO",
+      m11: "Quelqu’un prête une échelle pour l’après-midi ? 🪜",
+      m12: "Café et échecs dans la cour ce soir ♟️",
+      m13: "Tomates fraîches de mon balcon — venez en prendre 🍅",
+      m14: "Grève des trams demain — covoiturage jusqu’au centre ? 🚗",
+      m15: "Soirée vinyles chez moi — amène un disque 🎶",
+      m16: "Chat perdu près de la place — roux, répond à Miso 🐈",
+      m17: "Marché aux puces au port dimanche — chasse aux trésors ensemble ? 🛍️",
+      m18: "Apéro coucher de soleil sur le toit à huit heures — deux places 🌇",
+      m19: "Envie d’une baignade au lido avant les froids ? 🏊",
+      m20: "Je fais de la focaccia ce soir — passe en prendre une part 🍞",
       featEyebrow: "Pourquoi c'est différent",
       footerTerms: "Conditions", footerPrivacy: "Confidentialité", footerRules: "Règles",
       f1t: "Par quartier, pas au mètre", f1d: "On te relie au quartier que tu choisis — jamais à ta position exacte.",
@@ -826,6 +904,17 @@
       m8: "Sonntag mit dem Rad in die Altstadt — fahr mit 🚲",
       m9: "Übrige Karte für die Philharmonie heute Abend — jemand? 🎻",
       m10: "Bauernmarkt am Platz heute Morgen — suche Begleitung 🧺",
+      brand: "NEIGHBRO",
+      m11: "Leiht jemand eine Leiter für den Nachmittag? 🪜",
+      m12: "Kaffee und Schach im Hof heute Abend ♟️",
+      m13: "Frische Tomaten vom Balkon — kommt und nehmt welche 🍅",
+      m14: "Morgen Straßenbahnstreik — Fahrgemeinschaft ins Zentrum? 🚗",
+      m15: "Vinyl-Abend bei mir — bring eine Platte mit 🎶",
+      m16: "Katze nahe dem Platz entlaufen — rot, hört auf Miso 🐈",
+      m17: "Sonntag Flohmarkt am Hafen — zusammen nach Schätzen suchen? 🛍️",
+      m18: "Sonnenuntergang-Drinks auf dem Dach um acht — zwei Plätze frei 🌇",
+      m19: "Wer will noch im Lido schwimmen, bevor es kalt wird? 🏊",
+      m20: "Backe heute Abend Focaccia — komm auf ein Stück vorbei 🍞",
       featEyebrow: "Warum es sich anders anfühlt",
       footerTerms: "AGB", footerPrivacy: "Datenschutz", footerRules: "Regeln",
       f1t: "Nach Gegend, nicht nach Metern", f1d: "Wir verbinden dich über die gewählte Gegend — nie über deinen genauen Ort.",
@@ -859,6 +948,17 @@
       m8: "El domingo en bici al casco antiguo — únete al grupo 🚲",
       m9: "Entrada de sobra para la filarmónica esta noche — ¿alguien? 🎻",
       m10: "Mercado de agricultores en la plaza esta mañana — busco compañía 🧺",
+      brand: "NEIGHBRO",
+      m11: "¿Alguien presta una escalera esta tarde? 🪜",
+      m12: "Café y ajedrez en el patio esta tarde ♟️",
+      m13: "Tomates frescos de mi balcón — pásate a por unos 🍅",
+      m14: "Huelga de tranvías mañana — ¿alguien comparte coche al centro? 🚗",
+      m15: "Noche de vinilos en mi casa — trae un disco 🎶",
+      m16: "Gato perdido cerca de la plaza — naranja, responde a Miso 🐈",
+      m17: "Domingo mercadillo en el puerto — ¿buscamos tesoros juntos? 🛍️",
+      m18: "Copas al atardecer en la azotea a las ocho — quedan dos sitios 🌇",
+      m19: "¿Alguien se anima a nadar en el lido antes del frío? 🏊",
+      m20: "Hago focaccia esta noche — pásate a por un trozo 🍞",
       featEyebrow: "Por qué se siente distinto",
       footerTerms: "Términos", footerPrivacy: "Privacidad", footerRules: "Reglas",
       f1t: "Por zona, no por metros", f1d: "Te conectamos por la zona que eliges — nunca por tu ubicación exacta.",
@@ -892,6 +992,17 @@
       m8: "Κυριακή με ποδήλατο στην παλιά πόλη — έλα κι εσύ 🚲",
       m9: "Έχω ένα εισιτήριο παραπάνω για τη φιλαρμονική απόψε — κανείς; 🎻",
       m10: "Λαϊκή αγορά στην πλατεία το πρωί — ψάχνω παρέα 🧺",
+      brand: "ΝΕΪΜΠΡΟ",
+      m11: "Δανείζει κανείς μια σκάλα για το απόγευμα; 🪜",
+      m12: "Καφές και σκάκι στην αυλή απόψε ♟️",
+      m13: "Φρέσκες ντομάτες από το μπαλκόνι μου — περάστε να πάρετε 🍅",
+      m14: "Απεργία στα τραμ αύριο — πάμε μαζί με αμάξι στο κέντρο; 🚗",
+      m15: "Βραδιά βινυλίων στο σπίτι μου — φέρε έναν δίσκο 🎶",
+      m16: "Χάθηκε γάτα κοντά στην πλατεία — κόκκινη, ακούει στο Μίσο 🐈",
+      m17: "Κυριακή παζάρι στο λιμάνι — ψάχνουμε θησαυρούς μαζί; 🛍️",
+      m18: "Ποτά στο ηλιοβασίλεμα στην ταράτσα στις οκτώ — δύο θέσεις 🌇",
+      m19: "Κανείς για μπάνιο στο lido πριν κρυώσει; 🏊",
+      m20: "Φτιάχνω φοκάτσια απόψε — πέρνα για ένα κομμάτι 🍞",
       featEyebrow: "Γιατί μοιάζει διαφορετικό",
       footerTerms: "Όροι", footerPrivacy: "Απόρρητο", footerRules: "Κανόνες",
       f1t: "Ανά περιοχή, όχι ανά μέτρο", f1d: "Σε συνδέουμε με την περιοχή που διαλέγεις — ποτέ με την ακριβή θέση σου.",
@@ -915,7 +1026,7 @@
     const d = T[LANG];
     document.documentElement.lang = LANG;
     // Localize the page title + social titles to the current language.
-    const title = "NEIGHBRO — " + d.h1a + " " + d.h1b;
+    const title = (d.brand || "NEIGHBRO") + " — " + d.h1a + " " + d.h1b;
     document.title = title;
     document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]')
       .forEach((m) => m.setAttribute("content", title));
