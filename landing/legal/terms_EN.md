@@ -61,7 +61,7 @@ Neighbro is meant to feel like good neighbors — respectful and sociable. You a
 - attempt to exchange images through message content, or bypass the text-only limitation;
 - probe, disrupt, reverse-engineer, or overload the Service or its infrastructure.
 
-These community rules are also set out, in plain language, in our **Community Guidelines**. Content may be **moderated before it is published**; posting quotas, reports, and blocks help enforce the rules. We may remove content and suspend or block access at our discretion, especially for safety or legal reasons.
+These community rules are also set out, in plain language, in our **Community Guidelines**. Content may be **moderated before it is published**; posting quotas, reports, and blocks help enforce the rules. Pre-publication moderation is performed by automated systems, **including AI models**, that screen content before it appears. You can **block another user** at any time; blocking hides their content from you. We may remove content and suspend or block access at our discretion, especially for safety or legal reasons.
 
 ## 9. Content and ephemerality
 
@@ -96,7 +96,7 @@ The Service is provided **"as is"** and **"as available"**, without warranties o
 
 ## 15. Limitation of liability
 
-To the maximum extent permitted by law, PSYTICAN & PEJEDED / Evgenii Panov is not liable for indirect, incidental, special, or consequential damages, or for the conduct of users or third parties (including offline meetings). Nothing in these Terms excludes liability that cannot be excluded by law (including for death or personal injury caused by negligence, or fraud).
+To the maximum extent permitted by law, PSYTICAN & PEJEDED / Evgenii Panov is not liable for indirect, incidental, special, or consequential damages, or for the conduct of users or third parties (including offline meetings). In particular, we are **not responsible or liable for the conduct of other users** — including any offense, harassment, bullying, abuse, unlawful act, or other anti-social behavior directed at you by another user, whether online or offline; each user is solely responsible for their own conduct. We provide automated, **AI-assisted pre-moderation** and a **block-user** control to help, but cannot guarantee they prevent all harmful behavior. Nothing in these Terms excludes liability that cannot be excluded by law (including for death or personal injury caused by negligence, or fraud).
 
 ## 16. Indemnity
 
