@@ -1431,7 +1431,7 @@
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const seen = sessionStorage.getItem("nb-splash-seen");
     sessionStorage.setItem("nb-splash-seen", "1");
-    const hold = reduce || seen ? 0 : 1400;
+    const hold = reduce ? 0 : 2000;  // show the splash for 2s on every load
     setTimeout(() => {
       splash.classList.add("done");
       setTimeout(() => splash.remove(), reduce ? 0 : 500);
