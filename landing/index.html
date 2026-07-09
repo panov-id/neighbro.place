@@ -842,6 +842,11 @@
     LANG = SUPPORTED.includes(lang) ? lang : "en";
     const d = T[LANG];
     document.documentElement.lang = LANG;
+    // Localize the page title + social titles to the current language.
+    const title = "NEIGHBRO — " + d.h1a + " " + d.h1b;
+    document.title = title;
+    document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]')
+      .forEach((m) => m.setAttribute("content", title));
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const v = d[el.getAttribute("data-i18n")];
       if (v != null) el.textContent = v;
