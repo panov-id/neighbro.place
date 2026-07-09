@@ -393,6 +393,22 @@
     .moments { padding: 26px; }
     form.waitlist-form button { padding: 0 18px; }
   }
+
+  /* European imagery (marketing pass) */
+  .splash::before{content:"";position:absolute;inset:0;background:url("img/splash.jpg") center/cover;opacity:.26;mix-blend-mode:luminosity;z-index:0}
+  .splash .disc,.splash .bm{position:relative;z-index:1}
+  .hero{position:relative}
+  .hero::before{content:"";position:absolute;inset:0;background:url("img/hero.jpg") center/cover;opacity:.15;z-index:0}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(110% 100% at 50% 18%, transparent, var(--bg) 76%);z-index:0}
+  .hero>*{position:relative;z-index:1}
+  .step .pic{aspect-ratio:16/10;border-radius:12px;background-size:cover;background-position:center;margin-bottom:22px;border:1px solid var(--border);position:relative;overflow:hidden}
+  .step .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,color-mix(in srgb,var(--bg) 65%,transparent))}
+  .step .pic1{background-image:url("img/card_say.jpg")}
+  .step .pic2{background-image:url("img/card_match.jpg")}
+  .step .pic3{background-image:url("img/card_fade.jpg")}
+  .closing{position:relative;overflow:hidden}
+  .closing::before{content:"";position:absolute;inset:0;background:url("img/texture.jpg") center/cover;opacity:.10;z-index:0}
+  .closing>*{position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -483,16 +499,19 @@
 
   <section class="steps">
     <div class="step">
+      <div class="pic pic1"></div>
       <div class="k mono" data-i18n="s1k"></div>
       <h2 data-i18n="s1t"></h2>
       <p data-i18n="s1d"></p>
     </div>
     <div class="step">
+      <div class="pic pic2"></div>
       <div class="k mono" data-i18n="s2k"></div>
       <h2 data-i18n="s2t"></h2>
       <p data-i18n="s2d"></p>
     </div>
     <div class="step">
+      <div class="pic pic3"></div>
       <div class="k mono" data-i18n="s3k"></div>
       <h2 data-i18n="s3t"></h2>
       <p data-i18n="s3d"></p>
@@ -509,6 +528,9 @@
             <div class="dw-card"><p data-i18n="m2"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 1h 05m</div></div>
             <div class="dw-card"><p data-i18n="m3"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 3h 58m</div></div>
             <div class="dw-card"><p data-i18n="m1"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 2h 40m</div></div>
+            <div class="dw-card"><p data-i18n="m7"></p><div class="dw-meta mono"><span class="ppl">👥 3</span> · 0h 42m</div></div>
+            <div class="dw-card"><p data-i18n="m5"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 1h 20m</div></div>
+            <div class="dw-card"><p data-i18n="m9"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 2h 05m</div></div>
           </div>
           <div class="dw-chat">
             <div class="dw-chat-h mono">CHAT · 3H 40M</div>
@@ -540,6 +562,8 @@
             <article class="p-card r1"><p data-i18n="m1"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>2h 40m</span><span class="plus">+</span></div></article>
             <article class="p-card r2"><p data-i18n="m4"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>4h 12m</span><span class="plus">+</span></div></article>
             <article class="p-card"><p data-i18n="m3"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span>3h 58m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m6"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>0h 30m</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m8"></p><div class="p-meta mono"><span class="ppl">👥 4</span><span>1h 10m</span><span class="plus">+</span></div></article>
           </div>
           <div class="p-nav mono">
             <span>Feed</span><span>Chats</span><span class="on">+ Say</span><span>Me</span>
@@ -685,6 +709,12 @@
       m2: "Looking for a tennis partner this weekend 🎾",
       m3: "Wine on my terrace tonight, two of us — join?",
       m4: "Just moved in on the 4th floor. Say hi 👋",
+      m5: "Morning run along the canal — who’s in? 🏃",
+      m6: "Fresh croissants from the bakery downstairs — come grab some 🥐",
+      m7: "Aperitivo on the piazza at seven — bring a friend 🍹",
+      m8: "Cycling to the old town on Sunday — join the ride 🚲",
+      m9: "Spare ticket to the philharmonic tonight — anyone? 🎻",
+      m10: "Farmers market at the square this morning — need a buddy 🧺",
       featEyebrow: "Why it feels different",
       footerTerms: "Terms", footerPrivacy: "Privacy", footerRules: "Rules",
       f1t: "By area, not meters", f1d: "We connect you by the area you choose — never your exact location.",
@@ -712,6 +742,12 @@
       m2: "Ищу партнёра по теннису на выходные 🎾",
       m3: "Вино на моей террасе сегодня, нас двое — присоединишься?",
       m4: "Только въехал на 4-й этаж. Заходите поздороваться 👋",
+      m5: "Утренняя пробежка вдоль канала — кто со мной? 🏃",
+      m6: "Свежие круассаны из пекарни внизу — забегай 🥐",
+      m7: "Аперитив на площади в семь — бери друга 🍹",
+      m8: "В воскресенье на велах в старый город — присоединяйся 🚲",
+      m9: "Лишний билет в филармонию на вечер — кому? 🎻",
+      m10: "Фермерский рынок на площади с утра — нужна компания 🧺",
       featEyebrow: "Почему это ощущается иначе",
       footerTerms: "Условия", footerPrivacy: "Приватность", footerRules: "Правила",
       f1t: "По району, не по метрам", f1d: "Сводим по выбранному району — никогда по точному месту.",
@@ -739,6 +775,12 @@
       m2: "Je cherche un partenaire de tennis ce week-end 🎾",
       m3: "Du vin sur ma terrasse ce soir, on est deux — tu viens ?",
       m4: "Je viens d'emménager au 4e. Passez dire bonjour 👋",
+      m5: "Course matinale le long du canal — qui vient ? 🏃",
+      m6: "Croissants frais de la boulangerie en bas — venez en prendre 🥐",
+      m7: "Apéro sur la place à sept heures — amène un ami 🍹",
+      m8: "Vélo jusqu’à la vieille ville dimanche — rejoins le groupe 🚲",
+      m9: "Place en trop pour la philharmonie ce soir — quelqu’un ? 🎻",
+      m10: "Marché fermier sur la place ce matin — besoin d’un compagnon 🧺",
       featEyebrow: "Pourquoi c'est différent",
       footerTerms: "Conditions", footerPrivacy: "Confidentialité", footerRules: "Règles",
       f1t: "Par quartier, pas au mètre", f1d: "On te relie au quartier que tu choisis — jamais à ta position exacte.",
@@ -766,6 +808,12 @@
       m2: "Suche einen Tennispartner fürs Wochenende 🎾",
       m3: "Wein auf meiner Terrasse heute Abend, wir sind zwei — dabei?",
       m4: "Bin gerade im 4. Stock eingezogen. Sagt Hallo 👋",
+      m5: "Morgenlauf am Kanal entlang — wer kommt mit? 🏃",
+      m6: "Frische Croissants vom Bäcker unten — kommt vorbei 🥐",
+      m7: "Aperitivo auf der Piazza um sieben — bring einen Freund mit 🍹",
+      m8: "Sonntag mit dem Rad in die Altstadt — fahr mit 🚲",
+      m9: "Übrige Karte für die Philharmonie heute Abend — jemand? 🎻",
+      m10: "Bauernmarkt am Platz heute Morgen — suche Begleitung 🧺",
       featEyebrow: "Warum es sich anders anfühlt",
       footerTerms: "AGB", footerPrivacy: "Datenschutz", footerRules: "Regeln",
       f1t: "Nach Gegend, nicht nach Metern", f1d: "Wir verbinden dich über die gewählte Gegend — nie über deinen genauen Ort.",
@@ -793,6 +841,12 @@
       m2: "Busco pareja de tenis este fin de semana 🎾",
       m3: "Vino en mi terraza esta noche, somos dos — ¿te unes?",
       m4: "Acabo de mudarme al 4º. Pasad a saludar 👋",
+      m5: "Carrera matutina junto al canal — ¿quién se apunta? 🏃",
+      m6: "Cruasanes recién hechos de la panadería de abajo — pásate a por unos 🥐",
+      m7: "Aperitivo en la plaza a las siete — trae a un amigo 🍹",
+      m8: "El domingo en bici al casco antiguo — únete al grupo 🚲",
+      m9: "Entrada de sobra para la filarmónica esta noche — ¿alguien? 🎻",
+      m10: "Mercado de agricultores en la plaza esta mañana — busco compañía 🧺",
       featEyebrow: "Por qué se siente distinto",
       footerTerms: "Términos", footerPrivacy: "Privacidad", footerRules: "Reglas",
       f1t: "Por zona, no por metros", f1d: "Te conectamos por la zona que eliges — nunca por tu ubicación exacta.",
@@ -820,6 +874,12 @@
       m2: "Ψάχνω παρτενέρ για τένις το Σαββατοκύριακο 🎾",
       m3: "Κρασί στη βεράντα μου απόψε, είμαστε δύο — έρχεσαι;",
       m4: "Μόλις μετακόμισα στον 4ο. Πείτε ένα γεια 👋",
+      m5: "Πρωινό τρέξιμο κατά μήκος του καναλιού — ποιος έρχεται; 🏃",
+      m6: "Φρέσκα κρουασάν από τον φούρνο κάτω — περάστε να πάρετε 🥐",
+      m7: "Aperitivo στην πλατεία στις εφτά — φέρ’ έναν φίλο 🍹",
+      m8: "Κυριακή με ποδήλατο στην παλιά πόλη — έλα κι εσύ 🚲",
+      m9: "Έχω ένα εισιτήριο παραπάνω για τη φιλαρμονική απόψε — κανείς; 🎻",
+      m10: "Λαϊκή αγορά στην πλατεία το πρωί — ψάχνω παρέα 🧺",
       featEyebrow: "Γιατί μοιάζει διαφορετικό",
       footerTerms: "Όροι", footerPrivacy: "Απόρρητο", footerRules: "Κανόνες",
       f1t: "Ανά περιοχή, όχι ανά μέτρο", f1d: "Σε συνδέουμε με την περιοχή που διαλέγεις — ποτέ με την ακριβή θέση σου.",

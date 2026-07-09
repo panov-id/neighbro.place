@@ -53,7 +53,7 @@ window.__XOR_CONFIG__ = {
   vapidPublicKey: "${VAPID_PUBLIC_KEY:-}",
 };
 EOF
-rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip
+rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip; rm -rf "$STAGE"/img-src
 
 # Bust the service-worker cache: stamp the build id into sw.js.
 if [ -f "$STAGE/sw.js" ]; then
