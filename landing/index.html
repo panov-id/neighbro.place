@@ -433,6 +433,13 @@
   .fw-meta .ppl{color:var(--accent)}
   .fw-meta .plus{margin-left:auto;color:var(--accent);border:1px solid var(--border);width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center}
   .fw-card:hover .plus{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+  .lang-pop{position:relative}
+  .lang-btn{width:auto;min-width:46px;padding:0 12px;font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.12em}
+  .lang-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:60;background:var(--panel);border:2px solid var(--border);min-width:158px;box-shadow:6px 6px 0 rgba(0,0,0,.4);padding:5px}
+  .lang-menu[hidden]{display:none}
+  .lang-menu button{display:block;width:100%;text-align:left;background:transparent;border:0;color:var(--fg);padding:10px 12px;font-family:"Golos Text",sans-serif;font-size:.92rem;cursor:pointer}
+  .lang-menu button:hover,.lang-menu button.on{background:var(--accent);color:var(--accent-ink)}
 </style>
 </head>
 <body>
@@ -476,14 +483,7 @@
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <select id="lang-select" class="lang-select" aria-label="Language">
-        <option value="en">EN</option>
-        <option value="ru">RU</option>
-        <option value="fr">FR</option>
-        <option value="de">DE</option>
-        <option value="es">ES</option>
-        <option value="el">EL</option>
-      </select>
+      <div class="lang-pop"><button class="icon-btn lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Language"><span id="langCur">EN</span></button><div class="lang-menu" id="langMenu" hidden role="menu"><button data-lang="en">English</button><button data-lang="ru">Русский</button><button data-lang="fr">Français</button><button data-lang="de">Deutsch</button><button data-lang="es">Español</button><button data-lang="el">Ελληνικά</button></div></div>
     </div>
   </header>
 
@@ -549,19 +549,19 @@
         <div class="dw-bar mono"><span class="dot"></span><span data-i18n="feedTitle"></span></div>
         <div class="dw-body">
           <div class="dw-feed">
-            <div class="dw-card"><p data-i18n="m2"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 1h 05m</div></div>
-            <div class="dw-card"><p data-i18n="m3"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 3h 58m</div></div>
-            <div class="dw-card"><p data-i18n="m1"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 2h 40m</div></div>
-            <div class="dw-card"><p data-i18n="m7"></p><div class="dw-meta mono"><span class="ppl">👥 3</span> · 0h 42m</div></div>
-            <div class="dw-card"><p data-i18n="m5"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 1h 20m</div></div>
-            <div class="dw-card"><p data-i18n="m9"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 2h 05m</div></div>
-            <div class="dw-card"><p data-i18n="m12"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 0h 18m</div></div>
-            <div class="dw-card"><p data-i18n="m15"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 1h 33m</div></div>
-            <div class="dw-card"><p data-i18n="m11"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 0h 55m</div></div>
-            <div class="dw-card"><p data-i18n="m17"></p><div class="dw-meta mono"><span class="ppl">👥 4</span> · 2h 47m</div></div>
-            <div class="dw-card"><p data-i18n="m13"></p><div class="dw-meta mono"><span class="ppl">👥 1</span> · 1h 12m</div></div>
-            <div class="dw-card"><p data-i18n="m18"></p><div class="dw-meta mono"><span class="ppl">👥 2</span> · 0h 26m</div></div>
-            <div class="dw-card"><p data-i18n="m20"></p><div class="dw-meta mono"><span class="ppl">👥 3</span> · 3h 09m</div></div>
+            <div class="dw-card"><p data-i18n="m2"></p><div class="dw-meta mono"><span class="ppl">👥 1</span></div></div>
+            <div class="dw-card"><p data-i18n="m3"></p><div class="dw-meta mono"><span class="ppl">👥 2</span></div></div>
+            <div class="dw-card"><p data-i18n="m1"></p><div class="dw-meta mono"><span class="ppl">👥 1</span></div></div>
+            <div class="dw-card"><p data-i18n="m7"></p><div class="dw-meta mono"><span class="ppl">👥 3</span></div></div>
+            <div class="dw-card"><p data-i18n="m5"></p><div class="dw-meta mono"><span class="ppl">👥 2</span></div></div>
+            <div class="dw-card"><p data-i18n="m9"></p><div class="dw-meta mono"><span class="ppl">👥 1</span></div></div>
+            <div class="dw-card"><p data-i18n="m12"></p><div class="dw-meta mono"><span class="ppl">👥 2</span></div></div>
+            <div class="dw-card"><p data-i18n="m15"></p><div class="dw-meta mono"><span class="ppl">👥 1</span></div></div>
+            <div class="dw-card"><p data-i18n="m11"></p><div class="dw-meta mono"><span class="ppl">👥 1</span></div></div>
+            <div class="dw-card"><p data-i18n="m17"></p><div class="dw-meta mono"><span class="ppl">👥 4</span></div></div>
+            <div class="dw-card"><p data-i18n="m13"></p><div class="dw-meta mono"><span class="ppl">👥 1</span></div></div>
+            <div class="dw-card"><p data-i18n="m18"></p><div class="dw-meta mono"><span class="ppl">👥 2</span></div></div>
+            <div class="dw-card"><p data-i18n="m20"></p><div class="dw-meta mono"><span class="ppl">👥 3</span></div></div>
           </div>
           <div class="dw-chat">
             <div class="dw-chat-h mono">CHAT · 3H 40M</div>
@@ -590,17 +590,17 @@
             <span class="p-live"><span class="dot"></span>34</span>
           </div>
           <div class="p-feed">
-            <article class="p-card r1"><p data-i18n="m1"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>2h 40m</span><span class="plus">+</span></div></article>
-            <article class="p-card r2"><p data-i18n="m4"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>4h 12m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m3"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span>3h 58m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m6"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>0h 30m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m8"></p><div class="p-meta mono"><span class="ppl">👥 4</span><span>1h 10m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m14"></p><div class="p-meta mono"><span class="ppl">👥 3</span><span>0h 40m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m16"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>2h 20m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m19"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span>1h 02m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m11"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>0h 15m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m13"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span>1h 44m</span><span class="plus">+</span></div></article>
-            <article class="p-card"><p data-i18n="m20"></p><div class="p-meta mono"><span class="ppl">👥 3</span><span>0h 33m</span><span class="plus">+</span></div></article>
+            <article class="p-card r1"><p data-i18n="m1"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+            <article class="p-card r2"><p data-i18n="m4"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m3"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m6"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m8"></p><div class="p-meta mono"><span class="ppl">👥 4</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m14"></p><div class="p-meta mono"><span class="ppl">👥 3</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m16"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m19"></p><div class="p-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m11"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m13"></p><div class="p-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+            <article class="p-card"><p data-i18n="m20"></p><div class="p-meta mono"><span class="ppl">👥 3</span><span class="plus">+</span></div></article>
           </div>
           <div class="p-nav mono">
             <span>Feed</span><span>Chats</span><span class="on">+ Say</span><span>Me</span>
@@ -614,21 +614,21 @@
   <section class="feedwall">
       <div class="fw-head mono" data-i18n="feedTitle"></div>
       <div class="fw-grid">
-        <article class="fw-card"><p data-i18n="m1"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>2h 40m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m7"></p><div class="fw-meta mono"><span class="ppl">👥 3</span><span>0h 42m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m3"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>3h 58m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m11"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>0h 55m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m12"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>0h 18m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m5"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>1h 20m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m13"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>1h 12m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m17"></p><div class="fw-meta mono"><span class="ppl">👥 4</span><span>2h 47m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m2"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>1h 05m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m18"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>0h 26m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m15"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>1h 33m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m9"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>2h 05m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m20"></p><div class="fw-meta mono"><span class="ppl">👥 3</span><span>3h 09m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m19"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span>1h 02m</span><span class="plus">+</span></div></article>
-        <article class="fw-card"><p data-i18n="m6"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span>0h 30m</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m1"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m7"></p><div class="fw-meta mono"><span class="ppl">👥 3</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m3"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m11"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m12"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m5"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m13"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m17"></p><div class="fw-meta mono"><span class="ppl">👥 4</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m2"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m18"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m15"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m9"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m20"></p><div class="fw-meta mono"><span class="ppl">👥 3</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m19"></p><div class="fw-meta mono"><span class="ppl">👥 2</span><span class="plus">+</span></div></article>
+        <article class="fw-card"><p data-i18n="m6"></p><div class="fw-meta mono"><span class="ppl">👥 1</span><span class="plus">+</span></div></article>
       </div>
   </section>
   <section class="features">
@@ -1039,13 +1039,14 @@
       // Also expose it as the accessible name — the input has no visible label.
       if (v != null) { el.setAttribute("placeholder", v); el.setAttribute("aria-label", v); }
     });
-    document.getElementById("lang-select").value = LANG;
+    var lc=document.getElementById("langCur"); if(lc)lc.textContent=LANG.toUpperCase();
+    document.querySelectorAll("#langMenu button").forEach(function(bn){bn.classList.toggle("on",bn.dataset.lang===LANG);});
     if (persist) localStorage.setItem("lang", LANG); // remember only a manual choice
   }
 
   // Auto: follow the browser default until the user picks a language themselves.
   applyLang(detectLang(), false);
-  document.getElementById("lang-select").addEventListener("change", (e) => applyLang(e.target.value, true));
+  (function(){var btn=document.getElementById("langBtn"),menu=document.getElementById("langMenu");function close(){menu.hidden=true;btn.setAttribute("aria-expanded","false");}btn.addEventListener("click",function(e){e.stopPropagation();var willOpen=menu.hidden;menu.hidden=!willOpen;btn.setAttribute("aria-expanded",String(willOpen));});menu.querySelectorAll("button").forEach(function(bn){bn.addEventListener("click",function(){applyLang(bn.dataset.lang,true);close();});});document.addEventListener("click",function(e){if(!menu.hidden&&!menu.contains(e.target)&&e.target!==btn)close();});document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});})();
 
   // Theme — already resolved before paint by the head script; here we only wire the toggles.
   // Accent: random per session until the user picks one (logo click), then their choice sticks.
