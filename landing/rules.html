@@ -6,7 +6,7 @@
 <!-- CSP: strictly same-origin (fonts are self-hosted). Legal docs are fetched
      same-origin (connect-src 'self'); inline script/style need 'unsafe-inline'. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
-<title>NEIGHBRO — Legal</title>
+<title>NEIGHBRO — Community Guidelines</title>
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <meta name="theme-color" content="#0c0b09">
 <link rel="stylesheet" href="fonts.css">
@@ -80,9 +80,17 @@
       <span class="name">NEIGHBRO.PLACE</span>
     </a>
     <div class="controls">
-      <div class="seg" id="docSeg">
-        <button data-doc="terms" class="on">Terms</button>
-        <button data-doc="privacy">Privacy</button>
+      <div class="seg" id="langSeg">
+        <button data-lang="en" class="on">EN</button>
+        <button data-lang="fr">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="el">EL</button>
+        <button data-lang="uk">UK</button>
+        <button data-lang="be">BE</button>
+        <button data-lang="kk">KK</button>
+        <button data-lang="ka">KA</button>
+        <button data-lang="ru">RU</button>
       </div>
     </div>
   </header>
@@ -149,11 +157,14 @@
     return html;
   }
 
-  const FILES = { terms: "terms", privacy: "privacy" };
+  const FILES = { rules: "community-guidelines" };
   const params = new URLSearchParams(location.search);
-  let DOC = Object.keys(FILES).includes(params.get("doc")) ? params.get("doc") : "terms";
-  // Legal documents are maintained in English only (single authoritative version).
-  let LANG = "en";
+  let DOC = "rules";
+  // Community guidelines follow the site language (with EN fallback).
+  const LANGS = ["en","ru","fr","de","es","el","uk","be","kk","ka"];
+  const _stored = localStorage.getItem("lang");
+  const _nav = (navigator.language || "en").slice(0,2).toLowerCase();
+  let LANG = LANGS.includes(params.get("lang")) ? params.get("lang") : (LANGS.includes(_stored) ? _stored : (LANGS.includes(_nav) ? _nav : "en"));
 
   const docEl = document.getElementById("doc");
   // Fetch one doc with a timeout so a hung request can't spin forever.
