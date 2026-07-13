@@ -1427,18 +1427,16 @@
   }
   document.getElementById("modeBtn").addEventListener("click", () => applyMode(document.documentElement.dataset.mode === "light" ? "dark" : "light", true));
 
-  // Splash — hold briefly on the first view of a session, then wipe. Repeat
-  // views and reduced-motion skip the hold so content paints immediately (LCP).
+  // Splash — hold for 2s on every load, then wipe. Reduced-motion still holds
+  // (the CSS lands it on a static final state, no growing-disc motion), so the
+  // brand shows for everyone; only the fade-out is skipped for reduced-motion.
   const splash = document.getElementById("splash");
   if (splash) {
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const seen = sessionStorage.getItem("nb-splash-seen");
-    sessionStorage.setItem("nb-splash-seen", "1");
-    const hold = reduce ? 0 : 2000;  // show the splash for 2s on every load
     setTimeout(() => {
       splash.classList.add("done");
       setTimeout(() => splash.remove(), reduce ? 0 : 500);
-    }, hold);
+    }, 2000);
   }
 
   function showAfter(formId) {
