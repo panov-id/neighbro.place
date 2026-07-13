@@ -396,7 +396,10 @@
 
   /* European imagery (marketing pass) */
   .splash::before{content:"";position:absolute;inset:0;background:url("img/splash.jpg") center/cover;opacity:.26;mix-blend-mode:luminosity;z-index:0}
-  .splash .disc,.splash .bm{position:relative;z-index:1}
+  /* Disc stays absolute (out of flow, grid-centered, grows over the ground);
+     only the brand block is in-flow. Both sit above the ::before imagery. */
+  .splash .disc{position:absolute;z-index:1}
+  .splash .bm{position:relative;z-index:1}
   .hero{position:relative}
   .hero::before{content:"";position:absolute;inset:0;background:url("img/hero.jpg") center/cover;opacity:.15;z-index:0}
   .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(110% 100% at 50% 18%, transparent, var(--bg) 76%);z-index:0}
@@ -449,12 +452,12 @@
   <div class="disc"></div>
   <div class="bm">
     <svg class="s-logo" viewBox="0 0 96 96">
-      <circle cx="48" cy="48" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+      <circle cx="48" cy="48" r="46" fill="currentColor"/>
       <g transform="translate(16.3,16.8) scale(0.88)">
-        <rect x="50" y="10" width="7" height="14" rx="2" fill="currentColor"/>
-        <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-        <rect x="22" y="32" width="18" height="5" rx="2.5" style="fill:var(--bg)"/>
-        <rect x="22" y="43" width="27" height="5" rx="2.5" style="fill:var(--bg)"/>
+        <rect x="50" y="10" width="7" height="14" rx="2" style="fill:var(--bg)"/>
+        <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" style="fill:var(--bg);stroke:var(--bg)" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="22" y="32" width="18" height="5" rx="2.5" fill="currentColor"/>
+        <rect x="22" y="43" width="27" height="5" rx="2.5" fill="currentColor"/>
       </g>
     </svg>
     <div class="s-name" data-i18n="brand">Neighbro</div>
@@ -826,7 +829,7 @@
       m8: "В воскресенье на велах в старый город — присоединяйся 🚲",
       m9: "Лишний билет в филармонию на вечер — кому? 🎻",
       m10: "Фермерский рынок на площади с утра — нужна компания 🧺",
-      brand: "СОСЕБРО",
+      brand: "NEIGHBRO",
       m11: "Одолжите стремянку на пару часов? 🪜",
       m12: "Кофе и шахматы во дворе сегодня вечером ♟️",
       m13: "Свежие помидоры с балконного огорода — забирайте 🍅",
@@ -878,7 +881,7 @@
       m8: "Vélo jusqu’à la vieille ville dimanche — rejoins le groupe 🚲",
       m9: "Place en trop pour la philharmonie ce soir — quelqu’un ? 🎻",
       m10: "Marché fermier sur la place ce matin — besoin d’un compagnon 🧺",
-      brand: "VOISBRO",
+      brand: "NEIGHBRO",
       m11: "Quelqu’un prête une échelle pour l’après-midi ? 🪜",
       m12: "Café et échecs dans la cour ce soir ♟️",
       m13: "Tomates fraîches de mon balcon — venez en prendre 🍅",
@@ -930,7 +933,7 @@
       m8: "Sonntag mit dem Rad in die Altstadt — fahr mit 🚲",
       m9: "Übrige Karte für die Philharmonie heute Abend — jemand? 🎻",
       m10: "Bauernmarkt am Platz heute Morgen — suche Begleitung 🧺",
-      brand: "NACHBRO",
+      brand: "NEIGHBRO",
       m11: "Leiht jemand eine Leiter für den Nachmittag? 🪜",
       m12: "Kaffee und Schach im Hof heute Abend ♟️",
       m13: "Frische Tomaten vom Balkon — kommt und nehmt welche 🍅",
@@ -982,7 +985,7 @@
       m8: "El domingo en bici al casco antiguo — únete al grupo 🚲",
       m9: "Entrada de sobra para la filarmónica esta noche — ¿alguien? 🎻",
       m10: "Mercado de agricultores en la plaza esta mañana — busco compañía 🧺",
-      brand: "VECIBRO",
+      brand: "NEIGHBRO",
       m11: "¿Alguien presta una escalera esta tarde? 🪜",
       m12: "Café y ajedrez en el patio esta tarde ♟️",
       m13: "Tomates frescos de mi balcón — pásate a por unos 🍅",
@@ -1034,7 +1037,7 @@
       m8: "Κυριακή με ποδήλατο στην παλιά πόλη — έλα κι εσύ 🚲",
       m9: "Έχω ένα εισιτήριο παραπάνω για τη φιλαρμονική απόψε — κανείς; 🎻",
       m10: "Λαϊκή αγορά στην πλατεία το πρωί — ψάχνω παρέα 🧺",
-      brand: "ΓΕΙΤΟΜΠΡΟ",
+      brand: "NEIGHBRO",
       m11: "Δανείζει κανείς μια σκάλα για το απόγευμα; 🪜",
       m12: "Καφές και σκάκι στην αυλή απόψε ♟️",
       m13: "Φρέσκες ντομάτες από το μπαλκόνι μου — περάστε να πάρετε 🍅",
@@ -1104,7 +1107,7 @@
       m8: "У неділю на велосипедах у старе місто — приєднуйся 🚲",
       m9: "Зайвий квиток у філармонію на вечір — кому? 🎻",
       m10: "Фермерський ринок на площі зранку — потрібна компанія 🧺",
-      brand: "СУСІБРО",
+      brand: "NEIGHBRO",
       m11: "Позичте драбину на пару годин? 🪜",
       m12: "Кава й шахи у дворі сьогодні ввечері ♟️",
       m13: "Свіжі помідори з балконного городу — забирайте 🍅",
@@ -1180,7 +1183,7 @@
       m8: "У нядзелю на роварах у стары горад — далучайся 🚲",
       m9: "Лішні квіток у філармонію на вечар — каму? 🎻",
       m10: "Фермерскі рынак на плошчы зранку — патрэбна кампанія 🧺",
-      brand: "СУСЕБРО",
+      brand: "NEIGHBRO",
       m11: "Пазычце драбіну на пару гадзін? 🪜",
       m12: "Кава і шахматы ў двары сёння ўвечары ♟️",
       m13: "Свежыя памідоры з балконнага агарода — забірайце 🍅",
@@ -1256,7 +1259,7 @@
       m8: "Жексенбіде велосипедпен ескі қалаға — қосыл 🚲",
       m9: "Кешке филармонияға артық билет — кімге? 🎻",
       m10: "Таңертең алаңда фермер базары — серік керек 🧺",
-      brand: "КӨРБРО",
+      brand: "NEIGHBRO",
       m11: "Бір-екі сағатқа саты берші? 🪜",
       m12: "Бүгін кешке ауладa кофе мен шахмат ♟️",
       m13: "Балкон бақшасынан жаңа қызанақ — алыңдар 🍅",
@@ -1332,7 +1335,7 @@
       m8: "კვირას ველოსიპედით ძველ ქალაქში — შემოგვიერთდი 🚲",
       m9: "ზედმეტი ბილეთი ფილარმონიაში საღამოს — ვის? 🎻",
       m10: "დილით ფერმერული ბაზარი მოედანზე — კომპანია მჭირდება 🧺",
-      brand: "მეზობრო",
+      brand: "NEIGHBRO",
       m11: "მასესხებთ კიბეს ორიოდე საათით? 🪜",
       m12: "ყავა და ჭადრაკი ეზოში დღეს საღამოს ♟️",
       m13: "ახალი პომიდორი აივნის ბაღიდან — წაიღეთ 🍅",
