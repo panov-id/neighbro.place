@@ -3,12 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- CSP: strictly same-origin. Fonts are self-hosted, so no external hosts are
-     needed. Supabase is reached same-origin through the gateway (/rest, /auth…),
-     so connect-src 'self' covers the waitlist + push fetches. Inline
-     scripts/styles are used, hence 'unsafe-inline'. If a deploy ever points
-     config.js at a cross-origin Supabase host, add it to connect-src. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://n1-dev.relay.panov.id https://n1-staging.relay.panov.id https://api.relay.panov.id https://*.supabase.co; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+<!-- CSP: fonts are self-hosted (no external font hosts). The waitlist +
+     client-error fetches go to the relay backend, so connect-src lists the
+     per-env relay hosts. Inline scripts/styles are used, hence 'unsafe-inline'. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://n1-dev.relay.panov.id https://n1-staging.relay.panov.id https://api.relay.panov.id; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
 <title>NEIGHBRO.PLACE — Good neighbors. Real moments.</title>
 <!-- SEO -->
 <meta name="description" content="Your neighborhood is full of interesting people. NEIGHBRO helps you actually meet them — no profiles, no feed, no noise.">
@@ -709,8 +707,6 @@
 <script>
   const CFG = window.__XOR_CONFIG__ || {};
   const API_URL = CFG.apiUrl ?? "";                 // relay backend (waitlist + client-error)
-  const SUPABASE_URL = CFG.supabaseUrl ?? "";       // legacy, push-only
-  const SUPABASE_ANON_KEY = CFG.supabaseAnonKey ?? "";
   const SOURCE = "neighbro.place-landing";
   const BRAND = "neighbro";
 
@@ -1458,10 +1454,10 @@
       const reg = await navigator.serviceWorker.ready;
       const sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: CFG.vapidPublicKey });
       const j = sub.toJSON();
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/push_subscriptions`, {
+      const res = await fetch(`${API_URL}/push-subscriptions`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}`, Prefer: "return=minimal" },
-        body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys.p256dh, auth: j.keys.auth, source: SOURCE, lang: LANG }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys.p256dh, auth: j.keys.auth, source: SOURCE, brand: BRAND, lang: LANG }),
       });
       if (!res.ok) throw new Error("save failed"); // don't swallow a backend failure
       btn.textContent = T[LANG].notifyDone;

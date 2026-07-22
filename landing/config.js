@@ -7,11 +7,8 @@
 //   apiUrl          — relay backend base (waitlist + client-error); deploy injects per env
 //   alphaUrl        — where "enter the alpha" goes after signup ("" = hidden)
 //   vapidPublicKey  — enables the push-subscribe offer ("" = hidden)
-//   supabaseUrl/Key — legacy, push-only (disabled unless vapidPublicKey is set)
 window.__XOR_CONFIG__ = {
   apiUrl: "",
   alphaUrl: "",
   vapidPublicKey: "",
-  supabaseUrl: "",
-  supabaseAnonKey: "",
 };

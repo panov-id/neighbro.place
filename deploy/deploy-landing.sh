@@ -7,8 +7,6 @@
 #   BUNNY_STORAGE_API_KEY    Storage Zone password
 #   RELAY_API_URL            relay backend base for this environment (waitlist + client-error)
 # Optional env:
-#   SUPABASE_URL             legacy push-only Supabase URL ("" = push disabled)
-#   SUPABASE_ANON_KEY        legacy push-only Supabase anon key
 #   BUNNY_PULL_ZONE_ID       numeric Pull Zone ID (for cache purge)
 #   BUNNY_API_KEY            account API key (purge; falls back to storage key)
 #   SOURCE_TAG               waitlist source tag (default: neighbro.place-landing)
@@ -50,8 +48,6 @@ window.__XOR_CONFIG__ = {
   apiUrl: "${RELAY_API_URL}",
   alphaUrl: "${ALPHA_URL:-}",
   vapidPublicKey: "${VAPID_PUBLIC_KEY:-}",
-  supabaseUrl: "${SUPABASE_URL:-}",
-  supabaseAnonKey: "${SUPABASE_ANON_KEY:-}",
 };
 EOF
 rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip; rm -rf "$STAGE"/img-src
