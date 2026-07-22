@@ -1,0 +1,5 @@
+node_modules/
+
+# Generated candidates — regenerable via docker/run.sh, kept local only.
+# The picked final lands in ../landing/og-image.jpg (tracked there).
+output/

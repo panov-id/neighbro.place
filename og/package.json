@@ -1,0 +1,12 @@
+{
+  "name": "neighbro-og",
+  "private": true,
+  "type": "module",
+  "description": "OG image generator for neighbro.place",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "23.11.1"
+  }
+}
