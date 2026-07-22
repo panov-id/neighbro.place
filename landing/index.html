@@ -1472,6 +1472,13 @@
     const btn = form.querySelector("button");
     const after = document.querySelector(`[data-after-for="${form.id}"]`);
 
+    // Returning visitor who already joined: show the "done" state right away.
+    if (localStorage.getItem("nb-wl-done")) {
+      form.style.display = "none";
+      showAfter(form.id);
+      return;
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const email = form.querySelector('input[type="email"]').value.trim();
@@ -1494,6 +1501,7 @@
         // The relay returns 200 for both a fresh signup and a duplicate (returning
         // visitor) — any non-2xx is a real failure.
         if (!res.ok) throw new Error("HTTP " + res.status);
+        localStorage.setItem("nb-wl-done", "1");
         form.style.display = "none";
         showAfter(form.id);
       } catch (err) {
