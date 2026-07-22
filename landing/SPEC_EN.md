@@ -20,7 +20,7 @@ Copy and visual tone follow neighbro.place's European-flavored identity (see the
 ## Technical constraints
 
 - Static, no build step — a single HTML file with inline styles, as it is now.
-- The waitlist form keeps submitting email to the same Supabase table (see the existing `index.html`); block 2 is purely informational, no logic of its own.
+- The waitlist form keeps submitting email to the relay backend (`POST /waitlist`, see the existing `index.html`); block 2 is purely informational, no logic of its own.
 
 ## Open questions
 
