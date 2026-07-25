@@ -6,7 +6,7 @@
 <!-- CSP: fonts are self-hosted (no external font hosts). The waitlist +
      client-error fetches go to the relay backend, so connect-src lists the
      per-env relay hosts. Inline scripts/styles are used, hence 'unsafe-inline'. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://n1-dev.relay.panov.id https://n1-staging.relay.panov.id https://api.relay.panov.id; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://n1-dev.relay.panov.id https://n1-staging.relay.panov.id https://api.relay.panov.id https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com; worker-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
 <title>NEIGHBRO.PLACE — Good neighbors. Real moments.</title>
 <!-- SEO -->
 <meta name="description" content="Your neighborhood is full of interesting people. NEIGHBRO helps you actually meet them — no profiles, no feed, no noise.">
@@ -35,6 +35,17 @@
 <meta name="twitter:description" content="Your neighborhood is full of interesting people. NEIGHBRO helps you actually meet them — no profiles, no feed, no noise.">
 <meta name="twitter:image" content="https://neighbro.place/og-image.jpg">
 <meta name="twitter:image:alt" content="NEIGHBRO logo surrounded by real neighbor messages — the art of being nearby.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Organization","@id":"https://neighbro.place/#organization","name":"neighbro","alternateName":"neighbro.place",
+  "url":"https://neighbro.place/","logo":"https://neighbro.place/icons/icon-512.png",
+  "email":"hello@neighbro.place",
+  "sameAs":["https://github.com/panov-id/neighbro.place"]},
+ {"@type":"WebSite","@id":"https://neighbro.place/#website","url":"https://neighbro.place/",
+  "name":"neighbro","publisher":{"@id":"https://neighbro.place/#organization"},
+  "inLanguage":["en","fr","de","es","el","uk","be","kk","ka","ru"]}
+]}
+</script>
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
@@ -368,7 +379,31 @@
   }
   footer.bottom a { color: var(--muted-2); text-decoration: none; }
   footer.bottom a:hover { color: var(--accent); }
-  .footer-links { display: flex; gap: 16px 20px; flex-wrap: wrap; }
+  .footer-links { display: flex; gap: 16px 20px; flex-wrap: wrap; align-items: center; }
+  .footer-links .gh { display: inline-flex; align-items: center; color: var(--muted-2); }
+  .footer-links .gh:hover { color: var(--accent); }
+  /* a real button styled as a footer link: an href="#" would break the language pages,
+     which rely on <base href="/"> and therefore tolerate no in-page anchors */
+  .footer-links .link-btn { background: none; border: 0; padding: 0; font: inherit; color: var(--muted-2); cursor: pointer; }
+  .footer-links .link-btn:hover { color: var(--accent); }
+  .faq-section { padding: 40px 0 10px; }
+  .faq-title { margin: 10px 0 0; }
+  .faq { display: grid; gap: 14px; margin-top: 24px; max-width: 760px; }
+  .qa { background: var(--panel); border: 1px solid var(--border); border-radius: 13px; padding: 18px 20px; }
+  .qa h3 { margin: 0 0 .5rem; font-size: 1.02rem; }
+  .qa p { margin: 0; color: var(--muted-2); font-size: .95rem; line-height: 1.55; }
+  /* cookie consent — only shown when an analytics id is configured and no choice is stored */
+  .consent { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 80; max-width: 560px; margin: 0 auto;
+             background: var(--panel); border: 1px solid var(--border); border-radius: 13px; padding: 16px 18px;
+             box-shadow: 6px 6px 0 rgba(0,0,0,.4); }
+  .consent[hidden] { display: none; }
+  .consent-text { color: var(--muted-2); font-size: .94rem; margin: 0 0 12px; }
+  .consent-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .consent-btn { border: 1px solid var(--border); background: transparent; color: var(--fg);
+                 padding: 9px 14px; border-radius: 9px; cursor: pointer; font: inherit; font-size: .9rem; }
+  .consent-btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .consent-link { margin-left: auto; color: var(--muted); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; }
+  .consent-link:hover { color: var(--accent); }
 
   @media (max-width: 760px) {
     .steps { grid-template-columns: 1fr; gap: 40px; }
@@ -660,6 +695,22 @@
     </div>
   </section>
 
+  <!-- The questions people actually ask, and the only substantial prose on the page. The
+       generator turns these same dictionary keys into FAQPage structured data, so every
+       language ships its own markup without a second copy of the text. -->
+  <section class="faq-section">
+    <div class="label mono" data-i18n="faqKick"></div>
+    <h2 class="faq-title" data-i18n="faqH2"></h2>
+    <div class="faq">
+      <div class="qa"><h3 data-i18n="faqQ1"></h3><p data-i18n="faqA1"></p></div>
+      <div class="qa"><h3 data-i18n="faqQ2"></h3><p data-i18n="faqA2"></p></div>
+      <div class="qa"><h3 data-i18n="faqQ3"></h3><p data-i18n="faqA3"></p></div>
+      <div class="qa"><h3 data-i18n="faqQ4"></h3><p data-i18n="faqA4"></p></div>
+      <div class="qa"><h3 data-i18n="faqQ5"></h3><p data-i18n="faqA5"></p></div>
+      <div class="qa"><h3 data-i18n="faqQ6"></h3><p data-i18n="faqA6"></p></div>
+    </div>
+  </section>
+
   <section class="closing">
     <h2><span data-i18n="closeA"></span><span class="accent" data-i18n="closeB"></span></h2>
     <form id="waitlist-form-2" class="waitlist-form">
@@ -683,9 +734,20 @@
       <a href="legal.html?doc=terms" data-i18n="footerTerms"></a>
       <a href="legal.html?doc=privacy" data-i18n="footerPrivacy"></a>
       <a href="mailto:hello@neighbro.place">hello@neighbro.place</a>
+      <button type="button" class="link-btn" id="consentReset" hidden data-i18n="cookieSettings"></button>
+      <a class="gh" href="https://github.com/panov-id/neighbro.place" rel="me noopener" target="_blank" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a>
     </span>
   </footer>
 
+</div>
+
+<div class="consent" id="consent" hidden role="region" aria-label="cookies">
+  <p class="consent-text" data-i18n="cookieText"></p>
+  <div class="consent-row">
+    <button class="consent-btn primary" id="consentAccept" data-i18n="cookieAccept"></button>
+    <button class="consent-btn" id="consentDecline" data-i18n="cookieDecline"></button>
+    <a class="consent-link" href="legal.html?doc=privacy" data-i18n="cookieMore"></a>
+  </div>
 </div>
 
 <script>
@@ -746,6 +808,21 @@
 
   const T = {
     en: {
+      cookieText: "We count visits with Google Analytics. Nothing loads until you say yes.",
+      cookieAccept: "Accept", cookieDecline: "Essentials only", cookieMore: "privacy", cookieSettings: "cookies",
+      faqKick: "the short version", faqH2: "Frequent questions",
+      faqQ1: "What is neighbro?",
+      faqA1: "A local neighbor network. You drop a couple of lines to the people nearby — in the yard, the stairwell, the block. If it matches, a chat opens. If it does not, silence, and nobody ever knew.",
+      faqQ2: "Do I need a profile and photos?",
+      faqA2: "No. No forms, no avatar, no post history. There is only what you said just now, and not for long.",
+      faqQ3: "How does matching work?",
+      faqA3: "You plus a neighbor's message. If they plus you back, a private chat opens. One-sided plus opens nothing, and they never find out.",
+      faqQ4: "Why do messages disappear?",
+      faqA4: "The conversation fades on its own in a couple of hours. The point is to go outside, not to hoard screenshots for a year.",
+      faqQ5: "Can anyone see where I live?",
+      faqA5: "No. You pick an area, not coordinates. Exact location and distance to you are never computed and never shown.",
+      faqQ6: "When does it launch?",
+      faqA6: "We open area by area, by invitation. Leave your email and we will write when we open near you.",
       headerStatus: "By invitation · Soon", eyebrow: "The art of being nearby",
       h1a: "Good neighbors.", h1b: "Real moments.",
       sub: "Meet interesting people who live near you. Say something, match, talk — and let it fade. No profile. No feed. No noise.",
@@ -798,6 +875,21 @@
       f4t: "Games, no rules", f4d: "Dominoes, checkers, chess — no built-in rules, you invent them together.",
     },
     ru: {
+      cookieText: "Считаем посещения через Google Analytics. Пока не согласишься — счётчик не загружается.",
+      cookieAccept: "Принять", cookieDecline: "Только необходимое", cookieMore: "приватность", cookieSettings: "куки",
+      faqKick: "коротко о главном", faqH2: "Частые вопросы",
+      faqQ1: "Что такое neighbro?",
+      faqA1: "Локальная соседская сеть. Кидаешь пару строк людям рядом — во дворе, в подъезде, на районе. Совпало — открывается чат. Не совпало — тишина, никто ничего не узнал.",
+      faqQ2: "Нужен ли профиль и фотки?",
+      faqA2: "Нет. Ни анкеты, ни аватарки, ни истории постов. Есть только то, что ты сказал сейчас, и то ненадолго.",
+      faqQ3: "Как работает совпадение?",
+      faqA3: "Ставишь плюс сообщению соседа. Если он ставит плюс в ответ — открывается личка. В одну сторону не открывается ничего, и он об этом не узнает.",
+      faqQ4: "Почему сообщения исчезают?",
+      faqA4: "Через пару часов переписка тает сама. Смысл в том, чтобы выйти во двор, а не копить скриншоты и переписку на год.",
+      faqQ5: "Видно ли, где именно я живу?",
+      faqA5: "Нет. Ты выбираешь район, а не координаты. Точное местоположение и расстояние до тебя не считаются и не показываются.",
+      faqQ6: "Когда запуск?",
+      faqA6: "Заходим районами, по приглашениям. Оставь почту — напишем, когда откроемся рядом с тобой.",
       headerStatus: "По приглашению · Скоро", eyebrow: "Искусство быть рядом",
       h1a: "Хорошие соседи.", h1b: "Живые моменты.",
       sub: "Знакомься с интересными людьми, что живут рядом. Скажи что-то, совпади, поговори — и отпусти. Без профиля. Без ленты. Без шума.",
@@ -850,6 +942,21 @@
       f4t: "Игры без правил", f4d: "Домино, шашки, шахматы — правил нет, придумываете сами.",
     },
     fr: {
+      cookieText: "On compte les visites avec Google Analytics. Rien ne se charge sans ton accord.",
+      cookieAccept: "Accepter", cookieDecline: "Essentiel seulement", cookieMore: "confidentialité", cookieSettings: "cookies",
+      faqKick: "en bref", faqH2: "Questions fréquentes",
+      faqQ1: "C'est quoi neighbro ?",
+      faqA1: "Un réseau de voisins local. Tu écris deux lignes aux gens d'à côté — dans la cour, la cage d'escalier, le quartier. Ça matche, un chat s'ouvre. Sinon, silence, et personne n'a rien su.",
+      faqQ2: "Faut-il un profil et des photos ?",
+      faqA2: "Non. Pas de formulaire, pas d'avatar, pas d'historique. Il y a seulement ce que tu viens de dire, et pas pour longtemps.",
+      faqQ3: "Comment marche le match ?",
+      faqA3: "Tu mets un plus au message d'un voisin. S'il te le rend, la messagerie s'ouvre. À sens unique, rien ne s'ouvre et il n'en saura rien.",
+      faqQ4: "Pourquoi les messages disparaissent ?",
+      faqA4: "La conversation s'efface toute seule en quelques heures. L'idée est de sortir dans la cour, pas d'accumuler des captures d'écran pendant un an.",
+      faqQ5: "Est-ce qu'on voit où j'habite ?",
+      faqA5: "Non. Tu choisis un quartier, pas des coordonnées. La position exacte et la distance ne sont jamais calculées ni affichées.",
+      faqQ6: "C'est pour quand ?",
+      faqA6: "On ouvre quartier par quartier, sur invitation. Laisse ton mail, on t'écrit quand on ouvre près de chez toi.",
       headerStatus: "Sur invitation · Bientôt", eyebrow: "L'art d'être tout près",
       h1a: "Bons voisins.", h1b: "De vrais moments.",
       sub: "Rencontre des gens intéressants qui vivent près de toi. Dis un mot, matche, parle — puis laisse ça s'effacer. Pas de profil. Pas de fil. Pas de bruit.",
@@ -902,6 +1009,21 @@
       f4t: "Des jeux, sans règles", f4d: "Dominos, dames, échecs — aucune règle intégrée, vous les inventez.",
     },
     de: {
+      cookieText: "Wir zählen Besuche mit Google Analytics. Ohne dein Ja wird nichts geladen.",
+      cookieAccept: "Annehmen", cookieDecline: "Nur Nötiges", cookieMore: "datenschutz", cookieSettings: "Cookies",
+      faqKick: "kurz gesagt", faqH2: "Häufige Fragen",
+      faqQ1: "Was ist neighbro?",
+      faqA1: "Ein lokales Nachbarschaftsnetz. Du wirfst ein paar Zeilen an die Leute nebenan — im Hof, im Treppenhaus, im Viertel. Passt es, öffnet sich ein Chat. Passt es nicht, Stille, und niemand hat je davon gewusst.",
+      faqQ2: "Brauche ich ein Profil und Fotos?",
+      faqA2: "Nein. Kein Formular, kein Avatar, keine Chronik. Es gibt nur das, was du gerade gesagt hast, und das nicht lange.",
+      faqQ3: "Wie funktioniert das Matchen?",
+      faqA3: "Du gibst der Nachricht eines Nachbarn ein Plus. Gibt er es zurück, öffnet sich der private Chat. Einseitig öffnet sich nichts, und er erfährt es nie.",
+      faqQ4: "Warum verschwinden Nachrichten?",
+      faqA4: "Das Gespräch löst sich nach ein paar Stunden von selbst auf. Es geht darum, rauszugehen, statt ein Jahr lang Screenshots zu sammeln.",
+      faqQ5: "Sieht jemand, wo ich wohne?",
+      faqA5: "Nein. Du wählst ein Viertel, keine Koordinaten. Genauer Standort und Entfernung werden nie berechnet und nie angezeigt.",
+      faqQ6: "Wann geht es los?",
+      faqA6: "Wir öffnen Viertel für Viertel, auf Einladung. Lass deine E-Mail da — wir schreiben, wenn wir bei dir aufmachen.",
       headerStatus: "Auf Einladung · Bald", eyebrow: "Die Kunst, nah zu sein",
       h1a: "Gute Nachbarn.", h1b: "Echte Momente.",
       sub: "Triff interessante Menschen aus deiner Nähe. Sag etwas, matche, rede — und lass es verblassen. Kein Profil. Kein Feed. Kein Lärm.",
@@ -954,6 +1076,21 @@
       f4t: "Spiele, keine Regeln", f4d: "Domino, Dame, Schach — keine festen Regeln, ihr erfindet sie selbst.",
     },
     es: {
+      cookieText: "Contamos las visitas con Google Analytics. Sin tu permiso no se carga nada.",
+      cookieAccept: "Aceptar", cookieDecline: "Solo lo necesario", cookieMore: "privacidad", cookieSettings: "cookies",
+      faqKick: "en corto", faqH2: "Preguntas frecuentes",
+      faqQ1: "¿Qué es neighbro?",
+      faqA1: "Una red vecinal local. Sueltas un par de líneas a la gente de al lado — en el patio, el portal, el barrio. Si coincide, se abre un chat. Si no, silencio, y nadie se enteró de nada.",
+      faqQ2: "¿Hace falta perfil y fotos?",
+      faqA2: "No. Ni formulario, ni avatar, ni historial de publicaciones. Solo está lo que acabas de decir, y no por mucho tiempo.",
+      faqQ3: "¿Cómo funciona el match?",
+      faqA3: "Le das un más al mensaje de un vecino. Si te lo devuelve, se abre el privado. En un solo sentido no se abre nada, y él nunca lo sabrá.",
+      faqQ4: "¿Por qué desaparecen los mensajes?",
+      faqA4: "La conversación se disuelve sola en un par de horas. La idea es salir al patio, no acumular capturas durante un año.",
+      faqQ5: "¿Se ve dónde vivo?",
+      faqA5: "No. Eliges un barrio, no coordenadas. La ubicación exacta y la distancia nunca se calculan ni se muestran.",
+      faqQ6: "¿Cuándo se lanza?",
+      faqA6: "Abrimos barrio por barrio, por invitación. Deja tu correo y te escribimos cuando abramos cerca de ti.",
       headerStatus: "Por invitación · Pronto", eyebrow: "El arte de estar cerca",
       h1a: "Buenos vecinos.", h1b: "Momentos reales.",
       sub: "Conoce a gente interesante que vive cerca de ti. Di algo, haz match, habla — y deja que se desvanezca. Sin perfil. Sin feed. Sin ruido.",
@@ -1006,6 +1143,21 @@
       f4t: "Juegos, sin reglas", f4d: "Dominó, damas, ajedrez — sin reglas fijas, las inventáis vosotros.",
     },
     el: {
+      cookieText: "Μετράμε τις επισκέψεις με το Google Analytics. Χωρίς τη συγκατάθεσή σου δεν φορτώνει τίποτα.",
+      cookieAccept: "Αποδοχή", cookieDecline: "Μόνο τα απαραίτητα", cookieMore: "απόρρητο", cookieSettings: "cookies",
+      faqKick: "με λίγα λόγια", faqH2: "Συχνές ερωτήσεις",
+      faqQ1: "Τι είναι το neighbro;",
+      faqA1: "Ένα τοπικό δίκτυο γειτόνων. Ρίχνεις δυο γραμμές στους διπλανούς σου — στην αυλή, στην πολυκατοικία, στη γειτονιά. Αν ταιριάξει, ανοίγει συνομιλία. Αν όχι, σιωπή, και δεν το έμαθε κανείς.",
+      faqQ2: "Χρειάζομαι προφίλ και φωτογραφίες;",
+      faqA2: "Όχι. Ούτε φόρμα, ούτε άβαταρ, ούτε ιστορικό. Υπάρχει μόνο αυτό που μόλις είπες, και ούτε αυτό για πολύ.",
+      faqQ3: "Πώς δουλεύει το ταίριασμα;",
+      faqA3: "Βάζεις ένα συν στο μήνυμα ενός γείτονα. Αν σου το ανταποδώσει, ανοίγει η προσωπική συνομιλία. Μονομερώς δεν ανοίγει τίποτα, και δεν θα το μάθει ποτέ.",
+      faqQ4: "Γιατί εξαφανίζονται τα μηνύματα;",
+      faqA4: "Η κουβέντα σβήνει μόνη της σε λίγες ώρες. Το νόημα είναι να βγεις έξω, όχι να μαζεύεις στιγμιότυπα για έναν χρόνο.",
+      faqQ5: "Φαίνεται πού μένω;",
+      faqA5: "Όχι. Διαλέγεις περιοχή, όχι συντεταγμένες. Η ακριβής θέση και η απόσταση δεν υπολογίζονται και δεν εμφανίζονται ποτέ.",
+      faqQ6: "Πότε ξεκινάει;",
+      faqA6: "Ανοίγουμε γειτονιά προς γειτονιά, με πρόσκληση. Άφησε το email σου και θα σου γράψουμε όταν ανοίξουμε κοντά σου.",
       headerStatus: "Με πρόσκληση · Σύντομα", eyebrow: "Η τέχνη του να είσαι κοντά",
       h1a: "Καλοί γείτονες.", h1b: "Αληθινές στιγμές.",
       sub: "Γνώρισε ενδιαφέροντες ανθρώπους που ζουν κοντά σου. Πες κάτι, ταίριαξε, μίλα — και άφησέ το να σβήσει. Χωρίς προφίλ. Χωρίς ροή. Χωρίς θόρυβο.",
@@ -1058,6 +1210,21 @@
       f4t: "Παιχνίδια, χωρίς κανόνες", f4d: "Ντόμινο, ντάμα, σκάκι — χωρίς έτοιμους κανόνες, τους εφευρίσκετε.",
     },
     uk: {
+      cookieText: "Рахуємо відвідування через Google Analytics. Без твоєї згоди нічого не завантажується.",
+      cookieAccept: "Прийняти", cookieDecline: "Тільки необхідне", cookieMore: "приватність", cookieSettings: "куки",
+      faqKick: "коротко про головне", faqH2: "Часті питання",
+      faqQ1: "Що таке neighbro?",
+      faqA1: "Локальна сусідська мережа. Кидаєш пару рядків людям поруч — у дворі, у під'їзді, на районі. Збіглося — відкривається чат. Ні — тиша, і ніхто нічого не дізнався.",
+      faqQ2: "Чи потрібен профіль і фото?",
+      faqA2: "Ні. Ані анкети, ані аватарки, ані історії дописів. Є лише те, що ти сказав щойно, і то ненадовго.",
+      faqQ3: "Як працює збіг?",
+      faqA3: "Ставиш плюс повідомленню сусіда. Якщо він ставить плюс у відповідь — відкривається приватний чат. В один бік не відкривається нічого, і він про це не дізнається.",
+      faqQ4: "Чому повідомлення зникають?",
+      faqA4: "Через пару годин листування тане саме. Сенс у тому, щоб вийти у двір, а не збирати скріншоти на рік.",
+      faqQ5: "Чи видно, де я живу?",
+      faqA5: "Ні. Ти обираєш район, а не координати. Точне місце й відстань до тебе ніколи не рахуються і не показуються.",
+      faqQ6: "Коли запуск?",
+      faqA6: "Заходимо районами, за запрошеннями. Залиш пошту — напишемо, коли відкриємось поруч із тобою.",
       headerStatus: "За запрошенням · Скоро",
       eyebrow: "Мистецтво бути поруч",
       h1a: "Хороші сусіди.",
@@ -1134,6 +1301,21 @@
       f4d: "Доміно, шашки, шахи — правил немає, вигадуєте самі.",
     },
     be: {
+      cookieText: "Лічым наведванні праз Google Analytics. Без тваёй згоды нічога не загружаецца.",
+      cookieAccept: "Прыняць", cookieDecline: "Толькі неабходнае", cookieMore: "прыватнасць", cookieSettings: "кукі",
+      faqKick: "коратка пра галоўнае", faqH2: "Частыя пытанні",
+      faqQ1: "Што такое neighbro?",
+      faqA1: "Лакальная суседская сетка. Кідаеш пару радкоў людзям побач — у двары, у пад'ездзе, на раёне. Супала — адкрываецца чат. Не — цішыня, і ніхто нічога не даведаўся.",
+      faqQ2: "Ці патрэбны профіль і фота?",
+      faqA2: "Не. Ні анкеты, ні аватаркі, ні гісторыі допісаў. Ёсць толькі тое, што ты сказаў зараз, і то ненадоўга.",
+      faqQ3: "Як працуе супадзенне?",
+      faqA3: "Ставіш плюс паведамленню суседа. Калі ён ставіць плюс у адказ — адкрываецца асабісты чат. У адзін бок не адкрываецца нічога, і ён пра гэта не даведаецца.",
+      faqQ4: "Чаму паведамленні знікаюць?",
+      faqA4: "Праз пару гадзін перапіска растае сама. Сэнс у тым, каб выйсці ў двор, а не збіраць скрыншоты на год.",
+      faqQ5: "Ці відаць, дзе я жыву?",
+      faqA5: "Не. Ты выбіраеш раён, а не каардынаты. Дакладнае месца і адлегласць да цябе ніколі не лічацца і не паказваюцца.",
+      faqQ6: "Калі запуск?",
+      faqA6: "Заходзім раёнамі, па запрашэннях. Пакінь пошту — напішам, калі адкрыемся побач з табой.",
       headerStatus: "Па запрашэнні · Хутка",
       eyebrow: "Мастацтва быць побач",
       h1a: "Добрыя суседзі.",
@@ -1210,6 +1392,21 @@
       f4d: "Даміно, шашкі, шахматы — правіл няма, прыдумляеце самі.",
     },
     kk: {
+      cookieText: "Кірулерді Google Analytics арқылы санаймыз. Келісіміңсіз ештеңе жүктелмейді.",
+      cookieAccept: "Қабылдау", cookieDecline: "Тек қажеттісі", cookieMore: "құпиялылық", cookieSettings: "cookie",
+      faqKick: "қысқаша", faqH2: "Жиі қойылатын сұрақтар",
+      faqQ1: "neighbro деген не?",
+      faqA1: "Жергілікті көрші желісі. Жаныңдағы адамдарға бірер жол жазасың — ауладағы, кіреберістегі, ауданыңдағы. Сәйкес келсе, чат ашылады. Келмесе, тыныштық, ешкім ештеңе білмейді.",
+      faqQ2: "Профиль мен фото керек пе?",
+      faqA2: "Жоқ. Анкета да, аватар да, жазбалар тарихы да жоқ. Тек қазір айтқаның бар, ол да ұзаққа емес.",
+      faqQ3: "Сәйкестік қалай жұмыс істейді?",
+      faqA3: "Көршінің хабарына плюс қоясың. Ол да плюс қойса, жеке чат ашылады. Бір жақты болса, ештеңе ашылмайды, ол мұны білмейді де.",
+      faqQ4: "Хабарлар неге жоғалады?",
+      faqA4: "Бірер сағаттан кейін жазысу өзі еріп кетеді. Мақсат — далаға шығу, скриншот жинау емес.",
+      faqQ5: "Қайда тұратыным көріне ме?",
+      faqA5: "Жоқ. Сен ауданды таңдайсың, координатты емес. Нақты орын мен қашықтық ешқашан есептелмейді және көрсетілмейді.",
+      faqQ6: "Қашан іске қосылады?",
+      faqA6: "Аудан-аудан бойынша, шақыру арқылы ашамыз. Поштаңды қалдыр — жаныңда ашылғанда жазамыз.",
       headerStatus: "Шақыру бойынша · Жақында",
       eyebrow: "Жақын болу өнері",
       h1a: "Жақсы көршілер.",
@@ -1286,6 +1483,21 @@
       f4d: "Домино, дойбы, шахмат — ереже жоқ, өздерің ойлап табасыңдар.",
     },
     ka: {
+      cookieText: "ვითვლით ვიზიტებს Google Analytics-ით. შენი თანხმობის გარეშე არაფერი იტვირთება.",
+      cookieAccept: "მიღება", cookieDecline: "მხოლოდ საჭირო", cookieMore: "კონფიდენციალურობა", cookieSettings: "ქუქიები",
+      faqKick: "მოკლედ", faqH2: "ხშირი კითხვები",
+      faqQ1: "რა არის neighbro?",
+      faqA1: "ლოკალური მეზობლების ქსელი. ორიოდე სტრიქონს უგზავნი გვერდით მყოფებს — ეზოში, სადარბაზოში, უბანში. დაემთხვა — იხსნება ჩატი. არა — სიჩუმე და ვერავინ გაიგო.",
+      faqQ2: "საჭიროა პროფილი და ფოტოები?",
+      faqA2: "არა. არც ანკეტა, არც ავატარი, არც პოსტების ისტორია. მხოლოდ ის არის, რაც ახლა თქვი, ისიც ცოტა ხნით.",
+      faqQ3: "როგორ მუშაობს დამთხვევა?",
+      faqA3: "მეზობლის შეტყობინებას პლიუსს უსვამ. თუ ისიც პასუხად დაგისვამს — იხსნება პირადი ჩატი. ცალმხრივად არაფერი იხსნება და ის ვერაფერს გაიგებს.",
+      faqQ4: "რატომ ქრება შეტყობინებები?",
+      faqA4: "მიმოწერა თავისით ქრება რამდენიმე საათში. აზრი ისაა, რომ ეზოში გახვიდე და არა წლის განმავლობაში სქრინები აგროვო.",
+      faqQ5: "ჩანს, სად ვცხოვრობ?",
+      faqA5: "არა. შენ ირჩევ უბანს და არა კოორდინატებს. ზუსტი ადგილმდებარეობა და მანძილი არასდროს გამოითვლება და არ ჩანს.",
+      faqQ6: "როდის იწყება?",
+      faqA6: "ვიხსნებით უბან-უბან, მოწვევით. დატოვე ელფოსტა — მოგწერთ, როცა შენთან ახლოს გავიხსნებით.",
       headerStatus: "მოწვევით · მალე",
       eyebrow: "ახლოს ყოფნის ხელოვნება",
       h1a: "კარგი მეზობლები.",
@@ -1365,7 +1577,15 @@
   const SUPPORTED = Object.keys(T);
   let LANG = "en";
 
+  // Generated pages (build-pages.mjs) are pinned to their own language and live at their
+  // own URL; the raw source page carries no marker and keeps switching text in place, so
+  // local development works without running the generator.
+  const DEFAULT_LANG = "en";
+  const PAGE_LANG = window.__PAGE_LANG__ || "";
+  const langUrl = (lang) => (lang === DEFAULT_LANG ? "/" : "/" + lang + "/");
+
   function detectLang() {
+    if (PAGE_LANG) return PAGE_LANG;
     const stored = localStorage.getItem("lang");
     if (stored && SUPPORTED.includes(stored)) return stored;
     const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
@@ -1377,7 +1597,7 @@
     const d = T[LANG];
     document.documentElement.lang = LANG;
     // Localize the page title + social titles to the current language.
-    const title = (d.brand || "NEIGHBRO") + " — " + d.h1a + " " + d.h1b;
+    const title = "neighbro — " + d.h1a + " " + d.h1b;  // brand spelled one way everywhere
     document.title = title;
     document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]')
       .forEach((m) => m.setAttribute("content", title));
@@ -1397,7 +1617,20 @@
 
   // Auto: follow the browser default until the user picks a language themselves.
   applyLang(detectLang(), false);
-  (function(){var btn=document.getElementById("langBtn"),menu=document.getElementById("langMenu");function close(){menu.hidden=true;btn.setAttribute("aria-expanded","false");}btn.addEventListener("click",function(e){e.stopPropagation();var willOpen=menu.hidden;menu.hidden=!willOpen;btn.setAttribute("aria-expanded",String(willOpen));});menu.querySelectorAll("button").forEach(function(bn){bn.addEventListener("click",function(){applyLang(bn.dataset.lang,true);close();});});document.addEventListener("click",function(e){if(!menu.hidden&&!menu.contains(e.target)&&e.target!==btn)close();});document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});})();
+
+  // First arrival at the root: if we publish the reader's own language, send them there
+  // once and remember it. Generated pages only, so local development is untouched; the
+  // choice is stored before navigating, which also makes a redirect loop impossible.
+  (function(){
+    if (PAGE_LANG !== DEFAULT_LANG || location.pathname !== "/") return;
+    if (localStorage.getItem("lang")) return;
+    const browser = (navigator.language || "").slice(0, 2).toLowerCase();
+    if (!browser || browser === DEFAULT_LANG || !SUPPORTED.includes(browser)) return;
+    localStorage.setItem("lang", browser);
+    location.replace(langUrl(browser));
+  })();
+
+  (function(){var btn=document.getElementById("langBtn"),menu=document.getElementById("langMenu");function close(){menu.hidden=true;btn.setAttribute("aria-expanded","false");}btn.addEventListener("click",function(e){e.stopPropagation();var willOpen=menu.hidden;menu.hidden=!willOpen;btn.setAttribute("aria-expanded",String(willOpen));});menu.querySelectorAll("button").forEach(function(bn){bn.addEventListener("click",function(){var lang=bn.dataset.lang;if(PAGE_LANG){localStorage.setItem("lang",lang);location.href=langUrl(lang);return;}applyLang(lang,true);close();});});document.addEventListener("click",function(e){if(!menu.hidden&&!menu.contains(e.target)&&e.target!==btn)close();});document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});})();
 
   // Theme — already resolved before paint by the head script; here we only wire the toggles.
   // Accent: random per session until the user picks one (logo click), then their choice sticks.
@@ -1502,6 +1735,7 @@
         // visitor) — any non-2xx is a real failure.
         if (!res.ok) throw new Error("HTTP " + res.status);
         localStorage.setItem("nb-wl-done", "1");
+        if (window.gtag) gtag("event", "waitlist_signup", { lang: LANG });
         form.style.display = "none";
         showAfter(form.id);
       } catch (err) {
@@ -1519,6 +1753,48 @@
       notify && notify.addEventListener("click", () => subscribePush(notify));
     }
   });
+
+  // Analytics — GA4, gated behind explicit consent. No measurement id configured
+  // (dev, uat) or a declined banner means gtag.js is never fetched at all.
+  const ANALYTICS_ID = CFG.analyticsId || "";
+  function loadAnalytics() {
+    if (!ANALYTICS_ID || window.gtag) return;
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + ANALYTICS_ID;
+    script.onerror = () => logClientError("analytics-load", new Error("gtag.js blocked"), {});
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", ANALYTICS_ID, { anonymize_ip: true });
+  }
+  (function () {
+    if (!ANALYTICS_ID) return;
+    const box = document.getElementById("consent");
+    if (!box) return;
+    const reset = document.getElementById("consentReset");
+    function decide(answer) {
+      localStorage.setItem("nb-consent", answer);
+      box.hidden = true;
+      if (reset) reset.hidden = false;
+      if (answer === "yes") loadAnalytics();
+    }
+    document.getElementById("consentAccept").addEventListener("click", () => decide("yes"));
+    document.getElementById("consentDecline").addEventListener("click", () => decide("no"));
+    // Withdrawing consent has to be as easy as giving it: the footer button brings the
+    // banner back. Analytics already loaded in this tab keeps running until reload —
+    // the stored answer is what decides every later visit.
+    if (reset) reset.addEventListener("click", () => {
+      localStorage.removeItem("nb-consent");
+      reset.hidden = true;
+      box.hidden = false;
+    });
+
+    const stored = localStorage.getItem("nb-consent");
+    if (stored) { if (reset) reset.hidden = false; if (stored === "yes") loadAnalytics(); return; }
+    box.hidden = false;
+  })();
 </script>
 </body>
 </html>

@@ -11,6 +11,12 @@ jobs:
     environment: dev
     steps:
       - uses: actions/checkout@v4
+      # The runner ships Node, but the page generator should not depend on whichever
+      # version that happens to be. RUN_NODE_NATIVE tells run-node.sh to use it directly
+      # instead of starting a container.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Deploy landing
         env:
           BUNNY_STORAGE_ZONE: ${{ secrets.BUNNY_STORAGE_ZONE }}
@@ -18,4 +24,7 @@ jobs:
           BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
           BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
           RELAY_API_URL: ${{ secrets.RELAY_API_URL }}
+          LANDING_ENV: dev
+          RUN_NODE_NATIVE: '1'
+          SITE_ORIGIN: https://dev.neighbro.panov.id
         run: bash deploy/deploy-landing.sh

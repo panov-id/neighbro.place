@@ -1,0 +1,7 @@
+# Production robots policy. Non-production environments (dev, uat) never serve this file:
+# deploy/deploy-landing.sh replaces it with a Disallow-all one, so the staging copies of
+# the landing cannot be indexed as duplicates of production.
+User-agent: *
+Allow: /
+
+Sitemap: https://neighbro.place/sitemap.xml

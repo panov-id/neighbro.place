@@ -7,8 +7,10 @@
 //   apiUrl          — relay backend base (waitlist + client-error); deploy injects per env
 //   alphaUrl        — where "enter the alpha" goes after signup ("" = hidden)
 //   vapidPublicKey  — enables the push-subscribe offer ("" = hidden)
+//   analyticsId     — GA4 measurement ID; "" = no analytics and no consent banner
 window.__XOR_CONFIG__ = {
   apiUrl: "",
   alphaUrl: "",
   vapidPublicKey: "",
+  analyticsId: "",
 };

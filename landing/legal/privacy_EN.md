@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 7 July 2026**
+**Last updated: 25 July 2026**
 
 ## 1. Who we are (controller)
 
@@ -50,6 +50,7 @@ We do not sell your data. We share it only with service providers ("processors")
 - **CDN / delivery** (e.g. Bunny) — serving the site and app.
 - **Payments** (e.g. PayPal) — if you buy internal balance; payment data is handled by the provider, not stored by us.
 - **Push delivery** — your browser's push service, if you opt in.
+- **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.
 
 We may disclose data if required by law or to protect safety and rights.
 
@@ -71,7 +72,13 @@ We take reasonable technical and organizational measures to protect data. No met
 
 ## 12. Local storage / cookies
 
-We use browser **local storage** for your device identity and preferences (name, age, language, theme). We do not use tracking/advertising cookies.
+We use browser **local storage** for your device identity and preferences (name, age, language, theme). We do not use advertising cookies and we do not sell or share data with ad networks.
+
+**Analytics on the website.** On **neighbro.place** we measure visits with **Google Analytics 4** (Google Ireland Limited). It is **off by default**: the analytics script is not downloaded and no cookie is set until you press "accept" in the cookie banner. If you decline, nothing is loaded and nothing is sent. Legal basis is your **consent**.
+
+If you accept, Google Analytics sets cookies and processes your IP address (truncated — we enable IP anonymization), page addresses, referrer, approximate location derived from the IP, and device/browser data, and we record one event when a waitlist signup succeeds. Data may be processed outside the EEA under the safeguards in section 8. We do not use it for advertising or profiling.
+
+**Withdrawing consent.** Your choice is stored in your browser. The "cookies" link in the footer brings the banner back so you can change it, and clearing site data for neighbro.place resets it as well. Your browser's own cookie controls, or any content blocker, work too.
 
 ## 13. Changes
 

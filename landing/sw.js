@@ -57,9 +57,14 @@ self.addEventListener('fetch', (event) => {
         }
         return res;
       }).catch(() => {
-        // Offline and uncached: for a page navigation, fall back to the
-        // precached app shell ('/') so we never show the browser error page.
-        if (event.request.mode === 'navigate') return caches.match('/');
+        // Offline and uncached: for a page navigation, fall back to a cached shell so we
+        // never show the browser error page. Each language is its own page under /xx/, so
+        // prefer that language's shell and only then the root, which is English.
+        if (event.request.mode === 'navigate') {
+          const segment = url.pathname.split('/')[1];
+          const shell = /^[a-z]{2}$/.test(segment) ? `/${segment}/` : '/';
+          return caches.match(shell).then((page) => page || caches.match('/'));
+        }
         return cached;
       });
       return cached || net;

@@ -19,8 +19,26 @@ Copy and visual tone follow neighbro.place's European-flavored identity (see the
 
 ## Technical constraints
 
-- Static, no build step — a single HTML file with inline styles, as it is now.
+- Static — a single source HTML file with inline styles. The only build step is `landing/build-pages.mjs`, which fans it out per language at deploy time (below). Node runs only through `deploy/run-node.sh`: in a container locally, directly on the runner in CI.
 - The waitlist form keeps submitting email to the relay backend (`POST /waitlist`, see the existing `index.html`); block 2 is purely informational, no logic of its own.
+
+## Languages and addresses
+
+Translations live in a single `T` dictionary inside `index.html`, which stays the single source of truth. At deploy time the generator turns that page into 10 static pages:
+
+- `neighbro.place/` — English, and the `x-default` target;
+- `neighbro.place/ru/`, `/de/`, `/fr/`, `/es/`, `/el/`, `/uk/`, `/be/`, `/kk/`, `/ka/`.
+
+Each page carries its own `canonical`, translated `title`/`description`/`og:*`/`twitter:*`, its own `og:locale` with the alternates listed, reciprocal `hreflang`, and `FAQPage` markup in its own language. Language pages rely on `<base href="/">`, which means **in-page anchors (`href="#…"`) are forbidden on the landing** — the generator fails deliberately if one appears.
+
+On generated pages the language switcher navigates to a URL; in the raw source (local development without the generator) it still swaps text in place. A first-time visitor landing on the root with another language is redirected once to their own page, if we publish that language.
+
+## Analytics and consent
+
+- GA4 is switched on by the `analyticsId` flag in `config.js`, which deploy fills from `ANALYTICS_ID`. Empty means no counter and no banner — which is exactly how dev and uat run.
+- Without explicit consent `gtag.js` is never downloaded. Declining means zero outbound requests. The choice is stored in `nb-consent`.
+- Consent can be withdrawn through the "cookies" button in the footer, which brings the banner back.
+- Only production is indexable: any `LANDING_ENV` other than `prod` gets `Disallow: /`, a `noindex` meta tag in every HTML file (language folders included), and no sitemap.
 
 ## Open questions
 
