@@ -43,6 +43,7 @@ jobs:
           BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
           BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
           RELAY_API_URL: ${{ secrets.RELAY_API_URL }}
+          RELAY_PUBLISHABLE_KEY: ${{ secrets.RELAY_PUBLISHABLE_KEY }}
           LANDING_ENV: uat
           RUN_NODE_NATIVE: '1'
           SITE_ORIGIN: https://uat.neighbro.panov.id

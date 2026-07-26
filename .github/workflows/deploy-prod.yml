@@ -26,6 +26,7 @@ jobs:
           BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
           BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
           RELAY_API_URL: ${{ secrets.RELAY_API_URL }}
+          RELAY_PUBLISHABLE_KEY: ${{ secrets.RELAY_PUBLISHABLE_KEY }}
           ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
           SEARCH_CONSOLE_TOKEN: ${{ secrets.SEARCH_CONSOLE_TOKEN }}
           LANDING_ENV: prod

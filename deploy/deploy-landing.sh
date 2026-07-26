@@ -7,6 +7,11 @@
 #   BUNNY_STORAGE_API_KEY    Storage Zone password
 #   RELAY_API_URL            relay backend base for this environment (waitlist + client-error)
 # Optional env:
+#   RELAY_PUBLISHABLE_KEY    the relay API key naming this brand to the backend.
+#                            Publishable by design — it ships inside config.js.
+#                            Empty leaves the relay resolving the brand from the
+#                            request host, which stops working once the relay
+#                            environment sets REQUIRE_API_KEY=true
 #   BUNNY_PULL_ZONE_ID       numeric Pull Zone ID (for cache purge)
 #   BUNNY_API_KEY            account API key (purge; falls back to storage key)
 #   SOURCE_TAG               waitlist source tag (default: neighbro.place-landing)
