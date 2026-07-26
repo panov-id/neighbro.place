@@ -769,11 +769,20 @@
 <script>
   const CFG = window.__XOR_CONFIG__ || {};
   const API_URL = CFG.apiUrl ?? "";                 // relay backend (waitlist + client-error)
+  // Names this landing's tenant to the relay. Public by design — it lives in
+  // this file. Empty until the environment injects one, and the relay then falls
+  // back to resolving the brand from the host.
+  const PUBLISHABLE_KEY = CFG.publishableKey ?? "";
+  const apiHeaders = () =>
+    PUBLISHABLE_KEY
+      ? { "Content-Type": "application/json", "x-api-key": PUBLISHABLE_KEY }
+      : { "Content-Type": "application/json" };
   const SOURCE = "neighbro.place-landing";
   const BRAND = "neighbro";
 
   // Client error sink → relay POST /client-error (same-origin when apiUrl is empty,
-  // e.g. a local relay stand). No auth header: the node is CORS-gated.
+  // e.g. a local relay stand). Carries the publishable key so the node files the
+  // error under this brand; CORS still gates who may call it at all.
   const ERR_ENDPOINT = API_URL + "/client-error";
   function currentEnv() {
     const h = location.hostname;
@@ -796,7 +805,7 @@
       };
       fetch(ERR_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: apiHeaders(),
         body: JSON.stringify(payload),
         keepalive: true,
       }).catch(() => {});
@@ -1689,7 +1698,7 @@
       const j = sub.toJSON();
       const res = await fetch(`${API_URL}/push-subscriptions`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: apiHeaders(),
         body: JSON.stringify({ endpoint: j.endpoint, p256dh: j.keys.p256dh, auth: j.keys.auth, source: SOURCE, brand: BRAND, lang: LANG }),
       });
       if (!res.ok) throw new Error("save failed"); // don't swallow a backend failure
@@ -1722,7 +1731,7 @@
       try {
         const res = await fetch(`${API_URL}/waitlist`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: apiHeaders(),
           // Carry language + colour theme so the welcome email matches the site.
           body: JSON.stringify({
             email, source: SOURCE, brand: BRAND, early_access: true,

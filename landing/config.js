@@ -5,11 +5,14 @@
 //
 // Feature flags — "чик и полетело":
 //   apiUrl          — relay backend base (waitlist + client-error); deploy injects per env
+//   publishableKey  — relay API key naming this brand ("" = the relay falls back
+//                     to resolving the brand from the request host)
 //   alphaUrl        — where "enter the alpha" goes after signup ("" = hidden)
 //   vapidPublicKey  — enables the push-subscribe offer ("" = hidden)
 //   analyticsId     — GA4 measurement ID; "" = no analytics and no consent banner
 window.__XOR_CONFIG__ = {
   apiUrl: "",
+  publishableKey: "",
   alphaUrl: "",
   vapidPublicKey: "",
   analyticsId: "",
