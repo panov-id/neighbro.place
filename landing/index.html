@@ -815,6 +815,35 @@
   addEventListener("error", (e) => logClientError("window.onerror", e.error || { message: e.message }, { filename: e.filename, lineno: e.lineno, colno: e.colno }));
   addEventListener("unhandledrejection", (e) => logClientError("unhandledrejection", e.reason, null));
 
+  // Our own page counter, on our own backend. It sends no identifier, no address
+  // and no user agent, and stores nothing on the device that outlives the tab —
+  // so it needs no consent and runs regardless of the banner. That is the point:
+  // a counter that only sees visitors who agreed cannot tell you how many came.
+  // The referrer goes as-is; the relay keeps only its host.
+  function countPageview() {
+    if (!API_URL) return;
+    try {
+      let firstInTab = false;
+      try {
+        firstInTab = !sessionStorage.getItem("nb-seen");
+        if (firstInTab) sessionStorage.setItem("nb-seen", "1");
+      } catch (e) { /* private mode: counted as a repeat, never fatal */ }
+      fetch(API_URL + "/pageview", {
+        method: "POST",
+        headers: apiHeaders(),
+        body: JSON.stringify({
+          path: location.pathname,
+          lang: document.documentElement.lang || LANG,
+          referrer: document.referrer || null,
+          viewport: window.innerWidth || null,
+          first_in_tab: firstInTab,
+          source: SOURCE,
+        }),
+        keepalive: true,
+      }).catch(() => {});
+    } catch (e) { /* a counter must never throw */ }
+  }
+
   const T = {
     en: {
       cookieText: "We count visits with Google Analytics. Nothing loads until you say yes.",
@@ -1626,6 +1655,7 @@
 
   // Auto: follow the browser default until the user picks a language themselves.
   applyLang(detectLang(), false);
+  countPageview(); // after the language is settled, so the row records the one shown
 
   // First arrival at the root: if we publish the reader's own language, send them there
   // once and remember it. Generated pages only, so local development is untouched; the

@@ -38,6 +38,11 @@ Repositories:
 - [x] **The language switcher navigates to a URL**, a soft browser-language redirect on the
       root, `<base href="/">` on language pages, and a generator-level ban on in-page
       anchors.
+- [x] **Our own page counter** (2026-07-27) — `POST /pageview` on the relay; it runs
+      without consent because there is nothing to consent to: no address, no user agent,
+      no identifier, and nothing on the device but a `sessionStorage` flag that dies with
+      the tab. The referrer is cut to its host, the width to a bucket. Own first-view
+      key: `nb-seen`. Read in the panel on the "Page views" page.
 - [x] **GA4 behind the `analyticsId` flag** plus a `waitlist_signup` event; CSP widened for
       the Google domains.
 - [x] **Consent banner** and a footer "cookies" button to withdraw; copy in all 10
@@ -63,6 +68,9 @@ Repositories:
 
 - [ ] The `ANALYTICS_ID` and `SEARCH_CONSOLE_TOKEN` secrets in GitHub — without them
       production deploys without a counter and without verification.
+- [x] The checks that need no production are closed by `landing/verify-seo.mjs` (the file
+      is shared with sosed): run 2026-07-27 against a generated copy — 10 languages serve
+      translated HTML without JS, every page carries 11 `hreflang` alternates and all of
+      them exist, the 12-URL sitemap parses and holds no dead link.
 - [ ] After the first production deploy: submit the sitemap to Search Console and verify
-      live — language pages serve translated HTML, `hreflang` is reciprocal, no requests to
-      Google without consent, no CSP violations in the console.
+      live — no requests to Google without consent, no CSP violations in the console.

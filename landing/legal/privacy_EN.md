@@ -78,7 +78,9 @@ We use browser **local storage** for your device identity and preferences (name,
 
 If you accept, Google Analytics sets cookies and processes your IP address (truncated — we enable IP anonymization), page addresses, referrer, approximate location derived from the IP, and device/browser data, and we record one event when a waitlist signup succeeds. Data may be processed outside the EEA under the safeguards in section 8. We do not use it for advertising or profiling.
 
-**Withdrawing consent.** Your choice is stored in your browser. The "cookies" link in the footer brings the banner back so you can change it, and clearing site data for neighbro.place resets it as well. Your browser's own cookie controls, or any content blocker, work too.
+**Our own page counter.** Separately from Google Analytics, we count page views on our own servers, and this one runs whatever you answer in the banner — because there is nothing in it to consent to. Per view we record the page path, the page language, the **host** of the referring site (never its full address, which can carry your search terms), a coarse screen size (mobile / tablet / desktop) and whether this was the first view in this browser tab. We do **not** record your IP address, your user agent, or any identifier — nothing is stored on your device beyond a flag that disappears when you close the tab, so the counter cannot recognise you on a later visit or across sites. It exists to tell us how many people read which page in which language. Legal basis is our **legitimate interest** in knowing whether the site works.
+
+**Withdrawing consent.** Your choice is stored in your browser. The "cookies" link in the footer brings the banner back so you can change it, and clearing site data for neighbro.place resets it as well. Your browser's own cookie controls, or any content blocker, work too. The choice concerns Google Analytics; the page counter above is unaffected because it identifies nobody.
 
 ## 13. Changes
 
