@@ -66,11 +66,15 @@ Repositories:
 
 ## Remaining
 
-- [ ] The `ANALYTICS_ID` and `SEARCH_CONSOLE_TOKEN` secrets in GitHub — without them
-      production deploys without a counter and without verification.
+- [x] `ANALYTICS_ID` = `G-K7EP39DDK9` set in the `production` environment
+      (2026-07-27); dev and uat stay empty, hence no counter and no banner there.
+      `SEARCH_CONSOLE_TOKEN` is left unset: the domain is verified by DNS.
 - [x] The checks that need no production are closed by `landing/verify-seo.mjs` (the file
       is shared with sosed): run 2026-07-27 against a generated copy — 10 languages serve
       translated HTML without JS, every page carries 11 `hreflang` alternates and all of
       them exist, the 12-URL sitemap parses and holds no dead link.
-- [ ] After the first production deploy: submit the sitemap to Search Console and verify
-      live — no requests to Google without consent, no CSP violations in the console.
+- [x] Production shipped 2026-07-27; the domain is verified by a TXT record and the
+      sitemap is submitted to Search Console (`https://neighbro.place/sitemap.xml`,
+      12 URLs).
+- [ ] Verify live in a browser: no requests to Google domains before consent (our own
+      counter still runs — it needs none), no CSP violations in the console.
