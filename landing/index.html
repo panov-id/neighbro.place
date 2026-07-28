@@ -765,7 +765,13 @@
     });
   }
 </script>
-<script src="config.js"></script>
+<!-- The build id busts the browser cache for this one file: a visitor who
+     loaded it before a key existed would otherwise keep a keyless config for
+     as long as its old max-age says (the page itself is cached for minutes,
+     so the new address is picked up on the next visit). The service worker
+     matches on pathname, so the query does not disturb its network-first
+     handling. -->
+<script src="config.js?v=__BUILD__"></script>
 <script>
   const CFG = window.__XOR_CONFIG__ || {};
   const API_URL = CFG.apiUrl ?? "";                 // relay backend (waitlist + client-error)

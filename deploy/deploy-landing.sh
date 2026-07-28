@@ -94,11 +94,17 @@ else
   echo "  Environment '${LANDING_ENV}': crawling disabled, sitemap removed."
 fi
 
-# Bust the service-worker cache: stamp the build id into sw.js.
+# Bust the caches that must not outlive a deploy: the service worker, and the
+# config.js reference inside every generated page. config.js is served with a
+# long max-age like any .js file, so without a versioned address a returning
+# visitor keeps whichever copy they already have — including one from before the
+# publishable key existed.
+BUILD=$(git -C "$ROOT_DIR" rev-parse --short HEAD 2>/dev/null || date +%s)
 if [ -f "$STAGE/sw.js" ]; then
-  BUILD=$(git -C "$ROOT_DIR" rev-parse --short HEAD 2>/dev/null || date +%s)
   sed -i "s/__BUILD__/${BUILD}/g" "$STAGE/sw.js"
 fi
+# After the generator ran, so the language pages carry the same build id.
+find "$STAGE" -name '*.html' -exec sed -i "s/__BUILD__/${BUILD}/g" {} +
 
 echo "Deploying landing → Bunny zone '${BUNNY_STORAGE_ZONE}'"
 ( cd "$STAGE" && find . -type f -print0 | while IFS= read -r -d '' f; do
