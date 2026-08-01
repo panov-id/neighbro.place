@@ -1,14 +1,22 @@
-# The seventeen screens of neighbro.place, drawn.
+# The seventeen screens of neighbro.place, drawn — both themes, at ×2.
 #
-# One definition per screen, rendered into design/interface/ beside this file.
-# Run it from anywhere:
+# One definition per screen, rendered into design/interface/ beside this file:
 #
 #     python3 design/interface/render.py
 #
-# Colours are read off ../../landing/index.html by hand and written here; type
-# comes from ../../landing/fonts.css, imported by each sheet rather than copied.
-# Every "Открытые вопросы" in ../../docs/ is printed on the sheet it belongs to,
-# so a drawing never quietly settles what the description left open.
+# Each sheet carries the screen twice: once on the dark ground, which is the
+# default, and once on the light. Not the same drawing re-coloured — the screen is
+# a function of its face and is asked again with the light one, because a colour
+# written inline does not answer to a class.
+#
+# The geometry stays in the product's own units — a phone is 390 by 844 here — and
+# the sheet declares itself twice that size, so a 10px caption arrives at 20 and
+# can be read without leaning in.
+#
+# Colours are read off ../../landing/index.html; type comes from
+# ../../landing/fonts.css, imported by each sheet rather than copied. Every
+# "Открытые вопросы" in ../../docs/ is printed on the sheet it belongs to, so a
+# drawing never quietly settles what the description left open.
 #
 # THE BROTHER HAS A COPY OF THIS FILE. sosed.place/design/interface/render.py carries the same
 # script with its own face and its own screens. The two products share a family
@@ -25,12 +33,29 @@ BRAND = dict(
     title="neighbro", dot="●",
     bg="#0c0b09", panel="#14120e", panel2="#26221a", border="#3a331f",
     fg="#ede8dd", muted="#8a8172", muted2="#928979",
-    accent="#c6a24e", ink="#1a1509", warn="#c6a24e", err="#ff8a80",
+    accent="#c6a24e", accent_text="#c6a24e", ink="#1a1509",
+    warn="#c6a24e", err="#ff8a80",
     # gold on panel-2 is 6.54:1, so here the eyebrow may carry the accent
     brow="#c6a24e",
     places=["KREUZBERG", "NEUKÖLLN", "MITTE", "PRENZLAUER BERG", "WEDDING"],
     here="kreuzberg",
 )
+
+# The light half of each face. Read off the same landing/index.html: sosed puts
+# it in :root[data-theme="light"], neighbro in [data-mode="light"]. The accent is
+# NOT here — it arrives from the other axis and is identical in both themes, which
+# is why an accent eyebrow that passes on a dark ground fails on a light one.
+LIGHT = {
+    "neighbro": dict(bg="#e9e6dd", panel="#f4f1e8", panel2="#ded9cc", border="#1e1b14",
+                     fg="#181510", muted="#5f5a4e", muted2="#5c5749",
+                     # gold is 1.94:1 as a word here — the worst number in either
+                     # storefront — so it may only be a fill
+                     brow="#5c5749", warn="#735b25", accent_text="#735b25"),
+}
+
+def lit(b):
+    """The same face, in the light theme."""
+    return dict(b, **LIGHT[b["key"]])
 
 def L(brand, ru, en):
     """A string with a face. Not a translation table — the two products speak
@@ -122,7 +147,7 @@ def card(b, y, brow, lines, meta, plus=True, w=342, x=16, fresh=False):
                         "timer" if fresh and b["key"] == "neighbro" else "mono"))
     if plus:
         out += [circle(x + w - 26, y + 26, 16, "none", b["border"]),
-                text(x + w - 26, y + 32, "+", "disp", f'fill:{b["accent"]}', 16, "middle")]
+                text(x + w - 26, y + 32, "+", "disp", f'fill:{b["accent_text"]}', 16, "middle")]
     return out, h
 
 def field(b, y, placeholder, w=342, x=16):
@@ -189,7 +214,7 @@ def nav(b, on="feed"):
             out += [rect(cx - 11, 766, 22, 3, b["accent"] if chosen else b["muted2"], None, 1),
                     rect(cx - 11, 773, 15, 3, b["accent"] if chosen else b["muted2"], None, 1)]
         out.append(text(cx, 806, label, "mono",
-                        f'fill:{b["accent"]}' if chosen else "", anchor="middle"))
+                        f'fill:{b["accent_text"]}' if chosen else "", anchor="middle"))
     return out
 
 def phone(b, x, y, label, body, dim_backdrop=None):
@@ -208,76 +233,98 @@ def phone(b, x, y, label, body, dim_backdrop=None):
     ])
 
 # ───────────────────────────────────────────────────────────────── the sheet ──
-def sheet_svg(b, number, name, lede, phones, notes, height):
+# Drawn at ×2. The geometry stays in the product's own units — a phone is 390 by
+# 844 here, and every measurement on the sheet is in those units — but width and
+# height are doubled against the viewBox, so the browser paints it twice the size.
+# A 10px caption arrives at 20px and can be read without leaning in, and nothing
+# in the layout had to be re-tuned to get there.
+SCALE = 2
+
+def classes(b, prefix=""):
+    sel = f".{prefix} " if prefix else ""
+    return f'''    {sel}.disp  {{ font-weight: 800; letter-spacing: -0.03em; fill: {b["fg"]}; }}
+    {sel}.body  {{ font-size: 13px; font-weight: 500; fill: {b["fg"]}; }}
+    {sel}.msg   {{ font-size: 14px; font-weight: 500; fill: {b["fg"]}; }}
+    {sel}.small {{ font-size: 11px; font-weight: 500; fill: {b["fg"]}; }}
+    {sel}.muted {{ font-size: 12px; font-weight: 500; fill: {b["muted2"]}; }}
+    {sel}.mono  {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: {b["muted2"]}; }}
+    {sel}.brow  {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: {b["brow"]}; font-weight: 600; }}
+    {sel}.warn  {{ font-size: 11px; font-weight: 600; fill: {b["warn"]}; }}
+    {sel}.timer {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: {b["brow"]}; font-weight: 600; }}'''
+
+def sheet_svg(b, number, name, lede, phones, phones_light, notes, height):
     W = 1440
-    head = [
-        rect(0, 0, 1344, 104, b["accent"], None, 16),
-        text(28, 46, f'{L(b, "Экран", "Screen")} {number}', "disp",
-             f'fill:{b["ink"]}', 30) if False else "",
-    ]
+    light = lit(b)
     parts = []
-    parts.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" '
-                 f'viewBox="0 0 {W} {height}" font-family="Golos Text, system-ui, sans-serif">')
+    parts.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{W * SCALE}" '
+                 f'height="{height * SCALE}" viewBox="0 0 {W} {height}" '
+                 f'font-family="Golos Text, system-ui, sans-serif">')
     parts.append(f'  <title>{esc(b["title"])} — {L(b, "экран", "screen")} {number}, {esc(name)}</title>')
-    parts.append(f'  <desc>{esc(lede)} Нарисовано по ../../docs/{number:02d}-*_RU.md; '
+    parts.append(f'  <desc>{esc(lede)} Обе темы. Нарисовано по ../../docs/{b["doc"]}; '
                  f'цвета сняты с landing/index.html.</desc>')
     parts.append(f'''  <style>
     @import url("../../landing/fonts.css");
     /* Colour lives in style, never in a fill attribute: a class outranks the
        attribute, so a per-element fill="…" is thrown away and the label is
        painted in the class colour on top of its own ground. */
-    .disp  {{ font-weight: 800; letter-spacing: -0.03em; fill: {b["fg"]}; }}
-    .body  {{ font-size: 13px; font-weight: 500; fill: {b["fg"]}; }}
-    .msg   {{ font-size: 14px; font-weight: 500; fill: {b["fg"]}; }}
-    .small {{ font-size: 11px; font-weight: 500; fill: {b["fg"]}; }}
-    .muted {{ font-size: 12px; font-weight: 500; fill: {b["muted2"]}; }}
-    .mono  {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
-             font-size: 10px; fill: {b["muted2"]}; }}
-    .brow  {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
-             font-size: 10px; letter-spacing: 2.2px; fill: {b["brow"]}; font-weight: 600; }}
-    .warn  {{ font-size: 11px; font-weight: 600; fill: {b["warn"]}; }}
-    /* neighbro's prototype sets a live message's timer in the accent, uppercase
-       and wide. sosed has no such thing — there the timer is a plain caption. */
-    .timer {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
-             font-size: 10px; letter-spacing: 1.4px; fill: {b["brow"]}; font-weight: 600; }}
+{classes(b)}
+    /* The same drawing again, on the light ground. Only the values differ — the
+       geometry, the wording and the layout are one thing drawn twice. */
+{classes(light, "on-light")}
   </style>''')
     parts.append(f'  {rect(0, 0, W, height, b["bg"])}')
 
-    # masthead
     parts.append(g(48, 40, [
         rect(0, 0, 1344, 104, b["accent"], None, 16),
         text(28, 46, f'{L(b, "Экран", "Screen")} {number}. {name}', "disp", f'fill:{b["ink"]}', 30),
         text(28, 74, lede, "body", f'fill:{b["ink"]}'),
         text(1316, 46, f'design/interface/{number:02d}-{b["slug"]}.svg', "mono",
              f'fill:{b["ink"]}', anchor="end"),
-        text(1316, 74, f'по ../../docs/{b["doc"]}', "mono", f'fill:{b["ink"]}', anchor="end"),
+        text(1316, 74, f'×2 · обе темы · ../../docs/{b["doc"]}', "mono", f'fill:{b["ink"]}', anchor="end"),
     ]))
 
-    # phones
-    parts.append(g(48, 184, [
-        text(0, 16, L(b, "Телефон · 390 × 844", "Phone · 390 × 844"), "disp", size=19),
-        line(0, 26, 1344, 26, b["border"]),
-        text(0, 48, L(b, "Истинная геометрия, без масштаба.",
-                      "True geometry, no scaling."), "muted"),
-    ]))
-    for i, (label, body, backdrop) in enumerate(phones):
-        parts.append(phone(b, 48 + i * 477, 256, label, body, backdrop))
+    row = 184
+    for theme, face, cls, shots in (
+            (L(b, "ТЁМНАЯ · ПО УМОЛЧАНИЮ", "DARK · THE DEFAULT"), b, "", phones),
+            (L(b, "СВЕТЛАЯ", "LIGHT"), light, "on-light", phones_light)):
+        parts.append(g(48, row, [
+            text(0, 16, theme, "disp", size=19),
+            line(0, 26, 1344, 26, face["border"] if cls else b["border"]),
+        ]))
+        if cls:
+            parts.append(f'  <rect x="0" y="{row + 44}" width="{W}" height="946" fill="{face["bg"]}"/>')
+        inner = []
+        for i, (label, body, backdrop) in enumerate(shots):
+            inner.append(phone(face, 48 + i * 477, row + 72, label, body, backdrop))
+        block = "\n".join(inner)
+        parts.append(f'  <g class="{cls}">\n{block}\n  </g>' if cls else block)
+        row += 1010
 
-    # open questions
-    ny = 1160
-    parts.append(g(48, ny, [
-        text(0, 16, L(b, "Открытое, из описания экрана",
-                      "Left open by the screen's description"), "disp", size=19),
-        line(0, 26, 1344, 26, b["border"]),
-    ]))
-    body = [rect(0, 0, 1344, 40 + 24 * len(notes), b["panel"], None, 16)]
-    body[0] = (f'<rect x="0" y="0" width="1344" height="{40 + 24 * len(notes)}" rx="16" '
-               f'fill="{b["panel"]}" stroke="{b["warn"]}" stroke-width="2"/>')
+    # A screen with one phone left two thirds of the sheet empty to its right, and
+    # at ×2 that is a lot of nothing. The notes move up beside it and the sheet
+    # loses the void and a third of its height.
+    beside = len(phones) == 1
+    nx, ny, nw = ((525, 184 + 72, 867) if beside
+                  else (48, row + 40, 1344))
+    if not beside:
+        parts.append(g(48, row, [
+            text(0, 16, L(b, "Открытое, из описания экрана",
+                          "Left open by the screen\u2019s description"), "disp", size=19),
+            line(0, 26, 1344, 26, b["border"]),
+        ]))
+    body = [(f'<rect x="0" y="0" width="{nw}" height="{56 + 24 * len(notes)}" rx="16" '
+             f'fill="{b["panel"]}" stroke="{b["warn"]}" stroke-width="2"/>')]
+    if beside:
+        body.append(text(24, 30, L(b, "ОТКРЫТОЕ, ИЗ ОПИСАНИЯ ЭКРАНА",
+                                   "LEFT OPEN BY THE DESCRIPTION"), "brow"))
     for i, n in enumerate(notes):
-        body.append(text(24, 34 + 24 * i, n, "warn" if i == 0 else "body"))
-    parts.append(g(48, ny + 40, body))
+        body.append(text(24, (56 if beside else 34) + 24 * i, n, "warn" if i == 0 else "body"))
+    parts.append(g(nx, ny, body))
 
-    foot = ny + 40 + 40 + 24 * len(notes) + 24
+    foot = row + (24 if beside else 40 + 40 + 24 * len(notes) + 24)
     parts.append(g(48, foot, [
         rect(0, -8, 1344, 36, b["panel2"], b["border"], 10),
         text(24, 16, f'Цвета — landing/index.html, шрифт — landing/fonts.css. '
@@ -668,7 +715,7 @@ def s10(b):
                         "Messages with a sexual undertone"), "msg"),
         text(24, 552, L(b, "выключено — включается на отдельном экране",
                         "off — turned on from a screen of its own"), "mono"),
-        text(342, 534, "→", "disp", f'fill:{b["accent"]}', 18, "end"),
+        text(342, 534, "→", "disp", f'fill:{b["accent_text"]}', 18, "end"),
         rect(16, 590, 342, 74, b["panel"], b["border"], 16),
         text(32, 618, L(b, "ЭТО НЕ ПЕРЕКЛЮЧАТЕЛЬ", "THIS IS NOT A TOGGLE"), "brow"),
         text(32, 642, L(b, "к нему приходят, а не щёлкают мимоходом",
@@ -844,7 +891,7 @@ def s15(b):
     for d in docs:
         body += [rect(16, y, 342, 60, b["panel2"], b["border"], 16),
                  text(32, y + 36, d, "msg"),
-                 text(342, y + 37, "→", "disp", f'fill:{b["accent"]}', 16, "end")]
+                 text(342, y + 37, "→", "disp", f'fill:{b["accent_text"]}', 16, "end")]
         y += 72
     body += [
         rect(16, y + 24, 342, 108, b["panel"], b["border"], 16),
@@ -955,8 +1002,12 @@ if __name__ == "__main__":
     for number, slug, doc, build in SCREENS:
         b = dict(BRAND, slug=slug, doc=doc)
         name, lede, phones, notes = build(b)
-        height = 1160 + 40 + 40 + 24 * len(notes) + 24 + 60
+        # the light row is the same screen asked again with the light face
+        _, _, phones_light, _ = build(dict(lit(b), slug=slug, doc=doc))
+        beside = len(phones) == 1
+        height = (184 + 1010 * 2 + 24 + 60) if beside else \
+                 (184 + 1010 * 2 + 40 + 40 + 24 * len(notes) + 24 + 60)
         with open(os.path.join(OUT, f"{number:02d}-{slug}.svg"), "w") as f:
-            f.write(sheet_svg(b, number, name, lede, phones, notes, height) + "\n")
+            f.write(sheet_svg(b, number, name, lede, phones, phones_light, notes, height) + "\n")
         written += 1
     print(f"листов написано: {written} → {OUT}")

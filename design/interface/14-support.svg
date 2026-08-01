@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1396" viewBox="0 0 1440 1396" font-family="Golos Text, system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="4576" viewBox="0 0 1440 2288" font-family="Golos Text, system-ui, sans-serif">
   <title>neighbro — screen 14, support</title>
-  <desc>A field, a button and an honest promise: it will be recorded and the team told. Nothing more is promised. Нарисовано по ../../docs/14-*_RU.md; цвета сняты с landing/index.html.</desc>
+  <desc>A field, a button and an honest promise: it will be recorded and the team told. Nothing more is promised. Обе темы. Нарисовано по ../../docs/14-support_RU.md; цвета сняты с landing/index.html.</desc>
   <style>
     @import url("../../landing/fonts.css");
     /* Colour lives in style, never in a fill attribute: a class outranks the
@@ -16,23 +16,34 @@
     .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
              font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
     .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
-    /* neighbro's prototype sets a live message's timer in the accent, uppercase
-       and wide. sosed has no such thing — there the timer is a plain caption. */
     .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
              font-size: 10px; letter-spacing: 1.4px; fill: #c6a24e; font-weight: 600; }
+    /* The same drawing again, on the light ground. Only the values differ — the
+       geometry, the wording and the layout are one thing drawn twice. */
+    .on-light .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #181510; }
+    .on-light .body  { font-size: 13px; font-weight: 500; fill: #181510; }
+    .on-light .msg   { font-size: 14px; font-weight: 500; fill: #181510; }
+    .on-light .small { font-size: 11px; font-weight: 500; fill: #181510; }
+    .on-light .muted { font-size: 12px; font-weight: 500; fill: #5c5749; }
+    .on-light .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #5c5749; }
+    .on-light .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #5c5749; font-weight: 600; }
+    .on-light .warn  { font-size: 11px; font-weight: 600; fill: #735b25; }
+    .on-light .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #5c5749; font-weight: 600; }
   </style>
-  <rect x="0" y="0" width="1440" height="1396" rx="0" fill="#0c0b09"/>
+  <rect x="0" y="0" width="1440" height="2288" rx="0" fill="#0c0b09"/>
     <g transform="translate(48,40)">
       <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
       <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 14. support</text>
       <text x="28" y="74" class="body" style="fill:#1a1509">A field, a button and an honest promise: it will be recorded and the team told. Nothing more is promised.</text>
       <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/14-support.svg</text>
-      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">по ../../docs/14-support_RU.md</text>
+      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">×2 · обе темы · ../../docs/14-support_RU.md</text>
     </g>
     <g transform="translate(48,184)">
-      <text x="0" y="16" class="disp" font-size="19">Phone · 390 × 844</text>
+      <text x="0" y="16" class="disp" font-size="19">DARK · THE DEFAULT</text>
       <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
-      <text x="0" y="48" class="muted">True geometry, no scaling.</text>
     </g>
   <g transform="translate(48,256)">
     <text x="0" y="0" class="brow">SUPPORT</text>
@@ -62,17 +73,49 @@
       <text x="32" y="556" class="mono">only the record and the notice</text>
     </g>
   </g>
-    <g transform="translate(48,1160)">
-      <text x="0" y="16" class="disp" font-size="19">Left open by the screen's description</text>
-      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(48,1194)">
+      <text x="0" y="16" class="disp" font-size="19">LIGHT</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#1e1b14" stroke-width="1"/>
     </g>
-    <g transform="translate(48,1200)">
-      <rect x="0" y="0" width="1344" height="112" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
-      <text x="24" y="34" class="warn">Two questions the description leaves open.</text>
-      <text x="24" y="58" class="body">Where the button lives — the feed's header, settings, or an icon of its own — is undecided.</text>
-      <text x="24" y="82" class="body">Whether a person gets a confirmation is undecided. The drawing does not promise one.</text>
+  <rect x="0" y="1238" width="1440" height="946" fill="#e9e6dd"/>
+  <g class="on-light">
+  <g transform="translate(48,1266)">
+    <text x="0" y="0" class="brow">SUPPORT</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">always reachable</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">support</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+      <text x="24" y="150" class="brow">WHAT HAPPENED</text>
+      <rect x="16" y="166" width="342" height="180" rx="16" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <text x="32" y="196" class="small" style="fill:#5c5749">tell it as it is…</text>
+      <rect x="16" y="372" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <text x="187.0" y="400" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Send</text>
+      <rect x="16" y="440" width="342" height="128" rx="16" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+      <text x="32" y="468" class="brow">WHAT HAPPENS NEXT</text>
+      <text x="32" y="494" class="mono">the message lands in a table,</text>
+      <text x="32" y="512" class="mono">the team gets a notification</text>
+      <text x="32" y="538" class="warn">there is no automatic reply —</text>
+      <text x="32" y="556" class="mono">only the record and the notice</text>
     </g>
-    <g transform="translate(48,1336)">
+  </g>
+  </g>
+    <g transform="translate(525,256)">
+      <rect x="0" y="0" width="867" height="128" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
+      <text x="24" y="30" class="brow">LEFT OPEN BY THE DESCRIPTION</text>
+      <text x="24" y="56" class="warn">Two questions the description leaves open.</text>
+      <text x="24" y="80" class="body">Where the button lives — the feed's header, settings, or an icon of its own — is undecided.</text>
+      <text x="24" y="104" class="body">Whether a person gets a confirmation is undecided. The drawing does not promise one.</text>
+    </g>
+    <g transform="translate(48,2228)">
       <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
       <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
     </g>

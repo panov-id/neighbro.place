@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1420" viewBox="0 0 1440 1420" font-family="Golos Text, system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="4928" viewBox="0 0 1440 2464" font-family="Golos Text, system-ui, sans-serif">
   <title>neighbro — screen 5, what you can do to a message</title>
-  <desc>The like is in the open. Report and block are hidden — they are not offered, they are reached for. Нарисовано по ../../docs/05-*_RU.md; цвета сняты с landing/index.html.</desc>
+  <desc>The like is in the open. Report and block are hidden — they are not offered, they are reached for. Обе темы. Нарисовано по ../../docs/05-message-actions_RU.md; цвета сняты с landing/index.html.</desc>
   <style>
     @import url("../../landing/fonts.css");
     /* Colour lives in style, never in a fill attribute: a class outranks the
@@ -16,23 +16,34 @@
     .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
              font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
     .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
-    /* neighbro's prototype sets a live message's timer in the accent, uppercase
-       and wide. sosed has no such thing — there the timer is a plain caption. */
     .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
              font-size: 10px; letter-spacing: 1.4px; fill: #c6a24e; font-weight: 600; }
+    /* The same drawing again, on the light ground. Only the values differ — the
+       geometry, the wording and the layout are one thing drawn twice. */
+    .on-light .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #181510; }
+    .on-light .body  { font-size: 13px; font-weight: 500; fill: #181510; }
+    .on-light .msg   { font-size: 14px; font-weight: 500; fill: #181510; }
+    .on-light .small { font-size: 11px; font-weight: 500; fill: #181510; }
+    .on-light .muted { font-size: 12px; font-weight: 500; fill: #5c5749; }
+    .on-light .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #5c5749; }
+    .on-light .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #5c5749; font-weight: 600; }
+    .on-light .warn  { font-size: 11px; font-weight: 600; fill: #735b25; }
+    .on-light .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #5c5749; font-weight: 600; }
   </style>
-  <rect x="0" y="0" width="1440" height="1420" rx="0" fill="#0c0b09"/>
+  <rect x="0" y="0" width="1440" height="2464" rx="0" fill="#0c0b09"/>
     <g transform="translate(48,40)">
       <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
       <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 5. what you can do to a message</text>
       <text x="28" y="74" class="body" style="fill:#1a1509">The like is in the open. Report and block are hidden — they are not offered, they are reached for.</text>
       <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/05-message-actions.svg</text>
-      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">по ../../docs/05-message-actions_RU.md</text>
+      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">×2 · обе темы · ../../docs/05-message-actions_RU.md</text>
     </g>
     <g transform="translate(48,184)">
-      <text x="0" y="16" class="disp" font-size="19">Phone · 390 × 844</text>
+      <text x="0" y="16" class="disp" font-size="19">DARK · THE DEFAULT</text>
       <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
-      <text x="0" y="48" class="muted">True geometry, no scaling.</text>
     </g>
   <g transform="translate(48,256)">
     <text x="0" y="0" class="brow">THE CARD</text>
@@ -99,18 +110,90 @@
 </g>
     </g>
   </g>
-    <g transform="translate(48,1160)">
-      <text x="0" y="16" class="disp" font-size="19">Left open by the screen's description</text>
+    <g transform="translate(48,1194)">
+      <text x="0" y="16" class="disp" font-size="19">LIGHT</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#1e1b14" stroke-width="1"/>
+    </g>
+  <rect x="0" y="1238" width="1440" height="946" fill="#e9e6dd"/>
+  <g class="on-light">
+  <g transform="translate(48,1266)">
+    <text x="0" y="0" class="brow">THE CARD</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="16" y="150" width="342" height="98" rx="16" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+      <text x="32" y="174" class="brow">NEUKÖLLN · 29</text>
+      <text x="32" y="198" class="msg">Anyone else hear that brass</text>
+      <text x="32" y="218" class="msg">band in the yard at seven?</text>
+      <text x="32" y="240" class="mono">14:32</text>
+      <circle cx="316" cy="176" r="16" fill="none" stroke="#1e1b14" stroke-width="1"/>
+      <path d="M310 176 a5 5 0 0 1 6 -3 a5 5 0 0 1 6 3 q0 6 -6 9 q-6 -3 -6 -9 z" fill="#c6a24e"/>
+      <text x="316" y="236" class="disp" font-size="16" style="fill:#5c5749" text-anchor="middle">···</text>
+      <text x="16" y="290" class="mono">the like is outside, on the card</text>
+      <text x="16" y="308" class="mono">report and block live in a hidden menu</text>
+    </g>
+  </g>
+  <g transform="translate(525,1266)">
+    <text x="0" y="0" class="brow">THE HIDDEN MENU</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <g opacity="0.45">
+        <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+        <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+        <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+        <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+        <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+        <text x="178" y="63" class="small">nearby</text>
+        <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+        <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
+        <text x="292" y="63" class="small">You</text>
+        <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+        <rect x="16" y="150" width="342" height="98" rx="16" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+        <text x="32" y="174" class="brow">NEUKÖLLN · 29</text>
+        <text x="32" y="198" class="msg">Anyone else hear that brass</text>
+        <text x="32" y="218" class="msg">band in the yard at seven?</text>
+        <text x="32" y="240" class="mono">14:32</text>
+      </g>
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd" opacity="0.62"/>
+      <g transform="translate(0,480)">
+  <path d="M0 40 A35 35 0 0 1 35 5 L339 5 A35 35 0 0 1 374 40 L374 348 L0 348 Z" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+  <rect x="163" y="18" width="48" height="4" rx="2" fill="#1e1b14"/>
+  <text x="24" y="58" class="disp" font-size="18">This message</text>
+  <text x="24" y="126" class="msg">Report</text>
+  <text x="24" y="150" class="mono">lowers the author's posting quota</text>
+  <line x1="24" y1="174" x2="350" y2="174" stroke="#1e1b14" stroke-width="1"/>
+  <text x="24" y="210" class="msg">Block</text>
+  <text x="24" y="234" class="mono">lowers the quota and hides this message</text>
+  <text x="24" y="252" class="mono">for you alone — everyone else still sees it</text>
+  <line x1="24" y1="276" x2="350" y2="276" stroke="#1e1b14" stroke-width="1"/>
+  <text x="24" y="312" class="msg" style="fill:#5c5749">Cancel</text>
+</g>
+    </g>
+  </g>
+  </g>
+    <g transform="translate(48,2204)">
+      <text x="0" y="16" class="disp" font-size="19">Left open by the screen’s description</text>
       <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
     </g>
-    <g transform="translate(48,1200)">
-      <rect x="0" y="0" width="1344" height="136" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
+    <g transform="translate(48,2244)">
+      <rect x="0" y="0" width="1344" height="152" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
       <text x="24" y="34" class="warn">Three questions the description leaves open.</text>
       <text x="24" y="58" class="body">Whether a report also hides the message for the person who reported it, the way blocking does.</text>
       <text x="24" y="82" class="body">How the hidden menu is summoned is undecided: a long press, a «···» button or a swipe.</text>
       <text x="24" y="106" class="body">How far a report or a block lowers the quota is undecided.</text>
     </g>
-    <g transform="translate(48,1360)">
+    <g transform="translate(48,2404)">
       <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
       <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
     </g>
