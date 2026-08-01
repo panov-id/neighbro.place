@@ -64,6 +64,12 @@ const PAIRS = [
   ["muted text on a panel", "muted", "panel", 4.5],
   ["secondary muted on the page", "muted-2", "bg", 4.5],
   ["secondary muted on a panel", "muted-2", "panel", 4.5],
+  // A nested plate is a busier ground than a panel, and --muted does not clear it.
+  // Moving that colour is no fix: it collapses into --muted-2, which is what the
+  // palette already keeps for exactly this ground. So the line is a rule rather
+  // than a threshold — it prints the number and names the token to use instead.
+  ["muted on a nested plate — use --muted-2 there", "muted", "panel-2", null],
+  ["secondary muted on a nested plate", "muted-2", "panel-2", 4.5],
 ];
 
 let failed = 0;
@@ -85,11 +91,55 @@ for (const block of modes) {
   for (const [label, foreground, background, minimum] of PAIRS) {
     if (!values[foreground] || !values[background]) continue;
     const value = ratio(values[foreground], values[background]);
+    if (minimum === null) {
+      console.log(`   note ${label.padEnd(46)} ${value.toFixed(2)}:1`);
+      continue;
+    }
     const ok = value >= minimum;
     if (!ok) failed += 1;
     console.log(
-      `   ${ok ? "ok  " : "FAIL"} ${label.padEnd(30)} ${value.toFixed(2)}:1 (needs ${minimum})`,
+      `   ${ok ? "ok  " : "FAIL"} ${label.padEnd(46)} ${value.toFixed(2)}:1 (needs ${minimum})`,
     );
+  }
+}
+
+
+// --accent-text depends on the accent AND on the theme, so it cannot ride on the
+// merged `base`: the last block declared would win and the check would be about
+// nothing. Each block that sets one is measured against the grounds of the theme
+// its own selector names. A negated attribute — :not([data-mode="light"]) — names
+// the theme it is NOT, which is how the dark default is written here, so it has to
+// be read as an exclusion or the dark set gets measured on the light ground.
+//
+// This is the pair that was missing while this counter said "every pair passes":
+// the accent as a fill was always checked; the accent as a word never was.
+const textAccents = declared.filter((block) => block.values["accent-text"]);
+const themeIn = (selector) => {
+  const positive = selector.replace(/:not\([^)]*\)/g, "");
+  const negated = [...selector.matchAll(/:not\((\[[^\]]+\])\)/g)].map((m) => m[1]);
+  const key = (s) => (s.match(/\[data-(?:theme|mode)="(?:light|dark)"\]/) || [null])[0];
+  return { is: key(positive), isNot: negated.map(key).filter(Boolean) };
+};
+
+console.log("\nthe accent as small text, on each ground of its theme");
+for (const block of textAccents) {
+  const want = themeIn(block.selector);
+  for (const mode of modes) {
+    const has = themeIn(mode.selector).is;
+    if (want.is && want.is !== has) continue;
+    if (want.isNot.length && want.isNot.includes(has)) continue;
+    if (!want.is && !want.isNot.length && has) continue;
+    const values = { ...base, ...mode.values };
+    for (const ground of ["bg", "panel", "panel-2"]) {
+      if (!values[ground]) continue;
+      const value = ratio(block.values["accent-text"], values[ground]);
+      const ok = value >= 4.5;
+      if (!ok) failed += 1;
+      console.log(
+        `   ${ok ? "ok  " : "FAIL"} ${(block.selector + " on --" + ground).padEnd(56)} ` +
+          `${value.toFixed(2)}:1`,
+      );
+    }
   }
 }
 

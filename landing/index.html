@@ -90,6 +90,11 @@
     --muted-2: #928979; /* raised to meet 4.5:1 on the dark ground */
     --accent: #c6a24e;
     --accent-ink: #1a1509;
+    /* The accent as a word, not as a fill. As a fill it passes everywhere; as
+       small text gold measures 1.94:1 on the light ground — the worst number in
+       either storefront — and crimson, azure and violet fall to ~3.0 on the dark.
+       Same hue and saturation, the lightness moved until the worst ground clears. */
+    --accent-text: var(--accent);
     --err: #ff8a80;
     --ok: #9ecb7a;
   }
@@ -97,12 +102,21 @@
   [data-mode="light"] {
     --bg: #e9e6dd; --panel: #f4f1e8; --panel-2: #ded9cc;
     --border: #1e1b14; --fg: #181510; --muted: #5f5a4e; --muted-2: #5c5749; /* darkened to meet 4.5:1 on the light ground */
+    --accent-text: #735b25; /* gold, taken down for the light ground */
   }
   /* Accent themes — a curated subset, cycled by clicking the logo. */
-  [data-theme="crimson"] { --accent: #cc2f27; --accent-ink: #fdeceb; }
-  [data-theme="teal"]    { --accent: #1fb39a; --accent-ink: #04201c; }
-  [data-theme="azure"]   { --accent: #336eb2; --accent-ink: #eaf2ff; }
-  [data-theme="violet"]  { --accent: #8550c5; --accent-ink: #f3ecfd; }
+  [data-theme="crimson"] { --accent: #cc2f27; --accent-ink: #fdeceb; --accent-text: var(--accent); }
+  [data-theme="teal"]    { --accent: #1fb39a; --accent-ink: #04201c; --accent-text: var(--accent); }
+  [data-theme="azure"]   { --accent: #336eb2; --accent-ink: #eaf2ff; --accent-text: var(--accent); }
+  [data-theme="violet"]  { --accent: #8550c5; --accent-ink: #f3ecfd; --accent-text: var(--accent); }
+  /* dark is the absence of data-mode, so the dark overrides say so */
+  :root:not([data-mode="light"])[data-theme="crimson"] { --accent-text: #e0625b; }
+  :root:not([data-mode="light"])[data-theme="azure"] { --accent-text: #548dce; }
+  :root:not([data-mode="light"])[data-theme="violet"] { --accent-text: #a077d2; }
+  [data-mode="light"][data-theme="crimson"] { --accent-text: #b32922; }
+  [data-mode="light"][data-theme="teal"] { --accent-text: #126a5c; }
+  [data-mode="light"][data-theme="azure"] { --accent-text: #2d609c; }
+  [data-mode="light"][data-theme="violet"] { --accent-text: #793fbe; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   /* Keyboard focus must be visible on every interactive element. */
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -122,7 +136,7 @@
     letter-spacing: 0.22em;
     font-size: 0.72rem;
   }
-  .accent { color: var(--accent); }
+  .accent { color: var(--accent-text); }
 
   /* Splash — accent ground overtaken by a circle of the main color; logo + brand in the center. */
   .splash { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: var(--accent); overflow: hidden; }
@@ -189,7 +203,7 @@
   .lang-select:hover { border-color: var(--accent); color: var(--accent); }
 
   .hero { text-align: center; padding: 84px 0 12px; }
-  .hero .eyebrow { color: var(--accent); margin-bottom: 26px; }
+  .hero .eyebrow { color: var(--accent-text); margin-bottom: 26px; }
   h1 {
     font-family: "Unbounded", "Golos Text", system-ui, sans-serif; font-weight: 900;
     font-size: clamp(1.9rem, 7vw, 4.6rem); line-height: 0.98;
@@ -197,8 +211,8 @@
     overflow-wrap: break-word;
   }
   h1 .outline {
-    color: var(--accent); /* fallback: visible if text-stroke is unsupported */
-    -webkit-text-stroke: 1.4px var(--accent);
+    color: var(--accent-text); /* fallback: visible if text-stroke is unsupported */
+    -webkit-text-stroke: 1.4px var(--accent-text);
     display: block;
   }
   /* Where the stroke renders, hollow the fill out. */
@@ -261,7 +275,7 @@
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
   .step { padding: 0 34px; border-left: 1px solid var(--border); }
   .step:first-child { border-left: none; padding-left: 0; }
-  .step .k { color: var(--accent); margin-bottom: 18px; }
+  .step .k { color: var(--accent-text); margin-bottom: 18px; }
   .step h2 {
     font-family: "Unbounded", "Golos Text", system-ui, sans-serif; font-weight: 800;
     text-transform: uppercase; font-size: 1.18rem; line-height: 1.15; margin-bottom: 14px;
@@ -281,7 +295,7 @@
   /* Device mockups — live app UI, recolors with theme */
   .mockups { margin: 24px 0 10px; }
   .mock-stage { position: relative; width: 720px; max-width: 100%; margin: 0 auto; min-height: 520px; }
-  .mock-cap { text-align: center; color: var(--accent); margin-top: 30px; }
+  .mock-cap { text-align: center; color: var(--accent-text); margin-top: 30px; }
 
   .device-wide {
     position: absolute; left: 0; top: 26px; width: 452px; max-width: 64%;
@@ -294,9 +308,9 @@
   .dw-card { border: 2px solid var(--border); background: var(--bg); padding: 12px 14px; box-shadow: 4px 4px 0 rgba(0,0,0,0.4); }
   .dw-card p { line-height: 1.35; margin-bottom: 8px; font-size: 0.92rem; }
   .dw-meta { color: var(--muted-2); font-size: 0.56rem; letter-spacing: 0.1em; }
-  .dw-meta .ppl { color: var(--accent); }
+  .dw-meta .ppl { color: var(--accent-text); }
   .dw-chat { border-left: 2px solid var(--border); padding: 14px; display: flex; flex-direction: column; gap: 8px; }
-  .dw-chat-h { color: var(--accent); font-size: 0.54rem; margin-bottom: 4px; }
+  .dw-chat-h { color: var(--accent-text); font-size: 0.54rem; margin-bottom: 4px; }
   .bub { border: 2px solid var(--border); padding: 8px 10px; font-size: 0.78rem; line-height: 1.3; max-width: 92%; }
   .bub.them { align-self: flex-start; background: var(--panel-2); box-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
   .bub.me { align-self: flex-end; background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: -3px 3px 0 rgba(0,0,0,0.4); }
@@ -317,7 +331,7 @@
   .p-card.r2 { transform: rotate(1deg); }
   .p-card p { line-height: 1.34; font-size: 0.86rem; margin-bottom: 8px; }
   .p-meta { display: flex; align-items: center; gap: 12px; color: var(--muted-2); font-size: 0.54rem; letter-spacing: 0.08em; }
-  .p-meta .ppl { color: var(--accent); }
+  .p-meta .ppl { color: var(--accent-text); }
   .p-meta .plus { margin-left: auto; color: var(--accent); border: 1px solid var(--border); width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; }
   .p-nav { display: flex; border-top: 2px solid var(--border); }
   .p-nav span { flex: 1; text-align: center; padding: 12px 2px; font-size: 0.5rem; letter-spacing: 0.08em; color: var(--muted); border-right: 2px solid var(--border); text-transform: uppercase; }
@@ -331,7 +345,7 @@
 
   /* Features — why it feels different */
   .features { margin: 84px 0 30px; }
-  .feat-eyebrow { color: var(--accent); margin-bottom: 30px; text-align: center; }
+  .feat-eyebrow { color: var(--accent-text); margin-bottom: 30px; text-align: center; }
   .feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); border: 2px solid var(--border); }
   .feat { padding: 30px 32px; border-right: 2px solid var(--border); border-bottom: 2px solid var(--border); }
   .feat:nth-child(2n) { border-right: none; }
@@ -460,13 +474,13 @@
 
   /* visible neighborhood feed wall (like sosed) */
   .feedwall{margin:72px 0 8px}
-  .fw-head{color:var(--accent);margin-bottom:22px}
+  .fw-head{color:var(--accent-text);margin-bottom:22px}
   .fw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
   .fw-card{position:relative;border:2px solid var(--border);background:var(--panel);padding:18px 20px;box-shadow:4px 4px 0 rgba(0,0,0,.32);transition:transform .16s ease,border-color .16s ease}
   .fw-card:hover{transform:translateY(-3px);border-color:var(--accent)}
   .fw-card p{line-height:1.4;font-size:1rem;padding-right:28px}
   .fw-meta{display:flex;align-items:center;gap:12px;margin-top:14px;color:var(--muted-2);font-size:.56rem;letter-spacing:.08em}
-  .fw-meta .ppl{color:var(--accent)}
+  .fw-meta .ppl{color:var(--accent-text)}
   .fw-meta .plus{margin-left:auto;color:var(--accent);border:1px solid var(--border);width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center}
   .fw-card:hover .plus{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 
