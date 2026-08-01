@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1372" viewBox="0 0 1440 1372" font-family="Golos Text, system-ui, sans-serif">
+  <title>neighbro — screen 9, my messages</title>
+  <desc>Your own live messages, each with its timer and a way to delete it, and what is left of the quota. Нарисовано по ../../docs/09-*_RU.md; цвета сняты с landing/index.html.</desc>
+  <style>
+    @import url("../../landing/fonts.css");
+    /* Colour lives in style, never in a fill attribute: a class outranks the
+       attribute, so a per-element fill="…" is thrown away and the label is
+       painted in the class colour on top of its own ground. */
+    .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #ede8dd; }
+    .body  { font-size: 13px; font-weight: 500; fill: #ede8dd; }
+    .msg   { font-size: 14px; font-weight: 500; fill: #ede8dd; }
+    .small { font-size: 11px; font-weight: 500; fill: #ede8dd; }
+    .muted { font-size: 12px; font-weight: 500; fill: #928979; }
+    .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #928979; }
+    .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
+    .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
+    /* neighbro's prototype sets a live message's timer in the accent, uppercase
+       and wide. sosed has no such thing — there the timer is a plain caption. */
+    .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #c6a24e; font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1440" height="1372" rx="0" fill="#0c0b09"/>
+    <g transform="translate(48,40)">
+      <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
+      <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 9. my messages</text>
+      <text x="28" y="74" class="body" style="fill:#1a1509">Your own live messages, each with its timer and a way to delete it, and what is left of the quota.</text>
+      <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/09-my-messages.svg</text>
+      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">по ../../docs/09-my-messages_RU.md</text>
+    </g>
+    <g transform="translate(48,184)">
+      <text x="0" y="16" class="disp" font-size="19">Phone · 390 × 844</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+      <text x="0" y="48" class="muted">True geometry, no scaling.</text>
+    </g>
+  <g transform="translate(48,256)">
+    <text x="0" y="0" class="brow">MY MESSAGES</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">quota: 3 of 5</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">my messages</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <rect x="16" y="130" width="342" height="104" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="160" class="msg">Someone put a ping-pong</text>
+      <text x="32" y="180" class="msg">table in the yard.</text>
+      <text x="32" y="204" class="mono">gone in 3:41</text>
+      <circle cx="332" cy="156" r="15" fill="none" stroke="#3a331f" stroke-width="1"/>
+      <text x="332" y="161" class="disp" font-size="15" style="fill:#928979" text-anchor="middle">×</text>
+      <rect x="16" y="246" width="342" height="104" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="276" class="msg">Anyone else hear that</text>
+      <text x="32" y="296" class="msg">band at seven?</text>
+      <text x="32" y="320" class="mono">gone in 1:07</text>
+      <circle cx="332" cy="272" r="15" fill="none" stroke="#3a331f" stroke-width="1"/>
+      <text x="332" y="277" class="disp" font-size="15" style="fill:#928979" text-anchor="middle">×</text>
+      <rect x="16" y="362" width="342" height="84" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="392" class="msg">Looking for a pool buddy.</text>
+      <text x="32" y="416" class="mono">gone in 0:12</text>
+      <circle cx="332" cy="388" r="15" fill="none" stroke="#3a331f" stroke-width="1"/>
+      <text x="332" y="393" class="disp" font-size="15" style="fill:#928979" text-anchor="middle">×</text>
+      <rect x="16" y="478" width="342" height="78" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="506" class="brow">QUOTA</text>
+      <rect x="32" y="520" width="46" height="8" rx="4" fill="#c6a24e"/>
+      <rect x="94" y="520" width="46" height="8" rx="4" fill="#c6a24e"/>
+      <rect x="156" y="520" width="46" height="8" rx="4" fill="#c6a24e"/>
+      <rect x="218" y="520" width="46" height="8" rx="4" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <rect x="280" y="520" width="46" height="8" rx="4" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="550" class="mono">three of five in use</text>
+      <text x="16" y="596" class="mono">deleted by hand, it leaves the feed at once</text>
+      <text x="16" y="614" class="mono">the timer and the quota are the feed's own</text>
+    </g>
+  </g>
+    <g transform="translate(48,1160)">
+      <text x="0" y="16" class="disp" font-size="19">Left open by the screen's description</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    </g>
+    <g transform="translate(48,1200)">
+      <rect x="0" y="0" width="1344" height="88" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
+      <text x="24" y="34" class="warn">The description leaves nothing open here.</text>
+      <text x="24" y="58" class="body">Whether the quota refills with time is left open on screen 13, not here.</text>
+    </g>
+    <g transform="translate(48,1312)">
+      <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
+    </g>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1396" viewBox="0 0 1440 1396" font-family="Golos Text, system-ui, sans-serif">
+  <title>neighbro — screen 6, the match, and the chat</title>
+  <desc>A mutual like opens the chat and shows what matched. The next like does not start a second one. Нарисовано по ../../docs/06-*_RU.md; цвета сняты с landing/index.html.</desc>
+  <style>
+    @import url("../../landing/fonts.css");
+    /* Colour lives in style, never in a fill attribute: a class outranks the
+       attribute, so a per-element fill="…" is thrown away and the label is
+       painted in the class colour on top of its own ground. */
+    .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #ede8dd; }
+    .body  { font-size: 13px; font-weight: 500; fill: #ede8dd; }
+    .msg   { font-size: 14px; font-weight: 500; fill: #ede8dd; }
+    .small { font-size: 11px; font-weight: 500; fill: #ede8dd; }
+    .muted { font-size: 12px; font-weight: 500; fill: #928979; }
+    .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #928979; }
+    .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
+    .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
+    /* neighbro's prototype sets a live message's timer in the accent, uppercase
+       and wide. sosed has no such thing — there the timer is a plain caption. */
+    .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #c6a24e; font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1440" height="1396" rx="0" fill="#0c0b09"/>
+    <g transform="translate(48,40)">
+      <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
+      <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 6. the match, and the chat</text>
+      <text x="28" y="74" class="body" style="fill:#1a1509">A mutual like opens the chat and shows what matched. The next like does not start a second one.</text>
+      <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/06-match-and-chat.svg</text>
+      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">по ../../docs/06-match-and-chat_RU.md</text>
+    </g>
+    <g transform="translate(48,184)">
+      <text x="0" y="16" class="disp" font-size="19">Phone · 390 × 844</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+      <text x="0" y="48" class="muted">True geometry, no scaling.</text>
+    </g>
+  <g transform="translate(48,256)">
+    <text x="0" y="0" class="brow">MATCH</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <text x="187" y="200" class="brow" text-anchor="middle">MUTUAL</text>
+      <text x="187" y="260" class="disp" font-size="34" text-anchor="middle">It matched</text>
+      <text x="187" y="300" class="muted" text-anchor="middle">on this message</text>
+      <rect x="16" y="340" width="342" height="98" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="364" class="brow">NEUKÖLLN · 29</text>
+      <text x="32" y="388" class="msg">Anyone else hear that brass</text>
+      <text x="32" y="408" class="msg">band in the yard at seven?</text>
+      <text x="32" y="430" class="mono">14:32</text>
+      <text x="187" y="500" class="mono" text-anchor="middle">the chat is already open</text>
+      <rect x="16" y="700" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <text x="187.0" y="728" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Say something</text>
+    </g>
+  </g>
+  <g transform="translate(525,256)">
+    <text x="0" y="0" class="brow">A LIKE AFTER THE MATCH</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">private</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">NEUKÖLLN · 29</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <rect x="16" y="140" width="300" height="64" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="166" class="msg">Heard it. Thought it was in my head.</text>
+      <text x="32" y="188" class="mono">14:33</text>
+      <rect x="98" y="216" width="260" height="64" rx="16" fill="#c6a24e"/>
+      <text x="114" y="242" class="msg" style="fill:#1a1509">So there are two of us.</text>
+      <text x="114" y="264" class="mono" style="fill:#1a1509">14:35 · DELIVERED</text>
+      <rect x="16" y="300" width="342" height="70" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 322 a5 5 0 0 1 6 -3 a5 5 0 0 1 6 3 q0 6 -6 9 q-6 -3 -6 -9 z" fill="#c6a24e"/>
+      <text x="56" y="328" class="small">another of your messages was liked</text>
+      <text x="32" y="354" class="mono">“Selling a bike, a year on the balcony”</text>
+      <text x="16" y="400" class="mono">a second like does not open a second chat —</text>
+      <text x="16" y="418" class="mono">it arrives here, as a notice</text>
+      <rect x="16" y="700" width="278" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="728" class="small" style="fill:#928979">write…</text>
+      <circle cx="332" cy="722" r="22" fill="#c6a24e"/>
+      <text x="332" y="729" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">↑</text>
+    </g>
+  </g>
+    <g transform="translate(48,1160)">
+      <text x="0" y="16" class="disp" font-size="19">Left open by the screen's description</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    </g>
+    <g transform="translate(48,1200)">
+      <rect x="0" y="0" width="1344" height="112" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
+      <text x="24" y="34" class="warn">Two questions the description leaves open.</text>
+      <text x="24" y="58" class="body">The match animation's look is undecided — only what it says is drawn here.</text>
+      <text x="24" y="82" class="body">The form of the in-chat like notice is undecided: a line, a card or an icon.</text>
+    </g>
+    <g transform="translate(48,1336)">
+      <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
+    </g>
+</svg>

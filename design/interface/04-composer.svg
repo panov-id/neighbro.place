@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1420" viewBox="0 0 1440 1420" font-family="Golos Text, system-ui, sans-serif">
+  <title>neighbro — screen 4, writing a message</title>
+  <desc>128 characters, how many of you, and how much to blur the place. No pictures — those belong to promoted messages only. Нарисовано по ../../docs/04-*_RU.md; цвета сняты с landing/index.html.</desc>
+  <style>
+    @import url("../../landing/fonts.css");
+    /* Colour lives in style, never in a fill attribute: a class outranks the
+       attribute, so a per-element fill="…" is thrown away and the label is
+       painted in the class colour on top of its own ground. */
+    .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #ede8dd; }
+    .body  { font-size: 13px; font-weight: 500; fill: #ede8dd; }
+    .msg   { font-size: 14px; font-weight: 500; fill: #ede8dd; }
+    .small { font-size: 11px; font-weight: 500; fill: #ede8dd; }
+    .muted { font-size: 12px; font-weight: 500; fill: #928979; }
+    .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #928979; }
+    .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
+    .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
+    /* neighbro's prototype sets a live message's timer in the accent, uppercase
+       and wide. sosed has no such thing — there the timer is a plain caption. */
+    .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #c6a24e; font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1440" height="1420" rx="0" fill="#0c0b09"/>
+    <g transform="translate(48,40)">
+      <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
+      <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 4. writing a message</text>
+      <text x="28" y="74" class="body" style="fill:#1a1509">128 characters, how many of you, and how much to blur the place. No pictures — those belong to promoted messages only.</text>
+      <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/04-composer.svg</text>
+      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">по ../../docs/04-post-composer_RU.md</text>
+    </g>
+    <g transform="translate(48,184)">
+      <text x="0" y="16" class="disp" font-size="19">Phone · 390 × 844</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+      <text x="0" y="48" class="muted">True geometry, no scaling.</text>
+    </g>
+  <g transform="translate(48,256)">
+    <text x="0" y="0" class="brow">COMPOSE</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">seen by whoever is near</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">say it</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <rect x="16" y="130" width="342" height="128" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="160" class="msg">Someone put a ping-pong table</text>
+      <text x="32" y="180" class="msg">in the yard. Bats are with the porter.</text>
+      <text x="32" y="244" class="mono">64 / 128</text>
+      <text x="24" y="296" class="brow">HOW MANY OF YOU</text>
+      <rect x="24" y="312" width="46" height="38" rx="12" fill="#c6a24e"/>
+      <rect x="82" y="312" width="46" height="38" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="140" y="312" width="46" height="38" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="198" y="312" width="46" height="38" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="256" y="312" width="46" height="38" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="47" y="337" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">1</text>
+      <text x="105" y="337" class="small" text-anchor="middle">2</text>
+      <text x="163" y="337" class="small" text-anchor="middle">3</text>
+      <text x="221" y="337" class="small" text-anchor="middle">4</text>
+      <text x="279" y="337" class="small" text-anchor="middle">5+</text>
+      <text x="24" y="400" class="brow">BLUR THE PLACE</text>
+      <text x="24" y="428" class="msg">about 300 m</text>
+      <rect x="24" y="454" width="326" height="4" rx="2" fill="#26221a"/>
+      <rect x="24" y="454" width="110" height="4" rx="2" fill="#c6a24e"/>
+      <circle cx="134" cy="456" r="11" fill="#c6a24e"/>
+      <text x="24" y="500" class="mono">the message belongs to an area, not a point —</text>
+      <text x="24" y="518" class="mono">the author's privacy, not the post's reach</text>
+      <rect x="16" y="560" width="342" height="92" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <text x="32" y="588" class="brow">BEFORE IT IS PUBLISHED</text>
+      <text x="32" y="612" class="mono">a toxicity and tone check,</text>
+      <text x="32" y="630" class="mono">a captcha and a rate limit — feed only</text>
+      <rect x="16" y="700" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <text x="187.0" y="728" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Send</text>
+    </g>
+  </g>
+    <g transform="translate(48,1160)">
+      <text x="0" y="16" class="disp" font-size="19">Left open by the screen's description</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    </g>
+    <g transform="translate(48,1200)">
+      <rect x="0" y="0" width="1344" height="136" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
+      <text x="24" y="34" class="warn">Three questions the description leaves open.</text>
+      <text x="24" y="58" class="body">Whether a separate city and country field survives, or the blur slider replaced it.</text>
+      <text x="24" y="82" class="body">The blur slider's default and bounds are undecided. The 300 m here is an example.</text>
+      <text x="24" y="106" class="body">The send button's form is undecided — here it carries a word.</text>
+    </g>
+    <g transform="translate(48,1360)">
+      <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
+    </g>
+</svg>

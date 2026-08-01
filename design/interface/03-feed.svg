@@ -1,0 +1,375 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2280" viewBox="0 0 1440 2280" font-family="Golos Text, system-ui, sans-serif">
+  <title>neighbro.place — экран 3, лента района</title>
+  <desc>
+    Лента района в телефоне и на широком экране в три колонки, панель фильтров,
+    карта радиуса. По docs/03-feed-screen_RU.md; цвета сняты с landing/index.html.
+  </desc>
+
+  <style>
+    @import url("../../landing/fonts.css");
+    /* Colour lives in style, never in a fill attribute: a class outranks the
+       attribute, so fill="…" is dropped and the label is painted in the class
+       colour on top of its own ground. */
+    .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #ede8dd; }
+    .body  { font-size: 13px; font-weight: 500; fill: #ede8dd; }
+    .msg   { font-size: 14px; font-weight: 500; fill: #ede8dd; }
+    .small { font-size: 11px; font-weight: 500; fill: #ede8dd; }
+    .muted { font-size: 12px; font-weight: 500; fill: #928979; }
+    .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #928979; }
+    .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #928979; font-weight: 600; }
+    .gold  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
+    .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
+  </style>
+
+  <rect width="1440" height="2280" fill="#0c0b09"/>
+
+  <!-- ============================================================ MASTHEAD == -->
+  <g transform="translate(48,40)">
+    <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
+    <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 3<tspan style="fill:#f4f1e8">.</tspan> the feed</text>
+    <text x="28" y="74" class="body" style="fill:#1a1509">
+      Новые внизу, как в чате, а не стопкой постов сверху. Фильтры возраста и радиуса живут в ленте, а не в онбординге.
+    </text>
+    <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/03-feed.svg</text>
+    <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">по ../../docs/03-feed-screen_RU.md</text>
+  </g>
+
+  <!-- ============================================================== ТЕЛЕФОН == -->
+  <g transform="translate(48,184)">
+    <text x="0" y="16" class="disp" font-size="19">Телефон · 390 × 844</text>
+    <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    <text x="0" y="48" class="muted">Истинная геометрия. Три состояния: лента, фильтр возраста, радиус на карте.</text>
+  </g>
+
+  <!-- лента -->
+  <g transform="translate(48,256)">
+    <text x="0" y="0" class="brow">FEED</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+
+      <g transform="translate(0,44)">
+        <text x="20" y="20" class="disp" font-size="20">nearby</text>
+        <text x="20" y="40" class="mono">kreuzberg · 1.2 km</text>
+        <g transform="translate(310,2)">
+          <rect x="0" y="0" width="44" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+          <line x1="13" y1="16" x2="31" y2="16" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+          <line x1="16" y1="22" x2="28" y2="22" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+          <line x1="19" y1="28" x2="25" y2="28" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <line x1="0" y1="60" x2="374" y2="60" stroke="#3a331f" stroke-width="1"/>
+      </g>
+
+      <text x="187" y="128" class="mono" text-anchor="middle">↑ earlier is above</text>
+
+      <g transform="translate(16,326)">
+        <rect x="0" y="0" width="342" height="96" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="24" class="gold">KREUZBERG · 27</text>
+        <text x="16" y="48" class="msg">The corner café put a piano</text>
+        <text x="16" y="68" class="msg">outside. Anyone may play.</text>
+        <text x="16" y="86" class="mono">08:12</text>
+        <circle cx="316" cy="26" r="16" fill="none" stroke="#3a331f" stroke-width="1"/>
+        <text x="316" y="32" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      </g>
+
+      <g transform="translate(16,434)">
+        <rect x="0" y="0" width="342" height="76" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="24" class="gold">NEUKÖLLN · 31</text>
+        <text x="16" y="48" class="msg">Blue scarf left by the canal</text>
+        <text x="16" y="66" class="mono">11:04</text>
+        <circle cx="316" cy="26" r="16" fill="none" stroke="#3a331f" stroke-width="1"/>
+        <text x="316" y="32" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      </g>
+
+      <g transform="translate(16,522)">
+        <rect x="0" y="0" width="342" height="96" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="24" class="gold">MITTE · 24 · DE</text>
+        <text x="16" y="48" class="msg">Wer geht um sieben laufen?</text>
+        <text x="16" y="68" class="msg">Langsames Tempo, versprochen.</text>
+        <text x="16" y="86" class="mono">12:20</text>
+        <circle cx="316" cy="26" r="16" fill="none" stroke="#3a331f" stroke-width="1"/>
+        <text x="316" y="32" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      </g>
+
+      <g transform="translate(16,630)">
+        <rect x="0" y="0" width="342" height="96" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="24" class="gold">KREUZBERG · 29</text>
+        <text x="16" y="48" class="msg">Anyone else hear that brass</text>
+        <text x="16" y="68" class="msg">band in the yard at seven?</text>
+        <text x="16" y="86" class="mono">14:32 · 2 MINUTES AGO</text>
+        <circle cx="316" cy="26" r="16" fill="none" stroke="#3a331f" stroke-width="1"/>
+        <text x="316" y="32" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      </g>
+
+      <g transform="translate(0,742)">
+        <line x1="0" y1="0" x2="374" y2="0" stroke="#3a331f" stroke-width="1"/>
+        <rect x="16" y="16" width="278" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="32" y="43" class="small" style="fill:#928979">say something…</text>
+        <circle cx="332" cy="38" r="22" fill="#c6a24e"/>
+        <text x="332" y="45" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- фильтр возраста -->
+  <g transform="translate(525,256)">
+    <text x="0" y="0" class="brow">AGE FILTER</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+
+      <g opacity="0.45">
+        <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+        <text x="20" y="64" class="disp" font-size="20">nearby</text>
+        <text x="20" y="84" class="mono">kreuzberg · 1.2 km</text>
+        <rect x="310" y="46" width="44" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <line x1="323" y1="60" x2="341" y2="60" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+        <line x1="326" y1="66" x2="338" y2="66" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+        <line x1="329" y1="72" x2="335" y2="72" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+        <line x1="0" y1="104" x2="374" y2="104" stroke="#3a331f" stroke-width="1"/>
+        <g transform="translate(16,250)">
+          <rect x="0" y="0" width="342" height="96" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+          <text x="16" y="24" class="gold">KREUZBERG · 27</text>
+          <text x="16" y="48" class="msg">The corner café put a piano</text>
+          <text x="16" y="68" class="msg">outside. Anyone may play.</text>
+        </g>
+      </g>
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09" opacity="0.62"/>
+
+      <g transform="translate(0,388)">
+        <path d="M0 40 A35 35 0 0 1 35 5 L339 5 A35 35 0 0 1 374 40 L374 440 L0 440 Z" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+        <rect x="163" y="18" width="48" height="4" rx="2" fill="#3a331f"/>
+
+        <text x="24" y="58" class="disp" font-size="18">Filters</text>
+        <text x="24" y="82" class="mono">часть ленты, а не шаг онбординга</text>
+
+        <text x="24" y="126" class="brow">AGE</text>
+        <text x="24" y="154" class="msg">21 to 38</text>
+        <g transform="translate(24,172)">
+          <rect x="0" y="8" width="326" height="4" rx="2" fill="#26221a"/>
+          <rect x="52" y="8" width="180" height="4" rx="2" fill="#c6a24e"/>
+          <circle cx="52" cy="10" r="11" fill="#c6a24e"/>
+          <circle cx="232" cy="10" r="11" fill="#c6a24e"/>
+        </g>
+        <text x="24" y="216" class="mono">18 — предел, который слайдер не переступает</text>
+
+        <text x="24" y="266" class="brow">RADIUS</text>
+        <text x="24" y="294" class="msg">1.2 km</text>
+        <g transform="translate(24,312)">
+          <rect x="0" y="8" width="326" height="4" rx="2" fill="#26221a"/>
+          <rect x="0" y="8" width="118" height="4" rx="2" fill="#c6a24e"/>
+          <circle cx="118" cy="10" r="11" fill="#c6a24e"/>
+        </g>
+        <text x="24" y="356" class="warn">умолчания радиуса не определены — открытый вопрос</text>
+
+        <rect x="24" y="378" width="326" height="44" rx="12" fill="#c6a24e"/>
+        <text x="187" y="405" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Show</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- радиус на карте -->
+  <g transform="translate(1002,256)">
+    <text x="0" y="0" class="brow">RADIUS ON THE MAP</text>
+    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+
+      <g transform="translate(0,44)">
+        <text x="20" y="20" class="disp" font-size="20">radius</text>
+        <text x="20" y="40" class="mono">кружок тянется слайдером</text>
+        <line x1="0" y1="60" x2="374" y2="60" stroke="#3a331f" stroke-width="1"/>
+      </g>
+
+      <g transform="translate(16,128)">
+        <rect x="0" y="0" width="342" height="420" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <g stroke="#3a331f" stroke-width="1" opacity="0.7">
+          <line x1="0" y1="70" x2="342" y2="70"/>
+          <line x1="0" y1="150" x2="342" y2="150"/>
+          <line x1="0" y1="248" x2="342" y2="248"/>
+          <line x1="0" y1="330" x2="342" y2="330"/>
+          <line x1="78" y1="0" x2="78" y2="420"/>
+          <line x1="172" y1="0" x2="172" y2="420"/>
+          <line x1="262" y1="0" x2="262" y2="420"/>
+        </g>
+        <circle cx="171" cy="210" r="118" fill="#c6a24e" opacity="0.16"/>
+        <circle cx="171" cy="210" r="118" fill="none" stroke="#c6a24e" stroke-width="2"/>
+        <circle cx="171" cy="210" r="7" fill="#c6a24e"/>
+        <text x="171" y="356" class="mono" style="fill:#ede8dd" text-anchor="middle">1.2 KM</text>
+      </g>
+
+      <g transform="translate(16,576)">
+        <rect x="0" y="8" width="342" height="4" rx="2" fill="#26221a"/>
+        <rect x="0" y="8" width="124" height="4" rx="2" fill="#c6a24e"/>
+        <circle cx="124" cy="10" r="11" fill="#c6a24e"/>
+      </g>
+      <text x="16" y="624" class="mono">геолокация берётся сама при первом открытии;</text>
+      <text x="16" y="642" class="mono">этот же кружок позволяет задать её руками</text>
+
+      <rect x="16" y="676" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <text x="187" y="703" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Save</text>
+    </g>
+  </g>
+
+  <!-- ======================================================= ШИРОКИЙ ЭКРАН == -->
+  <g transform="translate(48,1160)">
+    <text x="0" y="16" class="disp" font-size="19">Широкий экран · три колонки</text>
+    <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    <text x="0" y="48" class="muted">Лента, список бесед, открытая беседа — как в прототипе. Фильтры сворачиваются в шапку ленты, потому что колонке шириной 420 панель не по карману.</text>
+  </g>
+
+  <g transform="translate(48,1232)">
+    <rect x="0" y="0" width="1344" height="700" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+
+    <g transform="translate(1,1)">
+      <rect x="0" y="0" width="1342" height="56" rx="15" fill="#26221a"/>
+      <text x="24" y="34" class="disp" font-size="18">neighbro<tspan style="fill:#c6a24e">●</tspan></text>
+      <text x="150" y="34" class="mono">kreuzberg · 1.2 km · 34 nearby</text>
+      <rect x="1178" y="12" width="140" height="32" rx="10" fill="#c6a24e"/>
+      <text x="1248" y="33" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Say something</text>
+    </g>
+
+    <line x1="452" y1="57" x2="452" y2="699" stroke="#3a331f" stroke-width="1"/>
+    <line x1="828" y1="57" x2="828" y2="699" stroke="#3a331f" stroke-width="1"/>
+
+    <!-- колонка 1 -->
+    <g transform="translate(24,80)">
+      <text x="0" y="12" class="brow">FEED</text>
+      <g transform="translate(300,-4)">
+        <rect x="0" y="0" width="104" height="24" rx="8" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <line x1="14" y1="9" x2="30" y2="9" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+        <line x1="17" y1="14" x2="27" y2="14" stroke="#c6a24e" stroke-width="2" stroke-linecap="round"/>
+        <text x="42" y="16" class="mono">21–38 · 1.2 km</text>
+      </g>
+
+      <g transform="translate(0,32)">
+        <rect x="0" y="0" width="404" height="104" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="26" class="gold">KREUZBERG · 27</text>
+        <text x="18" y="52" class="msg">The corner café put a piano outside.</text>
+        <text x="18" y="72" class="msg">Anyone may play.</text>
+        <text x="18" y="90" class="mono">08:12</text>
+      </g>
+      <g transform="translate(0,148)">
+        <rect x="0" y="0" width="404" height="84" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="26" class="gold">NEUKÖLLN · 31</text>
+        <text x="18" y="52" class="msg">Blue scarf left by the canal.</text>
+        <text x="18" y="70" class="mono">11:04</text>
+      </g>
+      <g transform="translate(0,244)">
+        <rect x="0" y="0" width="404" height="104" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="26" class="gold">MITTE · 24 · DE</text>
+        <text x="18" y="52" class="msg">Wer geht um sieben laufen?</text>
+        <text x="18" y="72" class="msg">Langsames Tempo, versprochen.</text>
+        <text x="18" y="90" class="mono">12:20</text>
+      </g>
+      <g transform="translate(0,360)">
+        <rect x="0" y="0" width="404" height="104" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="26" class="gold">KREUZBERG · 29</text>
+        <text x="18" y="52" class="msg">Anyone else hear that brass band</text>
+        <text x="18" y="72" class="msg">in the yard at seven?</text>
+        <text x="18" y="90" class="mono">14:32 · 2 MINUTES AGO</text>
+      </g>
+      <text x="0" y="490" class="mono">↓ новые приходят снизу</text>
+      <g transform="translate(0,504)">
+        <rect x="0" y="0" width="404" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="28" class="small" style="fill:#928979">say something…</text>
+        <circle cx="374" cy="22" r="14" fill="#c6a24e"/>
+        <text x="374" y="28" class="disp" font-size="14" style="fill:#1a1509" text-anchor="middle">+</text>
+      </g>
+    </g>
+
+    <!-- колонка 2 -->
+    <g transform="translate(476,80)">
+      <text x="0" y="12" class="brow">CHATS</text>
+
+      <g transform="translate(0,32)">
+        <rect x="0" y="0" width="328" height="72" rx="16" fill="#c6a24e"/>
+        <text x="18" y="28" class="small" style="fill:#1a1509;font-weight:700">Kreuzberg · 29</text>
+        <text x="18" y="50" class="mono" style="fill:#1a1509">So there are two of us. Check…</text>
+        <text x="300" y="28" class="mono" style="fill:#1a1509" text-anchor="end">14:35</text>
+      </g>
+      <g transform="translate(0,116)">
+        <rect x="0" y="0" width="328" height="72" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="28" class="small">Mitte · 24</text>
+        <text x="18" y="50" class="mono">Seven works. Meet at the gate?</text>
+        <text x="300" y="28" class="mono" text-anchor="end">12:41</text>
+        <circle cx="300" cy="46" r="9" fill="#c6a24e"/>
+        <text x="300" y="50" class="mono" style="fill:#1a1509" text-anchor="middle">2</text>
+      </g>
+      <g transform="translate(0,200)">
+        <rect x="0" y="0" width="328" height="72" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="28" class="small">Neukölln · 31</text>
+        <text x="18" y="50" class="mono">Found it, thank you.</text>
+        <text x="300" y="28" class="mono" text-anchor="end">11:22</text>
+      </g>
+      <g transform="translate(0,284)">
+        <rect x="0" y="0" width="328" height="72" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="18" y="28" class="small">Kreuzberg · 33</text>
+        <text x="18" y="50" class="mono">The bike is still available.</text>
+        <text x="300" y="28" class="mono" text-anchor="end">Пн</text>
+      </g>
+
+      <text x="0" y="404" class="mono">беседа заводится из карточки ленты —</text>
+      <text x="0" y="422" class="mono">кнопкой «+», описана на экране 6</text>
+    </g>
+
+    <!-- колонка 3 -->
+    <g transform="translate(852,80)">
+      <text x="0" y="12" class="brow">OPEN CHAT · KREUZBERG · 29</text>
+
+      <g transform="translate(0,32)">
+        <rect x="0" y="0" width="280" height="72" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="26" class="msg">Anyone else hear that brass</text>
+        <text x="16" y="46" class="msg">band in the yard at seven?</text>
+        <text x="16" y="64" class="mono">14:32</text>
+      </g>
+      <g transform="translate(160,116)">
+        <rect x="0" y="0" width="308" height="52" rx="16" fill="#c6a24e"/>
+        <text x="16" y="26" class="msg" style="fill:#1a1509">Heard it. Thought I dreamt it.</text>
+        <text x="16" y="44" class="mono" style="fill:#1a1509">14:33 · DELIVERED</text>
+      </g>
+      <g transform="translate(0,180)">
+        <rect x="0" y="0" width="300" height="52" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="26" class="msg">Same window every morning.</text>
+        <text x="16" y="44" class="mono">14:34</text>
+      </g>
+      <g transform="translate(160,244)">
+        <rect x="0" y="0" width="308" height="52" rx="16" fill="#c6a24e"/>
+        <text x="16" y="26" class="msg" style="fill:#1a1509">So there are two of us.</text>
+        <text x="16" y="44" class="mono" style="fill:#1a1509">14:35 · DELIVERED</text>
+      </g>
+
+      <g transform="translate(0,504)">
+        <rect x="0" y="0" width="468" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+        <text x="16" y="28" class="small" style="fill:#928979">write…</text>
+        <circle cx="438" cy="22" r="14" fill="#c6a24e"/>
+        <text x="438" y="28" class="disp" font-size="14" style="fill:#1a1509" text-anchor="middle">↑</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================= ОТКРЫТОЕ ===== -->
+  <g transform="translate(48,1972)">
+    <text x="0" y="16" class="disp" font-size="19">Открытое, из описания экрана</text>
+    <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(48,2012)">
+    <rect x="0" y="0" width="1344" height="164" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
+    <text x="24" y="34" class="warn">Три вопроса описание оставляет открытыми, и рисунок их не закрывает — он их показывает.</text>
+    <text x="24" y="62" class="body">Радиус: минимум, максимум и старт не определены. На чертеже он стоит на 1.2 км — это пример, а не решение.</text>
+    <text x="24" y="86" class="body">Иконка фильтра: точный вид не определён. Здесь нарисованы две убывающие черты — самый нейтральный знак, какой есть.</text>
+    <text x="24" y="110" class="body">Публикация сообщения не описана: кнопка «+» и строка ввода нарисованы как место, которое она займёт, а не как её механика.</text>
+    <text x="24" y="144" class="mono">Три колонки взяты из прототипа. Его палитра и дисплейный шрифт расходятся с лендингом — здесь следуем лендингу.</text>
+  </g>
+
+  <g transform="translate(48,2212)">
+    <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+    <text x="24" y="16" class="mono">Цвета сняты с landing/index.html, шрифт — из landing/fonts.css. Брат: sosed.place/design/interface/03-feed.svg</text>
+  </g>
+</svg>
