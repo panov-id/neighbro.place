@@ -26,6 +26,30 @@ just arrived, a timer in the accent set uppercase, three columns that collapse
 into rails, and a one-card-at-a-time viewer with "Skip" and "I'm in". The palette
 and the type come from the landing; the shape comes from the prototype.
 
+## The hand
+
+Printed matter on a board: right angles, a shadow that is the distance to the
+paper, and a ring rather than a wash. Read off
+[`../../landing/index.html`](../../landing/index.html), which carries eleven hard
+offset shadows and no radius at all on its content.
+
+| | |
+|---|---|
+| radius | **0** on cards and bubbles |
+| border | **2px** |
+| depth | **4×4, unblurred** on plates, **3×3** on incoming bubbles |
+| outgoing | the shadow **mirrors to −3×3** — it always falls away from whoever spoke |
+| avatar, keys | **squares** |
+| chosen | **a ring in the accent**, not a fill |
+| phone | 42 / 30 |
+
+Two things are shown rather than written: the plate at the foot of the feed
+**fades out** — messages melt — and a chat's header carries the **countdown** of
+its own life.
+
+**Do not copy the brother.** sosed rounds 16, borders at 1px and clips one corner
+of a bubble. It is a different product, not a different palette.
+
 ## The generator
 
 Sheets `01`…`17` are built by [`render.py`](./render.py) — one definition per

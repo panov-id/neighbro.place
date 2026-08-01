@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="4880" viewBox="0 0 1440 2440" font-family="Golos Text, system-ui, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="4576" viewBox="0 0 1440 2288" font-family="Golos Text, system-ui, sans-serif">
   <title>neighbro — screen 6, the match, and the chat</title>
   <desc>A mutual like opens the chat and shows what matched. The next like does not start a second one. Обе темы. Нарисовано по ../../docs/06-match-and-chat_RU.md; цвета сняты с landing/index.html.</desc>
   <style>
@@ -33,7 +33,7 @@
     .on-light .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
              font-size: 10px; letter-spacing: 1.4px; fill: #5c5749; font-weight: 600; }
   </style>
-  <rect x="0" y="0" width="1440" height="2440" rx="0" fill="#0c0b09"/>
+  <rect x="0" y="0" width="1440" height="2288" rx="0" fill="#0c0b09"/>
     <g transform="translate(48,40)">
       <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
       <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 6. the match, and the chat</text>
@@ -47,54 +47,59 @@
     </g>
   <g transform="translate(48,256)">
     <text x="0" y="0" class="brow">MATCH</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen27"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen27)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
       <text x="187" y="200" class="brow" text-anchor="middle">MUTUAL</text>
       <text x="187" y="260" class="disp" font-size="34" text-anchor="middle">It matched</text>
       <text x="187" y="300" class="muted" text-anchor="middle">on this message</text>
-      <rect x="16" y="340" width="342" height="98" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+      <rect x="20" y="344" width="342" height="98" rx="0" fill="#3a331f"/>
+      <rect x="16" y="340" width="342" height="98" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
       <text x="32" y="364" class="brow">NEUKÖLLN · 29</text>
       <text x="32" y="388" class="msg">Anyone else hear that brass</text>
       <text x="32" y="408" class="msg">band in the yard at seven?</text>
       <text x="32" y="430" class="mono">14:32</text>
       <text x="187" y="500" class="mono" text-anchor="middle">the chat is already open</text>
-      <rect x="16" y="700" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <rect x="20" y="704" width="342" height="44" rx="0" fill="#3a331f"/>
+      <rect x="16" y="700" width="342" height="44" rx="0" fill="#c6a24e"/>
       <text x="187.0" y="728" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Say something</text>
+    </g>
     </g>
   </g>
   <g transform="translate(525,256)">
     <text x="0" y="0" class="brow">A LIKE AFTER THE MATCH</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen28"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen28)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
-      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
-      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
-      <text x="46" y="64" class="mono">private</text>
-      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
-      <text x="178" y="63" class="small">NEUKÖLLN · 29</text>
-      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
-      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
-      <text x="292" y="63" class="small">You</text>
-      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
-      <rect x="16" y="140" width="300" height="64" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <text x="24" y="64" class="disp" font-size="22" style="fill:#c6a24e">‹</text>
+      <text x="48" y="60" class="small" style="font-weight:700">NEUKÖLLN · 29</text>
+      <text x="48" y="78" class="timer">private</text>
+      <rect x="310" y="46" width="44" height="44" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
+      <text x="332" y="74" class="disp" font-size="16" style="fill:#928979" text-anchor="middle">···</text>
+      <line x1="0" y1="104" x2="374" y2="104" stroke="#3a331f" stroke-width="1"/>
+      <rect x="19" y="143" width="300" height="64" rx="0" fill="#3a331f"/>
+      <rect x="16" y="140" width="300" height="64" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
       <text x="32" y="166" class="msg">Heard it. Thought it was in my head.</text>
       <text x="32" y="188" class="mono">14:33</text>
-      <rect x="98" y="216" width="260" height="64" rx="16" fill="#c6a24e"/>
+      <rect x="95" y="219" width="260" height="64" rx="0" fill="#3a331f"/>
+      <rect x="98" y="216" width="260" height="64" rx="0" fill="#c6a24e" stroke="#c6a24e" stroke-width="2"/>
       <text x="114" y="242" class="msg" style="fill:#1a1509">So there are two of us.</text>
       <text x="114" y="264" class="mono" style="fill:#1a1509">14:35 · DELIVERED</text>
       <rect x="16" y="300" width="342" height="70" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
       <path d="M32 322 a5 5 0 0 1 6 -3 a5 5 0 0 1 6 3 q0 6 -6 9 q-6 -3 -6 -9 z" fill="#c6a24e"/>
       <text x="56" y="328" class="small">another of your messages was liked</text>
       <text x="32" y="354" class="mono">“Selling a bike, a year on the balcony”</text>
-      <text x="16" y="400" class="mono">a second like does not open a second chat —</text>
-      <text x="16" y="418" class="mono">it arrives here, as a notice</text>
-      <rect x="16" y="700" width="278" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="16" y="700" width="278" height="44" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
       <text x="32" y="728" class="small" style="fill:#928979">write…</text>
-      <circle cx="332" cy="722" r="22" fill="#c6a24e"/>
+      <rect x="310" y="700" width="44" height="44" rx="0" fill="#c6a24e"/>
       <text x="332" y="729" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">↑</text>
+    </g>
     </g>
   </g>
     <g transform="translate(48,1194)">
@@ -105,69 +110,64 @@
   <g class="on-light">
   <g transform="translate(48,1266)">
     <text x="0" y="0" class="brow">MATCH</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen29"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen29)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
       <text x="187" y="200" class="brow" text-anchor="middle">MUTUAL</text>
       <text x="187" y="260" class="disp" font-size="34" text-anchor="middle">It matched</text>
       <text x="187" y="300" class="muted" text-anchor="middle">on this message</text>
-      <rect x="16" y="340" width="342" height="98" rx="16" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="20" y="344" width="342" height="98" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="340" width="342" height="98" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
       <text x="32" y="364" class="brow">NEUKÖLLN · 29</text>
       <text x="32" y="388" class="msg">Anyone else hear that brass</text>
       <text x="32" y="408" class="msg">band in the yard at seven?</text>
       <text x="32" y="430" class="mono">14:32</text>
       <text x="187" y="500" class="mono" text-anchor="middle">the chat is already open</text>
-      <rect x="16" y="700" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <rect x="20" y="704" width="342" height="44" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="700" width="342" height="44" rx="0" fill="#c6a24e"/>
       <text x="187.0" y="728" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Say something</text>
+    </g>
     </g>
   </g>
   <g transform="translate(525,1266)">
     <text x="0" y="0" class="brow">A LIKE AFTER THE MATCH</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen30"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen30)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
-      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
-      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
-      <text x="46" y="64" class="mono">private</text>
-      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
-      <text x="178" y="63" class="small">NEUKÖLLN · 29</text>
-      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
-      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
-      <text x="292" y="63" class="small">You</text>
-      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
-      <rect x="16" y="140" width="300" height="64" rx="16" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <text x="24" y="64" class="disp" font-size="22" style="fill:#735b25">‹</text>
+      <text x="48" y="60" class="small" style="font-weight:700">NEUKÖLLN · 29</text>
+      <text x="48" y="78" class="timer">private</text>
+      <rect x="310" y="46" width="44" height="44" rx="0" fill="#ded9cc" stroke="#1e1b14" stroke-width="2"/>
+      <text x="332" y="74" class="disp" font-size="16" style="fill:#5c5749" text-anchor="middle">···</text>
+      <line x1="0" y1="104" x2="374" y2="104" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="19" y="143" width="300" height="64" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="140" width="300" height="64" rx="0" fill="#ded9cc" stroke="#1e1b14" stroke-width="2"/>
       <text x="32" y="166" class="msg">Heard it. Thought it was in my head.</text>
       <text x="32" y="188" class="mono">14:33</text>
-      <rect x="98" y="216" width="260" height="64" rx="16" fill="#c6a24e"/>
+      <rect x="95" y="219" width="260" height="64" rx="0" fill="#1e1b14"/>
+      <rect x="98" y="216" width="260" height="64" rx="0" fill="#c6a24e" stroke="#c6a24e" stroke-width="2"/>
       <text x="114" y="242" class="msg" style="fill:#1a1509">So there are two of us.</text>
       <text x="114" y="264" class="mono" style="fill:#1a1509">14:35 · DELIVERED</text>
       <rect x="16" y="300" width="342" height="70" rx="16" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
       <path d="M32 322 a5 5 0 0 1 6 -3 a5 5 0 0 1 6 3 q0 6 -6 9 q-6 -3 -6 -9 z" fill="#c6a24e"/>
       <text x="56" y="328" class="small">another of your messages was liked</text>
       <text x="32" y="354" class="mono">“Selling a bike, a year on the balcony”</text>
-      <text x="16" y="400" class="mono">a second like does not open a second chat —</text>
-      <text x="16" y="418" class="mono">it arrives here, as a notice</text>
-      <rect x="16" y="700" width="278" height="44" rx="12" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="16" y="700" width="278" height="44" rx="0" fill="#ded9cc" stroke="#1e1b14" stroke-width="2"/>
       <text x="32" y="728" class="small" style="fill:#5c5749">write…</text>
-      <circle cx="332" cy="722" r="22" fill="#c6a24e"/>
+      <rect x="310" y="700" width="44" height="44" rx="0" fill="#c6a24e"/>
       <text x="332" y="729" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">↑</text>
     </g>
+    </g>
   </g>
   </g>
-    <g transform="translate(48,2204)">
-      <text x="0" y="16" class="disp" font-size="19">Left open by the screen’s description</text>
-      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
-    </g>
-    <g transform="translate(48,2244)">
-      <rect x="0" y="0" width="1344" height="128" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
-      <text x="24" y="34" class="warn">Two questions the description leaves open.</text>
-      <text x="24" y="58" class="body">The match animation's look is undecided — only what it says is drawn here.</text>
-      <text x="24" y="82" class="body">The form of the in-chat like notice is undecided: a line, a card or an icon.</text>
-    </g>
-    <g transform="translate(48,2380)">
-      <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+    <g transform="translate(48,2228)">
+      <rect x="0" y="-8" width="1344" height="36" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
       <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
     </g>
 </svg>

@@ -1,0 +1,355 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2880" height="4576" viewBox="0 0 1440 2288" font-family="Golos Text, system-ui, sans-serif">
+  <title>neighbro — screen 3, the feed, in its states</title>
+  <desc>Full, loading, empty, at the top of the list. One feed in four shapes. Обе темы. Нарисовано по ../../docs/03-feed-screen_RU.md; цвета сняты с landing/index.html.</desc>
+  <style>
+    @import url("../../landing/fonts.css");
+    /* Colour lives in style, never in a fill attribute: a class outranks the
+       attribute, so a per-element fill="…" is thrown away and the label is
+       painted in the class colour on top of its own ground. */
+    .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #ede8dd; }
+    .body  { font-size: 13px; font-weight: 500; fill: #ede8dd; }
+    .msg   { font-size: 14px; font-weight: 500; fill: #ede8dd; }
+    .small { font-size: 11px; font-weight: 500; fill: #ede8dd; }
+    .muted { font-size: 12px; font-weight: 500; fill: #928979; }
+    .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #928979; }
+    .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #c6a24e; font-weight: 600; }
+    .warn  { font-size: 11px; font-weight: 600; fill: #c6a24e; }
+    .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #c6a24e; font-weight: 600; }
+    /* The same drawing again, on the light ground. Only the values differ — the
+       geometry, the wording and the layout are one thing drawn twice. */
+    .on-light .disp  { font-weight: 800; letter-spacing: -0.03em; fill: #181510; }
+    .on-light .body  { font-size: 13px; font-weight: 500; fill: #181510; }
+    .on-light .msg   { font-size: 14px; font-weight: 500; fill: #181510; }
+    .on-light .small { font-size: 11px; font-weight: 500; fill: #181510; }
+    .on-light .muted { font-size: 12px; font-weight: 500; fill: #5c5749; }
+    .on-light .mono  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; fill: #5c5749; }
+    .on-light .brow  { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 2.2px; fill: #5c5749; font-weight: 600; }
+    .on-light .warn  { font-size: 11px; font-weight: 600; fill: #735b25; }
+    .on-light .timer { font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
+             font-size: 10px; letter-spacing: 1.4px; fill: #5c5749; font-weight: 600; }
+  </style>
+  <rect x="0" y="0" width="1440" height="2288" rx="0" fill="#0c0b09"/>
+    <g transform="translate(48,40)">
+      <rect x="0" y="0" width="1344" height="104" rx="16" fill="#c6a24e"/>
+      <text x="28" y="46" class="disp" font-size="30" style="fill:#1a1509">Screen 3. the feed, in its states</text>
+      <text x="28" y="74" class="body" style="fill:#1a1509">Full, loading, empty, at the top of the list. One feed in four shapes.</text>
+      <text x="1316" y="46" class="mono" style="fill:#1a1509" text-anchor="end">design/interface/03-feed-states.svg</text>
+      <text x="1316" y="74" class="mono" style="fill:#1a1509" text-anchor="end">×2 · обе темы · ../../docs/03-feed-screen_RU.md</text>
+    </g>
+    <g transform="translate(48,184)">
+      <text x="0" y="16" class="disp" font-size="19">DARK · THE DEFAULT</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#3a331f" stroke-width="1"/>
+    </g>
+  <g transform="translate(48,256)">
+    <text x="0" y="0" class="brow">FULL</text>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen11"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen11)">
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">34 nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <rect x="20" y="126" width="342" height="78" rx="0" fill="#3a331f"/>
+      <rect x="16" y="122" width="342" height="78" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <text x="32" y="146" class="brow">KREUZBERG · 27</text>
+      <text x="32" y="170" class="msg">The café put a piano out</text>
+      <text x="32" y="192" class="mono">08:12</text>
+      <rect x="316" y="132" width="32" height="32" rx="0" fill="none" stroke="#3a331f" stroke-width="2"/>
+      <text x="332" y="154" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      <rect x="20" y="220" width="342" height="78" rx="0" fill="#3a331f"/>
+      <rect x="16" y="216" width="342" height="78" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <text x="32" y="240" class="brow">NEUKÖLLN · 31</text>
+      <text x="32" y="264" class="msg">Blue scarf by the canal</text>
+      <text x="32" y="286" class="mono">11:04</text>
+      <rect x="316" y="226" width="32" height="32" rx="0" fill="none" stroke="#3a331f" stroke-width="2"/>
+      <text x="332" y="248" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      <rect x="20" y="314" width="342" height="78" rx="0" fill="#3a331f"/>
+      <rect x="16" y="310" width="342" height="78" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <text x="32" y="334" class="brow">MITTE · 24</text>
+      <text x="32" y="358" class="msg">Anyone up for espresso?</text>
+      <text x="32" y="380" class="mono">12:20</text>
+      <rect x="316" y="320" width="32" height="32" rx="0" fill="none" stroke="#3a331f" stroke-width="2"/>
+      <text x="332" y="342" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      <rect x="20" y="408" width="342" height="78" rx="0" fill="#c6a24e"/>
+      <rect x="16" y="404" width="342" height="78" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <text x="32" y="428" class="brow">PRENZLAUER BERG · 29</text>
+      <text x="32" y="452" class="msg">Heard that band at seven?</text>
+      <text x="32" y="474" class="timer">14:32 · 2H 40M</text>
+      <rect x="316" y="414" width="32" height="32" rx="0" fill="none" stroke="#3a331f" stroke-width="2"/>
+      <text x="332" y="436" class="disp" font-size="16" style="fill:#c6a24e" text-anchor="middle">+</text>
+      <line x1="0" y1="742" x2="374" y2="742" stroke="#3a331f" stroke-width="1"/>
+      <rect x="36" y="766" width="22" height="3" rx="1" fill="#c6a24e"/>
+      <rect x="36" y="773" width="15" height="3" rx="1" fill="#c6a24e"/>
+      <text x="47" y="806" class="mono" style="fill:#c6a24e" text-anchor="middle">Feed</text>
+      <rect x="129" y="766" width="22" height="3" rx="1" fill="#928979"/>
+      <rect x="129" y="773" width="15" height="3" rx="1" fill="#928979"/>
+      <text x="140" y="806" class="mono" text-anchor="middle">Chats</text>
+      <circle cx="233" cy="776" r="20" fill="#c6a24e"/>
+      <text x="233" y="784" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      <text x="233" y="806" class="mono" text-anchor="middle">Say</text>
+      <rect x="315" y="766" width="22" height="3" rx="1" fill="#928979"/>
+      <rect x="315" y="773" width="15" height="3" rx="1" fill="#928979"/>
+      <text x="326" y="806" class="mono" text-anchor="middle">Me</text>
+    </g>
+    </g>
+  </g>
+  <g transform="translate(525,256)">
+    <text x="0" y="0" class="brow">LOADING</text>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen12"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen12)">
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">34 nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <rect x="20" y="134" width="342" height="92" rx="0" fill="#3a331f"/>
+      <rect x="16" y="130" width="342" height="92" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <rect x="36" y="154" width="120" height="8" rx="4" fill="#26221a"/>
+      <rect x="36" y="178" width="250" height="8" rx="4" fill="#26221a"/>
+      <rect x="36" y="196" width="180" height="8" rx="4" fill="#26221a"/>
+      <rect x="20" y="242" width="342" height="92" rx="0" fill="#3a331f"/>
+      <rect x="16" y="238" width="342" height="92" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <rect x="36" y="262" width="120" height="8" rx="4" fill="#26221a"/>
+      <rect x="36" y="286" width="250" height="8" rx="4" fill="#26221a"/>
+      <rect x="36" y="304" width="180" height="8" rx="4" fill="#26221a"/>
+      <rect x="20" y="350" width="342" height="92" rx="0" fill="#3a331f"/>
+      <rect x="16" y="346" width="342" height="92" rx="0" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+      <rect x="36" y="370" width="120" height="8" rx="4" fill="#26221a"/>
+      <rect x="36" y="394" width="250" height="8" rx="4" fill="#26221a"/>
+      <rect x="36" y="412" width="180" height="8" rx="4" fill="#26221a"/>
+      <line x1="0" y1="742" x2="374" y2="742" stroke="#3a331f" stroke-width="1"/>
+      <rect x="36" y="766" width="22" height="3" rx="1" fill="#c6a24e"/>
+      <rect x="36" y="773" width="15" height="3" rx="1" fill="#c6a24e"/>
+      <text x="47" y="806" class="mono" style="fill:#c6a24e" text-anchor="middle">Feed</text>
+      <rect x="129" y="766" width="22" height="3" rx="1" fill="#928979"/>
+      <rect x="129" y="773" width="15" height="3" rx="1" fill="#928979"/>
+      <text x="140" y="806" class="mono" text-anchor="middle">Chats</text>
+      <circle cx="233" cy="776" r="20" fill="#c6a24e"/>
+      <text x="233" y="784" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      <text x="233" y="806" class="mono" text-anchor="middle">Say</text>
+      <rect x="315" y="766" width="22" height="3" rx="1" fill="#928979"/>
+      <rect x="315" y="773" width="15" height="3" rx="1" fill="#928979"/>
+      <text x="326" y="806" class="mono" text-anchor="middle">Me</text>
+    </g>
+    </g>
+  </g>
+  <g transform="translate(1002,256)">
+    <text x="0" y="0" class="brow">EMPTY</text>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen13"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen13)">
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">0 nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <rect x="16" y="240" width="342" height="150" rx="0" fill="none" stroke="#928979" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="187" y="292" class="disp" font-size="18" text-anchor="middle">Quiet nearby</text>
+      <text x="187" y="324" class="muted" text-anchor="middle">nobody within this radius</text>
+      <rect x="78" y="352" width="220" height="44" rx="0" fill="#3a331f"/>
+      <rect x="74" y="348" width="220" height="44" rx="0" fill="#c6a24e"/>
+      <text x="184.0" y="376" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Widen the radius</text>
+      <line x1="0" y1="742" x2="374" y2="742" stroke="#3a331f" stroke-width="1"/>
+      <rect x="36" y="766" width="22" height="3" rx="1" fill="#c6a24e"/>
+      <rect x="36" y="773" width="15" height="3" rx="1" fill="#c6a24e"/>
+      <text x="47" y="806" class="mono" style="fill:#c6a24e" text-anchor="middle">Feed</text>
+      <rect x="129" y="766" width="22" height="3" rx="1" fill="#928979"/>
+      <rect x="129" y="773" width="15" height="3" rx="1" fill="#928979"/>
+      <text x="140" y="806" class="mono" text-anchor="middle">Chats</text>
+      <circle cx="233" cy="776" r="20" fill="#c6a24e"/>
+      <text x="233" y="784" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      <text x="233" y="806" class="mono" text-anchor="middle">Say</text>
+      <rect x="315" y="766" width="22" height="3" rx="1" fill="#928979"/>
+      <rect x="315" y="773" width="15" height="3" rx="1" fill="#928979"/>
+      <text x="326" y="806" class="mono" text-anchor="middle">Me</text>
+    </g>
+    </g>
+  </g>
+    <g transform="translate(48,1194)">
+      <text x="0" y="16" class="disp" font-size="19">LIGHT</text>
+      <line x1="0" y1="26" x2="1344" y2="26" stroke="#1e1b14" stroke-width="1"/>
+    </g>
+  <rect x="0" y="1238" width="1440" height="946" fill="#e9e6dd"/>
+  <g class="on-light">
+  <g transform="translate(48,1266)">
+    <text x="0" y="0" class="brow">FULL</text>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen14"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen14)">
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">34 nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="20" y="126" width="342" height="78" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="122" width="342" height="78" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <text x="32" y="146" class="brow">KREUZBERG · 27</text>
+      <text x="32" y="170" class="msg">The café put a piano out</text>
+      <text x="32" y="192" class="mono">08:12</text>
+      <rect x="316" y="132" width="32" height="32" rx="0" fill="none" stroke="#1e1b14" stroke-width="2"/>
+      <text x="332" y="154" class="disp" font-size="16" style="fill:#735b25" text-anchor="middle">+</text>
+      <rect x="20" y="220" width="342" height="78" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="216" width="342" height="78" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <text x="32" y="240" class="brow">NEUKÖLLN · 31</text>
+      <text x="32" y="264" class="msg">Blue scarf by the canal</text>
+      <text x="32" y="286" class="mono">11:04</text>
+      <rect x="316" y="226" width="32" height="32" rx="0" fill="none" stroke="#1e1b14" stroke-width="2"/>
+      <text x="332" y="248" class="disp" font-size="16" style="fill:#735b25" text-anchor="middle">+</text>
+      <rect x="20" y="314" width="342" height="78" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="310" width="342" height="78" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <text x="32" y="334" class="brow">MITTE · 24</text>
+      <text x="32" y="358" class="msg">Anyone up for espresso?</text>
+      <text x="32" y="380" class="mono">12:20</text>
+      <rect x="316" y="320" width="32" height="32" rx="0" fill="none" stroke="#1e1b14" stroke-width="2"/>
+      <text x="332" y="342" class="disp" font-size="16" style="fill:#735b25" text-anchor="middle">+</text>
+      <rect x="20" y="408" width="342" height="78" rx="0" fill="#c6a24e"/>
+      <rect x="16" y="404" width="342" height="78" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <text x="32" y="428" class="brow">PRENZLAUER BERG · 29</text>
+      <text x="32" y="452" class="msg">Heard that band at seven?</text>
+      <text x="32" y="474" class="timer">14:32 · 2H 40M</text>
+      <rect x="316" y="414" width="32" height="32" rx="0" fill="none" stroke="#1e1b14" stroke-width="2"/>
+      <text x="332" y="436" class="disp" font-size="16" style="fill:#735b25" text-anchor="middle">+</text>
+      <line x1="0" y1="742" x2="374" y2="742" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="36" y="766" width="22" height="3" rx="1" fill="#c6a24e"/>
+      <rect x="36" y="773" width="15" height="3" rx="1" fill="#c6a24e"/>
+      <text x="47" y="806" class="mono" style="fill:#735b25" text-anchor="middle">Feed</text>
+      <rect x="129" y="766" width="22" height="3" rx="1" fill="#5c5749"/>
+      <rect x="129" y="773" width="15" height="3" rx="1" fill="#5c5749"/>
+      <text x="140" y="806" class="mono" text-anchor="middle">Chats</text>
+      <circle cx="233" cy="776" r="20" fill="#c6a24e"/>
+      <text x="233" y="784" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      <text x="233" y="806" class="mono" text-anchor="middle">Say</text>
+      <rect x="315" y="766" width="22" height="3" rx="1" fill="#5c5749"/>
+      <rect x="315" y="773" width="15" height="3" rx="1" fill="#5c5749"/>
+      <text x="326" y="806" class="mono" text-anchor="middle">Me</text>
+    </g>
+    </g>
+  </g>
+  <g transform="translate(525,1266)">
+    <text x="0" y="0" class="brow">LOADING</text>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen15"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen15)">
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">34 nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="20" y="134" width="342" height="92" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="130" width="342" height="92" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <rect x="36" y="154" width="120" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="36" y="178" width="250" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="36" y="196" width="180" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="20" y="242" width="342" height="92" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="238" width="342" height="92" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <rect x="36" y="262" width="120" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="36" y="286" width="250" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="36" y="304" width="180" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="20" y="350" width="342" height="92" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="346" width="342" height="92" rx="0" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+      <rect x="36" y="370" width="120" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="36" y="394" width="250" height="8" rx="4" fill="#ded9cc"/>
+      <rect x="36" y="412" width="180" height="8" rx="4" fill="#ded9cc"/>
+      <line x1="0" y1="742" x2="374" y2="742" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="36" y="766" width="22" height="3" rx="1" fill="#c6a24e"/>
+      <rect x="36" y="773" width="15" height="3" rx="1" fill="#c6a24e"/>
+      <text x="47" y="806" class="mono" style="fill:#735b25" text-anchor="middle">Feed</text>
+      <rect x="129" y="766" width="22" height="3" rx="1" fill="#5c5749"/>
+      <rect x="129" y="773" width="15" height="3" rx="1" fill="#5c5749"/>
+      <text x="140" y="806" class="mono" text-anchor="middle">Chats</text>
+      <circle cx="233" cy="776" r="20" fill="#c6a24e"/>
+      <text x="233" y="784" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      <text x="233" y="806" class="mono" text-anchor="middle">Say</text>
+      <rect x="315" y="766" width="22" height="3" rx="1" fill="#5c5749"/>
+      <rect x="315" y="773" width="15" height="3" rx="1" fill="#5c5749"/>
+      <text x="326" y="806" class="mono" text-anchor="middle">Me</text>
+    </g>
+    </g>
+  </g>
+  <g transform="translate(1002,1266)">
+    <text x="0" y="0" class="brow">EMPTY</text>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen16"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen16)">
+    <g transform="translate(8,22)">
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
+      <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
+      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
+      <text x="46" y="64" class="mono">kreuzberg · 1.2 km</text>
+      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
+      <text x="178" y="63" class="small">0 nearby</text>
+      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
+      <text x="292" y="63" class="small">You</text>
+      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="16" y="240" width="342" height="150" rx="0" fill="none" stroke="#5c5749" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="187" y="292" class="disp" font-size="18" text-anchor="middle">Quiet nearby</text>
+      <text x="187" y="324" class="muted" text-anchor="middle">nobody within this radius</text>
+      <rect x="78" y="352" width="220" height="44" rx="0" fill="#1e1b14"/>
+      <rect x="74" y="348" width="220" height="44" rx="0" fill="#c6a24e"/>
+      <text x="184.0" y="376" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Widen the radius</text>
+      <line x1="0" y1="742" x2="374" y2="742" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="36" y="766" width="22" height="3" rx="1" fill="#c6a24e"/>
+      <rect x="36" y="773" width="15" height="3" rx="1" fill="#c6a24e"/>
+      <text x="47" y="806" class="mono" style="fill:#735b25" text-anchor="middle">Feed</text>
+      <rect x="129" y="766" width="22" height="3" rx="1" fill="#5c5749"/>
+      <rect x="129" y="773" width="15" height="3" rx="1" fill="#5c5749"/>
+      <text x="140" y="806" class="mono" text-anchor="middle">Chats</text>
+      <circle cx="233" cy="776" r="20" fill="#c6a24e"/>
+      <text x="233" y="784" class="disp" font-size="20" style="fill:#1a1509" text-anchor="middle">+</text>
+      <text x="233" y="806" class="mono" text-anchor="middle">Say</text>
+      <rect x="315" y="766" width="22" height="3" rx="1" fill="#5c5749"/>
+      <rect x="315" y="773" width="15" height="3" rx="1" fill="#5c5749"/>
+      <text x="326" y="806" class="mono" text-anchor="middle">Me</text>
+    </g>
+    </g>
+  </g>
+  </g>
+    <g transform="translate(48,2228)">
+      <rect x="0" y="-8" width="1344" height="36" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
+      <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
+    </g>
+</svg>

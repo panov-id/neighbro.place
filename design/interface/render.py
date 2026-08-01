@@ -1,4 +1,4 @@
-# The seventeen screens of neighbro.place, drawn — both themes, at ×2.
+# The screens of neighbro.place, drawn — both themes, at ×2.
 #
 # One definition per screen, rendered into design/interface/ beside this file:
 #
@@ -9,14 +9,14 @@
 # a function of its face and is asked again with the light one, because a colour
 # written inline does not answer to a class.
 #
-# The geometry stays in the product's own units — a phone is 390 by 844 here — and
-# the sheet declares itself twice that size, so a 10px caption arrives at 20 and
-# can be read without leaning in.
+# The face carries geometry as well as colour, and that is the point: these two
+# products are not one product in two palettes. Radius, border weight, whether a
+# surface throws a hard offset shadow, whether a bubble clips one corner, whether
+# a key is round or square, whether what is chosen is washed or ringed — all of it
+# is read off ../../landing/index.html and lives in BRAND.
 #
-# Colours are read off ../../landing/index.html; type comes from
-# ../../landing/fonts.css, imported by each sheet rather than copied. Every
-# "Открытые вопросы" in ../../docs/ is printed on the sheet it belongs to, so a
-# drawing never quietly settles what the description left open.
+# A sheet carries the drawing and nothing else. What a screen leaves undecided is a
+# question about the product; it belongs in ../../docs/, where it is maintained.
 #
 # THE BROTHER HAS A COPY OF THIS FILE. sosed.place/design/interface/render.py carries the same
 # script with its own face and its own screens. The two products share a family
@@ -35,10 +35,14 @@ BRAND = dict(
     fg="#ede8dd", muted="#8a8172", muted2="#928979",
     accent="#c6a24e", accent_text="#c6a24e", ink="#1a1509",
     warn="#c6a24e", err="#ff8a80",
-    # gold on panel-2 is 6.54:1, so here the eyebrow may carry the accent
     brow="#c6a24e",
     places=["KREUZBERG", "NEUKÖLLN", "MITTE", "PRENZLAUER BERG", "WEDDING"],
     here="kreuzberg",
+    # Printed matter on a board: right angles, a hard offset shadow that is the
+    # distance to the paper, and a ring rather than a wash. The outgoing bubble's
+    # shadow mirrors — it always falls away from whoever is speaking.
+    radius=0, bw=2, depth=4, tail=0, avatar="square", pick="ring",
+    phone_r=(42, 30),
 )
 
 # The light half of each face. Read off the same landing/index.html: sosed puts
@@ -72,8 +76,8 @@ def text(x, y, s, cls="body", style="", size=None, anchor=None):
     st = f' style="{style}"' if style else ""
     return f'<text x="{x}" y="{y}" class="{cls}"{z}{st}{a}>{esc(s)}</text>'
 
-def rect(x, y, w, h, fill, stroke=None, r=0, opacity=None):
-    s = f' stroke="{stroke}" stroke-width="1"' if stroke else ""
+def rect(x, y, w, h, fill, stroke=None, r=0, opacity=None, sw=1):
+    s = f' stroke="{stroke}" stroke-width="{sw}"' if stroke else ""
     o = f' opacity="{opacity}"' if opacity is not None else ""
     return f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{r}" fill="{fill}"{s}{o}/>'
 
@@ -90,6 +94,20 @@ def g(tx, ty, body, opacity=None):
     o = f' opacity="{opacity}"' if opacity is not None else ""
     inner = "\n".join("      " + b for b in body)
     return f'    <g transform="translate({tx},{ty})"{o}>\n{inner}\n    </g>'
+
+def plate(b, x, y, w, h, fill=None, stroke=None, r=None, shadow=None):
+    """A surface in the brand's own geometry. neighbro throws a hard offset shadow
+    because its landing does — eleven of them — and rounds nothing; sosed rounds 16
+    and casts nothing, because its depth is ambient light and a drawing cannot
+    show that honestly at this size."""
+    r = b["radius"] if r is None else r
+    out = []
+    off = b["depth"] if shadow is None else shadow
+    if off:
+        out.append(rect(x + abs(off), y + abs(off), w, h, b["border"], None, r) if off > 0
+                   else rect(x + off, y - off, w, h, b["border"], None, r))
+    out.append(rect(x, y, w, h, fill or b["panel"], stroke or b["border"], r, sw=b["bw"]))
+    return out
 
 # ─────────────────────────────────────────────────────────── screen furniture ──
 # The two products are not one product in two palettes. neighbro's own prototype
@@ -115,6 +133,13 @@ def header(b, title, sub, icon=True):
             out += filter_icon(b, 310, 46)
         out.append(line(0, 104, 374, 104, b["border"]))
         return out
+    if not icon:
+        return [text(24, 64, "‹", "disp", f'fill:{b["accent_text"]}', 22),
+                text(48, 60, title, "small", "font-weight:700"),
+                text(48, 78, sub, "timer"),
+                rect(310, 46, 44, 44, b["panel2"], b["border"], 0, sw=b["bw"]),
+                text(332, 74, "···", "disp", f'fill:{b["muted2"]}', 16, "middle"),
+                line(0, 104, 374, 104, b["border"])]
     out = [rect(16, 44, 128, 30, b["panel2"], b["border"], 15),
            f'<path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" '
            f'stroke="{b["accent"]}" stroke-width="2"/>',
@@ -127,57 +152,113 @@ def header(b, title, sub, icon=True):
            line(0, 96, 374, 96, b["border"])]
     return out
 
-def card(b, y, brow, lines, meta, plus=True, w=342, x=16, fresh=False):
-    """A message. neighbro throws a hard accent shadow when it has just arrived —
-    its prototype's `.msg.fresh`. sosed rules the left edge instead: the same
-    statement, made by a product that does not want anything hovering."""
+def card(b, y, brow, lines, meta, plus=True, w=342, x=16, fresh=False, fade=False):
+    """A message. Fresh means it has just arrived: neighbro says so with the accent
+    in the shadow, sosed with a rule down the left. Fade is neighbro's alone — the
+    plate at the bottom of the feed is literally going, which is the one property
+    of this product that a drawing can state without a word."""
     h = 40 + 20 * len(lines) + (18 if meta else 0)
     out = []
-    if fresh and b["key"] == "neighbro":
-        out.append(rect(x + 5, y + 5, w, h, b["accent"], None, 16))
-    out.append(rect(x, y, w, h, b["panel"], b["border"], 16))
-    if fresh and b["key"] == "sosed":
+    if b["depth"]:
+        off = b["depth"]
+        out.append(rect(x + off, y + off, w, h, b["accent"] if fresh else b["border"], None, b["radius"]))
+    out.append(rect(x, y, w, h, b["panel"], b["border"], b["radius"], sw=b["bw"]))
+    if fresh and not b["depth"]:
         out.append(rect(x, y + 12, 3, h - 24, b["accent"], None, 2))
-    out.append(text(x + (24 if fresh and b["key"] == "sosed" else 16), y + 24, brow, "brow"))
+    tx = x + (24 if fresh and not b["depth"] else 16)
+    out.append(text(tx, y + 24, brow, "brow"))
     for i, ln in enumerate(lines):
-        out.append(text(x + (24 if fresh and b["key"] == "sosed" else 16), y + 48 + 20 * i, ln, "msg"))
+        out.append(text(tx, y + 48 + 20 * i, ln, "msg"))
     if meta:
-        out.append(text(x + (24 if fresh and b["key"] == "sosed" else 16),
-                        y + 48 + 20 * len(lines) + 2, meta,
-                        "timer" if fresh and b["key"] == "neighbro" else "mono"))
+        out.append(text(tx, y + 48 + 20 * len(lines) + 2, meta,
+                        "timer" if fresh and b["depth"] else "mono"))
     if plus:
-        out += [circle(x + w - 26, y + 26, 16, "none", b["border"]),
-                text(x + w - 26, y + 32, "+", "disp", f'fill:{b["accent_text"]}', 16, "middle")]
+        if b["avatar"] == "round":
+            out += [circle(x + w - 26, y + 26, 16, "none", b["border"])]
+        else:
+            out += [rect(x + w - 42, y + 10, 32, 32, "none", b["border"], 0, sw=b["bw"])]
+        out.append(text(x + w - 26, y + 32, "+", "disp", f'fill:{b["accent_text"]}', 16, "middle"))
+    if fade:
+        out = [f'<g opacity="0.35">'] + ["  " + o for o in out] + ["</g>"]
     return out, h
 
 def field(b, y, placeholder, w=342, x=16):
-    return [rect(x, y, w, 44, b["panel2"], b["border"], 12),
+    return [rect(x, y, w, 44, b["panel2"], b["border"], b["radius"] or 0, sw=b["bw"]),
             text(x + 16, y + 28, placeholder, "small", f'fill:{b["muted2"]}')]
 
 def button(b, y, label, w=342, x=16, filled=True):
+    out = []
+    if b["depth"]:
+        out.append(rect(x + b["depth"], y + b["depth"], w, 44, b["border"], None, b["radius"]))
     if filled:
-        return [rect(x, y, w, 44, b["accent"], None, 12),
+        out += [rect(x, y, w, 44, b["accent"], None, b["radius"]),
                 text(x + w / 2, y + 28, label, "small",
                      f'fill:{b["ink"]};font-weight:700', anchor="middle")]
-    return [rect(x, y, w, 44, "none", b["border"], 12),
-            text(x + w / 2, y + 28, label, "small", anchor="middle")]
+    else:
+        out += [rect(x, y, w, 44, b["panel"], b["border"], b["radius"], sw=b["bw"]),
+                text(x + w / 2, y + 28, label, "small", anchor="middle")]
+    return out
 
 def slider(b, y, frac, w=326, x=24):
-    return [rect(x, y + 8, w, 4, b["panel2"], None, 2),
-            rect(x, y + 8, int(w * frac), 4, b["accent"], None, 2),
-            circle(x + int(w * frac), y + 10, 11, b["accent"])]
+    r = 2 if b["radius"] else 0
+    return [rect(x, y + 8, w, 4, b["panel2"], None, r),
+            rect(x, y + 8, int(w * frac), 4, b["accent"], None, r),
+            circle(x + int(w * frac), y + 10, 11, b["accent"]) if b["avatar"] == "round"
+            else rect(x + int(w * frac) - 9, y + 1, 18, 18, b["accent"], None, 0)]
 
 def bubble(b, y, side, lines, meta, w=300):
+    """The one place the two products are furthest apart. sosed clips a single
+    corner to 5px — a tail made by subtraction. neighbro squares everything and
+    mirrors the shadow: it falls to the right of what came in and to the left of
+    what went out, so the shadow always points away from whoever spoke."""
     x = 16 if side == "in" else 374 - 16 - w
     h = 26 + 20 * len(lines) + (18 if meta else 0)
-    fill, stroke = (b["panel2"], b["border"]) if side == "in" else (b["accent"], None)
+    fill = b["panel2"] if side == "in" else b["accent"]
     ink = "" if side == "in" else f'fill:{b["ink"]}'
-    out = [rect(x, y, w, h, fill, stroke, 16)]
+    out = []
+    if b["depth"]:
+        off = b["depth"] - 1
+        sx = x + off if side == "in" else x - off
+        out.append(rect(sx, y + off, w, h, b["border"], None, 0))
+    if b["tail"]:
+        r, tail = b["radius"], b["tail"]
+        # Every corner is r except one, which tightens to `tail` — the bottom
+        # corner on the speaker's side, exactly as the landing does it with
+        # border-bottom-*-radius. All four corners are drawn: leaving the last one
+        # to `z` closed it with a straight line, and the missing arc read as a cut
+        # in the wrong corner.
+        if side == "out":
+            d = (f'M{x + r} {y} h{w - 2 * r} a{r} {r} 0 0 1 {r} {r} '
+                 f'v{h - r - tail} a{tail} {tail} 0 0 1 -{tail} {tail} '
+                 f'h-{w - r - tail} a{r} {r} 0 0 1 -{r} -{r} '
+                 f'v-{h - 2 * r} a{r} {r} 0 0 1 {r} -{r} z')
+        else:
+            d = (f'M{x + r} {y} h{w - 2 * r} a{r} {r} 0 0 1 {r} {r} '
+                 f'v{h - 2 * r} a{r} {r} 0 0 1 -{r} {r} '
+                 f'h-{w - r - tail} a{tail} {tail} 0 0 1 -{tail} -{tail} '
+                 f'v-{h - r - tail} a{r} {r} 0 0 1 {r} -{r} z')
+        stroke = f' stroke="{b["border"]}" stroke-width="{b["bw"]}"' if side == "in" else ""
+        out.append(f'<path d="{d}" fill="{fill}"{stroke}/>')
+    else:
+        out.append(rect(x, y, w, h, fill, b["border"] if side == "in" else b["accent"],
+                        b["radius"], sw=b["bw"]))
     for i, ln in enumerate(lines):
         out.append(text(x + 16, y + 26 + 20 * i, ln, "msg", ink))
     if meta:
         out.append(text(x + 16, y + 26 + 20 * len(lines) + 2, meta, "mono", ink))
     return out, h
+
+def matched_note(b, y, quote):
+    """sosed alone: the message the two of them both liked, quoted inside a dashed
+    accent frame at the head of the chat. Screen 6 asks for exactly this — "show
+    which message matched" — and nothing else on the page is dashed, so it reads
+    as a footnote rather than as a control."""
+    h = 78
+    return [f'<rect x="16" y="{y}" width="342" height="{h}" rx="{b["radius"]}" fill="none" '
+            f'stroke="{b["accent"]}" stroke-width="{b["bw"]}" stroke-dasharray="6 5"/>',
+            text(36, y + 26, L(b, "ПОЧЕМУ СОВПАЛО", "WHY YOU MATCHED"), "brow",
+                 f'fill:{b["accent_text"]}'),
+            text(36, y + 54, quote, "msg")], h
 
 def sheet(b, y, title, sub, children):
     """A modal sheet, drawn over whatever it covers rather than over nothing —
@@ -219,16 +300,26 @@ def nav(b, on="feed"):
 
 def phone(b, x, y, label, body, dim_backdrop=None):
     """A phone at its true geometry: 390 by 844, screen inset by 8, radius 46/35."""
-    inner = [rect(0, 0, 374, 828, b["bg"], None, 35)]
+    inner = [rect(0, 0, 374, 828, b["bg"], None, b["phone_r"][1])]
     if dim_backdrop:
         inner += ['<g opacity="0.45">'] + ["  " + d for d in dim_backdrop] + ["</g>"]
-        inner.append(rect(0, 0, 374, 828, b["bg"], None, 35, 0.62))
+        inner.append(rect(0, 0, 374, 828, b["bg"], None, b["phone_r"][1], 0.62))
     inner += body
+    frame, screen = b["phone_r"]
+    # The screen clips, the way a screen does. Without it a card swiped off the
+    # edge was drawn over the sheet's own background, outside the phone entirely —
+    # which the column measurement caught and the eye would have read as a bug in
+    # the drawing rather than as the gesture it is.
+    phone.n = getattr(phone, "n", 0) + 1
+    cid = f"screen{phone.n}"
     return "\n".join([
         f'  <g transform="translate({x},{y})">',
         f'    {text(0, 0, label, "brow")}',
-        f'    {rect(0, 14, 390, 844, b["panel"], b["border"], 46)}',
+        f'    {rect(0, 14, 390, 844, b["panel"], b["border"], frame, sw=b["bw"])}',
+        f'    <clipPath id="{cid}"><rect x="8" y="22" width="374" height="828" rx="{screen}"/></clipPath>',
+        f'    <g clip-path="url(#{cid})">',
         g(8, 22, inner),
+        "    </g>",
         "  </g>",
     ])
 
@@ -255,7 +346,7 @@ def classes(b, prefix=""):
     {sel}.timer {{ font-family: ui-monospace, SF Mono, Menlo, Consolas, monospace;
              font-size: 10px; letter-spacing: 1.4px; fill: {b["brow"]}; font-weight: 600; }}'''
 
-def sheet_svg(b, number, name, lede, phones, phones_light, notes, height):
+def sheet_svg(b, number, name, lede, phones, phones_light, height):
     W = 1440
     light = lit(b)
     parts = []
@@ -303,30 +394,13 @@ def sheet_svg(b, number, name, lede, phones, phones_light, notes, height):
         parts.append(f'  <g class="{cls}">\n{block}\n  </g>' if cls else block)
         row += 1010
 
-    # A screen with one phone left two thirds of the sheet empty to its right, and
-    # at ×2 that is a lot of nothing. The notes move up beside it and the sheet
-    # loses the void and a third of its height.
-    beside = len(phones) == 1
-    nx, ny, nw = ((525, 184 + 72, 867) if beside
-                  else (48, row + 40, 1344))
-    if not beside:
-        parts.append(g(48, row, [
-            text(0, 16, L(b, "Открытое, из описания экрана",
-                          "Left open by the screen\u2019s description"), "disp", size=19),
-            line(0, 26, 1344, 26, b["border"]),
-        ]))
-    body = [(f'<rect x="0" y="0" width="{nw}" height="{56 + 24 * len(notes)}" rx="16" '
-             f'fill="{b["panel"]}" stroke="{b["warn"]}" stroke-width="2"/>')]
-    if beside:
-        body.append(text(24, 30, L(b, "ОТКРЫТОЕ, ИЗ ОПИСАНИЯ ЭКРАНА",
-                                   "LEFT OPEN BY THE DESCRIPTION"), "brow"))
-    for i, n in enumerate(notes):
-        body.append(text(24, (56 if beside else 34) + 24 * i, n, "warn" if i == 0 else "body"))
-    parts.append(g(nx, ny, body))
-
-    foot = row + (24 if beside else 40 + 40 + 24 * len(notes) + 24)
+    # No panel of open questions here any more. What a screen leaves undecided is
+    # a question about the product, and it belongs in ../../docs/ where it is
+    # maintained — printed on the drawing it turned every sheet into an argument
+    # with itself. A drawing carries the drawing.
+    foot = row + 24
     parts.append(g(48, foot, [
-        rect(0, -8, 1344, 36, b["panel2"], b["border"], 10),
+        rect(0, -8, 1344, 36, b["panel2"], b["border"], b["radius"], sw=b["bw"]),
         text(24, 16, f'Цвета — landing/index.html, шрифт — landing/fonts.css. '
                      f'Брат: {"neighbro.place" if b["key"] == "sosed" else "sosed.place"}'
                      f'/design/interface/', "mono"),
@@ -358,8 +432,6 @@ def s01(b):
           for i, y in enumerate(["1996", "1997", "1998"])],
         line(90, 496, 284, 496, b["border"]),
         line(90, 560, 284, 560, b["border"]),
-        text(187, 620, L(b, "только год — ни дня, ни месяца",
-                         "the year only — no day, no month"), "mono", anchor="middle"),
         circle(187, 720, 32, b["accent"]),
         text(187, 730, "→", "disp", f'fill:{b["ink"]}', 24, "middle"),
     ]
@@ -382,15 +454,6 @@ def s02(b):
         text(24, 200, L(b, "Необязательно. Можно оставить пустым.",
                         "Optional. You may leave it empty."), "muted"),
         *field(b, 240, L(b, "как вас зовут…", "your name…"), 342, 16),
-        text(24, 310, L(b, "ограничение длины не определено", "length limit undecided"), "mono"),
-        text(24, 380, L(b, "ЧТО ПРОИСХОДИТ ДАЛЬШЕ", "WHAT HAPPENS NEXT"), "brow"),
-        text(24, 410, L(b, "Регистрация завершается здесь.", "Signing up ends here."), "msg"),
-        text(24, 434, L(b, "Сервер выдаёт зашифрованный UID из года,", "The server mints an encrypted UID from the"), "msg"),
-        text(24, 454, L(b, "имени и отпечатка браузера.", "year, the name and the browser's fingerprint."), "msg"),
-        text(24, 490, L(b, "Другой браузер — другая личность.", "Another browser is another person."), "msg"),
-        text(24, 514, L(b, "Переноса и восстановления нет.", "Nothing is carried over or restored."), "msg"),
-        text(24, 560, L(b, "Экрана геолокации нет: позиция и радиус", "There is no location step: position and radius"), "mono"),
-        text(24, 578, L(b, "настраиваются внутри ленты.", "are set inside the feed itself."), "mono"),
         circle(187, 720, 32, b["accent"]),
         text(187, 730, "→", "disp", f'fill:{b["ink"]}', 24, "middle"),
     ]
@@ -422,12 +485,6 @@ def s04(b):
         text(24, 400, L(b, "РАЗМЫТИЕ МЕСТА", "BLUR THE PLACE"), "brow"),
         text(24, 428, L(b, "около 300 м", "about 300 m"), "msg"),
         *slider(b, 446, 0.34),
-        text(24, 500, L(b, "сообщение привязано к зоне, а не к точке —", "the message belongs to an area, not a point —"), "mono"),
-        text(24, 518, L(b, "это приватность автора, а не видимость поста", "the author's privacy, not the post's reach"), "mono"),
-        rect(16, 560, 342, 92, b["panel"], b["border"], 16),
-        text(32, 588, L(b, "ПЕРЕД ПУБЛИКАЦИЕЙ", "BEFORE IT IS PUBLISHED"), "brow"),
-        text(32, 612, L(b, "проверка на токсичность и тон,", "a toxicity and tone check,"), "mono"),
-        text(32, 630, L(b, "капча и рейтлимит — только для ленты", "a captcha and a rate limit — feed only"), "mono"),
         *button(b, 700, L(b, "Отправить", "Send")),
     ]
     return (L(b, "публикация сообщения", "writing a message"),
@@ -461,6 +518,12 @@ def s03b(b):
                        plus=True, fresh=(i == 2))
         body += part
         y += h + 16
+    if b["depth"]:
+        # the plate that is on its way out, shown going rather than described
+        part, _ = card(b, y, f'{b["places"][3]} · 22',
+                       L(b, ["уже почти растаяло"], ["almost gone now"]), "04:12",
+                       plus=False, fade=True)
+        body += part
     body += nav(b)
     if b["key"] == "sosed":
         body += [text(16, 700, L(b, "новое отчёркнуто слева — тихо, без движения", ""), "mono")]
@@ -507,16 +570,11 @@ def s05(b):
         circle(316, 176, 16, "none", b["border"]),
         f'<path d="M310 176 a5 5 0 0 1 6 -3 a5 5 0 0 1 6 3 q0 6 -6 9 q-6 -3 -6 -9 z" fill="{b["accent"]}"/>',
         text(316, 236, "···", "disp", f'fill:{b["muted2"]}', 16, "middle"),
-        text(16, 290, L(b, "лайк — снаружи, на карточке", "the like is outside, on the card"), "mono"),
-        text(16, 308, L(b, "жалоба и блокировка — в скрытом меню", "report and block live in a hidden menu"), "mono"),
     ]
     menu = [
         text(24, 126, L(b, "Пожаловаться", "Report"), "msg"),
-        text(24, 150, L(b, "снижает квоту публикаций автора", "lowers the author's posting quota"), "mono"),
         line(24, 174, 350, 174, b["border"]),
         text(24, 210, L(b, "Заблокировать", "Block"), "msg"),
-        text(24, 234, L(b, "снижает квоту и прячет это сообщение", "lowers the quota and hides this message"), "mono"),
-        text(24, 252, L(b, "лично для вас — у остальных оно остаётся", "for you alone — everyone else still sees it"), "mono"),
         line(24, 276, 350, 276, b["border"]),
         text(24, 312, L(b, "Отмена", "Cancel"), "msg", f'fill:{b["muted2"]}'),
     ]
@@ -563,11 +621,9 @@ def s06(b):
                         "another of your messages was liked"), "small"),
         text(32, 354, L(b, "«Продаю велосипед, стоял год на балконе»",
                         "“Selling a bike, a year on the balcony”"), "mono"),
-        text(16, 400, L(b, "второй лайк не открывает второй чат —",
-                        "a second like does not open a second chat —"), "mono"),
-        text(16, 418, L(b, "он приходит сюда, уведомлением", "it arrives here, as a notice"), "mono"),
         *field(b, 700, L(b, "написать…", "write…"), 278),
-        circle(332, 722, 22, b["accent"]),
+        *(([circle(332, 722, 22, b["accent"])]) if b["avatar"] == "round" else
+          [rect(310, 700, 44, 44, b["accent"], None, 0)]),
         text(332, 729, "↑", "disp", f'fill:{b["ink"]}', 20, "middle"),
     ]
     return (L(b, "мэтч и чат", "the match, and the chat"),
@@ -604,10 +660,6 @@ def s07(b):
             body += [circle(334, y + 46, 10, b["accent"]),
                      text(334, y + 50, str(unread), "mono", f'fill:{b["ink"]}', anchor="middle")]
         y += 84
-    body += [text(16, y + 30, L(b, "список появляется, когда мэтчей больше одного",
-                                "the list appears once there is more than one match"), "mono"),
-             text(16, y + 48, L(b, "новый мэтч добавляет пункт, не заменяя прежние",
-                                "a new match adds a row, it replaces nothing"), "mono")]
     return (L(b, "список бесед", "the list of chats"),
             L(b, "Появляется, когда мэтчей больше одного. Пока он один — сразу чат.",
               "It appears once there is more than one match. While there is one, there is just the chat."),
@@ -633,15 +685,9 @@ def s08(b):
         body += part
         y += h + 12
     body += [
-        rect(16, 470, 342, 96, b["panel"], b["border"], 16),
-        text(32, 498, L(b, "ЧТО ЗДЕСЬ ИНАЧЕ", "WHAT IS DIFFERENT HERE"), "brow"),
-        text(32, 522, L(b, "переписка не исчезает через 4:20 —", "a chat does not vanish after 4:20 —"), "mono"),
-        text(32, 540, L(b, "она живёт, пока живёт чат", "it lives as long as the chat does"), "mono"),
-        text(32, 558, L(b, "хранится на устройстве, зашифрованной", "kept on the device, encrypted"), "mono"),
-        text(16, 604, L(b, "каждое сообщение проходит ту же проверку,", "every message takes the same check"), "mono"),
-        text(16, 622, L(b, "что и лента, но без капчи и рейтлимита", "as the feed, minus captcha and rate limit"), "mono"),
         *field(b, 700, L(b, "написать…", "write…"), 278),
-        circle(332, 722, 22, b["accent"]),
+        *(([circle(332, 722, 22, b["accent"])]) if b["avatar"] == "round" else
+          [rect(310, 700, 44, 44, b["accent"], None, 0)]),
         text(332, 729, "↑", "disp", f'fill:{b["ink"]}', 20, "middle"),
     ]
     return (L(b, "беседа", "the chat"),
@@ -672,7 +718,8 @@ def s09(b):
             body.append(text(32, y + 30 + 20 * i, ln, "msg"))
         body += [text(32, y + 30 + 20 * len(lines) + 4, L(b, f"исчезнет через {left}",
                                                           f"gone in {left}"), "mono"),
-                 circle(332, y + 26, 15, "none", b["border"]),
+                 (circle(332, y + 26, 15, "none", b["border"]) if b["avatar"] == "round"
+                  else rect(317, y + 11, 30, 30, "none", b["border"], 0, sw=b["bw"])),
                  text(332, y + 31, "×", "disp", f'fill:{b["muted2"]}', 15, "middle")]
         y += h + 12
     body += [
@@ -681,10 +728,6 @@ def s09(b):
         *[rect(32 + i * 62, y + 62, 46, 8, b["accent"] if i < 3 else b["panel"],
                None if i < 3 else b["border"], 4) for i in range(5)],
         text(32, y + 92, L(b, "три из пяти заняты", "three of five in use"), "mono"),
-        text(16, y + 138, L(b, "удалённое вручную пропадает из ленты сразу",
-                            "deleted by hand, it leaves the feed at once"), "mono"),
-        text(16, y + 156, L(b, "таймер и квота — те же, что в ленте и при публикации",
-                            "the timer and the quota are the feed's own"), "mono"),
     ]
     return (L(b, "мои сообщения", "my messages"),
             L(b, "Свои активные сообщения, у каждого таймер и кнопка удаления, и остаток квоты.",
@@ -716,10 +759,6 @@ def s10(b):
         text(24, 552, L(b, "выключено — включается на отдельном экране",
                         "off — turned on from a screen of its own"), "mono"),
         text(342, 534, "→", "disp", f'fill:{b["accent_text"]}', 18, "end"),
-        rect(16, 590, 342, 74, b["panel"], b["border"], 16),
-        text(32, 618, L(b, "ЭТО НЕ ПЕРЕКЛЮЧАТЕЛЬ", "THIS IS NOT A TOGGLE"), "brow"),
-        text(32, 642, L(b, "к нему приходят, а не щёлкают мимоходом",
-                        "you go to it; you do not flick it in passing"), "mono"),
     ]
     return (L(b, "настройки", "settings"),
             L(b, "Тема, контрастность, одна ссылка на себя — и переход на согласие, а не переключатель.",
@@ -762,8 +801,6 @@ def s11(b):
         text(52, 421, L(b, "Я прочитал и принимаю", "I have read and accept"), "small"),
         text(24, 470, "EMAIL", "brow"),
         *field(b, 486, "you@example.com", 342, 16),
-        text(24, 554, L(b, "без него настройка не включается",
-                        "without it the setting stays off"), "mono"),
         *button(b, 700, L(b, "Сохранить", "Save")),
     ]
     return (L(b, "согласие на чувствительное", "consenting to the sensitive"),
@@ -802,9 +839,6 @@ def s12(b):
         text(48, 430, "example.com/…", "mono"),
         *button(b, 452, L(b, "Перейти", "Go"), 140, 48),
         *button(b, 452, L(b, "Отмена", "Cancel"), 140, 206, filled=False),
-        text(187, 580, L(b, "предупреждение показывается до перехода,",
-                         "the warning comes before the jump,"), "mono", anchor="middle"),
-        text(187, 598, L(b, "а не после", "not after"), "mono", anchor="middle"),
     ]
     return (L(b, "ссылка в беседе", "a link inside a chat"),
             L(b, "Своей ссылкой делятся разово и вручную. Чужую открывают только после предупреждения.",
@@ -864,12 +898,6 @@ def s14(b):
         rect(16, 166, 342, 180, b["panel2"], b["border"], 16),
         text(32, 196, L(b, "напишите как есть…", "tell it as it is…"), "small", f'fill:{b["muted2"]}'),
         *button(b, 372, L(b, "Отправить", "Send")),
-        rect(16, 440, 342, 128, b["panel"], b["border"], 16),
-        text(32, 468, L(b, "ЧТО БУДЕТ ДАЛЬШЕ", "WHAT HAPPENS NEXT"), "brow"),
-        text(32, 494, L(b, "обращение ложится в таблицу,", "the message lands in a table,"), "mono"),
-        text(32, 512, L(b, "команде уходит уведомление", "the team gets a notification"), "mono"),
-        text(32, 538, L(b, "автоматического ответа нет —", "there is no automatic reply —"), "warn"),
-        text(32, 556, L(b, "только фиксация и уведомление", "only the record and the notice"), "mono"),
     ]
     return (L(b, "поддержка", "support"),
             L(b, "Поле, кнопка и честное обещание: обращение зафиксируют и уведомят команду. Больше ничего не обещано.",
@@ -894,11 +922,6 @@ def s15(b):
                  text(342, y + 37, "→", "disp", f'fill:{b["accent_text"]}', 16, "end")]
         y += 72
     body += [
-        rect(16, y + 24, 342, 108, b["panel"], b["border"], 16),
-        text(32, y + 52, L(b, "ЧТО В НИХ", "WHAT IS IN THEM"), "brow"),
-        text(32, y + 78, L(b, "то, что уже описано в правилах —", "what the rules already say —"), "mono"),
-        text(32, y + 96, L(b, "модерация и приватность, без новых", "moderation and privacy, nothing new"), "mono"),
-        text(32, y + 114, L(b, "тексты лежат в legal/, а не в docs/", "the texts live in legal/, not docs/"), "mono"),
     ]
     return (L(b, "юридические документы", "the legal documents"),
             L(b, "Три коротких документа. Они пересказывают уже описанные правила, а не вводят новые.",
@@ -919,16 +942,6 @@ def s16(b):
         text(32, 168, L(b, "ВАША ССЫЛКА", "YOUR LINK"), "brow"),
         text(32, 200, L(b, "sosed.place/i/8f4c1a", "neighbro.place/i/8f4c1a"), "msg"),
         *button(b, 256, L(b, "Скопировать", "Copy")),
-        rect(16, 330, 342, 140, b["panel"], b["border"], 16),
-        text(32, 358, L(b, "ЧТО ПОЛУЧАЮТ ОБА", "WHAT BOTH GET"), "brow"),
-        text(32, 386, L(b, "Приглашённый заходит по ссылке", "They arrive by the link"), "msg"),
-        text(32, 406, L(b, "и регистрируется — поощрение", "and sign up — the reward lands"), "msg"),
-        text(32, 426, L(b, "получают оба.", "on both balances."), "msg"),
-        text(32, 456, L(b, "размер поощрения не определён", "the size of it is undecided"), "warn"),
-        text(16, 520, L(b, "не входит в day0 и альфу — механика описана,",
-                        "not part of day0 or the alpha — the mechanic is written,"), "mono"),
-        text(16, 538, L(b, "чтобы её было куда встроить, когда придёт время",
-                        "so there is somewhere to put it when the time comes"), "mono"),
     ]
     return (L(b, "приглашения", "referrals"),
             L(b, "За пределами альфы. Персональная ссылка; поощрение получают оба — и позвавший, и пришедший.",
@@ -957,11 +970,6 @@ def s17(b):
                      text(x + 50, y + 86, L(b, f"{4 + r * 3 + c} ⌁", f"{4 + r * 3 + c} ⌁"),
                           "mono", anchor="middle")]
     body += [
-        rect(16, 500, 342, 128, b["panel"], b["border"], 16),
-        text(32, 528, L(b, "ЧТО ЭТО НЕ", "WHAT IT IS NOT"), "brow"),
-        text(32, 554, L(b, "не вложение произвольной картинки —", "not an attachment of any picture —"), "mono"),
-        text(32, 572, L(b, "каталог фиксирован и правится из панели", "the catalogue is fixed and edited from the panel"), "mono"),
-        text(32, 598, L(b, "обычные сообщения остаются текстовыми", "ordinary messages stay text"), "mono"),
         *button(b, 700, L(b, "Купить за 6", "Buy for 6")),
     ]
     return (L(b, "стикеры", "stickers"),
@@ -977,11 +985,151 @@ def s17(b):
              L(b, "Сколько стикеров помещается в одно сообщение — не определено.",
                "How many stickers fit in one message is undecided.")])
 
+
+def s_feed_states(b):
+    """The feed in the four shapes it actually takes. Nothing here explains the
+    product — these are the states a screen has to be drawn in before anyone can
+    build it."""
+    def frame(rows, tail=None, first=None):
+        body = [text(187, 30, "9:41", "mono", anchor="middle"),
+                *header(b, L(b, "рядом", "34 nearby"), f'{b["here"]} · 1.2 {L(b, "км", "km")}')]
+        if first:
+            body.append(first)
+        y = 130 if b["key"] == "sosed" else 122
+        for i, (place, lines, meta, fresh) in enumerate(rows):
+            part, h = card(b, y, place, lines, meta, plus=True, fresh=fresh)
+            body += part
+            y += h + 16
+        if tail:
+            body += tail(y)
+        body += nav(b)
+        return body
+
+    full = frame([
+        (f'{b["places"][0]} · 27', L(b, ["Кофейня поставила пианино"], ["The café put a piano out"]), "08:12", False),
+        (f'{b["places"][1]} · 31', L(b, ["Кто-то потерял синий шарф"], ["Blue scarf by the canal"]), "11:04", False),
+        (f'{b["places"][2]} · 24', L(b, ["Кто со мной за эспрессо?"], ["Anyone up for espresso?"]), "12:20", False),
+        (f'{b["places"][3]} · 29', L(b, ["Слышали оркестр в семь?"], ["Heard that band at seven?"]),
+         L(b, "14:32", "14:32 · 2H 40M"), True),
+    ])
+
+    def skeleton(y):
+        out = []
+        for i in range(3):
+            top = 130 + i * 108
+            out += plate(b, 16, top, 342, 92)
+            out += [rect(36, top + 24, 120, 8, b["panel2"], None, 4),
+                    rect(36, top + 48, 250, 8, b["panel2"], None, 4),
+                    rect(36, top + 66, 180, 8, b["panel2"], None, 4)]
+        return out
+    loading = [text(187, 30, "9:41", "mono", anchor="middle"),
+               *header(b, L(b, "рядом", "34 nearby"), f'{b["here"]} · 1.2 {L(b, "км", "km")}'),
+               *skeleton(0), *nav(b)]
+
+    empty = [text(187, 30, "9:41", "mono", anchor="middle"),
+             *header(b, L(b, "рядом", "0 nearby"), f'{b["here"]} · 1.2 {L(b, "км", "km")}'),
+             (f'<rect x="16" y="240" width="342" height="150" rx="{b["radius"]}" fill="none" '
+              f'stroke="{b["muted2"]}" stroke-width="{b["bw"]}" stroke-dasharray="6 5"/>'),
+             text(187, 292, L(b, "Рядом тихо", "Quiet nearby"), "disp", size=18, anchor="middle"),
+             text(187, 324, L(b, "в этом радиусе никого", "nobody within this radius"), "muted", anchor="middle"),
+             *button(b, 348, L(b, "Расширить радиус", "Widen the radius"), 220, 74),
+             *nav(b)]
+
+    def older(y):
+        return [text(187, 128, L(b, "↑ тянуть — показать раньше", "↑ pull for earlier"), "mono", anchor="middle")]
+    top = frame([
+        (f'{b["places"][0]} · 27', L(b, ["Кофейня поставила пианино"], ["The café put a piano out"]), "08:12", False),
+        (f'{b["places"][1]} · 31', L(b, ["Кто-то потерял синий шарф"], ["Blue scarf by the canal"]), "11:04", False),
+    ], tail=older)
+
+    return (L(b, "лента: состояния", "the feed, in its states"),
+            L(b, "Полная, загрузка, пустая, начало списка. Одна и та же лента в четырёх видах.",
+              "Full, loading, empty, at the top of the list. One feed in four shapes."),
+            [(L(b, "ПОЛНАЯ", "FULL"), full, None),
+             (L(b, "ЗАГРУЗКА", "LOADING"), loading, None),
+             (L(b, "ПУСТАЯ", "EMPTY"), empty, None)])
+
+
+def s_gestures(b):
+    """Swipes, drawn as position rather than described. A gesture has a resting
+    state, a state part-way, and what it uncovers — and only the middle one is
+    worth a sheet."""
+    lines = L(b, ["Слышали оркестр во дворе", "в семь утра?"],
+              ["Heard that brass band in", "the yard at seven?"])
+
+    swiped = [text(187, 30, "9:41", "mono", anchor="middle"),
+              *header(b, L(b, "рядом", "34 nearby"), f'{b["here"]} · 1.2 {L(b, "км", "km")}')]
+    # what the card slides off to reveal
+    swiped += plate(b, 214, 200, 160, 96, b["accent"], b["accent"])
+    swiped += [text(238, 240, L(b, "СКРЫТЬ", "HIDE"), "brow", f'fill:{b["ink"]}'),
+               text(238, 268, L(b, "СКРЫТЬ ЕГО", "REPORT"), "brow", f'fill:{b["ink"]}')]
+    part, h = card(b, 200, f'{b["places"][1]} · 29', lines, "14:32", plus=False, x=-128)
+    swiped += part
+    swiped += [text(16, 340, L(b, "карточка уезжает влево, под ней — действия",
+                               "the card slides left, the actions are under it"), "mono"),
+               *nav(b)]
+
+    holding = [text(187, 30, "9:41", "mono", anchor="middle"),
+               *header(b, L(b, "рядом", "34 nearby"), f'{b["here"]} · 1.2 {L(b, "км", "km")}')]
+    part, h = card(b, 200, f'{b["places"][1]} · 29', lines, "14:32", plus=False)
+    holding += part
+    holding += [(f'<rect x="12" y="196" width="350" height="{h + 8}" rx="{b["radius"]}" '
+                 f'fill="none" stroke="{b["accent"]}" stroke-width="{b["bw"] + 1}"/>'),
+                circle(187, 200 + h + 44, 26, b["accent"], None, 0.25),
+                circle(187, 200 + h + 44, 14, b["accent"]),
+                text(16, 200 + h + 96, L(b, "долгое нажатие — то же меню, без свайпа",
+                                         "a long press opens the same menu"), "mono"),
+                *nav(b)]
+
+    if b["key"] == "neighbro":
+        viewer = [
+            text(187, 30, "9:41", "mono", anchor="middle"),
+            text(24, 66, "3 / 34", "mono"),
+            text(350, 68, "✕", "disp", f'fill:{b["muted2"]}', 16, "end"),
+            *plate(b, 44, 150, 286, 300),
+            text(68, 190, f'{b["places"][2]} · 24', "brow"),
+            *[text(68, 240 + i * 26, s, "msg", size=17) for i, s in enumerate(
+                ["Anyone up for a morning", "espresso before work?"])],
+            text(68, 330, "two of us · 400 m", "mono"),
+            text(68, 420, "FRESH · 4H 02M", "timer"),
+            text(60, 500, "←", "disp", f'fill:{b["muted2"]}', 26),
+            text(300, 500, "→", "disp", f'fill:{b["accent_text"]}', 26, "end"),
+            text(96, 496, "skip", "mono"),
+            text(240, 496, "join", "mono"),
+            *button(b, 700, "Skip", 150, 24, filled=False),
+            *button(b, 700, "I\u2019m in", 150, 200),
+        ]
+        third = ("ONE AT A TIME", viewer, None)
+    else:
+        pull = [text(187, 30, "9:41", "mono", anchor="middle"),
+                *header(b, L(b, "рядом", "nearby"), f'{b["here"]} · 1.2 {L(b, "км", "km")}'),
+                circle(187, 168, 18, "none", b["accent"], None, 2),
+                text(187, 176, "↻", "disp", f'fill:{b["accent_text"]}', 18, "middle"),
+                text(187, 214, L(b, "отпустите — обновится", "release to refresh"), "mono", anchor="middle")]
+        y = 250
+        for i in range(2):
+            part, h = card(b, y, f'{b["places"][i]} · {27 + i * 2}',
+                           L(b, ["Кофейня поставила пианино"], ["The café put a piano out"]), "08:12")
+            pull += part
+            y += h + 16
+        pull += nav(b)
+        third = ("ТЯНУТЬ — ОБНОВИТЬ", pull, None)
+
+    return (L(b, "жесты", "gestures"),
+            L(b, "Свайп по карточке, долгое нажатие и то, что тянут сверху. Нарисовано положением, а не стрелками на пустом месте.",
+              "A swipe across a card, a long press, and the pull from the top. Drawn as position, not as arrows over nothing."),
+            [(L(b, "СВАЙП ВЛЕВО", "SWIPE LEFT"), swiped, None),
+             (L(b, "ДОЛГОЕ НАЖАТИЕ", "LONG PRESS"), holding, None),
+             third])
+
+
 SCREENS = [
     (1, "splash", "01-splash-screen_RU.md", s01),
     (2, "name", "02-name-screen_RU.md", s02),
     (4, "composer", "04-post-composer_RU.md", s04),
     (3, "feed-shape", "03-feed-screen_RU.md", s03b),
+    (3, "feed-states", "03-feed-screen_RU.md", s_feed_states),
+    (18, "gestures", "03-feed-screen_RU.md", s_gestures),
     (5, "message-actions", "05-message-actions_RU.md", s05),
     (6, "match-and-chat", "06-match-and-chat_RU.md", s06),
     (7, "chat-list", "07-chat-list_RU.md", s07),
@@ -1001,13 +1149,12 @@ if __name__ == "__main__":
     written = 0
     for number, slug, doc, build in SCREENS:
         b = dict(BRAND, slug=slug, doc=doc)
-        name, lede, phones, notes = build(b)
+        built = build(b)
+        name, lede, phones = built[0], built[1], built[2]
         # the light row is the same screen asked again with the light face
-        _, _, phones_light, _ = build(dict(lit(b), slug=slug, doc=doc))
-        beside = len(phones) == 1
-        height = (184 + 1010 * 2 + 24 + 60) if beside else \
-                 (184 + 1010 * 2 + 40 + 40 + 24 * len(notes) + 24 + 60)
+        phones_light = build(dict(lit(b), slug=slug, doc=doc))[2]
+        height = 184 + 1010 * 2 + 24 + 60
         with open(os.path.join(OUT, f"{number:02d}-{slug}.svg"), "w") as f:
-            f.write(sheet_svg(b, number, name, lede, phones, phones_light, notes, height) + "\n")
+            f.write(sheet_svg(b, number, name, lede, phones, phones_light, height) + "\n")
         written += 1
     print(f"листов написано: {written} → {OUT}")

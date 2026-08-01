@@ -47,26 +47,20 @@
     </g>
   <g transform="translate(48,256)">
     <text x="0" y="0" class="brow">NAME</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen3"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen3)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
       <text x="24" y="120" class="brow">WHAT TO CALL YOU</text>
       <text x="24" y="168" class="disp" font-size="28">Your name</text>
       <text x="24" y="200" class="muted">Optional. You may leave it empty.</text>
-      <rect x="16" y="240" width="342" height="44" rx="12" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="16" y="240" width="342" height="44" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
       <text x="32" y="268" class="small" style="fill:#928979">your name…</text>
-      <text x="24" y="310" class="mono">length limit undecided</text>
-      <text x="24" y="380" class="brow">WHAT HAPPENS NEXT</text>
-      <text x="24" y="410" class="msg">Signing up ends here.</text>
-      <text x="24" y="434" class="msg">The server mints an encrypted UID from the</text>
-      <text x="24" y="454" class="msg">year, the name and the browser's fingerprint.</text>
-      <text x="24" y="490" class="msg">Another browser is another person.</text>
-      <text x="24" y="514" class="msg">Nothing is carried over or restored.</text>
-      <text x="24" y="560" class="mono">There is no location step: position and radius</text>
-      <text x="24" y="578" class="mono">are set inside the feed itself.</text>
       <circle cx="187" cy="720" r="32" fill="#c6a24e"/>
       <text x="187" y="730" class="disp" font-size="24" style="fill:#1a1509" text-anchor="middle">→</text>
+    </g>
     </g>
   </g>
     <g transform="translate(48,1194)">
@@ -77,38 +71,25 @@
   <g class="on-light">
   <g transform="translate(48,1266)">
     <text x="0" y="0" class="brow">NAME</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen4"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen4)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
       <text x="24" y="120" class="brow">WHAT TO CALL YOU</text>
       <text x="24" y="168" class="disp" font-size="28">Your name</text>
       <text x="24" y="200" class="muted">Optional. You may leave it empty.</text>
-      <rect x="16" y="240" width="342" height="44" rx="12" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
+      <rect x="16" y="240" width="342" height="44" rx="0" fill="#ded9cc" stroke="#1e1b14" stroke-width="2"/>
       <text x="32" y="268" class="small" style="fill:#5c5749">your name…</text>
-      <text x="24" y="310" class="mono">length limit undecided</text>
-      <text x="24" y="380" class="brow">WHAT HAPPENS NEXT</text>
-      <text x="24" y="410" class="msg">Signing up ends here.</text>
-      <text x="24" y="434" class="msg">The server mints an encrypted UID from the</text>
-      <text x="24" y="454" class="msg">year, the name and the browser's fingerprint.</text>
-      <text x="24" y="490" class="msg">Another browser is another person.</text>
-      <text x="24" y="514" class="msg">Nothing is carried over or restored.</text>
-      <text x="24" y="560" class="mono">There is no location step: position and radius</text>
-      <text x="24" y="578" class="mono">are set inside the feed itself.</text>
       <circle cx="187" cy="720" r="32" fill="#c6a24e"/>
       <text x="187" y="730" class="disp" font-size="24" style="fill:#1a1509" text-anchor="middle">→</text>
     </g>
-  </g>
-  </g>
-    <g transform="translate(525,256)">
-      <rect x="0" y="0" width="867" height="128" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
-      <text x="24" y="30" class="brow">LEFT OPEN BY THE DESCRIPTION</text>
-      <text x="24" y="56" class="warn">Two questions the description leaves open.</text>
-      <text x="24" y="80" class="body">The field's placeholder is undecided — an example stands here.</text>
-      <text x="24" y="104" class="body">The name's length limit is undecided.</text>
     </g>
+  </g>
+  </g>
     <g transform="translate(48,2228)">
-      <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="0" y="-8" width="1344" height="36" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
       <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
     </g>
 </svg>

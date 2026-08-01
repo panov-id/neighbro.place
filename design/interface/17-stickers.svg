@@ -47,19 +47,18 @@
     </g>
   <g transform="translate(48,256)">
     <text x="0" y="0" class="brow">CATALOGUE</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#14120e" stroke="#3a331f" stroke-width="2"/>
+    <clipPath id="screen57"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen57)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#0c0b09"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#0c0b09"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
-      <rect x="16" y="44" width="128" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
-      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
-      <text x="46" y="64" class="mono">balance: 40</text>
-      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
-      <text x="178" y="63" class="small">stickers</text>
-      <rect x="258" y="44" width="100" height="30" rx="15" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
-      <circle cx="276" cy="59" r="7" fill="none" stroke="#928979" stroke-width="1"/>
-      <text x="292" y="63" class="small">You</text>
-      <line x1="0" y1="96" x2="374" y2="96" stroke="#3a331f" stroke-width="1"/>
+      <text x="24" y="64" class="disp" font-size="22" style="fill:#c6a24e">‹</text>
+      <text x="48" y="60" class="small" style="font-weight:700">stickers</text>
+      <text x="48" y="78" class="timer">balance: 40</text>
+      <rect x="310" y="46" width="44" height="44" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
+      <text x="332" y="74" class="disp" font-size="16" style="fill:#928979" text-anchor="middle">···</text>
+      <line x1="0" y1="104" x2="374" y2="104" stroke="#3a331f" stroke-width="1"/>
       <rect x="16" y="140" width="100" height="100" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
       <circle cx="66" cy="182" r="22" fill="#c6a24e" opacity="0.25"/>
       <text x="66" y="226" class="mono" text-anchor="middle">4 ⌁</text>
@@ -87,13 +86,10 @@
       <rect x="248" y="372" width="100" height="100" rx="16" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
       <circle cx="298" cy="414" r="22" fill="#c6a24e" opacity="0.25"/>
       <text x="298" y="458" class="mono" text-anchor="middle">12 ⌁</text>
-      <rect x="16" y="500" width="342" height="128" rx="16" fill="#14120e" stroke="#3a331f" stroke-width="1"/>
-      <text x="32" y="528" class="brow">WHAT IT IS NOT</text>
-      <text x="32" y="554" class="mono">not an attachment of any picture —</text>
-      <text x="32" y="572" class="mono">the catalogue is fixed and edited from the panel</text>
-      <text x="32" y="598" class="mono">ordinary messages stay text</text>
-      <rect x="16" y="700" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <rect x="20" y="704" width="342" height="44" rx="0" fill="#3a331f"/>
+      <rect x="16" y="700" width="342" height="44" rx="0" fill="#c6a24e"/>
       <text x="187.0" y="728" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Buy for 6</text>
+    </g>
     </g>
   </g>
     <g transform="translate(48,1194)">
@@ -104,19 +100,18 @@
   <g class="on-light">
   <g transform="translate(48,1266)">
     <text x="0" y="0" class="brow">CATALOGUE</text>
-    <rect x="0" y="14" width="390" height="844" rx="46" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
+    <rect x="0" y="14" width="390" height="844" rx="42" fill="#f4f1e8" stroke="#1e1b14" stroke-width="2"/>
+    <clipPath id="screen58"><rect x="8" y="22" width="374" height="828" rx="30"/></clipPath>
+    <g clip-path="url(#screen58)">
     <g transform="translate(8,22)">
-      <rect x="0" y="0" width="374" height="828" rx="35" fill="#e9e6dd"/>
+      <rect x="0" y="0" width="374" height="828" rx="30" fill="#e9e6dd"/>
       <text x="187" y="30" class="mono" text-anchor="middle">9:41</text>
-      <rect x="16" y="44" width="128" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
-      <path d="M32 52 q6 0 6 6 q0 5 -6 10 q-6 -5 -6 -10 q0 -6 6 -6 z" fill="none" stroke="#c6a24e" stroke-width="2"/>
-      <text x="46" y="64" class="mono">balance: 40</text>
-      <circle cx="166" cy="59" r="4" fill="#c6a24e"/>
-      <text x="178" y="63" class="small">stickers</text>
-      <rect x="258" y="44" width="100" height="30" rx="15" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
-      <circle cx="276" cy="59" r="7" fill="none" stroke="#5c5749" stroke-width="1"/>
-      <text x="292" y="63" class="small">You</text>
-      <line x1="0" y1="96" x2="374" y2="96" stroke="#1e1b14" stroke-width="1"/>
+      <text x="24" y="64" class="disp" font-size="22" style="fill:#735b25">‹</text>
+      <text x="48" y="60" class="small" style="font-weight:700">stickers</text>
+      <text x="48" y="78" class="timer">balance: 40</text>
+      <rect x="310" y="46" width="44" height="44" rx="0" fill="#ded9cc" stroke="#1e1b14" stroke-width="2"/>
+      <text x="332" y="74" class="disp" font-size="16" style="fill:#5c5749" text-anchor="middle">···</text>
+      <line x1="0" y1="104" x2="374" y2="104" stroke="#1e1b14" stroke-width="1"/>
       <rect x="16" y="140" width="100" height="100" rx="16" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
       <circle cx="66" cy="182" r="22" fill="#c6a24e" opacity="0.25"/>
       <text x="66" y="226" class="mono" text-anchor="middle">4 ⌁</text>
@@ -144,26 +139,15 @@
       <rect x="248" y="372" width="100" height="100" rx="16" fill="#ded9cc" stroke="#1e1b14" stroke-width="1"/>
       <circle cx="298" cy="414" r="22" fill="#c6a24e" opacity="0.25"/>
       <text x="298" y="458" class="mono" text-anchor="middle">12 ⌁</text>
-      <rect x="16" y="500" width="342" height="128" rx="16" fill="#f4f1e8" stroke="#1e1b14" stroke-width="1"/>
-      <text x="32" y="528" class="brow">WHAT IT IS NOT</text>
-      <text x="32" y="554" class="mono">not an attachment of any picture —</text>
-      <text x="32" y="572" class="mono">the catalogue is fixed and edited from the panel</text>
-      <text x="32" y="598" class="mono">ordinary messages stay text</text>
-      <rect x="16" y="700" width="342" height="44" rx="12" fill="#c6a24e"/>
+      <rect x="20" y="704" width="342" height="44" rx="0" fill="#1e1b14"/>
+      <rect x="16" y="700" width="342" height="44" rx="0" fill="#c6a24e"/>
       <text x="187.0" y="728" class="small" style="fill:#1a1509;font-weight:700" text-anchor="middle">Buy for 6</text>
     </g>
-  </g>
-  </g>
-    <g transform="translate(525,256)">
-      <rect x="0" y="0" width="867" height="152" rx="16" fill="#14120e" stroke="#c6a24e" stroke-width="2"/>
-      <text x="24" y="30" class="brow">LEFT OPEN BY THE DESCRIPTION</text>
-      <text x="24" y="56" class="warn">Three questions the description leaves open.</text>
-      <text x="24" y="80" class="body">Where the catalogue opens from is undecided.</text>
-      <text x="24" y="104" class="body">Prices are undecided — the numbers here are stand-ins.</text>
-      <text x="24" y="128" class="body">How many stickers fit in one message is undecided.</text>
     </g>
+  </g>
+  </g>
     <g transform="translate(48,2228)">
-      <rect x="0" y="-8" width="1344" height="36" rx="10" fill="#26221a" stroke="#3a331f" stroke-width="1"/>
+      <rect x="0" y="-8" width="1344" height="36" rx="0" fill="#26221a" stroke="#3a331f" stroke-width="2"/>
       <text x="24" y="16" class="mono">Цвета — landing/index.html, шрифт — landing/fonts.css. Брат: sosed.place/design/interface/</text>
     </g>
 </svg>
