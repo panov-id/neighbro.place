@@ -12,7 +12,7 @@ Access to the Terms of Service, Privacy Policy, and Community Guidelines.
 
 - The documents are short and simple, not exhaustive legal boilerplate.
 - Content mirrors the rules already described in the README (Moderation, Privacy sections), rather than introducing new ones.
-- The actual texts live separately from `docs/`, in this repo's `legal/` folder (see `legal/terms-of-service_EN.md`, `legal/privacy-policy_EN.md`, `legal/community-guidelines_EN.md`).
+- The texts live in `landing/legal/`, where the documents page serves them from: `terms_EN.md`, `privacy_EN.md`, `community-guidelines_*.md`. English, one authoritative version. The root `legal/` holds pointers only.
 
 ## Open questions
 

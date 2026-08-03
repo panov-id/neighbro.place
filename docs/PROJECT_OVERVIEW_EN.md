@@ -62,7 +62,7 @@ NEIGHBRO sits in an empty niche between "dating" and "district chat": not about 
 - The decision to share is made fresh each time, never on by default. Following it shows a leaving-the-site warning.
 
 ### 3.8. Support
-- A support button is always available. Messages land in a Supabase table and notify the team.
+- A support button is always available. Messages land in a table of our own database and notify the team.
 
 ---
 
@@ -90,7 +90,6 @@ Every message — feed or chat — is checked **before** it is published:
 - **Tone** — a cheap LLM call classifies subtext.
   - **Harassment, drugs, sex services** — fully rejected, never published.
   - **Sexual subtext** — invisible by default; to see it you must accept a separate agreement and provide an email.
-  - **LGBT topics** — shown normally in the NEIGHBRO feed (filtered out on sosed.place). Blocking/liking such a message is a personal signal, not global.
 - **Age separation.** An adult (18+) will never be shown people under 18. For a minor the slider maximum stays narrow and never widens to adults.
 - **Quotas and reports.** Starting quota of 5, reduced on reports/blocks.
 
@@ -101,11 +100,11 @@ The bar: content stays within the norms of a calm, peaceful society.
 ## 7. Architecture (alpha)
 
 - **Frontend:** React web app in the browser (no native app in the alpha).
-- **Backend:** entirely Supabase — Postgres, Auth, Realtime, Storage. Business logic (quotas, age filter, moderation orchestration) lives in Edge Functions. No separate service to run.
-- **Gate:** `xor.ad` — the shared entry domain in front of the Supabase project; all frontends talk to it.
+- **Backend:** our own Deno node (the relay) — business logic, quotas, the age filter, moderation orchestration. State in our own Postgres beside the node, data in Bunny object storage. There is no managed backend: no vendor sits in the critical path.
+- **Gate:** `xor.ad` — the shared entry domain in front of the relay; all frontends talk to it.
 - **Language detection:** a local library right inside Edge Functions — no external API, no per-message cost.
 - **Post protection:** Turnstile + Bunny Shield (applied to posting only, not chat).
-- **Deploy:** frontend via Bunny CDN; backend on managed Supabase infrastructure.
+- **Deploy:** frontend via Bunny CDN; backend on our own nodes, released by tag through GitHub Actions.
 - **Configuration:** every knob (char limit, starting quota, TTL, radius) via environment variables.
 - **Admin panel:** a separate Refine app (`xor.ad/panel/`) — waitlist, reports, bans, quotas across both faces.
 

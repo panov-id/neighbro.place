@@ -6,7 +6,7 @@ Decorative stickers for messages/chat, purchased with the internal balance (see 
 
 ## Logic
 
-- The sticker catalog is fixed: populated and edited from the admin panel (see `xor.ad/docs/panel_EN.md`), images stored via Supabase Storage/imgproxy.
+- The sticker catalog is fixed: populated and edited from the admin panel (see `xor.ad/docs/panel_EN.md`), images live in Bunny object storage.
 - A user buys a sticker with balance in the app and can use it in a message/chat.
 - Regular messages stay text-only — a sticker is a separate, decorative entity, not a free-form image attachment.
 

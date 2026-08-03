@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 25 July 2026**
+**Last updated: 2 August 2026**
 
 ## 1. Who we are (controller)
 
@@ -14,8 +14,9 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 
 ## 3. What we process
 
-- **Device identity.** A random identifier tied to your browser/device (in local storage), so the Service can work without a traditional account. Clearing data or a private window creates a new identity.
-- **Area.** The area you choose. We do **not** collect or store your exact GPS coordinates, and we do not compute exact distance.
+- **Device identity.** An encrypted identifier derived from your year of birth, the name you typed and a **browser fingerprint**, so the Service can work without a traditional account. It is tied to this browser: clearing site data, another device or a private window creates a new identity, and the old one cannot be restored.
+- **A wider fingerprint — only if you tick the box.** At signup you may agree to four further device signals so the identity is lost less often: **the WebGL renderer, the number of processor cores, the memory size and the screen's pixel density**. Without the box we read your user agent, browser language and time zone only. The box is **unticked by default**, and the Service works fully without it. These signals are used for nothing but holding your identity together — not for analytics, not for ranking, not for advertising. We do not draw on a canvas and do not enumerate your fonts.
+- **Area.** An approximate area worked out from your time zone, IP address and browser language, or a point you place by hand. Two settings are yours: how far you look, and how precisely you are seen. **Exact coordinates are requested only when you press "where am I"**, are used to place your point once, and are not read in the background. Declining changes nothing else.
 - **Age.** The age you enter, and your age-filter preference, to keep the space appropriate.
 - **Name.** The display name you optionally set.
 - **Content.** The messages, likes (plus/skip), and chats you create — most of which fades and is deleted automatically.
@@ -27,28 +28,44 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 4. Why we process it (legal bases)
 
 - **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content, waitlist.
-- **Consent**: push notifications; any optional features that ask for it. You can withdraw consent at any time.
+- **Consent**: the wider fingerprint, precise location via "where am I", showing explicit content, push notifications, and website analytics. Each is asked for separately and can be withdrawn at any time.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 
 ## 5. Retention and ephemerality
 
-- **Content** (messages, chats) is kept only while active and is **deleted as it fades**; we do not provide export or long-term archives.
-- **Profile data** (device identity, age, name) is kept while you use the Service.
-- **Waitlist email** is kept until launch and a reasonable period after, then deleted, unless you ask us to remove it sooner.
-- **Logs** are kept for a short period for security, then deleted or anonymized.
+- **A feed message** lives 4 hours 20 minutes and is then **deleted, not hidden**. What remains is a counter of how many there were, without the text and without the author.
+- **A chat** lives on your device for the shorter of the two times the two of you chose. On our servers it is **not stored at all** — only carried until it is delivered.
+- **Profile data** (identity, year of birth, name, your settings) is kept while you use the Service in this browser.
+- **A waitlist email** is kept until launch and for one year after, then deleted — sooner if you ask.
+- **A support message**: 1 year. **Detailed page views**: 14 days. **The admin audit log**: 1 year. **Server logs and client errors**: 30 days. **Backups**: 7 days, so anything deleted leaves them within a week.
+- **Personal data is not written to logs** — not an email address, not the text of a message, not an identifier.
 
 ## 6. Location
 
-We match by the **area you choose**, not by precise location. We do not track or display your exact position or distance to other users.
+We match by **area**, not by precise location, and we never display your exact position or your distance to anyone else. The area is approximate by default and is marked as such.
+
+Your message is tied to a **zone around you rather than to a point** — you choose how large that zone is — so that a handful of messages cannot lead anyone to an address. If you press **"where am I"**, your browser asks you for precise coordinates; they place your point once and are not kept as a track.
+
+## 6a. Moderation
+
+Every message is checked before it is published: **toxicity** (Google Perspective API) and **explicitness** (a language-model classification). Explicit content is hidden by default and is opened only by a separate consent.
+
+**We do not classify what a message is about, and we never infer which groups you belong to.** No feed is filtered on such a basis. The result of a check is not stored beside the message.
+
+**Chats are not checked.** What you write inside a chat is not sent to Perspective, not sent to a language model, and not read by us — it travels from your device to the other person's and nowhere else. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
+
+If a message is not published, you are told, and told why.
 
 ## 7. Sharing and processors
 
 We do not sell your data. We share it only with service providers ("processors") that help us run the Service, under appropriate agreements, for example:
 
-- **Hosting / database** (e.g. Supabase) — storing Service data.
-- **CDN / delivery** (e.g. Bunny) — serving the site and app.
+- **Hosting and storage** (Bunny) — serving the site, and object storage for what the Service keeps. Our database is our own and runs beside the node: it is not a third party, and nobody else holds it.
+- **Email delivery** (Resend) — the letter that answers a waitlist request, and the invitations the admin panel sends.
 - **Payments** (e.g. PayPal) — if you buy internal balance; payment data is handled by the provider, not stored by us.
+- **Moderation** (Google Perspective API, and a language-model provider) — **the text of a message you publish to the feed**, checked before it appears. Chat text is never sent to either.
+- **Captcha** (Cloudflare Turnstile) — your IP address, when you publish.
 - **Push delivery** — your browser's push service, if you opt in.
 - **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.
 

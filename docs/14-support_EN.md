@@ -12,7 +12,7 @@ A support contact button, reachable from the app at any time.
 
 ## Logic
 
-- The sent message lands in a Supabase table.
+- The sent message lands in a table of our own database, beside the node.
 - A new ticket fires a notification (email/webhook) for the team.
 - There's no automated handling or reply — just logging the request and notifying.
 
