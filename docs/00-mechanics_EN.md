@@ -431,3 +431,142 @@ have no doer yet.
 - How long a report waits "until reviewed" if no review happens.
 - Backups: if they exist, everything we deleted lives on inside them. Their
   lifetime is undecided.
+
+---
+
+## 8. Language
+
+In a seaside district the neighbours speak different languages, and that is not
+an obstacle but a condition of the problem. The rule is simple: **by default a
+person sees the feed in their own language, but the district is not hidden from
+them**.
+
+**A person's language comes from the browser** — the first entry in
+`navigator.languages`. It is the same value that already belongs to the narrow
+set in §1: there is nothing to ask separately, it arrives with every request.
+
+**A message's language is decided by the node** — with a local library, at home,
+without calling any outside service. No text leaves us in order to be
+classified, and nobody bills us per message for it. The detected language is
+kept with the message (§7) and serves only as a filter.
+
+**The filter sits in the feed header and comes off with one tap.** Under a
+filtered feed there is always a line: "another N messages in other languages —
+show". That line matters: a person always knows the district is livelier than
+their feed, and never mistakes the silence of a filter for the silence of the
+district. With the filter off they see everything, each message carrying a
+language tag.
+
+**Interface language and feed language are different things.** The first decides
+what the labels say; the second decides whose messages are shown. Someone who
+reads Greek but keeps their phone in English should not lose their neighbours
+over it.
+
+**We do not translate.** Translation would mean a neighbour's text going to an
+outside translator: one more processor in the policy, one more agreement, and
+one more place where other people's words sit with a third party. For a product
+that promises nothing is left behind, that is a bad trade. If translation ever
+appears, it appears as a deliberate change of policy, not as a convenient
+button.
+
+### Open
+
+- Browser language is not the language a person writes in. Some keep the system
+  in English and write in Russian. Whether a manual feed-language choice is
+  needed alongside the automatic one is undecided.
+- Multilingual people: `navigator.languages` returns a list, the filter uses
+  one. Whether to take the whole list is undecided.
+- What to do when detection is unsure: a short "ok" or "👍" has no language at
+  all. Whether to show those to everyone or hide them is undecided.
+- The "another N in other languages" counter reveals district activity to
+  someone who has published nothing. Whether we count that as a leak is
+  undecided.
+
+---
+
+## 9. What stays on the device
+
+Identity lives in the browser (§1), so the browser has to remember something.
+The rule: **the device holds exactly what the product cannot work without, and
+holds it for the same periods as the server**.
+
+**What stays:**
+
+| What | Where | Until when |
+|---|---|---|
+| the encrypted UID | local storage | until the person clears the browser |
+| settings: conversation lifetime, language filter, zone | local storage | same |
+| the consent choice and its date | local storage | same — it is the proof of consent |
+| conversations: messages, times, status | IndexedDB, encrypted with Web Crypto | until the conversation expires (§2) |
+
+**A conversation is erased on the device by the same rule as on the server** —
+by the smaller of the two chosen lifetimes. Not "at roughly the same time", but
+by the same number: there is one deadline, and two parties keep it, each on
+their own side. The timer fires even when the app is closed: the next time it
+opens, the first thing it does is erase everything that expired, before anything
+is shown.
+
+**The feed does not settle on the device.** It arrives from the server and lives
+in the tab's memory. Otherwise someone else's message would outlive its 4:20 on
+my phone — and that is precisely the promise the product makes to its author.
+
+**Clearing the browser destroys the identity for good.** There is nothing to
+restore it with: no email, no password, no code — by the design in §1 there
+should not be. This has to be said plainly at sign-up, not discovered later. The
+pleasant converse follows from the same fact: **the "delete everything" button
+really does delete everything**, immediately, with no letters and no
+confirmations.
+
+### Open
+
+- Where the conversation encryption key is kept and what protects it. If it sits
+  next to the data in the same store, encryption defends against a look in the
+  debugger but not against whoever is holding the phone.
+- The browser may evict IndexedDB on its own when space runs out. The
+  conversation would vanish early — whether that counts as normal behaviour or
+  deserves a warning.
+- Several tabs at once: whose timer is authoritative and how they agree.
+- Whether an explicit "forget this device" is needed separately from "delete
+  everything".
+
+---
+
+## 10. Refusals
+
+The app regularly cannot do what is asked: the quota ran out, moderation did not
+pass it, there is no network, the conversation expired. One rule: **a refusal
+names its cause and the nearest action**. Nobody should have to guess what
+happened or what to do about it.
+
+| Refusal | What is said | What next |
+|---|---|---|
+| quota (§3) | how much is left and when it renews | wait until midnight |
+| moderation (§5) | what exactly did not pass | edit the text and send again |
+| no network | there is no connection, what you wrote is kept | retry when there is |
+| conversation expired (§2) | the time ran out, the exchange is gone | go back to the feed |
+
+**What was written is not lost to a refusal.** The text stays in the field: a
+person spent time on it, and a refusal is no reason to take that work away. This
+matters most for a moderation refusal, after which the text is meant to be
+edited rather than retyped.
+
+**A moderation refusal names its cause** — insult, threat, advertising spam —
+and we knowingly pay for that by hinting at how to get around the filter. The
+trade is fair: there are many people who simply put something bluntly and would
+not understand a bare refusal, and few who tune their wording against the
+filter, and those are caught by a report anyway (§5).
+
+**A refusal is not an error.** "The quota ran out" is a rule working correctly,
+not a breakage. A breakage looks different and speaks differently: "that did not
+work on our side, try again". These two tones must never be mixed, or the design
+of the product reads as a malfunction.
+
+### Open
+
+- Whether a message rejected by moderation spends quota. If it does, the filter
+  punishes the attempt; if it does not, there is a free way to probe the filter.
+- Whether a moderation refusal can be appealed, and where that goes.
+- The exact wordings are not written. They belong to the UX layer; only the rule
+  belongs here.
+- How specific the moderation cause is: a category ("this reads as an insult")
+  or a pointer at the actual word.
