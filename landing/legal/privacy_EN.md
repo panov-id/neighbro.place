@@ -49,11 +49,11 @@ Your message is tied to a **zone around you rather than to a point** — you cho
 
 ## 6a. Moderation
 
-Every message is checked before it is published: **toxicity** (Google Perspective API) and **explicitness** (a language-model classification). Explicit content is hidden by default and is opened only by a separate consent.
+Every message is checked before it is published, **on our own servers**: the text is not sent to anyone. Explicit content is hidden by default and is opened only by a separate consent.
 
 **We do not classify what a message is about, and we never infer which groups you belong to.** No feed is filtered on such a basis. The result of a check is not stored beside the message.
 
-**Chats are not checked.** What you write inside a chat is not sent to Perspective, not sent to a language model, and not read by us — it travels from your device to the other person's and nowhere else. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
+**Chats are not checked.** What you write inside a chat is not checked at all and is not read by us — it travels from your device to the other person's and nowhere else. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
 
 If a message is not published, you are told, and told why.
 
@@ -64,7 +64,6 @@ We do not sell your data. We share it only with service providers ("processors")
 - **Hosting and storage** (Bunny) — serving the site, and object storage for what the Service keeps. Our database is our own and runs beside the node: it is not a third party, and nobody else holds it.
 - **Email delivery** (Resend) — the letter that answers a waitlist request, and the invitations the admin panel sends.
 - **Payments** (e.g. PayPal) — if you buy internal balance; payment data is handled by the provider, not stored by us.
-- **Moderation** (Google Perspective API, and a language-model provider) — **the text of a message you publish to the feed**, checked before it appears. Chat text is never sent to either.
 - **Captcha** (Cloudflare Turnstile) — your IP address, when you publish.
 - **Push delivery** — your browser's push service, if you opt in.
 - **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.

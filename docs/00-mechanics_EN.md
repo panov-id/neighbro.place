@@ -108,12 +108,24 @@ cannot keep it up any longer.
 
 **A chat lives as long as whichever of the two set the shorter time.** Each side
 picks how long until the chat is deleted — 10 minutes, 30 minutes, an hour, or
-never — and the **shorter** of the two applies. Neither can extend the chat on the
+"while we're talking" — and the **shorter** of the two applies. Neither can extend the chat on the
 other's behalf: the other person's setting is a ceiling you may go under and may
 not go over.
 
 The setting is changed **during the conversation**, not only at its start. Either
 side can shorten it at any moment, and it shortens at once, for both.
+
+**"While we're talking" is not forever, it is silence.** A chat set that way lives
+as long as people write in it, and is deleted **4 hours and 20 minutes after the
+last message** — exactly as long as a message lives in the feed. The number is not
+arbitrary: a chat that started from a message should not outlive it by much. A
+live conversation is not cut off mid-sentence, an abandoned one leaves by itself,
+and nothing in the product is open-ended.
+
+**The default is an hour.** It is not the most private of the four, and it is
+chosen deliberately: someone who has not yet learned the rules should not lose
+their very first exchange halfway through. Anyone who wants less sets less, and
+their choice becomes the ceiling for both.
 
 **The ending is announced in advance.** For its last minutes a message or a chat is
 shown fading: you can see it going, and there is time to answer. The disappearance
@@ -121,13 +133,9 @@ itself is silent — no headstones, because what was promised is that nothing st
 
 ### Open
 
-- **"Never" argues with the promise.** If both sides pick never, the chat does not
-  end at all — and this product is built on everything melting. Whether that stays
-  or "never" becomes a long finite value is undecided.
 - Whether shortening applies retroactively: if the other person sets 10 minutes in
   a chat that has been running for three hours, does everything older than ten
   minutes go — or does the rule only govern what comes next.
-- The default value is undecided.
 - Whether the other side is told that the timer changed, and how, is undecided.
 - How long before the end the fading starts is undecided. It may differ between a
   message and a chat.
@@ -152,13 +160,20 @@ While all five are taken, publishing is unavailable. That is not a refusal and n
 an error — it is a feed full of your own messages, and there are two ways out:
 wait, or take one down.
 
-**A report does not touch the quota.** It does two things: it flags the message for
-moderation, and it removes it from the feed for the person who reported it. For
-everyone else the message stays.
+**A report does not touch the quota.** It does two things: it removes the message
+from the feed for the person who reported it, and it adds one to that message's
+report counter. For everyone else the message stays **while the counter is under
+the threshold** — the whole rule is in §5.
 
 **Blocking is what cuts the quota** — and only blocking. Whoever blocked stops
 seeing that author, and the author's ceiling drops: while the block holds, they
 have fewer than five messages alive at once.
+
+**A message refused by moderation takes no slot — until the third one.** A message
+that did not pass the filter never reached the feed, so it has nothing to occupy:
+the first two refusals in a day cost nothing, the text is edited and sent again.
+From the third refusal in that same day the ceiling drops by one until the day
+ends. You may be wrong for free twice; tuning your wording against the filter, no.
 
 > **Contradiction.** Screen 5 currently says a report lowers the quota too. The
 > rule above overrides that; the screen 5 document needs bringing into line.
@@ -283,10 +298,39 @@ not.
 
 Every message is checked **before it is published**:
 
-- **Toxicity** — Google Perspective API. Fails, and it is not published.
-- **Explicitness** — an LLM classification. Explicit content is invisible by
-  default and is opened by a separate consent with an email (screen 11).
-- **Harassment, drugs, sex work** — rejected outright.
+- **Rudeness** — a toxicity classifier. Fails, and it is not published.
+- **Hazard** — threats, hostility towards a group, dealing in what is forbidden,
+  approaching minors. Rejected outright.
+- **Explicitness** — explicit content is invisible by default and is opened by a
+  separate consent with an email (screen 11).
+
+**The check runs on our own node, and the text does not leave it.** Nothing is
+forwarded to Perspective, to somebody else's language model, or to any other
+processor — so the privacy policy carries no line about moderation as a recipient
+of data, there is no processing agreement to sign and no transfer abroad arises.
+Perspective, which this used to be built on, is also closing on 2026-12-31.
+
+**Naming a group does not make a message rude.** Rudeness is judged on the text
+with the group's name — "gay", "Muslim", "migrant", "disabled" — replaced by an
+ordinary word. So "our speakers are here and we're ready to start #gay20" goes
+through: without the group's name there is nothing left in that sentence.
+
+This is not a courtesy but the same line the section opens with. A classifier
+trained on ordinary data judges such messages more harshly by itself — measured:
+the word "gay" raised a score to 0.29 against 0.001 for a neutral word in the same
+sentence, 457 times higher. A model trained specifically against that bias scored
+0.288, so retraining does not cure it. Classifying nothing, formally, the service
+would still block those messages more often — which is exactly the effect topic
+classification was removed to avoid.
+
+**An attack on a group is judged on the original.** The substitution erases the
+attack along with the trigger: "gays should not be allowed near our children"
+stops being anything at all once "gays" is gone. So hostility towards a group is
+judged by a separate label on the unchanged text, at a threshold **above anything
+neutral sentences reach and below anything real attacks reach**.
+
+Measured on the probe sets: of 60 neutral sentences naming a group, **none** is
+blocked; of 5 attacks, **all five** are.
 
 **There is no topic classification.** The "LGBT-related" label has been removed
 from the classifier along with the filtering that used it: it inferred an author's
@@ -297,7 +341,7 @@ is gone from screen 4 in both storefronts and from neighbro's overview.
 the outcome, and is not written down beside it.
 
 **A chat is not checked at all.** Neither for toxicity nor for explicitness: what
-is written inside a chat goes to neither Perspective nor a language model and never
+is written inside a chat is checked by nothing at all and never
 leaves the pair of devices. Moderation governs what is published to the feed, where
 strangers see it; two people talking is not publication.
 
@@ -308,6 +352,41 @@ Shield IP limit govern publishing.
 told why. That is not politeness but a requirement for platforms carrying
 user-generated content.
 
+### A report
+
+**A report is a vote against showing a message, not a verdict.** Whoever reports
+stops seeing the message at once, with no hearing and no waiting. At the same
+time their report adds **one to that message's counter**.
+
+**When the counter reaches the threshold, the message leaves the feed for
+everyone.** The threshold is not a number but a **share of how many people could
+have seen the message at all**: of those whose zone it fell into. Otherwise one
+rule would mean different things in different places — five in a village is
+nearly everybody, five in a city is nobody.
+
+The denominator is the message's possible audience rather than the whole
+district: everyone picks their own zone (§4), so two messages from the same spot
+have different audiences, and their thresholds honestly differ.
+
+The share and the floor are configurable. The starting values are **5% of the
+audience, but never fewer than three people**. The floor is not optional: without
+it the share rounds down to one in a small zone, and a single person starts
+deciding for everyone.
+
+**People are counted, not taps.** Five reports from one person are one report.
+
+**Hiding does not give the author their slot back.** The message leaves the feed,
+but its place in the quota (§3) stays taken until its time runs out. Otherwise
+hiding would work as a gift: the more you are reported, the sooner you are free to
+write again.
+
+**The author is told the message was hidden, and why.** Same rule as §10: a
+refusal names its cause. Hiding by report is not a secret measure.
+
+**A report re-checks nothing.** It sends the text to no model: the check happened
+before publication, and a report is the opinion of people, not a second run of a
+machine.
+
 ### Open
 
 - The wording of the refusals is unwritten. There need to be as many as there are
@@ -315,6 +394,29 @@ user-generated content.
 - Whether a decision can be appealed is undecided.
 - Whether chat messages are checked as strictly as feed messages — the documents
   say "the same" but without the captcha; whether to soften the rest is undecided.
+- **The machine catches about half.** Measured on human-labelled data across nine
+  languages: 0.55 of what people call offensive is caught, and 0.07 of ordinary
+  messages are blocked for nothing. Reports take the other half — without them
+  moderation does not work, and they are part of it rather than an addition to it.
+- The gap the group-attack threshold sits in is **narrow**: 0.53 against 0.77 on
+  the probe sets. On live data it may narrow further — measure again.
+- The list of group names is **English only**, because the decision is made by the
+  arm that reads the translation. If the original-text arm ever decides, the list
+  is needed per language.
+- For eight languages (az, be, hy, ka, kk, ky, tg, uz) there is no public labelled
+  data at all: quality there is unmeasured, and cannot be measured until reports
+  arrive.
+- The German set, the only one available, is labelled on political tweets rather
+  than neighbourhood talk. Its 0.26 measures a mismatch of tasks, not the work of
+  moderation.
+- Whether reports count from people the author has blocked — otherwise blocking
+  protects nobody, and a feud between two turns into five votes.
+- Whether hiding lowers the author's ceiling the way blocking does (§3).
+- What to do with reports arriving on a message that is already hidden.
+**Settled, so it is not raised again:** there are no help contacts here and there
+will not be — the Service is not about that. A message saying someone feels bad
+passes as any other does: it endangers nobody, and there is nothing to erase it
+for.
 
 ---
 
@@ -334,7 +436,7 @@ A map: what we do, on what basis, and where it is thin.
 
 ### Where data goes
 
-Message text goes to Google Perspective and to an LLM provider. IPs go to
+Feed message text goes nowhere: moderation runs on our own node (§5). IPs go to
 Cloudflare Turnstile and Bunny Shield. Storage is our own Postgres beside the node
 and Bunny object storage. **Chat text does not leave**: that was the most
 sensitive transfer, and now there is none.
@@ -426,8 +528,6 @@ have no doer yet.
 
 - The pruning jobs for the waitlist, the logs, the client errors and the audit log
   are unwritten. A duration without a job is not a duration.
-- Whether Perspective and the LLM provider keep the texts we send them, and for how
-  long, needs finding out and writing down here.
 - How long a report waits "until reviewed" if no review happens.
 - Backups: if they exist, everything we deleted lives on inside them. Their
   lifetime is undecided.
@@ -468,6 +568,31 @@ one more place where other people's words sit with a third party. For a product
 that promises nothing is left behind, that is a bad trade. If translation ever
 appears, it appears as a deliberate change of policy, not as a convenient
 button.
+
+### Which way the writing runs
+
+Arabic, Hebrew, Persian and Urdu run right to left. None of the declared
+languages does — but people write in whatever they write in, and one such message
+will land in a feed where everything else runs left to right.
+
+**Direction is a property of the message, not of the page.** We already detect a
+message's language (above), direction follows from it, and it costs no extra
+work. A single Arabic message in a Greek feed lays itself out right to left
+without asking anything of the rest of the page.
+
+**One message does not mirror the layout.** Which side a chat bubble sits on
+means who is speaking, not which way the text runs: an Arabic speaker's bubble
+stays where it was, and only the text inside aligns right. The whole layout
+mirrors when the **interface** runs right to left, not when one line does.
+
+**We have no right-to-left interface.** Not one of the seventeen declared
+languages is written that way, so there is nothing to mirror the interface for.
+That is a decision rather than an omission: add such a language to the list and
+the mirrored layout comes with it.
+
+**Mixed direction inside one phrase** — a Latin word in an Arabic line, a house
+number, a time — needs isolating. Without it the punctuation jumps to the
+opposite end of the line and the phrase reads as broken.
 
 ### Open
 
@@ -540,7 +665,7 @@ happened or what to do about it.
 
 | Refusal | What is said | What next |
 |---|---|---|
-| quota (§3) | how much is left and when it renews | wait until midnight |
+| quota (§3) | all five slots are taken, when the next one frees | wait, or take one down |
 | moderation (§5) | what exactly did not pass | edit the text and send again |
 | no network | there is no connection, what you wrote is kept | retry when there is |
 | conversation expired (§2) | the time ran out, the exchange is gone | go back to the feed |
@@ -563,8 +688,6 @@ of the product reads as a malfunction.
 
 ### Open
 
-- Whether a message rejected by moderation spends quota. If it does, the filter
-  punishes the attempt; if it does not, there is a free way to probe the filter.
 - Whether a moderation refusal can be appealed, and where that goes.
 - The exact wordings are not written. They belong to the UX layer; only the rule
   belongs here.
