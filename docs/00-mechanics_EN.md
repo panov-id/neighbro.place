@@ -106,26 +106,50 @@ published. Nothing extends it: not a like, not a reply, not the fact that someon
 is reading it right now. Its author can take it down early by hand (screen 9), but
 cannot keep it up any longer.
 
-**A chat lives as long as whichever of the two set the shorter time.** Each side
-picks how long until the chat is deleted — 10 minutes, 30 minutes, an hour, or
-"while we're talking" — and the **shorter** of the two applies. Neither can extend the chat on the
-other's behalf: the other person's setting is a ceiling you may go under and may
-not go over.
+**A chat is held up by what you write into it, and each side keeps its own
+count.** Each person chooses how long **their own silence** may last before the
+chat disappears for them — 10 minutes, 30 minutes, an hour, or "while we're
+talking" — and that time runs from their own last message, not from anyone
+else's.
 
-The setting is changed **during the conversation**, not only at its start. Either
-side can shorten it at any moment, and it shortens at once, for both.
+Petya set ten minutes, Kolya two hours. Petya says nothing for ten minutes and the
+chat is gone **for Petya**. Kolya says nothing for two hours and it is gone for
+Kolya. The same conversation lives differently for the two of them, and that is
+the design rather than a fault.
 
-**"While we're talking" is not forever, it is silence.** A chat set that way lives
-as long as people write in it, and is deleted **4 hours and 20 minutes after the
-last message** — exactly as long as a message lives in the feed. The number is not
-arbitrary: a chat that started from a message should not outlive it by much. A
-live conversation is not cut off mid-sentence, an abandoned one leaves by itself,
-and nothing in the product is open-ended.
+**Nobody's setting decides anything for you.** The other person can neither
+extend nor shorten your chat; they govern their own side only. Which answers the
+question that used to stand open here: shortening never applies retroactively to
+anyone, because there is nothing of anyone else's to change.
+
+**Reading is not speaking.** Only your own message resets your timer. Someone who
+reads in silence for an hour loses the chat exactly as if they had left: it lives
+on conversation, not on presence.
+
+**"While we're talking" is the longest silence, not forever:** four hours and
+twenty minutes, exactly as long as a message lives in the feed. A chat that began
+from a message should not outlive it by much. Nothing in the product is
+open-ended.
 
 **The default is an hour.** It is not the most private of the four, and it is
 chosen deliberately: someone who has not yet learned the rules should not lose
-their very first exchange halfway through. Anyone who wants less sets less, and
-their choice becomes the ceiling for both.
+their very first exchange halfway through.
+
+**Your own count is visible, the other's is not.** A chat always shows how much
+is left **for you**: it is your setting and your last message, and there is
+nothing to hide there. Of the other person neither the setting nor the number is
+shown — only the fading of the last minutes, that is, "about to go". Knowing that
+it is time to answer is necessary; reading someone's character off the length
+they chose is not.
+
+**When the chat has ended for the other person, one line says so.** Otherwise an
+expired timer is indistinguishable from a snub: one falls silent and the other
+believes they are being ignored. One line removes the misunderstanding and gives
+away nothing beyond the fact.
+
+**A chat that has ended cannot be written into.** If it is gone for Petya, Kolya
+sees that and spends no words: nothing goes into the void. And nothing reaches
+Petya — what disappeared is not revived by someone else's activity.
 
 **The ending is announced in advance.** For its last minutes a message or a chat is
 shown fading: you can see it going, and there is time to answer. The disappearance
@@ -133,10 +157,6 @@ itself is silent — no headstones, because what was promised is that nothing st
 
 ### Open
 
-- Whether shortening applies retroactively: if the other person sets 10 minutes in
-  a chat that has been running for three hours, does everything older than ten
-  minutes go — or does the rule only govern what comes next.
-- Whether the other side is told that the timer changed, and how, is undecided.
 - How long before the end the fading starts is undecided. It may differ between a
   message and a chat.
 
@@ -375,8 +395,17 @@ deciding for everyone.
 
 **People are counted, not taps.** Five reports from one person are one report.
 
-**Hiding does not give the author their slot back.** The message leaves the feed,
-but its place in the quota (§3) stays taken until its time runs out. Otherwise
+**A report from someone the author has blocked does not count.** Blocking parts
+the two of them completely: a private feud does not turn into votes against the
+feed. The price is stated plainly: it takes a voice away from whoever is being
+harassed — they can block everyone able to report them and keep writing. What
+works against that is other people's reports, and hazards, which are caught
+before publication.
+
+**Hiding does not touch the author's ceiling.** In neither direction: the slot
+stays taken until the message's time runs out (§3), and the number of messages
+they may keep alive does not drop. There is one punishment — the message is not
+seen — and it does not accumulate. Otherwise
 hiding would work as a gift: the more you are reported, the sooner you are free to
 write again.
 
@@ -391,7 +420,11 @@ machine.
 
 - The wording of the refusals is unwritten. There need to be as many as there are
   classes of refusal.
-- Whether a decision can be appealed is undecided.
+- **There is no appeal** — settled. A refusal is final; the text is edited and
+  sent again. The price is measured and stated plainly: about 7% of ordinary
+  messages are blocked for nothing, and their authors have nowhere to go. What
+  softens it is that a refusal names its cause (§10) and that the text is not
+  lost.
 - Whether chat messages are checked as strictly as feed messages — the documents
   say "the same" but without the captcha; whether to soften the rest is undecided.
 - **The machine catches about half.** Measured on human-labelled data across nine
@@ -624,10 +657,10 @@ holds it for the same periods as the server**.
 | the consent choice and its date | local storage | same — it is the proof of consent |
 | conversations: messages, times, status | IndexedDB, encrypted with Web Crypto | until the conversation expires (§2) |
 
-**A conversation is erased on the device by the same rule as on the server** —
-by the smaller of the two chosen lifetimes. Not "at roughly the same time", but
-by the same number: there is one deadline, and two parties keep it, each on
-their own side. The timer fires even when the app is closed: the next time it
+**A conversation is erased on the device by the same rule as on the server** — by
+your own silence (§2). Not "at roughly the same time", but by the same number.
+Here it shows most plainly: for the other person the chat may still be alive at
+that moment, because their count is their own. The timer fires even when the app is closed: the next time it
 opens, the first thing it does is erase everything that expired, before anything
 is shown.
 
