@@ -195,6 +195,11 @@ the first two refusals in a day cost nothing, the text is edited and sent again.
 From the third refusal in that same day the ceiling drops by one until the day
 ends. You may be wrong for free twice; tuning your wording against the filter, no.
 
+**An offer does not take a slot.** Neighbourhood offers have their own quota — a system limit
+on their share of the feed and a frequency cap per business (specification in
+`xor.ad/docs/offers/`). Five live messages is about being a neighbour, and the owner of the
+bakery stays a neighbour with their five even while an offer of theirs is up.
+
 > **Contradiction.** Screen 5 currently says a report lowers the quota too. The
 > rule above overrides that; the screen 5 document needs bringing into line.
 
@@ -365,6 +370,12 @@ is written inside a chat is checked by nothing at all and never
 leaves the pair of devices. Moderation governs what is published to the feed, where
 strangers see it; two people talking is not publication.
 
+**Ordinary messages carry no links.** Not in the feed, not in a chat: a link is stripped and
+the person is told so. The single place a link is allowed is a neighbourhood offer, and there
+it goes through our own redirect, which can be killed (specification in
+`xor.ad/docs/offers/`). The reason is plain: without that rule the feed turns into spam within
+a month, and there is nothing to check every link with.
+
 **Captcha and rate limit are feed-only too.** Cloudflare Turnstile and the Bunny
 Shield IP limit govern publishing.
 
@@ -514,6 +525,8 @@ untrue, and here they do not disagree anywhere except where it says so.
 |---|---|---|---|
 | a feed message: text, zone, people count, language | server | to show the feed | **4:20, then deleted outright** — not hidden, erased |
 | the "how many there were" counter | server | statistics | indefinitely, **without text and without author** |
+| business profile: email, name, address, status | server | not to post an envelope again | **a year from the last offer**, then deleted along with the complaints about it |
+| a complaint about an offer | server | to tell whether complaints are systematic | as long as the profile |
 | chat messages | **the device**, IndexedDB, Web Crypto | the conversation | the shorter of the two settings (§2) |
 | chat in transit | server | delivery | **not stored**; if the other side is offline, until delivered or until the chat's life ends, whichever comes first |
 | likes and matches | server | to open a chat | as long as the chat lives |
@@ -574,9 +587,15 @@ an obstacle but a condition of the problem. The rule is simple: **by default a
 person sees the feed in their own language, but the district is not hidden from
 them**.
 
-**A person's language comes from the browser** — the first entry in
-`navigator.languages`. It is the same value that already belongs to the narrow
-set in §1: there is nothing to ask separately, it arrives with every request.
+**Up to three languages may be chosen.** The default comes from the browser —
+`navigator.languages`, a value from the narrow set in §1, so there is nothing to ask
+separately — but the person edits the list themselves. The automatic guess knows the language
+of the system, not the language someone writes in: the phone is in English, they write in
+Russian.
+
+Three, rather than one or all: in Cyprus the real set is Greek, English and Russian — exactly
+three. One makes half the district invisible, and with no cap the filter stops filtering,
+though filtering is the whole reason it exists.
 
 **A message's language is decided by the node** — with a local library, at home,
 without calling any outside service. No text leaves us in order to be
@@ -594,6 +613,11 @@ language tag.
 what the labels say; the second decides whose messages are shown. Someone who
 reads Greek but keeps their phone in English should not lose their neighbours
 over it.
+
+**The language filter does not hide an offer.** Neighbourhood offers are shown whatever the
+language: the Greek bakery across the road is just as useful to a Russian-speaking neighbour.
+It is the only exception to the filter, and it is named plainly so it does not look like an
+oversight.
 
 **We do not translate.** Translation would mean a neighbour's text going to an
 outside translator: one more processor in the policy, one more agreement, and
@@ -632,8 +656,6 @@ opposite end of the line and the phrase reads as broken.
 - Browser language is not the language a person writes in. Some keep the system
   in English and write in Russian. Whether a manual feed-language choice is
   needed alongside the automatic one is undecided.
-- Multilingual people: `navigator.languages` returns a list, the filter uses
-  one. Whether to take the whole list is undecided.
 - What to do when detection is unsure: a short "ok" or "👍" has no language at
   all. Whether to show those to everyone or hide them is undecided.
 - The "another N in other languages" counter reveals district activity to
