@@ -412,6 +412,7 @@
              box-shadow: 6px 6px 0 rgba(0,0,0,.4); }
   .consent[hidden] { display: none; }
   .consent-text { color: var(--muted-2); font-size: .94rem; margin: 0 0 12px; }
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .consent-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
   .consent-btn { border: 1px solid var(--border); background: transparent; color: var(--fg);
                  padding: 9px 14px; border-radius: 9px; cursor: pointer; font: inherit; font-size: .9rem; }
@@ -545,7 +546,7 @@
     <p class="sub" data-i18n="sub"></p>
 
     <form id="waitlist-form-1" class="waitlist-form">
-      <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder">
+      <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder"><label class="hp" aria-hidden="true">Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
       <button type="submit" data-i18n="cta"></button>
     </form>
     <div class="note mono" data-i18n="note"></div>
@@ -728,7 +729,7 @@
   <section class="closing">
     <h2><span data-i18n="closeA"></span><span class="accent" data-i18n="closeB"></span></h2>
     <form id="waitlist-form-2" class="waitlist-form">
-      <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder">
+      <input type="email" name="email" required autocomplete="email" data-i18n-ph="emailPlaceholder"><label class="hp" aria-hidden="true">Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
       <button type="submit" data-i18n="cta"></button>
     </form>
     <div class="status" data-status-for="waitlist-form-2" role="status" aria-live="polite"></div>
@@ -1778,13 +1779,16 @@
       btn.disabled = true;
       status.textContent = "";
       status.className = "status";
+      // Filled means a bot: look like success and send nothing.
+      const trap = form.querySelector('input[name=website]');
+      if (trap && trap.value) { form.style.display = "none"; showAfter(form.id); return; }
       try {
         const res = await fetch(`${API_URL}/waitlist`, {
           method: "POST",
           headers: apiHeaders(),
           // Carry language + colour theme so the welcome email matches the site.
           body: JSON.stringify({
-            email, source: SOURCE, brand: BRAND, early_access: true,
+            email, website: trap ? trap.value : "", source: SOURCE, brand: BRAND, early_access: true,
             lang: LANG,
             accent: ACCENTS[accentIndex] || "",
             mode: document.documentElement.getAttribute("data-mode") === "light" ? "light" : "dark",
