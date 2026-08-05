@@ -14,7 +14,7 @@ Neighbro is for good neighbors — treat people the way you'd want to be treated
 
 ## No selling or promotion
 
-Neighbro is not a marketplace. **Selling or advertising goods or services, soliciting, fundraising, or recruiting in ordinary messages, chats, or posts is not allowed.** If you want to promote something, use the **paid advertising block** — that is the only place for commercial content.
+Neighbro is not a marketplace. **Selling or advertising goods or services, soliciting, fundraising, or recruiting in ordinary messages, chats, or posts is not allowed.** If you want to promote something, the only way is a **neighbourhood offer** — a post by a local business with a discount for neighbours. Publishing it is free; we take no money for it.
 
 ## Content with limited visibility
 

@@ -136,15 +136,13 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 - **Voice flashes** — a short (≤10s) voice message, also ephemeral.
 - **Better chat** — typing/read indicators, in-chat reactions, ephemeral photos in chat only (the feed stays text-only).
 
-### 9.2. Monetisation (already in the concept)
-- **In-app balance.** Topped up with real money (PayPal on both faces) + bonuses + referrals (rewarding both inviter and invitee on first entry).
-- **Decorative stickers** — a fixed catalogue managed from the admin panel, bought in-app, for messages and chat.
-- **Message promotion** — a paid boost to make your message stand out in the feed. Only promoted/ad messages may carry an image (regular ones are text-only).
-- **Local advertising** — a nearby business (a café on the same block) pays for a geo-targeted ephemeral message. A natural fit for hyperlocality.
+### 9.2. Neighbourhood offers (the only form of advertising)
+- **An offer** — a post by a local business that must carry a discount, available to anyone who comes and asks. Publication is free: the platform takes no money and no barter. The mechanic lives in `xor.ad/docs/offers/`.
+- **Images and links live only in offers.** Regular messages stay text-only and link-free, or the feed turns into spam within a month.
+- **Decorative stickers** — a fixed catalogue managed from the admin panel, free, for messages and chat.
 
 ### 9.3. Growth and retention (medium risk)
 - **Local "flash" events** — temporary rooms around an event (concert, match, festival) with an extended TTL for its duration.
-- **Invite a neighbour** — geo-aware referrals: a bigger bonus if the invitee turns up within the same radius.
 - **Neighbourhood streaks** — a light mechanic: a district with a consistently lively feed earns a "living place" status (no personal profiles).
 - **Multilingual bridges** — there's already a 5% foreign-language mix + AI detection; add optional tap-to-translate for a truly cross-lingual feed.
 
@@ -177,16 +175,15 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 - Public launch of NEIGHBRO (drop the waitlist gate).
 - Reactions, mood tags, "pulse of the place" — enliven the empty feed in smaller towns.
 - Better chat (typing/read/reactions).
-- Geo-aware referrals + first step into monetisation: stickers.
+- Stickers from the admin-panel catalogue.
 - A/B on message TTL, default radius, foreign-language share.
-- **Goal:** a self-sustaining live feed in at least a few dense locations; first paying users.
+- **Goal:** a self-sustaining live feed in at least a few dense locations.
 
-### Q3 — Monetisation and local reach
-- Message promotion + ephemeral local advertising (pilot with a local business).
-- In-app balance: PayPal top-up, bonuses, sticker catalogue from the panel.
+### Q3 — Local reach
+- Neighbourhood offers — a pilot with a local business.
 - "Flash" events (concerts/festivals) with extended TTL.
 - Optional tap-to-translate — a genuinely cross-lingual feed.
-- **Goal:** first revenue, a proven local-ad model, growth via events.
+- **Goal:** a proven free-offer model, growth via events.
 
 ### Q4 — Native apps and platform scale
 - Native iOS/Android (web model proven) with push about nearby surges.
@@ -207,7 +204,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 
 - **Cold start.** A hyperlocal product is dead without density. Hence the focus on dense pilot locations and "flash" events as an accelerant.
 - **Moderation balance.** Too strict and the feed is sterile and boring; too loose and it drifts into toxicity / dating spam. Needs constant calibration.
-- **Monetising without betraying the idea.** Ephemerality and privacy are the essence; aggressive ads or user-data selling would destroy it. Hence the bet on stickers, promotion and gentle local ads.
+- **Sustainability without revenue.** The platform deliberately takes no money: offers are free, there is no in-app balance, and the only money is voluntary donations. That shields ephemerality and privacy from the pressure of an ad model, but it also means infrastructure costs are covered by nothing, and growth runs into them.
 - **Privacy vs. abuse.** The browser fingerprint is a trade-off: it enables anti-spam without real accounts, but must honestly stay protection, not surveillance.
 - **Jurisdictions.** A European face → GDPR, age protection, local content requirements.
 

@@ -5,3 +5,9 @@ NEIGHBRO — the global face of a hyperlocal neighbor network. Meet people in yo
 
 - [`xor.ad`](https://github.com/panov-id/xor.ad) — the shared platform behind this frontend; full concept, architecture, and moderation policy live there.
 - [`sosed.place`](https://github.com/panov-id/sosed.place) — the RU/CIS sibling face.
+
+## Support
+
+The Service takes no money: offers are published free of charge and there is no internal balance. Voluntary donations cover the infrastructure.
+
+[![PayPal](https://img.shields.io/badge/PayPal-donate-00457C?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=5SMKMYYWFHMJC)

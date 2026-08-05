@@ -5,3 +5,9 @@ NEIGHBRO — глобальное лицо гиперлокальной сосе
 
 - [`xor.ad`](https://github.com/panov-id/xor.ad) — общая платформа за этим фронтендом; полное описание концепции, архитектуры и политики модерации там.
 - [`sosed.place`](https://github.com/panov-id/sosed.place) — русскоязычное/СНГ родственное лицо.
+
+## Поддержать
+
+Сервис не берёт денег: офферы размещаются бесплатно, внутреннего баланса нет. Инфраструктуру покрывают добровольные донаты.
+
+[![PayPal](https://img.shields.io/badge/PayPal-донат-00457C?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=5SMKMYYWFHMJC)

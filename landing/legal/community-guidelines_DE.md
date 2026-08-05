@@ -14,7 +14,7 @@ Neighbro ist für gute Nachbarn. Behandle Menschen so, wie du auf deiner eigenen
 
 ## Kein Verkauf und keine Werbung
 
-Neighbro ist kein Flohmarkt. **Verkauf oder Bewerbung von Waren und Dienstleistungen, Anwerbung, Spendensammeln oder Recruiting in gewöhnlichen Nachrichten, Chats oder Posts sind verboten.** Willst du etwas bewerben — nutze den **kostenpflichtigen Werbeblock**, das ist der einzige Ort für kommerzielle Inhalte.
+Neighbro ist kein Flohmarkt. **Verkauf oder Bewerbung von Waren und Dienstleistungen, Anwerbung, Spendensammeln oder Recruiting in gewöhnlichen Nachrichten, Chats oder Posts sind verboten.** Willst du etwas bewerben — das geht nur über ein **Nachbarschaftsangebot**: ein Beitrag eines lokalen Geschäfts mit Rabatt für die Nachbarn. Die Veröffentlichung ist kostenlos, wir nehmen dafür kein Geld.
 
 ## Inhalte mit eingeschränkter Anzeige
 

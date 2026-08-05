@@ -1,6 +1,6 @@
 # Neighbro — Terms & Conditions
 
-**Last updated: 7 July 2026**
+**Last updated: 5 August 2026**
 
 ## 1. Who we are
 
@@ -15,7 +15,7 @@ Neighbro is an **ephemeral, local social service**: you post a short message to 
 - **Ephemeral.** Messages and chats are temporary and disappear over time. We do not promise to store, back up, or let you retrieve past content.
 - **Area-based, not exact tracking.** You choose an area; we match you to people in that area. We do **not** compute or share your exact distance or precise coordinates.
 - **Low-identity.** You use Neighbro without a traditional account; identity is tied to your browser/device. Anyone with access to your device may act as you.
-- **Text-first.** Users **cannot exchange images** in messages or chats. Images appear only in **approved advertising** (see §9).
+- **Text-first.** Users **cannot exchange images** in messages or chats. Images appear only in **approved offers** (see §9).
 
 ## 3. Acceptance
 
@@ -56,7 +56,7 @@ Neighbro is meant to feel like good neighbors — respectful and sociable. You a
 - post hateful, discriminatory, violent, or illegal content;
 - post sexual content, solicit sex, or engage in any sexual conduct involving minors (zero tolerance — such content will be reported to authorities);
 - share other people's private information without consent;
-- **sell or advertise goods or services, solicit, fundraise, recruit, or run any promotion** — any commercial or promotional content is allowed **only** through the paid advertising block (§9), never in ordinary messages, chats, or as a user's posts;
+- **sell or advertise goods or services, solicit, fundraise, recruit, or run any promotion** — any commercial or promotional content is allowed **only** through offers (§9), never in ordinary messages, chats, or as a user's posts;
 - spam, scam, phish, or send unsolicited commercial messages;
 - attempt to exchange images through message content, or bypass the text-only limitation;
 - probe, disrupt, reverse-engineer, or overload the Service or its infrastructure.
@@ -67,13 +67,15 @@ These community rules are also set out, in plain language, in our **Community Gu
 
 - **Your content.** You keep ownership of what you post. You grant us a limited, non-exclusive license to host, display, and distribute your content **within the Service** for the purpose of operating it.
 - **Ephemeral by design.** Content fades and is not recoverable. Chat history is kept only as long as the chat is active and is deleted thereafter; we do not provide export or long-term archives.
-- **Advertising.** Paid advertising (which may include images) may be submitted and is subject to our review and approval before it is shown. We may reject or remove any advertisement.
+- **Offers.** Local businesses may publish **offers** — posts that must carry a discount available to anyone who asks. Publication is **free**: we take no money and no barter for it. Offers (which may include images) are subject to our review and approval before they are shown, and we may reject or remove any of them. An offer is the **business's own proposal**: any resulting agreement is between you and that business, and we are **not a party** to it.
 
-## 10. Payments and internal balance
+## 10. Donations
 
-- The Service may offer a **virtual internal balance** purchasable via **PayPal**, used inside the Service (for example to buy stickers or place advertising).
-- The internal balance is a **limited license to use in-Service features**. It has **no monetary value**, cannot be exchanged for cash, and cannot be transferred outside the Service, except where required by law.
-- Prices and available items may change. Except where mandatory consumer law provides otherwise, purchases of digital items and balance are **final and non-refundable** once delivered/used. Nothing here limits your statutory consumer rights.
+- **We take no money for the Service.** There is no internal balance, no in-service currency or credits, and offers (§9) are published free of charge.
+- **Voluntary donations.** You may support the running costs through the donation link in our footer. A donation is a **gift**: it is not a purchase, it buys no goods, services, features, priority, or standing of any kind, and it gives you no rights in or over the Service. Nothing in the Service is ever withheld from you for not donating.
+- **Not the same as §8.** Section 8 forbids **you** from soliciting or fundraising in messages, chats, and posts; that rule keeps the feed free of commercial content and is unaffected by this section.
+- **No refunds.** Donations are non-refundable, except where mandatory law provides otherwise. Nothing here limits your statutory consumer rights.
+- **Who receives them.** Donations are received by Evgenii Panov (PSYTICAN & PEJEDED) and go towards running the Service. Payment is handled entirely by PayPal under its own terms; we receive no card details (see the Privacy Policy).
 
 ## 11. Intellectual property
 

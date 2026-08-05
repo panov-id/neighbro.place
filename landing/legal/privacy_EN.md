@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 2 August 2026**
+**Last updated: 5 August 2026**
 
 ## 1. Who we are (controller)
 
@@ -63,10 +63,11 @@ We do not sell your data. We share it only with service providers ("processors")
 
 - **Hosting and storage** (Bunny) — serving the site, and object storage for what the Service keeps. Our database is our own and runs beside the node: it is not a third party, and nobody else holds it.
 - **Email delivery** (Resend) — the letter that answers a waitlist request, and the invitations the admin panel sends.
-- **Payments** (e.g. PayPal) — if you buy internal balance; payment data is handled by the provider, not stored by us.
 - **Captcha** (Cloudflare Turnstile) — your IP address, when you publish.
 - **Push delivery** — your browser's push service, if you opt in.
 - **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.
+
+**Donations are not in this list.** If you follow the donation link in our footer, you leave the Service. PayPal then handles your payment under its own terms as an **independent controller**, not as our processor: we do not send it your data, we receive no payment details, and we cannot tell who donated. Donating is never required to use the Service.
 
 We may disclose data if required by law or to protect safety and rights.
 
