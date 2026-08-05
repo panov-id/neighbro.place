@@ -136,3 +136,5 @@ These Terms are governed by the laws of the **Republic of Cyprus**. The courts o
 ## 21. Contact
 
 Questions or requests: **support@neighbro.place** — PSYTICAN & PEJEDED (Evgenii Panov), Limassol, Cyprus.
+
+That address is our **single point of contact**, for users and for authorities alike. You may write to it in **English** or in **Greek**, and we answer in the language you wrote in. Everything is handled electronically; there is no telephone or postal channel.
