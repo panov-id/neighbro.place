@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP: same-origin plus the relay, which is where the notice is posted. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'none'">
+<title>Neighbro — Report illegal content</title>
+<meta name="description" content="Report content on sosed that you believe is illegal. A person examines every report and answers with reasons.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://neighbro.place/report.html">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<meta name="theme-color" content="#0d0b0a">
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root {
+    --bg: #0c0b09; --panel: #14120e; --panel-2: #26221a; --border: #3a331f;
+    --fg: #ede8dd; --muted: #8a8172; --accent: #c6a24e; --accent-ink: #1a1509;
+  }
+  [data-mode="light"] {
+    --bg: #e9e6dd; --panel: #f4f1e8; --panel-2: #ded9cc;
+    --border: #1e1b14; --fg: #181510; --muted: #5f5a4e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  body { background: var(--bg); color: var(--fg); font-family: "Golos Text", -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; }
+  .mono { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.7rem; }
+  a { color: var(--accent); }
+
+  header.top { display: flex; align-items: center; gap: 16px; padding: 26px 0 22px; border-bottom: 1px solid var(--border); }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); }
+  .brand .mark { width: 30px; height: 30px; color: var(--accent); display: flex; }
+  .brand .name { font-family: "JetBrains Mono", monospace; letter-spacing: 0.12em; font-size: 0.82rem; }
+
+  h1 { font-size: 1.5rem; margin: 34px 0 14px; letter-spacing: -0.01em; }
+  p { line-height: 1.6; margin-bottom: 14px; color: var(--fg); }
+  p.lead { color: var(--muted); }
+  .note { border-left: 2px solid var(--accent); padding: 10px 0 10px 14px; margin: 20px 0; color: var(--muted); font-size: 0.92rem; }
+
+  form { margin-top: 26px; display: grid; gap: 18px; }
+  label { display: grid; gap: 6px; }
+  .label { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.66rem; color: var(--muted); }
+  input[type="text"], input[type="email"], select, textarea {
+    background: var(--panel); color: var(--fg); border: 1px solid var(--border);
+    border-radius: 9px; padding: 11px 12px; font: inherit; font-size: 0.95rem; width: 100%;
+  }
+  textarea { min-height: 150px; resize: vertical; }
+  .row { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+  .check { display: flex; gap: 10px; align-items: flex-start; }
+  .check input { margin-top: 3px; }
+  .check span { font-size: 0.92rem; line-height: 1.5; }
+  button.send { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 9px; padding: 13px 18px; font: inherit; font-weight: 600; cursor: pointer; justify-self: start; }
+  button.send[disabled] { opacity: 0.55; cursor: default; }
+  .result { border: 1px solid var(--border); background: var(--panel); border-radius: 11px; padding: 16px; line-height: 1.6; }
+  .result .ref { font-family: "JetBrains Mono", monospace; letter-spacing: 0.1em; }
+  .bad { border-color: var(--accent); }
+  footer.bottom { margin-top: 46px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+  footer.bottom a { color: var(--muted); text-decoration: none; }
+  /* The honeypot must be reachable by nothing a person uses and by everything a
+     naive bot fills. Not display:none — some bots skip those deliberately. */
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="index.html" aria-label="Back to neighbro.place">
+      <span class="mark">
+        <svg width="30" height="30" viewBox="0 0 96 96" aria-hidden="true">
+          <circle cx="48" cy="48" r="46" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <g transform="translate(16.3,16.8) scale(0.88)">
+            <rect x="50" y="10" width="7" height="14" rx="2" fill="currentColor"/>
+            <path d="M36 4 L64 28 V57 H32 L20 67 V57 H8 V28 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+            <rect x="22" y="32" width="18" height="5" rx="2.5" style="fill:var(--bg)"/>
+            <rect x="22" y="43" width="27" height="5" rx="2.5" style="fill:var(--bg)"/>
+          </g>
+        </svg>
+      </span>
+      <span class="name">NEIGHBRO.PLACE</span>
+    </a>
+  </header>
+
+  <h1>Report illegal content</h1>
+
+  <p class="lead">Use this form to tell us that something on Neighbro is <strong>illegal</strong> — not that you dislike it. Anyone can send one: you do not need an account, and you do not need to be a user. Authorities can use it too.</p>
+
+  <p>To hide a message you would rather not see, use the complaint on the message itself. If a business refused a discount it published, complain from the offer. Those are different things and go to a different place.</p>
+
+  <div class="note">A person reads every report — not an automated system. You will be told what was decided, why, and how to contest it. If the content had already disappeared before your report arrived, we will say so plainly rather than pretend to have examined it.</div>
+
+  <form id="reportForm" novalidate>
+    <label>
+      <span class="label">What is it</span>
+      <select name="target_kind" id="kind">
+        <option value="feed_message">A message in the feed</option>
+        <option value="offer">An offer from a business</option>
+        <option value="chat">Something in a chat</option>
+        <option value="other">Something else</option>
+      </select>
+    </label>
+
+    <label>
+      <span class="label">Where it is — optional</span>
+      <input type="text" name="target_id" id="targetId" autocomplete="off" placeholder="Message or offer identifier, if you have it">
+    </label>
+
+    <label>
+      <span class="label">Why you believe it is illegal — required</span>
+      <textarea name="reason_text" id="reason" required placeholder="What the content is, and which law or offence you believe it breaks. Be specific: a report we cannot understand is a report we cannot act on."></textarea>
+    </label>
+
+    <div class="row">
+      <label>
+        <span class="label">Your name</span>
+        <input type="text" name="notifier_name" id="name" autocomplete="name">
+      </label>
+      <label>
+        <span class="label">Your email</span>
+        <input type="email" name="notifier_email" id="email" autocomplete="email">
+      </label>
+    </div>
+
+    <div class="note">If your report concerns the <strong>sexual abuse of children</strong>, leave the name and email empty. The law forbids us to require them, and the report is handled ahead of everything else. If life or safety is at risk, tell the police first — we are obliged to report it too, but they can act now.</div>
+
+    <div class="check">
+      <input type="checkbox" id="bona" required>
+      <span>I declare, in good faith, that the information in this report is accurate and complete to the best of my knowledge.</span>
+    </div>
+
+    <!-- Not a field. Anything typed here came from something that fills every
+         input it finds, which a person browsing this page does not do. -->
+    <div class="hp" aria-hidden="true">
+      <label>Leave this empty <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+    </div>
+
+    <button class="send" type="submit" id="send">Send the report</button>
+  </form>
+
+  <div id="result" class="result" hidden></div>
+
+  <footer class="bottom mono">
+    <a href="legal.html?doc=terms">Terms</a>
+    <a href="legal.html?doc=privacy">Privacy</a>
+    <a href="mailto:support@neighbro.place">support@neighbro.place</a>
+  </footer>
+</div>
+
+<script src="config.js"></script>
+<script>
+  var CFG = window.__XOR_CONFIG__ || {};
+  var API_URL = CFG.apiUrl || "";
+  var PUBLISHABLE_KEY = CFG.publishableKey || "";
+  var form = document.getElementById("reportForm");
+  var result = document.getElementById("result");
+  var send = document.getElementById("send");
+
+  // The landing keeps the reader's theme choice; the form should not arrive in a
+  // different skin than the page they came from.
+  try {
+    var mode = localStorage.getItem("nb-mode");
+    if (mode) document.documentElement.setAttribute("data-mode", mode);
+  } catch (e) {}
+
+  function show(html, bad) {
+    result.hidden = false;
+    result.className = bad ? "result bad" : "result";
+    result.innerHTML = html;
+    result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var reason = document.getElementById("reason").value.trim();
+    if (!reason) {
+      show("Tell us why you believe the content is illegal — that part cannot be empty.", true);
+      return;
+    }
+    if (!document.getElementById("bona").checked) {
+      show("The declaration is required: it is your statement, not ours.", true);
+      return;
+    }
+    // A filled honeypot is answered exactly like a success, so whatever filled it
+    // learns nothing. Nothing is sent.
+    if (document.getElementById("website").value) {
+      show("Thank you — the report has been received.", false);
+      form.reset();
+      return;
+    }
+
+    send.disabled = true;
+    send.textContent = "Sending…";
+
+    fetch(API_URL + "/report", {
+      method: "POST",
+      headers: (function () {
+        var h = { "Content-Type": "application/json" };
+        if (PUBLISHABLE_KEY) h["x-api-key"] = PUBLISHABLE_KEY;
+        return h;
+      })(),
+      body: JSON.stringify({
+        target_kind: document.getElementById("kind").value,
+        target_id: document.getElementById("targetId").value.trim() || null,
+        reason_text: reason,
+        notifier_name: document.getElementById("name").value.trim() || null,
+        notifier_email: document.getElementById("email").value.trim() || null,
+        bona_fide: true,
+        brand: "neighbro",
+        source: "neighbro.place-report",
+      }),
+    })
+      .then(function (response) {
+        return response.json().then(function (data) { return { ok: response.ok, data: data }; });
+      })
+      .then(function (out) {
+        if (!out.ok) {
+          show("The report was not accepted: " + (out.data && out.data.error ? out.data.error : "unknown error") +
+               ". You can also write to <a href=\"mailto:support@neighbro.place\">support@neighbro.place</a> — that address works too.", true);
+          return;
+        }
+        var reference = out.data && out.data.id ? String(out.data.id).slice(0, 8) : "—";
+        show("<p><strong>The report has been received.</strong></p>" +
+             "<p>Reference: <span class=\"ref\">" + reference + "</span></p>" +
+             "<p>" + (out.data && out.data.acknowledged
+               ? "A confirmation is on its way to your email."
+               : "You left no email, so there is nowhere to send a confirmation — keep the reference above.") +
+             "</p>", false);
+        form.reset();
+      })
+      .catch(function () {
+        show("The report could not be sent. Write to <a href=\"mailto:support@neighbro.place\">support@neighbro.place</a> instead — a letter counts just as much.", true);
+      })
+      .then(function () {
+        send.disabled = false;
+        send.textContent = "Send the report";
+      });
+  });
+</script>
+</body>
+</html>
