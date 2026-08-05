@@ -376,8 +376,9 @@ it goes through our own redirect, which can be killed (specification in
 `xor.ad/docs/offers/`). The reason is plain: without that rule the feed turns into spam within
 a month, and there is nothing to check every link with.
 
-**Captcha and rate limit are feed-only too.** Cloudflare Turnstile and the Bunny
-Shield IP limit govern publishing.
+**The rate limit is feed-only too.** A per-IP limit on the node governs
+publishing. There is no external captcha: we did not take on another processor
+of other people's IPs for one.
 
 **A refusal is explained.** If a message is not published, the person is told, and
 told why. That is not politeness but a requirement for platforms carrying
@@ -480,8 +481,7 @@ A map: what we do, on what basis, and where it is thin.
 
 ### Where data goes
 
-Feed message text goes nowhere: moderation runs on our own node (§5). IPs go to
-Cloudflare Turnstile and Bunny Shield. Storage is our own Postgres beside the node
+Feed message text goes nowhere: moderation runs on our own node (§5). IPs go no further than the node: the rate limit is counted there. Storage is our own Postgres beside the node
 and Bunny object storage. **Chat text does not leave**: that was the most
 sensitive transfer, and now there is none.
 

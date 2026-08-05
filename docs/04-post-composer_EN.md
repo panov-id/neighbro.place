@@ -16,7 +16,7 @@ The screen for composing a feed message, opened via the "add" button.
 - Text is required; group size and blur radius are optional settings on the post.
 - The message is text-only — no image attachment. An image is only possible on a boosted/promoted message (see the README's "Beyond the alpha" — balance and boosting section).
 - On send, the message goes through the same AI check described in the Moderation section (classifiers on our own node, toxicity + classification of explicitness) — it's published to the feed only after passing the check.
-- Sending also runs through Cloudflare Turnstile (a captcha, invisible to the user in most cases) and an IP rate limit via Bunny Shield. Both checks apply only to publishing in the feed, not to sending chat messages.
+- Sending also runs through a per-IP rate limit on the node. It applies only to publishing in the feed, not to sending chat messages. There is no external captcha.
 
 ## Open questions
 

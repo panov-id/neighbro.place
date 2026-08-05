@@ -65,7 +65,6 @@ We do not sell your data. We share it only with service providers ("processors")
 
 - **Hosting and storage** (Bunny) — serving the site, and object storage for what the Service keeps. Our database is our own and runs beside the node: it is not a third party, and nobody else holds it.
 - **Email delivery** (Resend) — the letter that answers a waitlist request, and the invitations the admin panel sends.
-- **Captcha** (Cloudflare Turnstile) — your IP address, when you publish.
 - **Push delivery** — your browser's push service, if you opt in.
 - **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.
 

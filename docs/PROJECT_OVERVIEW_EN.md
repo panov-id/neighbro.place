@@ -47,7 +47,7 @@ NEIGHBRO sits in an empty niche between "dating" and "district chat": not about 
 
 ### 3.4. Posting
 - Up to 128 characters, optionally city/country and "how many of you".
-- Protection: Cloudflare Turnstile (near-invisible captcha) + Bunny Shield IP rate limit + content moderation.
+- Protection: a per-IP rate limit on the node + content moderation in the same place. There is no external captcha.
 - Everyone starts with a quota of 5 messages; the quota drops if other users report you.
 
 ### 3.5. Disappearance
@@ -104,7 +104,7 @@ The bar: content stays within the norms of a calm, peaceful society.
 - **Backend:** our own Deno node (the relay) — business logic, quotas, the age filter, moderation orchestration. State in our own Postgres beside the node, data in Bunny object storage. There is no managed backend: no vendor sits in the critical path.
 - **Gate:** `xor.ad` — the shared entry domain in front of the relay; all frontends talk to it.
 - **Language detection:** a local library right inside Edge Functions — no external API, no per-message cost.
-- **Post protection:** Turnstile + Bunny Shield (applied to posting only, not chat).
+- **Post protection:** a rate limit on the node (applied to posting only, not chat).
 - **Deploy:** frontend via Bunny CDN; backend on our own nodes, released by tag through GitHub Actions.
 - **Configuration:** every knob (char limit, starting quota, TTL, radius) via environment variables.
 - **Admin panel:** a separate Refine app (`xor.ad/panel/`) — waitlist, reports, bans, quotas across both faces.
