@@ -127,7 +127,7 @@ You agree to indemnify PSYTICAN & PEJEDED / Evgenii Panov against claims arising
 
 ## 19. Changes to these Terms
 
-We may update these Terms. Material changes will be signposted in the Service. Continued use after changes take effect means you accept the updated Terms.
+We may update these Terms. There is no account to write to and no mailing list, so a new edition is signposted **at the door**: the next time you open the Service after a change, you are told that the documents have changed and asked to accept them. The date at the top of this document is the current edition. Continued use after a change means you accept the updated Terms.
 
 ## 20. Governing law and jurisdiction
 
