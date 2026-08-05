@@ -86,8 +86,9 @@ Core principle: **sensitive data lives on the device, not the server.**
 
 Every message — feed or chat — is checked **before** it is published:
 
-- **Toxicity** — Google Perspective API. Fails the check → not published.
-- **Tone** — a cheap LLM call classifies subtext.
+- **Toxicity** — a classifier on our own node. Fails the check → not published.
+- **Tone** — subtext is classified in the same place. The text never leaves the
+  node: moderation uses no external processor.
   - **Harassment, drugs, sex services** — fully rejected, never published.
   - **Sexual subtext** — invisible by default; to see it you must accept a separate agreement and provide an email.
 - **Age separation.** An adult (18+) will never be shown people under 18. For a minor the slider maximum stays narrow and never widens to adults.
