@@ -24,6 +24,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **Push subscription.** If you opt in to notifications, the push endpoint and keys, plus your language.
 - **Technical data.** Basic logs (e.g. IP, timestamp, user agent) needed for security and to run the Service.
 - **Error logs.** When something breaks, we record a technical error report (error message, page URL, your browser's user agent, and non-identifying context) so we can diagnose and fix it. Used only for reliability, not profiling.
+- **A report of illegal content.** If you report content as illegal, we keep your reasons, your name and email address (we ask for neither where the report concerns the sexual abuse of children), and **a copy of the reported content taken at that moment** — because the content itself disappears on its timer, and without the copy we could neither examine the report nor justify what we did. We keep this to comply with a legal obligation, not because you consented, and it is used for nothing else.
 
 ## 4. Why we process it (legal bases)
 
@@ -38,6 +39,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **A chat** lives on your device for the shorter of the two times the two of you chose. On our servers it is **not stored at all** — only carried until it is delivered.
 - **Profile data** (identity, year of birth, name, your settings) is kept while you use the Service in this browser.
 - **A waitlist email** is kept until launch and for one year after, then deleted — sooner if you ask.
+- **A report of illegal content**, the copy taken with it, and the explanation sent to the author: **1 year**, then deleted — an anonymous count is all that remains. **A business profile and the complaints about its offers**: kept while the business publishes, and deleted a year after its last offer.
 - **A support message**: 1 year. **Detailed page views**: 14 days. **The admin audit log**: 1 year. **Server logs and client errors**: 30 days. **Backups**: 7 days, so anything deleted leaves them within a week.
 - **Personal data is not written to logs** — not an email address, not the text of a message, not an identifier.
 
