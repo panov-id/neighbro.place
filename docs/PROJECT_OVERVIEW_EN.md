@@ -1,6 +1,6 @@
 # NEIGHBRO — Project Overview
 
-> The global face of a hyperlocal, ephemeral neighbourhood network. A place to talk to the people right around you, right now — and then let it go.
+> One of two faces of a hyperlocal, ephemeral neighbourhood network. A place to talk to the people right around you, right now — and then let it go.
 
 ---
 
@@ -8,7 +8,7 @@
 
 NEIGHBRO is not another social network with a permanent profile and a feed you scroll for years. You open the app, see short messages from people physically near you — in your building, office, block, district — and you can reply, like, and strike up a private chat. A few hours later it all disappears. No followers, no accumulated "profile", no archive trailing behind you for years. **Ephemerality is a feature, not a limitation.**
 
-NEIGHBRO is the English-speaking, European-in-spirit face of the platform. Technically it is one of the frontends running on the shared `xor.ad` backend; its Russian-speaking twin is [sosed.place](https://github.com/panov-id/sosed.place). Both faces share one user pool, one feed and one database — they are different wrappers over the same data, not isolated audiences.
+NEIGHBRO is one of two faces of the platform. Technically it is one of the frontends running on the shared `xor.ad` backend; its twin is [sosed.place](https://github.com/panov-id/sosed.place). Both faces share one user pool, one feed and one database — they are different wrappers over the same data, not isolated audiences.
 
 ---
 
@@ -195,7 +195,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 
 ### Cross-cutting all year
 - Continuous moderation tuning (balancing safety against feed liveliness).
-- Legal support as new countries come online (GDPR — critical for a European face).
+- Legal support as new countries come online (GDPR applies to the whole platform — the operator is established in the EU).
 - Anti-abuse iterations (quotas, fingerprint, rate limits).
 - Sync with sosed.place: shared features land in the shared backend; only tone/policy per face differs.
 
@@ -207,8 +207,8 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 - **Moderation balance.** Too strict and the feed is sterile and boring; too loose and it drifts into toxicity / dating spam. Needs constant calibration.
 - **Sustainability without revenue.** The platform deliberately takes no money: offers are free, there is no in-app balance, and the only money is voluntary donations. That shields ephemerality and privacy from the pressure of an ad model, but it also means infrastructure costs are covered by nothing, and growth runs into them.
 - **Privacy vs. abuse.** The browser fingerprint is a trade-off: it enables anti-spam without real accounts, but must honestly stay protection, not surveillance.
-- **Jurisdictions.** A European face → GDPR, age protection, local content requirements.
+- **Jurisdictions.** GDPR applies platform-wide; age protection and local content requirements vary by country.
 
 ---
 
-*This document describes NEIGHBRO as one face of the `xor.ad` platform. The full concept of the shared backend, architecture and moderation policy lives in [`xor.ad`](https://github.com/panov-id/xor.ad). The Russian-speaking sibling face is [`sosed.place`](https://github.com/panov-id/sosed.place).*
+*This document describes NEIGHBRO as one face of the `xor.ad` platform. The full concept of the shared backend, architecture and moderation policy lives in [`xor.ad`](https://github.com/panov-id/xor.ad). The sibling face is [`sosed.place`](https://github.com/panov-id/sosed.place).*
