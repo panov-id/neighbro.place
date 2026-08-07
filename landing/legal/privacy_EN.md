@@ -39,7 +39,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **Profile data** (identity, year of birth, name, your settings) is kept while you use the Service in this browser.
 - **A waitlist email** is kept until launch and for one year after, then deleted — sooner if you ask.
 - **A report of illegal content**, the copy taken with it, and the explanation sent to the author: **1 year**, then deleted — an anonymous count is all that remains. **A business profile and the complaints about its offers**: kept while the business publishes, and deleted a year after its last offer.
-- **A support message**: 1 year. **Detailed page views**: 14 days. **The admin audit log**: 1 year. **Server logs and client errors**: 30 days. **Backups**: 7 days, so anything deleted leaves them within a week.
+- **A support message**: 1 year. **Detailed page views**: 14 days. **The admin audit log**: 1 year. **A nightly backup of our database**: 14 days, so anything you delete leaves our backups within a fortnight. **Server logs and client errors**: 30 days. **Backups**: 7 days, so anything deleted leaves them within a week.
 - **Personal data is not written to logs** — not an email address, not the text of a message, not an identifier.
 
 ## 6. Location
