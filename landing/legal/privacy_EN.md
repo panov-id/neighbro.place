@@ -14,8 +14,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 
 ## 3. What we process
 
-- **Device identity.** An encrypted identifier derived from your year of birth, the name you typed and a **browser fingerprint**, so the Service can work without a traditional account. It is tied to this browser: clearing site data, another device or a private window creates a new identity, and the old one cannot be restored.
-- **A wider fingerprint — only if you tick the box.** At signup you may agree to four further device signals so the identity is lost less often: **the WebGL renderer, the number of processor cores, the memory size and the screen's pixel density**. Without the box we read your user agent, browser language and time zone only. The box is **unticked by default**, and the Service works fully without it. These signals are used for nothing but holding your identity together — not for analytics, not for ranking, not for advertising. We do not draw on a canvas and do not enumerate your fonts.
+- **Device identity.** An identifier and a key pair created in your browser, so the Service can work without a traditional account. **We do not fingerprint your browser.** The identity is tied to this browser: clearing site data or a private window creates a new one. You can connect another device yourself, by scanning a code shown on the first — and you can disconnect it again at any time. If no device is connected and you clear the data, the identity cannot be restored, by us or by you.
 - **Area.** An approximate area worked out from your time zone, IP address and browser language, or a point you place by hand. Two settings are yours: how far you look, and how precisely you are seen. **Exact coordinates are requested only when you press "where am I"**, are used to place your point once, and are not read in the background. Declining changes nothing else.
 - **Age.** The age you enter, and your age-filter preference, to keep the space appropriate.
 - **Name.** The display name you optionally set.
@@ -29,7 +28,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 4. Why we process it (legal bases)
 
 - **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content, waitlist.
-- **Consent**: the wider fingerprint, precise location via "where am I", showing explicit content, push notifications, and website analytics. Each is asked for separately and can be withdrawn at any time.
+- **Consent**: precise location via "where am I", showing explicit content, push notifications, and website analytics. Each is asked for separately and can be withdrawn at any time.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 
