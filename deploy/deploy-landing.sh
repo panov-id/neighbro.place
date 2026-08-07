@@ -59,7 +59,6 @@ window.__XOR_CONFIG__ = {
   apiUrl: "${RELAY_API_URL}",
   publishableKey: "${RELAY_PUBLISHABLE_KEY:-}",
   alphaUrl: "${ALPHA_URL:-}",
-  vapidPublicKey: "${VAPID_PUBLIC_KEY:-}",
   analyticsId: "${ANALYTICS_ID:-}",
 };
 EOF

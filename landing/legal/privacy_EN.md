@@ -20,7 +20,6 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **Name.** The display name you optionally set.
 - **Content.** The messages, likes (plus/skip), and chats you create — most of which fades and is deleted automatically.
 - **Waitlist email.** If you request access, your email address and the source of the request.
-- **Push subscription.** If you opt in to notifications, the push endpoint and keys, plus your language.
 - **Technical data.** Basic logs (e.g. IP, timestamp, user agent) needed for security and to run the Service.
 - **Error logs.** When something breaks, we record a technical error report (error message, page URL, your browser's user agent, and non-identifying context) so we can diagnose and fix it. Used only for reliability, not profiling.
 - **A report of illegal content.** If you report content as illegal, we keep your reasons, your name and email address (we ask for neither where the report concerns the sexual abuse of children), and **a copy of the reported content taken at that moment** — because the content itself disappears on its timer, and without the copy we could neither examine the report nor justify what we did. We keep this to comply with a legal obligation, not because you consented, and it is used for nothing else.
@@ -28,7 +27,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 4. Why we process it (legal bases)
 
 - **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content, waitlist.
-- **Consent**: precise location via "where am I", push notifications, and website analytics. Each is asked for separately and can be withdrawn at any time.
+- **Consent**: precise location via "where am I", and website analytics. Each is asked for separately and can be withdrawn at any time.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 
@@ -64,7 +63,6 @@ We do not sell your data. We share it only with service providers ("processors")
 
 - **Hosting and storage** (Bunny) — serving the site, and object storage for what the Service keeps. Our database is our own and runs beside the node: it is not a third party, and nobody else holds it.
 - **Email delivery** (Resend) — the letter that answers a waitlist request, and the invitations the admin panel sends.
-- **Push delivery** — your browser's push service, if you opt in.
 - **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.
 
 **Donations are not in this list.** If you follow the donation link in our footer, you leave the Service. PayPal then handles your payment under its own terms as an **independent controller**, not as our processor: we do not send it your data, we receive no payment details, and we cannot tell who donated. Donating is never required to use the Service.

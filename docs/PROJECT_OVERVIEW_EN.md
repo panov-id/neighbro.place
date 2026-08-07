@@ -149,7 +149,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 
 ### 9.4. Platform and scale (longer horizon)
 - **New faces (storefronts)** for new regions/languages on the same gate — an Asian face, a Latin American face, etc.
-- **Native apps** (iOS/Android) once the web alpha proves the model. Push notifications about "the ether is coming alive nearby" are a strong return trigger.
+- **Native apps** (iOS/Android) once the web alpha proves the model. There will be no push there either: the decision is platform-wide, the reason is in `xor.ad/docs/chat_EN.md` §8.12.
 - **Events API/SDK** — an event organiser embeds a NEIGHBRO ephemeral feed into their own venue.
 - **B2B "pop-up neighbourhood"** — coworkings, hotels, conferences, cruises spin up a private ephemeral feed for their guests.
 
@@ -187,7 +187,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 - **Goal:** a proven free-offer model, growth via events.
 
 ### Q4 — Native apps and platform scale
-- Native iOS/Android (web model proven) with push about nearby surges.
+- Native iOS/Android (web model proven).
 - Prepare a new face for a new region/language on the same gate.
 - B2B pop-up neighbourhood (pilot: hotel/coworking/conference).
 - Harden infrastructure for scale: moderation scaling, anti-spam, observability.

@@ -71,29 +71,3 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-
-// Web Push: show the notification and focus/open the app on click.
-self.addEventListener('push', (event) => {
-  let data = {};
-  try { data = event.data ? event.data.json() : {}; } catch (e) {}
-  const title = data.title || 'NEIGHBRO.PLACE';
-  event.waitUntil(
-    self.registration.showNotification(title, {
-      body: data.body || '',
-      icon: '/icons/icon-192.png',
-      badge: '/icons/icon-192.png',
-      data: { url: data.url || '/' },
-    })
-  );
-});
-
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  const url = (event.notification.data && event.notification.data.url) || '/';
-  event.waitUntil(
-    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((cls) => {
-      for (const c of cls) { if ('focus' in c) return c.focus(); }
-      return self.clients.openWindow(url);
-    })
-  );
-});
