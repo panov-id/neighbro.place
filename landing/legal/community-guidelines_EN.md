@@ -10,16 +10,11 @@ Neighbro is for good neighbors — treat people the way you'd want to be treated
 
 ## Fully prohibited
 
-**Harassment, bullying, shaming, intimidation, threats, and any anti-social, cruel, or degrading behavior**, plus drug-related content and sex-work solicitation. Such messages are never published or sent, in the feed or in chat.
+**Harassment, bullying, shaming, intimidation, threats, and any anti-social, cruel, or degrading behavior**, plus drug-related content, sexual content, and sex-work solicitation. Such messages are never published or sent, in the feed or in chat. This is a service for neighbours, not for dating: there is no setting that turns sexual content on. When a message does not pass the check, its author is told — nothing vanishes in silence.
 
 ## No selling or promotion
 
 Neighbro is not a marketplace. **Selling or advertising goods or services, soliciting, fundraising, or recruiting in ordinary messages, chats, or posts is not allowed.** If you want to promote something, the only way is a **neighbourhood offer** — a post by a local business with a discount for neighbours. Publishing it is free; we take no money for it.
-
-## Content with limited visibility
-
-- **Sexual subtext.** Hidden from everyone by default. You can turn on showing it yourself in settings, by accepting a separate agreement.
-- **LGBT-related topics.** Shown in the feed on the same basis as everything else. You can personally block such messages for yourself — that hides them only for you, not for everyone.
 
 ## Reports and blocks
 

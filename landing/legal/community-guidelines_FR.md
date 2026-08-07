@@ -10,16 +10,11 @@ Neighbro est fait pour les bons voisins. Traite les gens comme tu voudrais qu’
 
 ## Totalement interdit
 
-**Le harcèlement, le harcèlement scolaire (bullying), l’humiliation, l’intimidation, les menaces et tout comportement antisocial, cruel ou dégradant**, ainsi que le contenu sur la drogue et l’offre de services sexuels. De tels messages ne sont ni publiés ni envoyés — ni dans le fil, ni en chat.
+**Le harcèlement, le harcèlement scolaire (bullying), l’humiliation, l’intimidation, les menaces et tout comportement antisocial, cruel ou dégradant**, ainsi que le contenu sur la drogue, le contenu sexuel et l’offre de services sexuels. De tels messages ne sont ni publiés ni envoyés — ni dans le fil, ni en chat. C’est un service pour les voisins, pas une application de rencontres : aucun réglage n’active l’affichage de contenu sexuel. Si un message ne passe pas la vérification, son auteur en est informé — rien ne disparaît en silence.
 
 ## Aucune vente ni promotion
 
 Neighbro n’est pas une brocante. **La vente ou la publicité de biens et services, le racolage, la collecte de fonds ou le recrutement dans les messages ordinaires, les chats ou les posts sont interdits.** Tu veux faire de la pub — uniquement via une **offre de quartier** : un post d’un commerce local avec une réduction pour les voisins. La publication est gratuite, nous ne prenons pas d’argent pour ça.
-
-## Contenu à affichage restreint
-
-- **Sous-entendu sexuel.** Par défaut, n’est montré à personne. L’utilisateur peut activer lui-même l’affichage dans les réglages en acceptant un accord séparé.
-- **Thématique LGBT.** Affichée dans le fil de façon générale. L’utilisateur peut personnellement bloquer ces messages pour lui-même — cela ne les masque que chez lui, pas chez tous.
 
 ## Signalements et blocages
 

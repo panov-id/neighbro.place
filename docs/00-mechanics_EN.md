@@ -16,36 +16,45 @@ Read alongside:
 
 ## 1. Who a person is
 
-A person here is an **encrypted UID** the server mints at the end of signing up.
-It is made of three things: the year of birth, the name that was typed, and the
-browser's fingerprint. No email, no phone, no password; there is nowhere to sign
-in because there is nowhere to sign out of.
+A person here is a **key pair created in the browser**, plus an identifier the
+server mints at the end of signing up. No email, no phone, no password; there is
+nowhere to sign in because there is nowhere to sign out of.
 
-The fingerprint is not there to prevent forgery — it is what ties the identity
-down. It means the identity lives **in this browser on this device** and nowhere
-else. Another browser, another device, a private window: that is a different
-person from scratch, with their own quota, their own feed, and none of the chats.
+The identity lives **in this browser**. Another browser, a private window: that
+is a different person from scratch, with their own quota, their own feed, and
+none of the chats. A second device, though, can be **connected on purpose**: the
+first shows a code, the second scans it, and both become devices of one identity.
+
+**There is no browser fingerprint here.** The first version of this scheme had
+one: the identity was assembled from the year of birth, the typed name and a
+fingerprint of the browser. It was removed deliberately — it stopped working once
+traffic went through the delivery network, and all along it hit the wrong person:
+the neighbour behind the same home router. Details in `xor.ad/docs/chat_EN.md`
+§8.2.
 
 Which leads to the part that has to be said out loud, because otherwise a person
 finds it out for themselves and at the wrong moment:
 
-- **Clearing the site's data erases the identity.** Not "signs you out" — erases.
-  There is nothing to restore: the server knows the UID and not who it belonged to.
-- **There is no way to carry it over.** No code, no link, no export. Chats that ran
-  in the old browser are gone from the new one for good — they stay with the other
-  person, and not with you.
+- **Clearing the site's data erases this session.** With no other device
+  connected, it erases the identity. Not "signs you out" — erases. There is
+  nothing to restore: the server knows the identifier and not who it belonged to.
+- **Carrying it over is possible, but only from a live device.** You can connect
+  a second one while the first still works. There is no "code from an email"
+  recovery and there will not be: there is nothing to present.
 - **A private window is always a new person.** Every private window mints an
   identity and loses it when the window closes.
+- **A device can be disconnected at any time.** A disconnected one sees no new
+  conversation; what is already open on it stays until those chats end.
 
 **This has to be said before the button is pressed**, not after. The wording and
-its place belong to screen 2, where signing up ends; what is fixed here is only the
-requirement: the product must warn that the identity is tied to this browser and
-that it cannot be moved.
+its place belong to screen 2, where signing up ends; what is fixed here is only
+the requirement: the product must warn that the identity lives in the browser,
+and explain how to connect a second device.
 
-The other side of that tie is what it is for. There is no account, so there is
-nothing to breach, nothing to sell and nothing to hand over on request: the link
-between a person and their messages ends at a browser fingerprint that is never
-sent anywhere in its original form.
+The other side of that is what it is for. There is no account, so there is
+nothing to breach, nothing to sell and nothing to hand over on request. The
+conversations themselves are encrypted on the devices: the server carries them
+and cannot read them.
 
 ### Consent
 
@@ -54,42 +63,17 @@ Signing up ends with two lines, and they are **two separate decisions**, not one
 **The terms and the rules — required.** There is no continuing without accepting
 them: that is the contract everything else rests on.
 
-**The wider fingerprint — optional.** A separate box, unticked by default. Tick it
-and the identity is assembled from more signals and holds on to the browser more
-firmly. Leave it and **everything works exactly the same**: the feed, the chats,
-the quota, publishing. One thing is weaker: the UID falls off more often when the
-browser updates or the window changes, and then a person becomes a new person by
-the rules above.
+There is no second box any more. It used to be the consent for a wider
+fingerprint — WebGL renderer, processor cores, memory size, pixel density — by
+which the identity held on to the browser more firmly. It went with the
+fingerprint itself: offering a box for collection that does not happen is worse
+than offering nothing.
 
-**What goes into each set.**
-
-| | Signals |
-|---|---|
-| **narrow** — no box | year of birth, name, user agent, browser language, time zone |
-| **wider** — with the box | the same plus four: the WebGL renderer, the core count, the memory size, the screen's pixel density |
-
-Four of them, not "additional device information": the consent names them one by
-one, or it is about nothing. All four change rarely and are read in a single call —
-no canvas drawing and no font enumeration here.
-
-Some browsers withhold or fake these: Firefox and Safari hide the memory size and
-mask the renderer. There the wider set adds less and the identity holds worse — not
-a fault, but a consequence of which browser someone chose.
-
-The split is not a formality. Consent you are not let in without is not consent but
-a condition of entry, and in Europe it does not count: it has to be informed,
-separate and refusable. One box for everything would be simpler on the screen and
-worse in every other way.
-
-The same decision closes a question screen 15 left open: **an explicit consent at
-signup is needed**, and this is its shape.
-
-> Where the legal line falls — what exactly belongs in the "wider" set, and whether
-> this wording carries it — is worth checking before launch, not after.
 
 ### Open
 
-- How well the narrow fingerprint survives a browser update has not been measured.
+- How long a device-connection invite should live, and how the list of one's own devices
+  is shown, is undecided.
   That is settled by trying it, not by reasoning about it.
 - Whether the warning is shown once at signup or stays reachable afterwards — in
   settings, say — is undecided.
@@ -326,8 +310,8 @@ Every message is checked **before it is published**:
 - **Rudeness** — a toxicity classifier. Fails, and it is not published.
 - **Hazard** — threats, hostility towards a group, dealing in what is forbidden,
   approaching minors. Rejected outright.
-- **Explicitness** — explicit content is invisible by default and is opened by a
-  separate consent with an email (screen 11).
+- **Explicit** — rejected outright, like hazard. There is no switch that turns it
+  on: this is a service for neighbours, not for dating.
 
 **The check runs on our own node, and the text does not leave it.** Nothing is
 forwarded to Perspective, to somebody else's language model, or to any other
@@ -357,10 +341,10 @@ neutral sentences reach and below anything real attacks reach**.
 Measured on the probe sets: of 60 neutral sentences naming a group, **none** is
 blocked; of 5 attacks, **all five** are.
 
-**There is no topic classification.** The "LGBT-related" label has been removed
-from the classifier along with the filtering that used it: it inferred an author's
-orientation, which is special-category data and cannot be processed by default. It
-is gone from screen 4 in both storefronts and from neighbro's overview.
+**There is no topic classification.** The classifier carries no topic labels and
+nothing filters on them: such a label would infer special-category data about an
+author, which cannot be processed by default. No group is a category here. It is
+gone from screen 4 in both storefronts and from neighbro's overview.
 
 **The label is not stored.** Classification happens as the message is sent, decides
 the outcome, and is not written down beside it.
@@ -474,9 +458,8 @@ A map: what we do, on what basis, and where it is thin.
 | What | Basis |
 |---|---|
 | identity, feed, chats, publishing | contract — the person asked for the service |
-| the narrow fingerprint, IndexedDB writes | necessary for the service requested |
-| **the wider fingerprint** | **consent**, its own box (§1) |
-| explicit content | a separate consent with an email (screen 11) |
+| the identity's keys, IndexedDB writes | necessary for the service requested |
+| the list of connected devices | necessary for the service requested |
 | captcha and rate limit | legitimate interest — abuse prevention |
 
 ### Where data goes
@@ -493,15 +476,13 @@ lives is where the node lives — and that is our choice to make.
 
 - **There is no privacy notice at all.** It needs: who the controller is, what for,
   on what basis, who receives it, how long it is kept, what rights there are.
-- **There is no list of what the wider fingerprint contains** — without it the
-  consent is about nothing.
 - **There is no EU representative**, and one is required where the operator is
   outside the EU and the people are inside it.
 - **No record of processing and no impact assessment.** Location plus automated
   moderation plus possible minors is the usual reason to run one.
 - **Age and consent.** The age at which a person may consent for themselves ranges
-  from 13 to 16 across the EU. The simplest course is not to offer the wider
-  fingerprint to anyone whose stated age is below the threshold.
+  from 13 to 16 across the EU. With the wider fingerprint gone there is no consent left
+  at signup at all — but the others (precise location, push) still meet that threshold.
 
 ### What already counts in our favour
 
@@ -534,8 +515,7 @@ untrue, and here they do not disagree anywhere except where it says so.
 | the quota | server | the limit | derived from live messages, not stored separately |
 | identity: the UID | server | recognition between visits | until the browser is lost |
 | year of birth, name | server, inside the UID | age separation, a byline | with the identity |
-| consent to the wider fingerprint | server | to prove it was asked for | with the identity |
-| email and consent for explicit content | server | to open explicit content | with the identity |
+| connected devices | server | showing one's devices and disconnecting any | until revoked, or with the identity |
 | the link to you | server | to share inside a chat | with the identity |
 | a support message | our own database | to answer and investigate | 1 year |
 

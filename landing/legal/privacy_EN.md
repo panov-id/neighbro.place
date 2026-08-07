@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 5 August 2026**
+**Last updated: 7 August 2026**
 
 ## 1. Who we are (controller)
 
@@ -28,7 +28,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 4. Why we process it (legal bases)
 
 - **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content, waitlist.
-- **Consent**: precise location via "where am I", showing explicit content, push notifications, and website analytics. Each is asked for separately and can be withdrawn at any time.
+- **Consent**: precise location via "where am I", push notifications, and website analytics. Each is asked for separately and can be withdrawn at any time.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 

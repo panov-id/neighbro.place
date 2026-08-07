@@ -32,7 +32,7 @@ NEIGHBRO sits in an empty niche between "dating" and "district chat": not about 
 
 ### 3.1. Sign in without an account
 - Pick any display name (no real name required) and a birth year — tap "enter". No email, no password.
-- Under the hood the server generates an encrypted random UID bound to the birth year, name and a set of sufficiently unique browser-fingerprint parameters. You are recognised even after clearing caches.
+- Under the hood the browser creates a key pair and the server mints an identity identifier. No browser fingerprint is taken. The identity lives in this browser, but a second device can be connected on purpose — with a code shown on the first.
 - Bound to the browser: not a cross-device account. Another browser or a private window is a new identity.
 - Birth year sets the feed age filter and enforces a hard split between adults and minors (see §6).
 
@@ -78,7 +78,7 @@ Core principle: **sensitive data lives on the device, not the server.**
 
 - Chat history sits in the browser's IndexedDB, **encrypted client-side** via the Web Crypto API before it is written.
 - The backend receives the minimum — exactly what routing and limits require.
-- The fingerprint-based UID exists for exactly one purpose: so quota reduction after reports can't be bypassed by clearing caches. It is abuse protection, not surveillance, and it recognises the browser, not the person across all devices.
+- The quota after reports is no longer protected by a browser fingerprint: it was removed, because it stopped working behind the delivery network and hit neighbours sharing a router. What is left is honest — a per-address rate limit and a check on the message before it is published.
 
 ---
 
@@ -90,7 +90,7 @@ Every message — feed or chat — is checked **before** it is published:
 - **Tone** — subtext is classified in the same place. The text never leaves the
   node: moderation uses no external processor.
   - **Harassment, drugs, sex services** — fully rejected, never published.
-  - **Sexual subtext** — invisible by default; to see it you must accept a separate agreement and provide an email.
+  - **Sexual content** — rejected outright. There is no switch that turns it on.
 - **Age separation.** An adult (18+) will never be shown people under 18. For a minor the slider maximum stays narrow and never widens to adults.
 - **Quotas and reports.** Starting quota of 5, reduced on reports/blocks.
 
@@ -196,7 +196,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 ### Cross-cutting all year
 - Continuous moderation tuning (balancing safety against feed liveliness).
 - Legal support as new countries come online (GDPR applies to the whole platform — the operator is established in the EU).
-- Anti-abuse iterations (quotas, fingerprint, rate limits).
+- Anti-abuse iterations (quotas, rate limits).
 - Sync with sosed.place: shared features land in the shared backend; only tone/policy per face differs.
 
 ---
@@ -206,7 +206,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 - **Cold start.** A hyperlocal product is dead without density. Hence the focus on dense pilot locations and "flash" events as an accelerant.
 - **Moderation balance.** Too strict and the feed is sterile and boring; too loose and it drifts into toxicity / dating spam. Needs constant calibration.
 - **Sustainability without revenue.** The platform deliberately takes no money: offers are free, there is no in-app balance, and the only money is voluntary donations. That shields ephemerality and privacy from the pressure of an ad model, but it also means infrastructure costs are covered by nothing, and growth runs into them.
-- **Privacy vs. abuse.** The browser fingerprint is a trade-off: it enables anti-spam without real accounts, but must honestly stay protection, not surveillance.
+- **Privacy vs. abuse.** With no fingerprint and no accounts, the defence rests on the address and on feed moderation. That is weaker — and it is called weaker, not passed off as solid.
 - **Jurisdictions.** GDPR applies platform-wide; age protection and local content requirements vary by country.
 
 ---

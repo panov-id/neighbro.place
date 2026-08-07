@@ -10,16 +10,11 @@ Neighbro ist für gute Nachbarn. Behandle Menschen so, wie du auf deiner eigenen
 
 ## Vollständig verboten
 
-**Belästigung, Mobbing (Bullying), Beschämung, Einschüchterung, Drohungen und jedes antisoziale, grausame oder erniedrigende Verhalten**, ebenso Inhalte über Drogen und das Anbieten sexueller Dienstleistungen. Solche Nachrichten werden weder veröffentlicht noch gesendet — weder im Feed noch im Chat.
+**Belästigung, Mobbing (Bullying), Beschämung, Einschüchterung, Drohungen und jedes antisoziale, grausame oder erniedrigende Verhalten**, ebenso Inhalte über Drogen, sexuelle Inhalte und das Anbieten sexueller Dienstleistungen. Solche Nachrichten werden weder veröffentlicht noch gesendet — weder im Feed noch im Chat. Das hier ist ein Dienst für Nachbarn, keine Dating-App: eine Einstellung, die sexuelle Inhalte einblendet, gibt es nicht. Besteht eine Nachricht die Prüfung nicht, wird das ihrem Verfasser mitgeteilt — nichts verschwindet stillschweigend.
 
 ## Kein Verkauf und keine Werbung
 
 Neighbro ist kein Flohmarkt. **Verkauf oder Bewerbung von Waren und Dienstleistungen, Anwerbung, Spendensammeln oder Recruiting in gewöhnlichen Nachrichten, Chats oder Posts sind verboten.** Willst du etwas bewerben — das geht nur über ein **Nachbarschaftsangebot**: ein Beitrag eines lokalen Geschäfts mit Rabatt für die Nachbarn. Die Veröffentlichung ist kostenlos, wir nehmen dafür kein Geld.
-
-## Inhalte mit eingeschränkter Anzeige
-
-- **Sexuelle Andeutungen.** Werden standardmäßig niemandem angezeigt. Der Nutzer kann die Anzeige selbst in den Einstellungen aktivieren und dazu eine gesonderte Vereinbarung annehmen.
-- **LGBT-Themen.** Werden im Feed regulär angezeigt. Der Nutzer kann solche Nachrichten für sich persönlich blockieren — das verbirgt sie nur bei ihm, nicht bei allen.
 
 ## Meldungen und Blockierungen
 
