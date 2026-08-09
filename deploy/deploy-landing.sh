@@ -50,6 +50,46 @@ mime_type() {
 
 # Stage a copy and inject the environment's config.js (the committed one is
 # local same-origin; this points the form at the environment's relay backend).
+# The revision the documents themselves declare. Both carry "**Last updated: N
+# Month YYYY**" on their third line; the later of the two is what a visitor is
+# told about, because either changing is a change to the agreement.
+#
+# Derived rather than kept by hand: a fourth place for a version number drifts
+# from the documents on the first edit, and the drift is silent — the bar would
+# announce a revision nobody made, or stay quiet about one somebody did.
+legal_revision() {
+  python3 - "$SRC/legal/terms_EN.md" "$SRC/legal/privacy_EN.md" <<'PYEOF'
+import datetime, re, sys
+
+MONTHS = {m: i for i, m in enumerate(
+    ["january", "february", "march", "april", "may", "june", "july",
+     "august", "september", "october", "november", "december"], start=1)}
+
+latest = None
+for path in sys.argv[1:]:
+    with open(path, encoding="utf-8") as handle:
+        head = handle.read(2000)
+    found = re.search(r"Last updated:\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", head)
+    if not found:
+        sys.exit(f"no 'Last updated' line in {path} — cannot derive the revision")
+    day, month, year = found.groups()
+    if month.lower() not in MONTHS:
+        sys.exit(f"unknown month '{month}' in {path}")
+    date = datetime.date(int(year), MONTHS[month.lower()], int(day))
+    latest = date if latest is None or date > latest else latest
+
+print(latest.isoformat())
+PYEOF
+}
+
+LEGAL_REVISION="$(legal_revision)"
+echo "== legal revision: ${LEGAL_REVISION}"
+
+# The bar is the whole of Article 14(6) here — there is no account to mail — and
+# both of its failure modes are invisible on the day they appear: markup nobody
+# wires, or an edition somebody keeps by hand. Gate the deploy on it.
+bash "$ROOT_DIR/deploy/run-node.sh" landing/check-legal-bar.mjs landing/index.html
+
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 cp -R "$SRC/." "$STAGE/"
@@ -60,6 +100,7 @@ window.__XOR_CONFIG__ = {
   publishableKey: "${RELAY_PUBLISHABLE_KEY:-}",
   alphaUrl: "${ALPHA_URL:-}",
   analyticsId: "${ANALYTICS_ID:-}",
+  legalRevision: "${LEGAL_REVISION}",
 };
 EOF
 rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip; rm -rf "$STAGE"/img-src
@@ -69,7 +110,7 @@ rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip; rm -rf "$STAGE"/i
 # and reciprocal hreflang. The sitemap is generated here too, replacing the placeholder.
 SITE_ORIGIN="${SITE_ORIGIN:-https://neighbro.place}" RUN_NODE_MOUNT="$STAGE" \
   bash "$ROOT_DIR/deploy/run-node.sh" landing/build-pages.mjs "$STAGE"
-rm -f "$STAGE"/build-pages.mjs "$STAGE"/check-i18n.mjs "$STAGE"/i18n-dictionary.mjs
+rm -f "$STAGE"/build-pages.mjs "$STAGE"/check-i18n.mjs "$STAGE"/check-legal-bar.mjs "$STAGE"/i18n-dictionary.mjs
 
 # Indexing is a production-only privilege. dev and uat serve the same landing from their
 # own zones, so a crawlable copy there competes with production as a duplicate. An unset
