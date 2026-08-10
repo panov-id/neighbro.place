@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 7 August 2026**
+**Last updated: 10 August 2026**
 
 ## 1. Who we are (controller)
 
@@ -14,20 +14,20 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 
 ## 3. What we process
 
-- **Device identity.** An identifier and a key pair created in your browser, so the Service can work without a traditional account. **We do not fingerprint your browser.** The identity is tied to this browser: clearing site data or a private window creates a new one. You can connect another device yourself, by scanning a code shown on the first — and you can disconnect it again at any time. If no device is connected and you clear the data, the identity cannot be restored, by us or by you.
+- **Device identity.** An identifier and a key pair created in your browser, so the Service can work without a traditional account. **We do not fingerprint your browser.** The identity is tied to this browser: clearing site data or a private window creates a new one. Your identity lives on one device at a time. You can move it to another yourself by typing a nine-character code shown on the first, and the first one freezes when you do — there is no code to scan and no second device running alongside. If you clear the data, the identity comes back only with the paper recovery code you were shown once when you created it; without that code neither we nor you can bring it back, and the conversations do not come back either way.
 - **Area.** An approximate area worked out from your time zone, IP address and browser language, or a point you place by hand. Two settings are yours: how far you look, and how precisely you are seen. **Exact coordinates are requested only when you press "where am I"**, are used to place your point once, and are not read in the background. Declining changes nothing else.
 - **Age.** The age you enter, and your age-filter preference, to keep the space appropriate.
 - **Name.** The display name you optionally set.
 - **Content.** The messages, likes (plus/skip), and chats you create — most of which fades and is deleted automatically.
-- **Waitlist email.** If you request access, your email address and the source of the request.
+- **Waitlist email.** If you request access: your email address, the source of the request, which face you came through, and the language, colour and light-or-dark setting you were using — the last three so the email we send you looks like the site you asked from.
 - **Technical data.** Basic logs (e.g. IP, timestamp, user agent) needed for security and to run the Service.
 - **Error logs.** When something breaks, we record a technical error report (error message, page URL, your browser's user agent, and non-identifying context) so we can diagnose and fix it. Used only for reliability, not profiling.
 - **A report of illegal content.** If you report content as illegal, we keep your reasons, your name and email address (we ask for neither where the report concerns the sexual abuse of children), and **a copy of the reported content taken at that moment** — because the content itself disappears on its timer, and without the copy we could neither examine the report nor justify what we did. We keep this to comply with a legal obligation, not because you consented, and it is used for nothing else.
 
 ## 4. Why we process it (legal bases)
 
-- **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content, waitlist.
-- **Consent**: precise location via "where am I", and website analytics. Each is asked for separately and can be withdrawn at any time.
+- **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content.
+- **Consent**: the waitlist email, precise location via "where am I", and website analytics. Each is asked for separately and can be withdrawn at any time — ask us and the waitlist entry goes.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 
@@ -38,7 +38,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **Profile data** (identity, year of birth, name, your settings) is kept while you use the Service in this browser.
 - **A waitlist email** is kept until launch and for one year after, then deleted — sooner if you ask.
 - **A report of illegal content**, the copy taken with it, and the explanation sent to the author: **1 year**, then deleted — an anonymous count is all that remains. **A business profile and the complaints about its offers**: kept while the business publishes, and deleted a year after its last offer.
-- **A support message**: 1 year. **Detailed page views**: 14 days. **The admin audit log**: 1 year. **A nightly backup of our database**: 14 days, so anything you delete leaves our backups within a fortnight. **Server logs and client errors**: 30 days. **Backups**: 7 days, so anything deleted leaves them within a week.
+- **A support message**: 1 year. **Detailed page views**: 14 days. **The admin audit log**: 1 year. **A nightly backup of our database**: 14 days, so anything you delete leaves our backups within a fortnight. **Server logs and client errors**: 30 days.
 - **Personal data is not written to logs** — not an email address, not the text of a message, not an identifier.
 
 ## 6. Location
@@ -49,11 +49,11 @@ Your message is tied to a **zone around you rather than to a point** — you cho
 
 ## 6a. Moderation
 
-Every message is checked before it is published, **on our own servers**: the text is not sent to anyone. Explicit content is hidden by default and is opened only by a separate consent.
+Every message is checked before it is published, **on our own servers**: the text is not sent to anyone. Explicit content is refused for everyone: there is no setting that turns it on, so there is nothing to switch and nothing to circumvent.
 
 **We do not classify what a message is about, and we never infer which groups you belong to.** No feed is filtered on such a basis. The result of a check is not stored beside the message.
 
-**Chats are not checked.** What you write inside a chat is not checked at all and is not read by us — it travels from your device to the other person's and nowhere else. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
+**Chats are not checked.** What you write inside a chat is not checked at all and is not read by us — it travels from your device to the other person's, encrypted, and we cannot open it. One exception exists and it comes from the other side: if the person you are talking to reports a message as illegal, their own device attaches the copy, because we have none to attach. That copy is kept for a year with the report. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
 
 If a message is not published, you are told, and told why.
 
@@ -71,7 +71,7 @@ We may disclose data if required by law or to protect safety and rights.
 
 ## 8. International transfers
 
-Processors may operate outside your country. Where data leaves the EEA, we rely on appropriate safeguards (such as the European Commission's Standard Contractual Clauses).
+Processors may operate outside your country, so here is exactly where things stand rather than a general assurance. **Our storage and database sit in Germany, in a single region with no replication elsewhere.** What is kept there is the feed, the offers and the complaints about them. Conversations are not kept anywhere at all — they pass through the server encrypted and are gone, so there is no region for them to sit in. What can cross a border is the edge log our CDN keeps (an IP address and the address of the page) and the waitlist emails held in that CDN's object storage. **Our contract with that provider does not include the European Commission's Standard Contractual Clauses**, and its terms permit processing worldwide; we have accepted that as a residual risk rather than papered over it, and we will say so here if it changes. Email delivery and payments are covered by their own providers' terms.
 
 ## 9. Your rights (GDPR)
 

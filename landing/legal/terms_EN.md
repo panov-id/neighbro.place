@@ -1,6 +1,6 @@
 # Neighbro — Terms & Conditions
 
-**Last updated: 5 August 2026**
+**Last updated: 10 August 2026**
 
 ## 1. Who we are
 
@@ -30,7 +30,7 @@ By accessing or using the Service (including joining a waitlist or using an alph
 
 ## 5. Identity and your device
 
-- Your identity is stored on your **browser/device**, not in a password-protected account. Clearing data or using a private window creates a **new identity**.
+- Your identity is stored on your **browser/device**, not in a password-protected account. Clearing data or using a private window creates a **new identity**, unless you restore the old one with the paper recovery code you were shown when you created it. It lives on one device at a time and can be moved to another with a code shown on the first.
 - You are responsible for activity that happens through your device and identity. Keep your device secure.
 - Impersonating another person, or pretending to be someone you are not, is prohibited.
 
