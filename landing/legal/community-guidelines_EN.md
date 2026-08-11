@@ -1,5 +1,7 @@
 # Community Guidelines — neighbro.place
 
+**These rules are published in several languages. The English version is the one that applies; translations are provided for convenience.**
+
 ## General principle
 
 Content must stay within the norms of a calm, peaceful society. We moderate automatically, before publication — using **AI models** to pre-screen every message — not after.

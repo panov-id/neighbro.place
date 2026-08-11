@@ -1,5 +1,9 @@
 # Règles de la communauté — neighbro.place
 
+**Ces règles sont publiées en plusieurs langues. La version anglaise fait foi ; les traductions sont fournies à titre de commodité.**
+
+*The English version of these rules is the one that applies; translations are provided for convenience.*
+
 ## Principe général
 
 Le contenu doit rester dans les normes d’une société calme et paisible. Nous modérons automatiquement, avant la publication — en utilisant des **modèles d’IA** pour pré-filtrer chaque message — et non après.
