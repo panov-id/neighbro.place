@@ -110,7 +110,7 @@ rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip; rm -rf "$STAGE"/i
 # and reciprocal hreflang. The sitemap is generated here too, replacing the placeholder.
 SITE_ORIGIN="${SITE_ORIGIN:-https://neighbro.place}" RUN_NODE_MOUNT="$STAGE" \
   bash "$ROOT_DIR/deploy/run-node.sh" landing/build-pages.mjs "$STAGE"
-rm -f "$STAGE"/build-pages.mjs "$STAGE"/check-i18n.mjs "$STAGE"/check-legal-bar.mjs "$STAGE"/i18n-dictionary.mjs
+rm -f "$STAGE"/build-pages.mjs "$STAGE"/check-i18n.mjs "$STAGE"/check-legal-bar.mjs "$STAGE"/i18n-dictionary.mjs "$STAGE"/security-headers.mjs
 
 # Indexing is a production-only privilege. dev and uat serve the same landing from their
 # own zones, so a crawlable copy there competes with production as a duplicate. An unset
@@ -170,6 +170,79 @@ if [ "$LANDING_ENV" = "prod" ] && [ -f "$STAGE/sitemap.xml" ]; then
     --data "{\"host\":\"${INDEXNOW_HOST}\",\"key\":\"${INDEXNOW_KEY}\",\"keyLocation\":\"https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt\",\"urlList\":${URL_LIST}}" \
     -o /dev/null -w '  IndexNow responded %{http_code}\n' \
     "https://api.indexnow.org/indexnow" || echo "  IndexNow ping failed (not fatal)"
+fi
+
+# --- security headers --------------------------------------------------------
+#
+# Computed from the staged copy — the bytes about to be uploaded — and applied to
+# the pull zone as one edge rule carrying every header. The policy names a sha256
+# for each inline script, style block and style attribute, so a hand-kept list
+# would go stale on the first markup edit; computing it here it cannot.
+#
+# The failure mode this guards against is specific: the header lives at the edge,
+# a local server never sends it, so a wrong hash is a blank page in production and
+# nowhere else. That is why this runs inside the deploy and not beside it.
+if [ -n "${BUNNY_PULL_ZONE_ID:-}" ] && [ -n "${BUNNY_API_KEY:-}" ]; then
+  echo "Building the security headers from the staged copy…"
+  HEADERS_JSON="$(RELAY_API_URL="$RELAY_API_URL" ANALYTICS_ID="${ANALYTICS_ID:-}" \
+    RUN_NODE_MOUNT="$STAGE" bash "$ROOT_DIR/deploy/run-node.sh" \
+    landing/security-headers.mjs "$STAGE")"
+
+  export HEADERS_JSON
+  python3 - "$BUNNY_PULL_ZONE_ID" "$BUNNY_API_KEY" <<'PYEOF'
+import json, os, sys, urllib.error, urllib.request
+
+zone, key = sys.argv[1], sys.argv[2]
+data = json.loads(os.environ["HEADERS_JSON"])
+headers = data["headers"]
+print("  " + json.dumps(data["counted"]))
+
+def action(header):
+    return {
+        "ActionType": 5,  # set response header — verified against the API, not remembered
+        "ActionParameter1": header["name"],
+        "ActionParameter2": header["value"],
+        "ActionParameter3": None,
+    }
+
+# One rule, every header: an edge rule carries extra actions, so six rules per
+# zone would be five more things to forget.
+rule = {
+    "Guid": None,
+    **action(headers[0]),
+    "ExtraActions": [action(h) for h in headers[1:]],
+    "Enabled": True,
+    "Description": "security headers (managed by deploy-landing.sh)",
+    "TriggerMatchingType": 0,
+    "Triggers": [{"Type": 0, "PatternMatches": ["*"], "PatternMatchingType": 0, "Parameter1": ""}],
+}
+
+# Replace our own rule rather than adding another: without the Guid every deploy
+# would leave one more copy behind, and the last one to load would win silently.
+def call(method, path, body=None):
+    request = urllib.request.Request(
+        f"https://api.bunny.net{path}", method=method,
+        headers={"AccessKey": key, "content-type": "application/json"},
+        data=json.dumps(body).encode() if body is not None else None)
+    with urllib.request.urlopen(request, timeout=30) as response:
+        raw = response.read()
+        return json.loads(raw) if raw else {}
+
+existing = call("GET", f"/pullzone/{zone}")
+for item in existing.get("EdgeRules", []):
+    if (item.get("Description") or "").startswith("security headers"):
+        rule["Guid"] = item["Guid"]
+        break
+
+try:
+    call("POST", f"/pullzone/{zone}/edgerules/addOrUpdate", rule)
+except urllib.error.HTTPError as error:
+    sys.exit(f"  edge rule refused: {error.code} {error.read()[:300]!r}")
+print(f"  security headers applied to zone {zone}"
+      f" ({'updated' if rule['Guid'] else 'created'}).")
+PYEOF
+else
+  echo "BUNNY_PULL_ZONE_ID or BUNNY_API_KEY unset — security headers not applied." >&2
 fi
 
 if [ -n "${BUNNY_PULL_ZONE_ID:-}" ]; then
