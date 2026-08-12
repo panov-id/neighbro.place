@@ -84,7 +84,12 @@ const analytics = process.env.ANALYTICS_ID
 
 const csp = [
   "default-src 'self'",
-  "base-uri 'none'",
+  // 'self' rather than 'none': the per-language pages are served from /ru/, /de/
+  // and so on, and a single <base href="/"> is what makes their relative links —
+  // and the url() inside the inline stylesheet — resolve from the root. 'none'
+  // blocked our own tag while an injected <base href="https://elsewhere/"> is
+  // what the directive is actually for, and 'self' still refuses that.
+  "base-uri 'self'",
   "object-src 'none'",
   // The landing is never framed by anyone, and saying so twice — here and in
   // X-Frame-Options — costs nothing and covers older browsers.
