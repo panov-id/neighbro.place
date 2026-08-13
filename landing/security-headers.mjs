@@ -67,7 +67,36 @@ for (const page of pages) {
 
 // The relay this landing talks to differs per environment, so it comes from the
 // deploy rather than from a list here that would be wrong for two of the three.
-const relay = process.env.RELAY_API_URL || "";
+//
+// A CSP source carrying a path matches that exact path, so `https://relay/v1`
+// would permit one request and block every other — while the page, which
+// concatenates onto the same string, works fine. The two disagree silently and
+// only in production, so a malformed value stops the deploy instead of shipping
+// a policy nobody will read. An empty value stays legal: a stand without a
+// relay is a stand, not a mistake.
+const configured = process.env.RELAY_API_URL || "";
+let relay = "";
+if (configured) {
+  try {
+    const parsed = new URL(configured);
+    if (parsed.origin !== configured.replace(/\/$/, "")) {
+      throw new Error(`expected a bare origin, got ${configured}`);
+    }
+    relay = parsed.origin;
+  } catch (error) {
+    console.error(`RELAY_API_URL is not a usable CSP source: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+// Where the browser says the policy blocked something. The hashes are computed
+// from the markup at deploy time, so the policy drifts by construction, and the
+// only thing that stood between a drifted policy and a dead page was somebody
+// remembering to open the console. Both spellings: report-to is the current one
+// and the only one Chrome honours, report-uri is deprecated and the only one
+// Firefox and Safari honour. No relay means no endpoint, and the directives are
+// left out rather than pointed at nothing.
+const reportTo = relay ? `${relay}/csp-report` : "";
 // Analytics is production-only and consented; without an id, nothing of Google's
 // is allowed at all rather than allowed and unused.
 const analytics = process.env.ANALYTICS_ID
@@ -103,11 +132,14 @@ const csp = [
   `style-src 'self' 'unsafe-hashes' ${[...styles, ...styleAttributes].join(" ")}`,
   `script-src 'self' ${[...scripts, ...analytics.script].join(" ")}`.replace(/\s+/g, " "),
   `connect-src 'self' ${[relay, ...analytics.connect].filter(Boolean).join(" ")}`.trim(),
+  ...(reportTo ? [`report-uri ${reportTo}`, "report-to csp"] : []),
   "upgrade-insecure-requests",
 ].join("; ");
 
 const headers = [
   { name: "Content-Security-Policy", value: csp },
+  // `report-to csp` above names a group; this header is what defines it.
+  ...(reportTo ? [{ name: "Reporting-Endpoints", value: `csp="${reportTo}"` }] : []),
   // A year, no preload: preload is a list somebody else keeps and leaving it
   // takes months, which is the wrong shape for a service still finding its feet.
   { name: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },

@@ -1,0 +1,26 @@
+name: checks
+
+# The landing had no CI at all: the first thing that ever ran its code was a
+# deploy, which is the worst place to learn that the content policy refuses the
+# page. This runs before one, on every branch, so a mistake is caught on the day
+# branch it was made on.
+#
+# Nothing here reaches the network.
+on:
+  push:
+    branches: ["**"]
+    paths: ["landing/**", ".github/workflows/checks.yml"]
+  pull_request:
+    paths: ["landing/**", ".github/workflows/checks.yml"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: the policy this landing will be served under
+        run: bash landing/test-security-headers.sh
