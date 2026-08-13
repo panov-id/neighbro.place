@@ -6,7 +6,9 @@
 
 ## Principe général
 
-Le contenu doit rester dans les normes d’une société calme et paisible. Nous modérons automatiquement, avant la publication — en utilisant des **modèles d’IA** pour pré-filtrer chaque message — et non après.
+Le contenu doit rester dans les normes d’une société calme et paisible. Ce qui est **publié** — le fil et les offres de quartier — est vérifié automatiquement par des **modèles d’IA** avant de paraître, et non après.
+
+**Une conversation n’est pas vérifiée.** Elle circule chiffrée d’un appareil à l’autre et nous ne pouvons pas la lire. Les règles ci-dessous y valent tout autant ; ce qui diffère, c’est la façon dont elles s’appliquent — par le signalement de votre interlocuteur, et non par une vérification de notre côté.
 
 ## Sois un bon voisin
 
@@ -14,7 +16,7 @@ Neighbro est fait pour les bons voisins. Traite les gens comme tu voudrais qu’
 
 ## Totalement interdit
 
-**Le harcèlement, le harcèlement scolaire (bullying), l’humiliation, l’intimidation, les menaces et tout comportement antisocial, cruel ou dégradant**, ainsi que le contenu sur la drogue, le contenu sexuel et l’offre de services sexuels. De tels messages ne sont ni publiés ni envoyés — ni dans le fil, ni en chat. C’est un service pour les voisins, pas une application de rencontres : aucun réglage n’active l’affichage de contenu sexuel. Si un message ne passe pas la vérification, son auteur en est informé — rien ne disparaît en silence.
+**Le harcèlement, le harcèlement scolaire (bullying), l’humiliation, l’intimidation, les menaces et tout comportement antisocial, cruel ou dégradant**, ainsi que le contenu sur la drogue, le contenu sexuel et l’offre de services sexuels. De tels messages ne sont jamais publiés : la vérification les refuse avant qu’ils n’atteignent le fil, et leur auteur en est informé — rien ne disparaît en silence. C’est un service pour voisins, pas pour rencontres : aucun réglage n’active le contenu sexuel. Dans une conversation, cette vérification n’existe pas, et rien de tout cela n’y est autorisé non plus — si on vous envoie cela, signalez-le, et c’est votre appareil qui joint la copie, car nous n’en avons aucune.
 
 ## Aucune vente ni promotion
 

@@ -58,7 +58,12 @@ mime_type() {
 # from the documents on the first edit, and the drift is silent — the bar would
 # announce a revision nobody made, or stay quiet about one somebody did.
 legal_revision() {
-  python3 - "$SRC/legal/terms_EN.md" "$SRC/legal/privacy_EN.md" <<'PYEOF'
+  # The rules are one of the documents the bar is about: they say what a person
+  # may post and what happens if they do not, and they changed on 13.08.2026 to
+  # stop promising a check the chat does not get. Leaving them out meant the
+  # documents could change while the bar said nothing.
+  python3 - "$SRC/legal/terms_EN.md" "$SRC/legal/privacy_EN.md" \
+           "$SRC/legal/community-guidelines_EN.md" <<'PYEOF'
 import datetime, re, sys
 
 MONTHS = {m: i for i, m in enumerate(

@@ -1,10 +1,14 @@
 # Community Guidelines — neighbro.place
 
+**Last updated: 13 August 2026**
+
 **These rules are published in several languages. The English version is the one that applies; translations are provided for convenience.**
 
 ## General principle
 
-Content must stay within the norms of a calm, peaceful society. We moderate automatically, before publication — using **AI models** to pre-screen every message — not after.
+Content must stay within the norms of a calm, peaceful society. What is **published** — the feed and neighbourhood offers — is screened automatically by **AI models** before it appears, not after.
+
+A **chat is not screened.** It travels encrypted from one device to the other, and we cannot read it. The rules below hold there all the same; what differs is how they are met — by the person you are talking to reporting a message, not by a check on our side.
 
 ## Be a good neighbor
 
@@ -12,7 +16,7 @@ Neighbro is for good neighbors — treat people the way you'd want to be treated
 
 ## Fully prohibited
 
-**Harassment, bullying, shaming, intimidation, threats, and any anti-social, cruel, or degrading behavior**, plus drug-related content, sexual content, and sex-work solicitation. Such messages are never published or sent, in the feed or in chat. This is a service for neighbours, not for dating: there is no setting that turns sexual content on. When a message does not pass the check, its author is told — nothing vanishes in silence.
+**Harassment, bullying, shaming, intimidation, threats, and any anti-social, cruel, or degrading behavior**, plus drug-related content, sexual content, and sex-work solicitation. Such messages are never published: the check refuses them before they reach the feed, and the author is told — nothing vanishes in silence. This is a service for neighbours, not for dating: there is no setting that turns sexual content on. A chat has no such check, and none of this is allowed there either — if someone sends you this, report it, and your device attaches the copy, because we hold none.
 
 ## No selling or promotion
 

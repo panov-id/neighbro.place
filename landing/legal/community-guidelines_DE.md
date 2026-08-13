@@ -6,7 +6,9 @@
 
 ## Grundprinzip
 
-Inhalte müssen im Rahmen der Normen einer ruhigen, friedlichen Gesellschaft bleiben. Wir moderieren automatisch, vor der Veröffentlichung — mit **KI-Modellen**, die jede Nachricht vorab prüfen — nicht danach.
+Inhalte müssen im Rahmen der Normen einer ruhigen, friedlichen Gesellschaft bleiben. Was **veröffentlicht** wird — der Feed und die Nachbarschaftsangebote — wird automatisch von **KI-Modellen** geprüft, bevor es erscheint, nicht danach.
+
+**Ein Chat wird nicht geprüft.** Er läuft verschlüsselt von einem Gerät zum anderen, und wir können ihn nicht lesen. Die Regeln unten gelten dort genauso; anders ist nur, wie sie durchgesetzt werden — durch eine Meldung deines Gegenübers, nicht durch eine Prüfung auf unserer Seite.
 
 ## Sei ein guter Nachbar
 
@@ -14,7 +16,7 @@ Neighbro ist für gute Nachbarn. Behandle Menschen so, wie du auf deiner eigenen
 
 ## Vollständig verboten
 
-**Belästigung, Mobbing (Bullying), Beschämung, Einschüchterung, Drohungen und jedes antisoziale, grausame oder erniedrigende Verhalten**, ebenso Inhalte über Drogen, sexuelle Inhalte und das Anbieten sexueller Dienstleistungen. Solche Nachrichten werden weder veröffentlicht noch gesendet — weder im Feed noch im Chat. Das hier ist ein Dienst für Nachbarn, keine Dating-App: eine Einstellung, die sexuelle Inhalte einblendet, gibt es nicht. Besteht eine Nachricht die Prüfung nicht, wird das ihrem Verfasser mitgeteilt — nichts verschwindet stillschweigend.
+**Belästigung, Mobbing (Bullying), Beschämung, Einschüchterung, Drohungen und jedes antisoziale, grausame oder erniedrigende Verhalten**, ebenso Inhalte über Drogen, sexuelle Inhalte und das Anbieten sexueller Dienstleistungen. Solche Nachrichten werden nie veröffentlicht: die Prüfung weist sie ab, bevor sie in den Feed gelangen, und die Autorin oder der Autor erfährt davon — nichts verschwindet stillschweigend. Dies ist ein Dienst für Nachbarn, nicht zum Daten: es gibt keine Einstellung, die sexuelle Inhalte einschaltet. Im Chat gibt es diese Prüfung nicht, und erlaubt ist dort nichts davon — wenn dir so etwas geschickt wird, melde es, und dein Gerät hängt die Kopie an, denn wir haben keine.
 
 ## Kein Verkauf und keine Werbung
 

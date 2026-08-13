@@ -22,6 +22,9 @@ jobs:
         with:
           node-version: "22"
 
+      - name: the documents do not contradict each other
+        run: node landing/check-legal-consistency.mjs
+
       - name: the policy this landing will be served under
         run: bash landing/test-security-headers.sh
 
