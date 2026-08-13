@@ -9,9 +9,9 @@ name: checks
 on:
   push:
     branches: ["**"]
-    paths: ["landing/**", ".github/workflows/checks.yml"]
+    paths: ["landing/**", "deploy/**", ".github/workflows/checks.yml"]
   pull_request:
-    paths: ["landing/**", ".github/workflows/checks.yml"]
+    paths: ["landing/**", "deploy/**", ".github/workflows/checks.yml"]
 
 jobs:
   check:
@@ -24,3 +24,6 @@ jobs:
 
       - name: the policy this landing will be served under
         run: bash landing/test-security-headers.sh
+
+      - name: no secret on a command line
+        run: python3 deploy/test-no-secrets-in-argv.py

@@ -189,10 +189,15 @@ if [ -n "${BUNNY_PULL_ZONE_ID:-}" ] && [ -n "${BUNNY_API_KEY:-}" ]; then
     landing/security-headers.mjs "$STAGE")"
 
   export HEADERS_JSON
-  python3 - "$BUNNY_PULL_ZONE_ID" "$BUNNY_API_KEY" <<'PYEOF'
+  # The key through the environment, not argv: an argument is visible in
+  # ps to every local account for the life of the call. HEADERS_JSON
+  # already travelled this way; the key beside it did not.
+  BUNNY_API_KEY="$BUNNY_API_KEY" \
+  python3 - "$BUNNY_PULL_ZONE_ID" <<'PYEOF'
 import json, os, sys, urllib.error, urllib.request
 
-zone, key = sys.argv[1], sys.argv[2]
+zone = sys.argv[1]
+key = os.environ["BUNNY_API_KEY"]
 data = json.loads(os.environ["HEADERS_JSON"])
 headers = data["headers"]
 print("  " + json.dumps(data["counted"]))
