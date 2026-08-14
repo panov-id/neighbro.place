@@ -187,7 +187,15 @@ fi
 # The failure mode this guards against is specific: the header lives at the edge,
 # a local server never sends it, so a wrong hash is a blank page in production and
 # nowhere else. That is why this runs inside the deploy and not beside it.
-if [ -n "${BUNNY_PULL_ZONE_ID:-}" ] && [ -n "${BUNNY_API_KEY:-}" ]; then
+# A way out when the builder itself is wrong. Rolling back by code fixes a policy
+# that is wrong for these bytes; it does nothing when every version computes the
+# same broken policy, and the page is then blank in production and fine
+# everywhere else. SKIP_SECURITY_HEADERS=1 ships the files and purges without
+# touching the rule; deploy/apply-edge-headers.py --remove (in xor.ad) takes an
+# already-applied rule off a zone.
+if [ "${SKIP_SECURITY_HEADERS:-}" = "1" ]; then
+  echo "SKIP_SECURITY_HEADERS=1 — the policy is left exactly as it is on the zone." >&2
+elif [ -n "${BUNNY_PULL_ZONE_ID:-}" ] && [ -n "${BUNNY_API_KEY:-}" ]; then
   echo "Building the security headers from the staged copy…"
   HEADERS_JSON="$(RELAY_API_URL="$RELAY_API_URL" ANALYTICS_ID="${ANALYTICS_ID:-}" \
     RUN_NODE_MOUNT="$STAGE" bash "$ROOT_DIR/deploy/run-node.sh" \
