@@ -30,3 +30,6 @@ jobs:
 
       - name: no secret on a command line
         run: python3 deploy/test-no-secrets-in-argv.py
+
+      - name: the release tag survives a re-run
+        run: python3 deploy/test-release-tag.py
