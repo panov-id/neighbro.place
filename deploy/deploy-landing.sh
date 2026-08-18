@@ -108,14 +108,25 @@ window.__XOR_CONFIG__ = {
   legalRevision: "${LEGAL_REVISION}",
 };
 EOF
-rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip; rm -rf "$STAGE"/img-src
 
 # Pre-render one page per language into the staging copy: the root becomes English and
 # every other language gets its own folder, each with translated text already in the HTML
 # and reciprocal hreflang. The sitemap is generated here too, replacing the placeholder.
 SITE_ORIGIN="${SITE_ORIGIN:-https://neighbro.place}" RUN_NODE_MOUNT="$STAGE" \
   bash "$ROOT_DIR/deploy/run-node.sh" landing/build-pages.mjs "$STAGE"
-rm -f "$STAGE"/build-pages.mjs "$STAGE"/check-i18n.mjs "$STAGE"/check-legal-bar.mjs "$STAGE"/i18n-dictionary.mjs "$STAGE"/security-headers.mjs
+# What never ships, decided in one place. It used to be decided in two, and the
+# half that was a hand-written list of five names drifted: by 2026-08-18 the
+# directory held ten tools, and check-contrast.mjs, check-legal-consistency.mjs,
+# find-dead-keys.mjs, verify-seo.mjs and test-security-headers.sh were being
+# served from the production storefront, which nobody had decided to publish.
+#
+# A rule does not go stale when a file is added the way a list does. Nothing the
+# markup loads is .mjs or .sh — the one mention of build-pages.mjs in index.html
+# is a comment — and the service worker is sw.js, which this leaves alone. It
+# runs after build-pages, which needs its own .mjs to still be here.
+find "$STAGE" -maxdepth 1 -type f \( -name '*.mjs' -o -name '*.sh' \) -delete
+rm -f "$STAGE"/SPEC_*.md "$STAGE"/*standalone* "$STAGE"/*.zip
+rm -rf "$STAGE"/img-src
 
 # Indexing is a production-only privilege. dev and uat serve the same landing from their
 # own zones, so a crawlable copy there competes with production as a duplicate. An unset
@@ -152,15 +163,43 @@ fi
 find "$STAGE" -name '*.html' -exec sed -i "s/__BUILD__/${BUILD}/g" {} +
 
 echo "Deploying landing → Bunny zone '${BUNNY_STORAGE_ZONE}'"
-( cd "$STAGE" && find . -type f -print0 | while IFS= read -r -d '' f; do
+# curl without --fail exits 0 on 401, 403 and 507, so this loop used to report a
+# finished deploy over a zone that had rejected every byte. The failures are
+# counted and named at the end rather than at the first one, and the run stops:
+# what follows deletes files, and deleting after a half-finished upload is how a
+# site disappears. Process substitution rather than a pipe, or the counter would
+# live in a subshell and come back zero.
+( cd "$STAGE"
+  failed=0
+  while IFS= read -r -d '' f; do
     rel="${f#./}"
-    echo "  → /${rel}"
-    curl -sS -X PUT \
+    code="$(curl -sS -o /dev/null -w '%{http_code}' -X PUT \
       -H "AccessKey: ${BUNNY_STORAGE_API_KEY}" \
       -H "Content-Type: $(mime_type "$f")" \
       --data-binary "@${f}" \
-      "${BASE_URL}/${rel}" >/dev/null
-  done )
+      "${BASE_URL}/${rel}" || true)"
+    case "$code" in
+      2*) echo "  → /${rel}" ;;
+      *)  echo "  ✗ /${rel} — HTTP ${code:-no response}"; failed=$((failed + 1)) ;;
+    esac
+  done < <(find . -type f -print0)
+  [ "$failed" -eq 0 ] || {
+    echo "${failed} file(s) did not upload — the zone is now half-updated." >&2
+    exit 1
+  }
+)
+
+# Uploading is only half of a deploy: until 2026-08-18 nothing was ever deleted,
+# so a file dropped from the landing kept being served. It runs here because this
+# is the one place where the directory compared against the zone is the directory
+# that was just uploaded into it.
+if [ "${SKIP_PRUNE:-}" = "1" ]; then
+  echo "SKIP_PRUNE=1 — лишние файлы в зоне остаются как есть." >&2
+else
+  echo "Убираю из зоны то, чего нет в этой выкладке…"
+  BUNNY_STORAGE_API_KEY="$BUNNY_STORAGE_API_KEY" \
+    python3 "$ROOT_DIR/deploy/prune-storage-zone.py" "$BUNNY_STORAGE_ZONE" "$STAGE" --apply
+fi
 
 # IndexNow: tell Bing and Yandex what changed instead of waiting to be crawled. The key is
 # public by design — it is verified by fetching https://<host>/<key>.txt, which ships with
