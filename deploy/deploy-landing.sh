@@ -197,8 +197,14 @@ if [ "${SKIP_PRUNE:-}" = "1" ]; then
   echo "SKIP_PRUNE=1 — лишние файлы в зоне остаются как есть." >&2
 else
   echo "Убираю из зоны то, чего нет в этой выкладке…"
-  BUNNY_STORAGE_API_KEY="$BUNNY_STORAGE_API_KEY" \
-    python3 "$ROOT_DIR/deploy/prune-storage-zone.py" "$BUNNY_STORAGE_ZONE" "$STAGE" --apply
+  # Not fatal, and deliberately so: the prune runs after the upload, so a refusal
+  # that stopped the run would leave the zone uploaded but the security headers
+  # uncomputed and the cache unpurged — which is worse than leaving a stale file
+  # behind. Loud, and the deploy carries on.
+  if ! BUNNY_STORAGE_API_KEY="$BUNNY_STORAGE_API_KEY" \
+       python3 "$ROOT_DIR/deploy/prune-storage-zone.py" "$BUNNY_STORAGE_ZONE" "$STAGE" --apply; then
+    echo "  ⚠ уборка не выполнена — в зоне остаётся лишнее. Выкат продолжается." >&2
+  fi
 fi
 
 # IndexNow: tell Bing and Yandex what changed instead of waiting to be crawled. The key is
