@@ -167,6 +167,15 @@ function buildPage(language) {
   page = replaceMeta(page, "name", "twitter:description", description);
   page = setLocales(page, language);
 
+  // The social preview carries the tagline, so it has to be the tagline of this
+  // page: an English sheet under a Georgian headline is exactly the seam a
+  // preview shows off. og/render-all.mjs draws one per language from the same
+  // dictionary, so the picture and the page cannot disagree about the words.
+  const socialImage = `${origin}/og-image${language === DEFAULT_LANGUAGE ? "" : `-${language}`}.jpg`;
+  page = replaceMeta(page, "property", "og:image", socialImage);
+  page = replaceMeta(page, "property", "og:image:secure_url", socialImage);
+  page = replaceMeta(page, "name", "twitter:image", socialImage);
+
   // FAQ structured data, built from the same keys as the visible block above it — the
   // markup and the text can never disagree, and every language ships its own.
   const questions = [1, 2, 3, 4, 5, 6]
