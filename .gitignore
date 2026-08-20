@@ -1,3 +1,7 @@
 .idea/
 landing/*standalone*.html
 docs/*.zip
+
+# Python bytecode from the deploy tests — the tests import
+# prune-storage-zone.py as a module, and that leaves a cache behind.
+__pycache__/

@@ -31,5 +31,14 @@ jobs:
       - name: no secret on a command line
         run: python3 deploy/test-no-secrets-in-argv.py
 
+      # The guard that stands between the landing directory and a live zone, and
+      # the prune that runs after it. Both shipped without tests of their own,
+      # which left a deploy as the first thing that would ever exercise them.
+      - name: a file nobody allowed stops the deploy
+        run: python3 deploy/test-check-shipped-files.py
+
+      - name: what the prune refuses to delete
+        run: python3 deploy/test-prune-storage-zone.py
+
       - name: the release tag survives a re-run
         run: python3 deploy/test-release-tag.py

@@ -1,0 +1,42 @@
+# What a storefront is expected to serve. Anything else stops the deploy before
+# a byte goes up — see deploy/check-shipped-files.py for why "stop" rather than
+# "delete".
+#
+# Written because five of our own check scripts answered 200 on both production
+# storefronts for months: the landing directory ships whole, and there was no
+# list to hold it against. The prune added the same day removes what the build
+# drops; it never questions what the build keeps. This does.
+
+# the pages themselves — English at the root, one folder per language
+index.html
+legal.html
+rules.html
+report.html
+*/index.html
+
+# generated at deploy time
+config.js
+robots.txt
+sitemap.xml
+sw.js
+
+# typography. The rule is deliberately broad and therefore will NOT catch an
+# extra font file — three mockup faces would pass through it. What catches those
+# is the zone prune and the fact that fonts/ is only ever filled by
+# scripts/fetch-fonts.sh.
+fonts.css
+fonts-georgian.css   # armenian is sosed's alone — neighbro publishes no Armenian page
+fonts/*.woff2
+
+# pictures: the shared assets and one social sheet per language
+img/*.jpg
+icons/*
+og-image.jpg
+og-image-*.jpg
+manifest.json
+
+# legal texts, fetched by the pages rather than inlined
+legal/*.md
+
+# IndexNow proves ownership by serving its key at the root
+*.txt

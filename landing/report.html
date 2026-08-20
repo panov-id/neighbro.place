@@ -12,6 +12,8 @@
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
 <meta name="theme-color" content="#0d0b0a">
 <link rel="stylesheet" href="fonts.css">
+<!-- Georgian: none of the three brand faces covers the script (see fonts-georgian.css). -->
+<link rel="stylesheet" href="fonts-georgian.css">
 <style>
   :root {
     --bg: #0c0b09; --panel: #14120e; --panel-2: #26221a; --border: #3a331f;
@@ -23,15 +25,15 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  body { background: var(--bg); color: var(--fg); font-family: "Golos Text", -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--fg); font-family: "Golos Text", "Noto Sans Georgian", -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; }
-  .mono { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.7rem; }
+  .mono { font-family: "JetBrains Mono", "Noto Sans Georgian", monospace; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.7rem; }
   a { color: var(--accent); }
 
   header.top { display: flex; align-items: center; gap: 16px; padding: 26px 0 22px; border-bottom: 1px solid var(--border); }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); }
   .brand .mark { width: 30px; height: 30px; color: var(--accent); display: flex; }
-  .brand .name { font-family: "JetBrains Mono", monospace; letter-spacing: 0.12em; font-size: 0.82rem; }
+  .brand .name { font-family: "JetBrains Mono", "Noto Sans Georgian", monospace; letter-spacing: 0.12em; font-size: 0.82rem; }
 
   h1 { font-size: 1.5rem; margin: 34px 0 14px; letter-spacing: -0.01em; }
   p { line-height: 1.6; margin-bottom: 14px; color: var(--fg); }
@@ -40,7 +42,7 @@
 
   form { margin-top: 26px; display: grid; gap: 18px; }
   label { display: grid; gap: 6px; }
-  .label { font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.66rem; color: var(--muted); }
+  .label { font-family: "JetBrains Mono", "Noto Sans Georgian", monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.66rem; color: var(--muted); }
   input[type="text"], input[type="email"], select, textarea {
     background: var(--panel); color: var(--fg); border: 1px solid var(--border);
     border-radius: 9px; padding: 11px 12px; font: inherit; font-size: 0.95rem; width: 100%;
@@ -54,7 +56,7 @@
   button.send { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 9px; padding: 13px 18px; font: inherit; font-weight: 600; cursor: pointer; justify-self: start; }
   button.send[disabled] { opacity: 0.55; cursor: default; }
   .result { border: 1px solid var(--border); background: var(--panel); border-radius: 11px; padding: 16px; line-height: 1.6; }
-  .result .ref { font-family: "JetBrains Mono", monospace; letter-spacing: 0.1em; }
+  .result .ref { font-family: "JetBrains Mono", "Noto Sans Georgian", monospace; letter-spacing: 0.1em; }
   .bad { border-color: var(--accent); }
   footer.bottom { margin-top: 46px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
   footer.bottom a { color: var(--muted); text-decoration: none; }
