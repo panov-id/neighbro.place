@@ -134,6 +134,8 @@ rm -rf "$STAGE"/img-src
 LANDING_ENV="${LANDING_ENV:-dev}"
 if [ "$LANDING_ENV" = "prod" ]; then
   if [ -n "${SEARCH_CONSOLE_TOKEN:-}" ]; then
+    # Language pages live in subfolders, generated a few lines above — they need the tag
+    # just as much as the root does.
     for page in "$STAGE"/*.html "$STAGE"/*/index.html; do
       [ -f "$page" ] || continue
       sed -i "s#<meta charset=\"utf-8\">#<meta charset=\"utf-8\">\n<meta name=\"google-site-verification\" content=\"${SEARCH_CONSOLE_TOKEN}\">#" "$page"
@@ -161,6 +163,14 @@ if [ -f "$STAGE/sw.js" ]; then
 fi
 # After the generator ran, so the language pages carry the same build id.
 find "$STAGE" -name '*.html' -exec sed -i "s/__BUILD__/${BUILD}/g" {} +
+
+# Before a byte goes up: does the staged copy hold only what we meant to publish?
+# Five of our own check scripts answered 200 on production for months because the
+# landing ships whole and nothing held it against a list. The prune that runs
+# after the upload removes what the build dropped and never questions what it
+# kept — this does, and it stops rather than deletes: a new kind of file is a
+# decision, not an accident to clean up.
+python3 "$ROOT_DIR/deploy/check-shipped-files.py" "$STAGE" "$ROOT_DIR/deploy/landing-shipped.manifest"
 
 echo "Deploying landing → Bunny zone '${BUNNY_STORAGE_ZONE}'"
 # curl without --fail exits 0 on 401, 403 and 507, so this loop used to report a
@@ -197,8 +207,14 @@ if [ "${SKIP_PRUNE:-}" = "1" ]; then
   echo "SKIP_PRUNE=1 — лишние файлы в зоне остаются как есть." >&2
 else
   echo "Убираю из зоны то, чего нет в этой выкладке…"
-  BUNNY_STORAGE_API_KEY="$BUNNY_STORAGE_API_KEY" \
-    python3 "$ROOT_DIR/deploy/prune-storage-zone.py" "$BUNNY_STORAGE_ZONE" "$STAGE" --apply
+  # Not fatal, and deliberately so: the prune runs after the upload, so a refusal
+  # that stopped the run would leave the zone uploaded but the security headers
+  # uncomputed and the cache unpurged — which is worse than leaving a stale file
+  # behind. Loud, and the deploy carries on.
+  if ! BUNNY_STORAGE_API_KEY="$BUNNY_STORAGE_API_KEY" \
+       python3 "$ROOT_DIR/deploy/prune-storage-zone.py" "$BUNNY_STORAGE_ZONE" "$STAGE" --apply; then
+    echo "  ⚠ уборка не выполнена — в зоне остаётся лишнее. Выкат продолжается." >&2
+  fi
 fi
 
 # IndexNow: tell Bing and Yandex what changed instead of waiting to be crawled. The key is
