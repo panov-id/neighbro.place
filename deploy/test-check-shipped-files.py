@@ -17,6 +17,7 @@ does.
 """
 
 import pathlib
+import re
 import subprocess
 import sys
 import tempfile
@@ -125,8 +126,27 @@ check("an empty staging directory is refused",
 
 # The manifest that actually ships has to accept a canonical stage, or the cases
 # above describe a file nobody uses.
-code, out, err = run(STAGE, REAL_MANIFEST.read_text(encoding="utf-8"))
+REAL = REAL_MANIFEST.read_text(encoding="utf-8")
+code, out, err = run(STAGE, REAL)
 check("the real landing manifest accepts a canonical stage", code == 0, f"код {code}: {err}")
+
+# The IndexNow key is named in full rather than as *.txt. fnmatch's * crosses
+# '/', so *.txt read like "the key at the root" and meant "any text file at any
+# depth" — the kind of rule this file's own header warns about.
+key = next((line.strip() for line in REAL.splitlines()
+            if re.fullmatch(r"[0-9a-f]{32}\.txt", line.strip())), None)
+check("the manifest names the IndexNow key in full", key is not None, REAL[-200:])
+if key:
+    code, _, err = run(STAGE + [key], REAL)
+    check("and the key itself is served", code == 0, f"код {code}: {err}")
+
+code, _, err = run(STAGE + ["legal/notes.txt"], REAL)
+check("a stray text file in a subfolder is caught",
+      code == 1 and "legal/notes.txt" in err, f"код {code}: {err}")
+
+code, _, err = run(STAGE + ["secrets.txt"], REAL)
+check("and so is one at the root",
+      code == 1 and "secrets.txt" in err, f"код {code}: {err}")
 
 print()
 if failed:
