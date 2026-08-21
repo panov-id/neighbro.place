@@ -38,5 +38,10 @@ manifest.json
 # legal texts, fetched by the pages rather than inlined
 legal/*.md
 
-# IndexNow proves ownership by serving its key at the root
-*.txt
+# IndexNow proves ownership by serving its key at the root. Named in full rather
+# than as *.txt: the guard matches with fnmatch, whose * crosses '/', so *.txt
+# allowed any .txt at any depth — a rule that reads like «the key» and means «any
+# text file anywhere». The key is a constant of this storefront and already
+# written out in deploy-landing.sh (INDEXNOW_KEY); when it is rotated, both
+# places change, and that is a decision rather than an accident.
+3d9b6e2c47f84a15b8c0d7e39a52f16b.txt
