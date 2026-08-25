@@ -1,5 +1,7 @@
 # საზოგადოების წესები — neighbro.place
 
+**ბოლო განახლება: 2026 წლის 13 აგვისტო**
+
 **ეს წესები გამოქვეყნებულია რამდენიმე ენაზე. მოქმედებს ინგლისური ვერსია; თარგმანები მოცემულია მოხერხებულობისთვის.**
 
 *The English version of these rules is the one that applies; translations are provided for convenience.*

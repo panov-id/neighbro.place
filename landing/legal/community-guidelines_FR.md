@@ -1,5 +1,7 @@
 # Règles de la communauté — neighbro.place
 
+**Dernière mise à jour : 13 août 2026**
+
 **Ces règles sont publiées en plusieurs langues. La version anglaise fait foi ; les traductions sont fournies à titre de commodité.**
 
 *The English version of these rules is the one that applies; translations are provided for convenience.*
