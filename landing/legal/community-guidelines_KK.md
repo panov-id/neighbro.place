@@ -1,5 +1,7 @@
 # Қауымдастық ережелері — neighbro.place
 
+**Соңғы жаңарту: 2026 жылғы 13 тамыз**
+
 **Бұл ережелер бірнеше тілде жарияланған. Ағылшын тіліндегі нұсқа қолданылады; аудармалар ыңғайлылық үшін берілген.**
 
 *The English version of these rules is the one that applies; translations are provided for convenience.*

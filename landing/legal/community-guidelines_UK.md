@@ -1,5 +1,7 @@
 # Правила спільноти — neighbro.place
 
+**Останнє оновлення: 13 серпня 2026**
+
 **Ці правила опубліковано кількома мовами. Чинною є англійська версія; переклад надано для зручності.**
 
 *The English version of these rules is the one that applies; translations are provided for convenience.*
