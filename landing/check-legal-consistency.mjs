@@ -78,6 +78,34 @@ for (const name of guidelines) {
   }
 }
 
+// --- a translation that says it twice ----------------------------------------
+//
+// The Armenian file carried both editions at once: the retired promise that a
+// chat is screened, and the sentence that replaced it. Structure passed — two
+// paragraphs were there — and the literal ban above only reads English, so CI
+// was green while a published page contradicted itself in front of an Armenian
+// reader (found 2026-08-23).
+//
+// Sentences are the cheapest cross-language shape there is: a leftover edition
+// shows up as extra terminators against the English original, and this needs no
+// knowledge of the language it fires on.
+const terminators = (text) => (text.match(/[.!?։。][\s]|[.!?։。]$/gu) || []).length;
+
+for (const name of guidelines) {
+  if (name.endsWith("_EN.md")) continue;
+  const other = read(name);
+  const englishSentences = terminators(english);
+  const otherSentences = terminators(other);
+  const drift = Math.abs(otherSentences - englishSentences) / englishSentences;
+  if (drift > 0.25) {
+    problems.push(
+      `${name}: ${otherSentences} sentences against ${englishSentences} in English — ` +
+        "a translation that drifted this far is usually one that kept a retired edition " +
+        "alongside its replacement",
+    );
+  }
+}
+
 // --- and the bar has to know these changed ------------------------------------
 
 const deploy = readFileSync(join(LEGAL, "../../deploy/deploy-landing.sh"), "utf8");

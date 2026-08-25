@@ -1,5 +1,7 @@
 # Правила сообщества — neighbro.place
 
+**Последнее обновление: 13 августа 2026**
+
 **Эти правила опубликованы на нескольких языках. Действует английская версия; перевод дан для удобства.**
 
 *The English version of these rules is the one that applies; translations are provided for convenience.*

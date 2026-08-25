@@ -1,5 +1,7 @@
 # Κανόνες κοινότητας — neighbro.place
 
+**Τελευταία ενημέρωση: 13 Αυγούστου 2026**
+
 **Αυτοί οι κανόνες δημοσιεύονται σε πολλές γλώσσες. Ισχύει η αγγλική έκδοση· οι μεταφράσεις παρέχονται για διευκόλυνση.**
 
 *The English version of these rules is the one that applies; translations are provided for convenience.*
