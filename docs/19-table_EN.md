@@ -9,6 +9,7 @@ A table is a shared board several neighbours sit around. The screen was created 
 ## How it looks and how to join
 
 - A table shows up **in the feed**, among the phrases, to those whose viewing circle caught its zone — marked as a table, with the name of the game and how many are sitting.
+- **The games at a table are the same classes as for two** (screen 18): dominoes and cards gather a group best, a grid board usually stays pairwise, and flick-draughts physics works with any number of players.
 - A **"pull up a chair"** button — open to anyone within the radius, with no invitation and no application.
 - Who is sitting is visible; when anyone was last online is not, as everywhere else.
 
