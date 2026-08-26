@@ -274,6 +274,47 @@ for tracking: position is not read in the background and does not refresh itself
 Refusing breaks nothing: the approximate point remains, and so does the hand-placed
 one.
 
+### How many people are in there — in steps, not in numbers
+
+**The radius handle says how many live phrases are inside the circle — settled
+2026-08-26.** Without it the handle is dragged blind: a person does not know whether
+to pull further and lands either in emptiness or in the next district. The number
+used to be named in one place only — in an empty feed, when widening the circle was
+offered; now it is always there.
+
+The number is named as a **step**, not as an exact figure:
+
+| Live phrases in the circle | What it says |
+|---|---|
+| 0 | nobody here yet |
+| 1–4 | a few |
+| 5–14 | about a dozen |
+| 15–99 | dozens |
+| 100 and more | hundreds |
+
+The boundaries are written down here rather than left to whoever sits down to write
+the code first: "roughly" with no numbers means five different roughlies across
+three faces of the product.
+
+**The node counts, and only once the handle is released.** The reason is not saving
+requests. A counter tied to a radius is a measuring instrument: stepping the handle
+from 500 m to 25 km and reading exact numbers, a person builds a density map of
+their surroundings, and by catching the increment on one step works out the ring in
+which **one particular** phrase appeared. That goes around the blur its author chose
+for themselves (earlier in this same section) — and it goes around it without a
+break-in, by reading the interface carefully.
+
+**What the steps do not close must be said plainly.** A transition between steps is
+itself a disclosure: "a few" at three kilometres and "about a dozen" at three and a
+half mean roughly five phrases were added in that ring. Steps do not make the
+measurement impossible — they make it coarse enough that it stops being worth the
+time, and that is all that is achievable here. Only the absence of a counter would
+close the question fully, and its price is a handle dragged blind.
+
+So two things are added to the steps: the request goes out **once per gesture**, on
+release, and it carries a rate limit of its own. A hundred requests in a row is not
+a person moving a slider but somebody taking a density profile.
+
 ### What else is read without asking
 
 Not to recognise a person, but to avoid asking questions the browser has already

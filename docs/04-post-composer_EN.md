@@ -8,7 +8,8 @@ The screen for composing a feed message, opened via the "add" button.
 
 - Text input — up to 128 characters.
 - **Mode — three buttons: alone / company / party** (edit of 2026-08-26). A selector of numbers, "1, 2, 3 … N", used to stand here, but the node stores exactly the mode (`mode` = `alone | company | party`), and that is what the match card shows. An exact headcount changes nothing and adds a detail about the company that the product does not need.
-- A blur slider — ties the phrase to a zone rather than a point. **300 m by default, from 100 m to 2 km** (settled 2026-08-26): three hundred metres hide the doorway while leaving the block recognisable. It is a privacy setting rather than a visibility one: who sees it is decided by the reader's radius, and the zone need only overlap their circle.
+- A blur slider — ties the phrase to a zone rather than a point. **300 m by default, from 100 m to 10 km** (the ceiling was reconciled with the spec on 2026-08-26: this said 2 km while `xor.ad/docs/chat_EN.md` §8.3 computes the coarse bounding box from a 10 km maximum — they must not diverge, and 10 was chosen). Three hundred metres hide the doorway while leaving the block recognisable. It is a privacy setting rather than a visibility one: who sees it is decided by the reader's radius, and the zone need only overlap their circle.
+  **The price of the upper end is stated plainly:** a 10 km zone overlaps almost every other circle in a city, so a blur cranked to the maximum buys not silence but the opposite — almost everyone sees the phrase, they simply cannot tell where it came from. What privacy trades for here is vagueness, not invisibility.
 - A send button.
 
 ## Logic
