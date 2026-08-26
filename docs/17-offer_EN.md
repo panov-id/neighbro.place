@@ -29,6 +29,6 @@ A neighbourhood offer — a post with a mandatory discount, and the only form of
 
 ## Open questions
 
-- What exactly marks an offer in the feed — a label, a border, an icon — is undefined. The mark must read without explanation.
+- ~~What marks an offer~~ — **the word "offer" and the size of the discount**, right on the card (settled 2026-08-26). A border or a background is not distinguishable in every theme, and a venue icon reads as a neighbour's avatar — advertising disguised as a person.
 - What "Save" looks like once pressed, and where saved offers live, is undefined.
 - The creation screen for a venue is not drawn: the fields are known from the spec, the look is not.

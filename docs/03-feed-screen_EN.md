@@ -15,7 +15,8 @@ The app's main screen. Short messages from people nearby, newest at the bottom l
   **The bounds are not labelled with numbers — settled 2026-08-26.** The handle simply stops: a stated bound would point out where the wall is and what number to claim in order to get past it. The stop is drawn to read as the end of the scale, not as a frozen interface.
   **For an adult the right end is "no limit", not a number.** The band has no ceiling, and an invented one such as 65+ would cut off older neighbours for no reason.
   **When the band has shifted** — the person got older and the saved filter was clamped into the new one — a single line says so on their next visit. Changing someone's feed in silence is not allowed.
-- **Radius filter** — a slider on a map: a map with a visual radius circle over it, the slider grows or shrinks the circle.
+- **Radius filter** — a slider on a map: a circle over the map that the slider stretches. **3 km by default, from 500 m to 25 km** (settled 2026-08-26). Three kilometres is a whole district: the feed is full from the first day, and a person does not hit emptiness before understanding why they came.
+- **Mode filter** — three toggles: **alone / company / party** (settled 2026-08-26). Every phrase carries a mode (`mode` in `xor.ad/docs/chat_EN.md` §8.3) and until now it was only displayed. Without the filter, someone looking for company reads a feed of solitary phrases, and a party drowns among short lines.
 
 ## Logic
 

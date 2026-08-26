@@ -7,7 +7,7 @@ The app's settings screen, opened via an icon in the feed header.
 ## Screen elements
 
 - A theme switch: light, dark, or as in the system.
-- A contrast slider.
+- Contrast — **three steps**: normal, raised, maximum (settled 2026-08-26).
 - The default silence timer for new conversations.
 - Device: moving the identity to another one (screen 13).
 
@@ -20,5 +20,5 @@ The app's settings screen, opened via an icon in the feed header.
 
 ## Open questions
 
-- The contrast slider's range and step are not defined yet.
+- ~~The contrast slider's range and step~~ — there is no slider: three steps, each checked by arithmetic against 4.5:1, as in the panel. A continuous control inevitably has positions below the threshold, and accessibility stops being a guarantee.
 - The silence timer defaults to an hour; whether it can be set here for all future conversations or only inside a conversation is undecided.

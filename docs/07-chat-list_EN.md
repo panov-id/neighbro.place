@@ -7,7 +7,7 @@ The section holding everything to do with talking: offers waiting for an answer,
 ## Screen elements
 
 - **Two tabs: "Offers" and "Conversations".** The first carries a counter of those waiting for an answer.
-- A list: one entry per offer or per conversation.
+- A list: one entry per offer or per conversation. A conversation's entry carries **the name, a fragment of the last line, and what is left of your own timer** (settled 2026-08-26): the timer matters more than an unread count, because a conversation dies of silence and that is the only thing requiring action.
 - Tap to go inside.
 
 ## Logic
@@ -19,6 +19,6 @@ The section holding everything to do with talking: offers waiting for an answer,
 
 ## Open questions
 
-- What an entry shows — a name, a fragment of the last line, an unread counter — is undefined. The other person's name is visible from the match onward, not before.
-- Sorting (by time of the last line, by time of the match) is undefined.
-- What the counter on the offers tab looks like, and whether it clears itself.
+- ~~What an entry shows~~ — settled 2026-08-26 (above). There is no unread counter: it would mean the node knows who opened a conversation and when.
+- ~~Sorting~~ — **by the time of the last line** (settled 2026-08-26): the list answers the question "where are people talking right now".
+- ~~The counter on the offers tab~~ — it counts offers **waiting for your answer** and clears as they are answered, not by visiting the tab (settled 2026-08-26). Otherwise one visits, does not answer, and the offer quietly expires with the phrases.

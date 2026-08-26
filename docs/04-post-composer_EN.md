@@ -7,8 +7,8 @@ The screen for composing a feed message, opened via the "add" button.
 ## Screen elements
 
 - Text input — up to 128 characters.
-- A group size selector — 1, 2, 3 ... N ("how many of you").
-- A location blur radius slider — blurs the author's exact geoposition: the message is tied not to precise coordinates but to a blurred zone around them (a privacy setting, not a visibility setting for the post).
+- **Mode — three buttons: alone / company / party** (edit of 2026-08-26). A selector of numbers, "1, 2, 3 … N", used to stand here, but the node stores exactly the mode (`mode` = `alone | company | party`), and that is what the match card shows. An exact headcount changes nothing and adds a detail about the company that the product does not need.
+- A blur slider — ties the phrase to a zone rather than a point. **300 m by default, from 100 m to 2 km** (settled 2026-08-26): three hundred metres hide the doorway while leaving the block recognisable. It is a privacy setting rather than a visibility one: who sees it is decided by the reader's radius, and the zone need only overlap their circle.
 - A send button.
 
 ## Logic
@@ -21,6 +21,4 @@ The screen for composing a feed message, opened via the "add" button.
 
 ## Open questions
 
-- Whether the separate city/country field from the earlier description is still kept, or replaced by the blur radius slider.
-- Default values and bounds for the blur radius slider are not defined yet.
 - The send button's form (icon vs. text) is not defined yet.
