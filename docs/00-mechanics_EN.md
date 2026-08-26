@@ -840,3 +840,33 @@ chat's:
 **Private conversations stay pairwise.** A table does not turn the chat into a group
 chat: the chat has a unique pair key and encryption derived for two, and we did not
 touch either for the sake of playing together (settled 2026-08-26).
+
+
+---
+
+## 13. Stepping away
+
+**The "step away" button is not a pause but a temporary departure.** It is not for someone leaving the room for a minute; it is for someone who has been sitting here too long and wants to break off. So the departure is real: the account moves into a "stepped away" state, and the product ceases to exist for that person for the chosen span — **20 minutes, an hour, or until morning**.
+
+**What happens at the moment of leaving:**
+
+- **Your own phrases are deleted for good**, along with the likes they collected. The quota slots free up at once: come back and you write anew, with all five available.
+- **Matches burn.** For whoever was waiting on an answer, the offer simply disappears — with no explanation of who left or why.
+- **Conversations run on their own timers** and are not frozen: your silence keeps counting. So a departure "until morning" is survived only by conversations with a long span, and every ten-minute one is gone. This is said **before** the press, on the screen where the span is chosen, not after.
+- **The screen goes empty**: no feed, no conversations, no counters — one line and the time remaining.
+
+**What others see.** Only those you have an open conversation with: instead of the input, a line saying "stepped away", so nobody spends words on emptiness. Nowhere else and to nobody else: whoever liked you sees only a vanished offer. This is the single place where the product reports someone else's state, and it is allowed because **the person declared it themselves** rather than the system giving away their presence.
+
+**Coming back.** Leaving early is possible but takes a confirmation — otherwise a button meant to help you break off brings you back in three minutes. On return: **a clean feed and no summaries**: a count of what was missed would restore the very pull the departure was for.
+
+**No limit on frequency.** Step away as often as you like: there is nothing to abuse, a person loses only their own.
+
+### How the product notices the pull
+
+After **an hour** of continuous use, one line appears: "you have been here an hour — step away?". It closes with a tap and does not come back that day.
+
+**The hour is counted like this:** time runs while the tab is visible **and** there was a touch within the last three minutes. A forgotten open page counts nothing; someone reading without touching drops out of the count — undercounting is more honest than overcounting. **The counter lives on the device only** and is never reported to the node: how long a person sat here is not something to keep beside an identity.
+
+**What this cannot catch, said plainly:** a person on two devices, someone reading the feed without touching it, and a tab left in the background. The counter catches obvious absorption, not every kind.
+
+> **The measurement is incomplete — 2026-08-26.** `visibilitychange` behaves differently across mobile browsers, and there was nothing to check iOS and Android with: no devices. What was captured in desktop Chromium: a page opened in a background tab starts straight in `visibilityState=hidden` with `hasFocus=false`, and no events arrive until the tab is activated. Hence the rule that the counter does not treat "the page loaded" as the start of presence. The `visible ↔ hidden` transitions could not be captured in this environment — there was no way to activate the browser window; that stays unverified and is marked here rather than passed off as fact.
