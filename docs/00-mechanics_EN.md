@@ -16,40 +16,54 @@ Read alongside:
 
 ## 1. Who a person is
 
-A person here is a **key pair created in the browser**, plus an identifier the
-server mints at the end of signing up. No email, no phone, no password; there is
-nowhere to sign in because there is nowhere to sign out of.
+A person here is a **key pair created on the device**, plus an identifier the
+node mints at the end of signing up. The node keeps only the public half: it holds
+no password and no secret, so a leaked database cannot be used to impersonate
+anyone. No email, no phone, no password; there is nowhere to sign in because there
+is nowhere to sign out of.
 
-The identity lives **in this browser**. Another browser, a private window: that
-is a different person from scratch, with their own quota, their own feed, and
-none of the chats. A second device, though, can be **connected on purpose**: the
-first shows a code, the second scans it, and both become devices of one identity.
+**A six-digit PIN is asked for right away, at signup.** It does two things: it
+locks an open tab against whoever picks the device up, and it takes part in
+encrypting everything on disk — the vault key is assembled from the PIN and a
+share the node holds and hands over only after checking it. It cannot be deferred,
+and the reason is the terminal: `depth` writes the key file immediately, and a
+deferred PIN would mean keys lying on disk in the open (`xor.ad/docs/chat_EN.md`
+§8.2).
 
-**There is no browser fingerprint here.** The first version of this scheme had
-one: the identity was assembled from the year of birth, the typed name and a
-fingerprint of the browser. It was removed deliberately — it stopped working once
-traffic went through the delivery network, and all along it hit the wrong person:
-the neighbour behind the same home router. Details in `xor.ad/docs/chat_EN.md`
-§8.2.
+**An identity has exactly one live session.** That is not "one device forever":
+an identity **moves** — the previous device goes still, its conversations stay on
+disk encrypted, and they come back with the identity if it is brought back. What
+does not happen is one identity living on a phone and a laptop at once: two
+devices are two neighbours. That is deliberate, because the key of each chat lives
+on the device and cannot be handed to all of them at once.
+
+**The paper code is issued at signup — settled 2026-08-26.** It had stood at the
+opening of the first chat since 2026-08-18, on the argument that before that chat
+there is nothing to insure. The argument holds for property and fails for identity.
+The cost of being wrong is asymmetric: a person the screen failed to convince, who
+walked away, comes back a day later and carries on; a person who lost their device
+inside the uninsured window never comes back — there is nothing to present. So the
+weight sits on the explanation rather than on the moment: the screen must say that
+there is no email and no password, that we cannot look the code up, and that losing
+the device without it means losing the identity. The code is the only way back,
+shown once and confirmed by typing two groups.
 
 Which leads to the part that has to be said out loud, because otherwise a person
 finds it out for themselves and at the wrong moment:
 
-- **Clearing the site's data erases this session.** With no other device
-  connected, it erases the identity. Not "signs you out" — erases. There is
-  nothing to restore: the server knows the identifier and not who it belonged to.
-- **Carrying it over is possible, but only from a live device.** You can connect
-  a second one while the first still works. There is no "code from an email"
-  recovery and there will not be: there is nothing to present.
+- **Clearing the site's data erases this session and the conversations.** The
+  identity comes back with the paper code; the conversations do not — they exist
+  neither with us nor anywhere else.
 - **A private window is always a new person.** Every private window mints an
   identity and loses it when the window closes.
-- **A device can be disconnected at any time.** A disconnected one sees no new
-  conversation; what is already open on it stays until those chats end.
+- **Recovery puts out the previous session and burns the previous code.** People
+  recover when something has gone wrong — including when the paper may have been
+  seen.
 
 **This has to be said before the button is pressed**, not after. The wording and
 its place belong to screen 2, where signing up ends; what is fixed here is only
-the requirement: the product must warn that the identity lives in the browser,
-and explain how to connect a second device.
+the requirement: the product must explain that the identity lives on this device,
+what brings it back, and from what moment.
 
 The other side of that is what it is for. There is no account, so there is
 nothing to breach, nothing to sell and nothing to hand over on request. The
@@ -169,9 +183,18 @@ from the feed for the person who reported it, and it adds one to that message's
 report counter. For everyone else the message stays **while the counter is under
 the threshold** — the whole rule is in §5.
 
-**Blocking is what cuts the quota** — and only blocking. Whoever blocked stops
-seeing that author, and the author's ceiling drops: while the block holds, they
-have fewer than five messages alive at once.
+**Blocking does not touch the ceiling — settled 2026-08-26.** Whoever blocked
+stops seeing that author, and that is all it does. Cutting someone's quota with one
+tap would let a single person quietly narrow another's voice — and the author would
+never learn of it. Against real harm there are reports (§5) and the fact that the
+dangerous is caught before publication.
+
+**A message waiting on its name takes no slot and blocks the next one.** The
+first publication goes into the queue together with the name and appears in the feed
+only when both are accepted (§5). While it waits it is not in the feed, so there is
+nothing to occupy; but the next one cannot be sent either, or waiting would stack a
+queue around the ceiling. This happens once: the name is checked at the first
+publication and at every change, and changing it requires a clean slate.
 
 **A message refused by moderation takes no slot — until the third one.** A message
 that did not pass the filter never reached the feed, so it has nothing to occupy:
@@ -184,16 +207,13 @@ on their share of the feed and a frequency cap per business (specification in
 `xor.ad/docs/offers/`). Five live messages is about being a neighbour, and the owner of the
 bakery stays a neighbour with their five even while an offer of theirs is up.
 
-> **Contradiction.** Screen 5 currently says a report lowers the quota too. The
-> rule above overrides that; the screen 5 document needs bringing into line.
-
 ### Open
 
-- How far a block lowers the ceiling, and for how long, is undecided.
-- Whether blocks from different people stack, and whether there is a floor the
-  ceiling never goes below, is undecided.
-- Whether the author sees that their ceiling has dropped, and knows why, is
-  undecided.
+- ~~How far a block lowers the ceiling~~ — dropped 2026-08-26: it does not lower
+  it at all, so the questions of its strength, of stacking and of telling the author
+  are gone with it.
+- Whether the author sees that a third refusal by moderation has dropped their
+  ceiling, and knows why, is undecided. That is the only remaining way down.
 
 ---
 
@@ -212,9 +232,13 @@ slider says how much larger than a point that zone is. It exists for one reason:
 so that a couple of messages cannot lead anyone to a doorway.
 
 Blur **does not decide who sees**. Visibility is decided by the other person's
-viewing radius: a message shows up for those whose circle caught your zone. The
-author governs how precise their own mark is, the reader governs how wide their own
-feed is, and those two decisions are made by different people.
+viewing radius: a message shows up for those whose circle **overlaps** your zone —
+touching is enough, it need not sit entirely inside (settled 2026-08-26). The
+opposite rule would punish privacy with silence: the more someone blurred their
+mark, the fewer people would hear them — and an empty feed kills the place faster
+than one extra neighbour in the results. The author governs how precise their own
+mark is, the reader governs how wide their own feed is, and those two decisions are
+made by different people.
 
 **No location permission is asked for on arrival.** The first point is worked
 out from indirect signals, and that is enough for the feed to open at once. A
@@ -249,6 +273,47 @@ for tracking: position is not read in the background and does not refresh itself
 
 Refusing breaks nothing: the approximate point remains, and so does the hand-placed
 one.
+
+### How many people are in there — in steps, not in numbers
+
+**The radius handle says how many live phrases are inside the circle — settled
+2026-08-26.** Without it the handle is dragged blind: a person does not know whether
+to pull further and lands either in emptiness or in the next district. The number
+used to be named in one place only — in an empty feed, when widening the circle was
+offered; now it is always there.
+
+The number is named as a **step**, not as an exact figure:
+
+| Live phrases in the circle | What it says |
+|---|---|
+| 0 | nobody here yet |
+| 1–4 | a few |
+| 5–14 | about a dozen |
+| 15–99 | dozens |
+| 100 and more | hundreds |
+
+The boundaries are written down here rather than left to whoever sits down to write
+the code first: "roughly" with no numbers means five different roughlies across
+three faces of the product.
+
+**The node counts, and only once the handle is released.** The reason is not saving
+requests. A counter tied to a radius is a measuring instrument: stepping the handle
+from 500 m to 25 km and reading exact numbers, a person builds a density map of
+their surroundings, and by catching the increment on one step works out the ring in
+which **one particular** phrase appeared. That goes around the blur its author chose
+for themselves (earlier in this same section) — and it goes around it without a
+break-in, by reading the interface carefully.
+
+**What the steps do not close must be said plainly.** A transition between steps is
+itself a disclosure: "a few" at three kilometres and "about a dozen" at three and a
+half mean roughly five phrases were added in that ring. Steps do not make the
+measurement impossible — they make it coarse enough that it stops being worth the
+time, and that is all that is achievable here. Only the absence of a counter would
+close the question fully, and its price is a handle dragged blind.
+
+So two things are added to the steps: the request goes out **once per gesture**, on
+release, and it carries a rate limit of its own. A hundred requests in a row is not
+a person moving a slider but somebody taking a density profile.
 
 ### What else is read without asking
 
@@ -285,10 +350,8 @@ analytics, feed ranking or advertising.
 
 - The defaults and bounds of both knobs are undecided: neither the viewing radius
   nor the amount of blur.
-- **How a zone meets a circle** is undecided. Does a message reach the feed when
-  its zone sits entirely inside the reader's circle, or is overlap enough? The
-  answer decides what someone at the edge sees: on overlap a heavily blurred
-  message reaches almost everyone, on containment almost nobody.
+- ~~How a zone meets a circle~~ — settled 2026-08-26: **overlap is enough**. The
+  rule has moved into the body of the section.
 - Whether a hand-placed or a measured point is remembered between visits is
   undecided.
 - What happens when a person has physically moved and the point has not is
@@ -305,7 +368,20 @@ That is a position, and it is also a legal line: inferring which group a person
 belongs to is special-category data, while inferring whether a text is abusive is
 not.
 
-Every message is checked **before it is published**:
+Every message is checked **before it is published, but not at the moment it is
+sent**. The check runs as a queue: the node accepts the phrase at once, it is in
+nobody else's feed yet, and the verdict arrives later — a 2.8 second median on
+production-class hardware, a maximum near 12. All that time the author sees their own
+phrase, muted and labelled as being checked; everyone else sees nothing. The client
+must show that state rather than pretend the post is already live.
+
+**The first phrase waits on the name as well.** A name is published text: it goes
+into the same queue alongside the phrase, and the phrase reaches the feed only when
+both are accepted. If the name is refused, the phrase keeps waiting until the name is
+fixed and then goes out on its own; its 4:20 starts at publication rather than at
+sending, so waiting costs it no life.
+
+What is checked:
 
 - **Rudeness** — a toxicity classifier. Fails, and it is not published.
 - **Hazard** — threats, hostility towards a group, dealing in what is forbidden,
@@ -369,6 +445,13 @@ told why. That is not politeness but a requirement for platforms carrying
 user-generated content.
 
 ### A report
+
+**A report names its cause — settled 2026-08-26.** The list is short and mirrors
+the classes of refusal: rudeness, dangerous, explicit, spam. The cause changes no
+threshold and re-checks nothing — it is there because an Article 16 notice has to
+say what exactly was complained about, and because a person works through reports
+in the panel. Collecting it just in case would be one more record about people, so
+its purpose is named here plainly.
 
 **A report is a vote against showing a message, not a verdict.** Whoever reports
 stops seeing the message at once, with no hearing and no waiting. At the same
@@ -728,3 +811,103 @@ of the product reads as a malfunction.
   belongs here.
 - How specific the moderation cause is: a category ("this reads as an insult")
   or a pointer at the actual word.
+
+
+---
+
+## 11. Likes and matches
+
+**A like is available only to someone with a live phrase of their own in the feed
+— settled 2026-08-26.** The reason is honesty rather than strictness: a match
+counts only while **both** phrases are alive, so a like from someone with no phrase
+of their own could never become one. It used to be placed anyway and go quietly
+nowhere. The side effect is useful in itself: to like, you must publish, and
+publishing takes the name through the queue (§5) — an unchecked name never reaches
+the other person.
+
+**A match is not a chat but an offer to talk, accepted by both.** Mutual likes open
+a card: on it are the two phrases that caused it, and a button. The chat appears
+when both have pressed; while only one has, the other sees an offer and the first
+sees that there is no answer yet. When the other person was last online is not
+shown: that is about them, not about the conversation.
+
+**An offer lives exactly as long as both phrases live.** Either one expires and the
+match goes with it, because the meeting of moods was what tied them together.
+
+**The silence timer is chosen inside the chat, not at acceptance.** A chat opens
+with an hour by default, the control sits in the conversation header, and each side
+governs only their own (§2). Asking for it before a person has seen who they are
+talking to demands a decision before there is anything to base it on.
+
+### Open
+
+- What the match card shows to whoever accepted first — that the other has already
+  answered, or only that there is no answer yet — is undecided.
+
+
+---
+
+## 12. Games and tables
+
+**A game here is a way to start talking, not a contest.** The engine draws the board
+and lets pieces move; there are no rules, no score and no winner. The two agree
+between themselves — including whether to take turns: the toggle exists, but both
+switch it on.
+
+**A move counts as activity, exactly like a reply.** A conversation and a table live
+from the last movement rather than the last word: the game exists so that one can be
+silent in words, and it would be absurd if a conversation died under the hands of two
+people happily pushing draughts around.
+
+**The board for two lives inside the conversation** (screen 18): encrypted with the
+same key, never written to the database, gone when the conversation goes.
+
+**A table is a thing of its own** (screen 19). Several neighbours sit around it, it
+shows up in the feed by radius, and it lives by the feed's rules rather than the
+chat's:
+
+- **Talk at a table is public** and goes through the moderation queue like a phrase.
+  The argument "there are two of us, nobody sees", which justifies an unchecked
+  conversation, does not hold at a table full of strangers.
+- **Whoever joins gets no history**: the board as it stands, the replies from the
+  moment they sat down. The same rule as moving an identity.
+- **Bands are checked everyone with everyone**: you may join only if you are inside
+  every sitter's band and all of them are inside yours.
+- **The majority of those sitting can ask someone to leave.** A table does not belong
+  to whoever started it.
+- **A block hides the table entirely** — someone else's game along with it, and that
+  is the accepted cost.
+
+**Private conversations stay pairwise.** A table does not turn the chat into a group
+chat: the chat has a unique pair key and encryption derived for two, and we did not
+touch either for the sake of playing together (settled 2026-08-26).
+
+
+---
+
+## 13. Stepping away
+
+**The "step away" button is not a pause but a temporary departure.** It is not for someone leaving the room for a minute; it is for someone who has been sitting here too long and wants to break off. So the departure is real: the account moves into a "stepped away" state, and the product ceases to exist for that person for the chosen span — **20 minutes, an hour, or until morning**.
+
+**What happens at the moment of leaving:**
+
+- **Your own phrases are deleted for good**, along with the likes they collected. The quota slots free up at once: come back and you write anew, with all five available.
+- **Matches burn.** For whoever was waiting on an answer, the offer simply disappears — with no explanation of who left or why.
+- **Conversations run on their own timers** and are not frozen: your silence keeps counting. So a departure "until morning" is survived only by conversations with a long span, and every ten-minute one is gone. This is said **before** the press, on the screen where the span is chosen, not after.
+- **The screen goes empty**: no feed, no conversations, no counters — one line and the time remaining.
+
+**What others see.** Only those you have an open conversation with: instead of the input, a line saying "stepped away", so nobody spends words on emptiness. Nowhere else and to nobody else: whoever liked you sees only a vanished offer. This is the single place where the product reports someone else's state, and it is allowed because **the person declared it themselves** rather than the system giving away their presence.
+
+**Coming back.** Leaving early is possible but takes a confirmation — otherwise a button meant to help you break off brings you back in three minutes. On return: **a clean feed and no summaries**: a count of what was missed would restore the very pull the departure was for.
+
+**No limit on frequency.** Step away as often as you like: there is nothing to abuse, a person loses only their own.
+
+### How the product notices the pull
+
+After **an hour** of continuous use, one line appears: "you have been here an hour — step away?". It closes with a tap and does not come back that day.
+
+**The hour is counted like this:** time runs while the tab is visible **and** there was a touch within the last three minutes. A forgotten open page counts nothing; someone reading without touching drops out of the count — undercounting is more honest than overcounting. **The counter lives on the device only** and is never reported to the node: how long a person sat here is not something to keep beside an identity.
+
+**What this cannot catch, said plainly:** a person on two devices, someone reading the feed without touching it, and a tab left in the background. The counter catches obvious absorption, not every kind.
+
+> **The measurement is incomplete — 2026-08-26.** `visibilitychange` behaves differently across mobile browsers, and there was nothing to check iOS and Android with: no devices. What was captured in desktop Chromium: a page opened in a background tab starts straight in `visibilityState=hidden` with `hasFocus=false`, and no events arrive until the tab is activated. Hence the rule that the counter does not treat "the page loaded" as the start of presence. The `visible ↔ hidden` transitions could not be captured in this environment — there was no way to activate the browser window; that stays unverified and is marked here rather than passed off as fact.

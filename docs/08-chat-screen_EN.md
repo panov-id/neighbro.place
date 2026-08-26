@@ -1,24 +1,33 @@
-# Screen 8 — Chat
+# Screen 8 — Conversation
 
 ## Purpose
 
-The private conversation screen between two matched users.
+A private conversation between two people, opened after both accepted the match (screen 6).
 
 ## Screen elements
 
-- The conversation's message feed — short back-and-forth messages.
-- Notifications about new likes between these two users appear right in this feed (see screen 6).
-- A message input and send control.
+- The line of replies — short messages back and forth.
+- Lines about new likes between these two — right in the conversation (screen 6).
+- An input with a **256 character** counter.
+- The silence-timer control in the header — 10 minutes, 30 minutes, an hour, or "while we're talking".
+- A **🎲 "suggest a game"** button in the header — opens the shared board for two (screen 18).
+- An **"end it"** button — closes the conversation for both at once.
+- What is left of your own timer: how long the conversation lives if you stay quiet.
 
 ## Logic
 
-- The conversation history exists only for these two participants — nowhere else.
-- Unlike feed messages, the conversation doesn't disappear after 4 hours 20 minutes — it lives longer, for as long as the chat stays open.
-- A chat is not moderated. Neither toxicity nor explicitness: its text goes to neither Perspective nor a language model and never leaves the pair of devices. Only what is published to the feed is checked (see `00-mechanics_EN.md`, §5).
-- A conversation is encrypted **on the devices**: the key is derived by the two of them and never reaches the server, which carries ciphertext (see `xor.ad/docs/chat_EN.md` §8.13). So a chat is not merely unread — there is nothing to read it with.
-- History is stored on-device in IndexedDB, encrypted with the Web Crypto API before being written (see the Privacy section in the README) — not in some separate "secure" browser storage, which doesn't exist.
+- **The reply limit is 256 characters and it comes from the server** (`max_message_length`), not baked into the client. The counter is the client's; the node is what refuses.
+  The second limit, **2048 bytes of ciphertext** (`max_ciphertext_bytes`), is not shown to the person: with an honest 256 characters it is unreachable — even a string of nothing but emoji comes to 1404 bytes, and hitting 2048 takes 378 characters. It guards against a forged client, not against a real conversation.
+- **Two statuses: delivered and error.** "✓" means the node passed it on; an error gives a line with a retry rather than vanishing quietly. **There is no "read"** and will not be: the node has no business knowing who opened a conversation and when.
+- **The silence timer is chosen here**, not when accepting the match, and can be changed at any moment. An hour by default. Each side has their own count and cannot see the other's (`00-mechanics_EN.md` §2).
+- **Expiry is announced in advance**: in its last minutes the conversation is shown fading. When it has ended for the other person, one line says so — otherwise an expired timer is indistinguishable from being snubbed.
+- **An expired conversation disappears for both**; whoever had it on screen keeps a headstone reading "the conversation has ended" until they touch it, and it does not return to the list.
+- **Conversations are not moderated** — neither for rudeness nor for explicitness: they never leave the pair of devices. Only what is published to the feed is checked (`00-mechanics_EN.md` §5).
+- **There are no links in a conversation** — they are stripped, as in the feed; the one place a link lives is a neighbourhood offer (`00-mechanics_EN.md` §5).
+- **Encryption happens on the devices**: the key is derived by the two of them and the node carries ciphertext (`xor.ad/docs/chat_EN.md` §8.13). A conversation is not merely unchecked — there is nothing to read it with.
+- **History sits on the device** in IndexedDB, encrypted with the vault key made of the PIN and the node's share. It exists neither with us nor on another device.
 
 ## Open questions
 
-- What "for as long as the chat stays open" means exactly — whether there's a way to close/delete the chat manually, and what happens to the history then.
-- Read receipts/delivery status indicators are not defined yet.
+- ~~Whether a conversation can be closed by hand~~ — it can, and **for both at once** (settled 2026-08-26): the other person sees the same headstone as on expiry. Staying silent until it expires is a poor only way out of an unpleasant conversation, and a block is too large a step for it. The history on the device goes the same way as on expiry.
+- ~~How long before the end the fading starts~~ — **in the last quarter of the span** (settled 2026-08-26). A fraction rather than fixed minutes: for a phrase that is the last hour-odd of 4:20, for an hour-long conversation a quarter of an hour, for a ten-minute one two and a half minutes. Fixed five minutes would put a ten-minute conversation half its life into fading.

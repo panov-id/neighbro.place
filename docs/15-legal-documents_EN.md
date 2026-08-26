@@ -17,4 +17,4 @@ Access to the Terms of Service, Privacy Policy, and Community Guidelines.
 ## Open questions
 
 - Exactly where this screen is opened from (settings, footer, a separate registration step) is not defined yet.
-- Whether explicit agreement to the documents (a checkbox) is required at registration is not defined yet.
+- ~~Whether explicit agreement is required at registration~~ — **yes, a separate checkbox** on screen 2 (settled 2026-08-26). It is a contract, and the accepted revision is recorded with the identity; a line saying "by pressing, you accept" is weaker as evidence.

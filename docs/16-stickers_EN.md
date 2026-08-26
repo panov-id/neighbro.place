@@ -13,4 +13,4 @@ Decorative stickers for messages/chat (see the README's "Beyond the alpha" secti
 ## Open questions
 
 - Where in the app the sticker catalog is opened from is not defined yet.
-- A cap on the number of stickers per message is not defined yet.
+- ~~How many stickers per message~~ — **one, and instead of text** (settled 2026-08-26): a sticker is a reply of its own, not a decoration on a phrase.
