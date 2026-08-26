@@ -774,7 +774,7 @@ of the product reads as a malfunction.
 
 ---
 
-## 6. Likes and matches
+## 11. Likes and matches
 
 **A like is available only to someone with a live phrase of their own in the feed
 — settled 2026-08-26.** The reason is honesty rather than strictness: a match
@@ -802,3 +802,41 @@ talking to demands a decision before there is anything to base it on.
 
 - What the match card shows to whoever accepted first — that the other has already
   answered, or only that there is no answer yet — is undecided.
+
+
+---
+
+## 12. Games and tables
+
+**A game here is a way to start talking, not a contest.** The engine draws the board
+and lets pieces move; there are no rules, no score and no winner. The two agree
+between themselves — including whether to take turns: the toggle exists, but both
+switch it on.
+
+**A move counts as activity, exactly like a reply.** A conversation and a table live
+from the last movement rather than the last word: the game exists so that one can be
+silent in words, and it would be absurd if a conversation died under the hands of two
+people happily pushing draughts around.
+
+**The board for two lives inside the conversation** (screen 18): encrypted with the
+same key, never written to the database, gone when the conversation goes.
+
+**A table is a thing of its own** (screen 19). Several neighbours sit around it, it
+shows up in the feed by radius, and it lives by the feed's rules rather than the
+chat's:
+
+- **Talk at a table is public** and goes through the moderation queue like a phrase.
+  The argument "there are two of us, nobody sees", which justifies an unchecked
+  conversation, does not hold at a table full of strangers.
+- **Whoever joins gets no history**: the board as it stands, the replies from the
+  moment they sat down. The same rule as moving an identity.
+- **Bands are checked everyone with everyone**: you may join only if you are inside
+  every sitter's band and all of them are inside yours.
+- **The majority of those sitting can ask someone to leave.** A table does not belong
+  to whoever started it.
+- **A block hides the table entirely** — someone else's game along with it, and that
+  is the accepted cost.
+
+**Private conversations stay pairwise.** A table does not turn the chat into a group
+chat: the chat has a unique pair key and encryption derived for two, and we did not
+touch either for the sake of playing together (settled 2026-08-26).

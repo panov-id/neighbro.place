@@ -10,6 +10,8 @@ A private conversation between two people, opened after both accepted the match 
 - Lines about new likes between these two — right in the conversation (screen 6).
 - An input with a **256 character** counter.
 - The silence-timer control in the header — 10 minutes, 30 minutes, an hour, or "while we're talking".
+- A **🎲 "suggest a game"** button in the header — opens the shared board for two (screen 18).
+- An **"end it"** button — closes the conversation for both at once.
 - What is left of your own timer: how long the conversation lives if you stay quiet.
 
 ## Logic
@@ -27,5 +29,5 @@ A private conversation between two people, opened after both accepted the match 
 
 ## Open questions
 
-- Whether a conversation can be closed by hand before it expires, and what happens to the history then.
-- How many minutes before the end the fading starts — shared with the feed phrase, and undefined (`00-mechanics_EN.md` §2).
+- ~~Whether a conversation can be closed by hand~~ — it can, and **for both at once** (settled 2026-08-26): the other person sees the same headstone as on expiry. Staying silent until it expires is a poor only way out of an unpleasant conversation, and a block is too large a step for it. The history on the device goes the same way as on expiry.
+- ~~How long before the end the fading starts~~ — **in the last quarter of the span** (settled 2026-08-26). A fraction rather than fixed minutes: for a phrase that is the last hour-odd of 4:20, for an hour-long conversation a quarter of an hour, for a ten-minute one two and a half minutes. Fixed five minutes would put a ten-minute conversation half its life into fading.
