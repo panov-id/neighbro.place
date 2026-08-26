@@ -1,38 +1,32 @@
-# Screen 13 — Devices
+# Screen 13 — Moving the identity
 
 ## Purpose
 
-The screen showing every device of one identity, where a new one is connected and an unwanted one is disconnected. Opened from settings (screen 10).
+Move the identity to another device. The screen was rewritten on 2026-08-26: it used to hold a list of one identity's devices and a way to connect a second. There are no parallel devices — **an identity has exactly one live session** (`00-mechanics_EN.md` §1), and what remains is a move, not a fleet.
 
-## Elements
+## Screen elements
 
-- The device list: a label such as "Chrome, Android", when it was connected, when it was last active, and a "this device" marker on the current one.
-- A "connect a device" button — shows a QR code, with a link underneath for when there is no camera.
-- The invite's countdown: two minutes, after which the code stops working.
-- Every device except the current one has a "disconnect" button.
+- A "move to another device" button — shows a QR code with a link beneath it, for when there is no camera.
+- The invite's lifetime: two minutes, after which the code stops working.
+- A line saying this device will go still once the move is done.
 
 ## Logic
 
-- The invite is **single-use**: used or expired, it does nothing. A new one is made with the button.
-- The key material sits **in the URL fragment**, after `#`. Browsers never send that to a server — not in the request, not in the referrer, not into logs. The key travels device to device past us.
-- When a new device joins, the parent immediately **asks**: "a Chrome on Android device just joined — was that you?", with "yes" and "disconnect".
-- A parent can disconnect its children; any device can disconnect itself.
-- Disconnection takes effect **at once**: the device stops receiving and sending anything.
+- The invite is **single-use** and lives **two minutes**; entry may be wrong **five times** before it burns (`xor.ad/docs/chat_EN.md` §8.2).
+- The key material sits **in the fragment of the link**, after the `#`. Browsers do not send that to a server — not in the request, not in the referrer, not in the logs. The key passes from device to device around us.
+- The new device asks for **its own PIN**: the vault share belongs to a device, not to an identity.
+- Once the move happens, **the previous device goes still immediately**: its signature is no longer accepted and it receives no new messages, not even in open conversations.
+- **The disk is not wiped.** The local database stays encrypted, and if the identity is brought back the conversations come back with it.
+- **On the new device the conversations are the same and the history is empty**: the messages are not in the node's database, so there is nothing to download. Older conversations stay silent there until the chat key is reissued (`xor.ad/docs/chat_EN.md` §8.13).
+- There is no grace period: leaving, you close the door at once. The insurance against theft is the paper code (screen 11).
 
 ## What has to be said to the person
 
-On the screen itself, not in small print:
+> The identity will move to another device. Here it will go still: new messages stop arriving, and the conversations stay on disk encrypted, returning if you bring the identity back.
 
-> A disconnected device will not see a single new conversation. What is already open on it stays until those chats end.
-
-This is not a disclaimer for legal tidiness — it is the truth about how the encryption works: the keys of already-open chats sit on that device, and they cannot be taken back (see `xor.ad/docs/chat_EN.md` §8.13).
-
-The second thing said here:
-
-> A connected device starts on an empty screen. Conversations opened before it joined will not appear on it.
+> On the new device the conversations will be the same but empty: it has no history and nowhere to get one.
 
 ## Open questions
 
-- How long an invite should live — two minutes is a reasonable guess, untested on real people: is it enough time to reach the second device.
-- Whether to show an approximate location of last activity in the list. It helps to spot someone else's device — but it is one more record about a person, which we do not keep today.
-- What happens when the parent device is lost and a child remains: does the child become the parent.
+- Two minutes was taken as reasonable but never tried on real people: is it enough to walk to the second device.
+- What to do if a move is started and abandoned: the invite burns by itself, but the "moving" state on the screen is not described.

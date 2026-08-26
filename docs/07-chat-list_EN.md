@@ -1,20 +1,24 @@
-# Screen 7 — Chat List
+# Screen 7 — Conversations
 
 ## Purpose
 
-An overview screen of all the user's active matches/chats — shown once there's more than one match.
+The section holding everything to do with talking: offers waiting for an answer, and open conversations. **Edit of 2026-08-26:** this used to hold chats only, and matches appeared nowhere — even though the inbox collects them first (`xor.ad/docs/chat_EN.md` §8.12).
 
 ## Screen elements
 
-- A list of chats: one entry per match.
-- Tapping an entry opens that specific chat.
+- **Two tabs: "Offers" and "Conversations".** The first carries a counter of those waiting for an answer.
+- A list: one entry per offer or per conversation.
+- Tap to go inside.
 
 ## Logic
 
-- A new match adds a new entry to the list, without replacing existing chats.
-- The list stays current for as long as the chats themselves stay active (see screen 8 — chat lifetime).
+- The tabs live **inside the section**, not in the bottom navigation: that has exactly four items (`Feed` / `Chats` / `Say` / `Me`), and a fifth does not fit a narrow screen (`xor.ad/docs/chat_EN.md` §9).
+- An **offer** is a match waiting on acceptance — yours, theirs, or both. It disappears when either of the two phrases expires.
+- A **conversation** enters the list once both have accepted, and lives until silence eats it — each side by their own count (`00-mechanics_EN.md` §2).
+- A new offer or a new conversation adds an entry without replacing the earlier ones.
 
 ## Open questions
 
-- What exactly is shown per list entry (name, last message preview, unread indicator) is not defined yet.
-- The list's sort order (by last message time, by match time) is not defined yet.
+- What an entry shows — a name, a fragment of the last line, an unread counter — is undefined. The other person's name is visible from the match onward, not before.
+- Sorting (by time of the last line, by time of the match) is undefined.
+- What the counter on the offers tab looks like, and whether it clears itself.

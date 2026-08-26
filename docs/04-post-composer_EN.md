@@ -15,7 +15,8 @@ The screen for composing a feed message, opened via the "add" button.
 
 - Text is required; group size and blur radius are optional settings on the post.
 - The message is text-only — no image attachment. An image is only possible on a boosted/promoted message (see the README's "Beyond the alpha" — balance and boosting section).
-- On send, the message goes through the same AI check described in the Moderation section (classifiers on our own node, toxicity + classification of explicitness) — it's published to the feed only after passing the check.
+- On send the message goes into the **moderation queue** rather than being checked on the spot: the node accepts the phrase at once, the composer closes, and it appears **to its author** muted and labelled as being checked. It is not in anyone else's feed yet. The verdict arrives later — a 2.8 second median, a maximum near 12 (`00-mechanics_EN.md` §5). Passed, it becomes ordinary; refused, it turns into an explanation with a cause, and the text stays at hand to be fixed and sent again.
+- **A person's very first phrase waits on the name as well**: the name goes into the same queue, and the phrase reaches the feed only when both are accepted. If the name is refused the phrase lies waiting until it is fixed; its 4:20 counts from publication, so waiting costs it no life. While the first one waits, a second cannot be sent.
 - Sending also runs through a per-IP rate limit on the node. It applies only to publishing in the feed, not to sending chat messages. There is no external captcha.
 
 ## Open questions
