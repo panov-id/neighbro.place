@@ -12,7 +12,11 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 
 ## What has to be said to the person
 
-> Your phrases will vanish along with their likes, and offers to talk will burn. Conversations run on their own timers: the ones where you set ten minutes will not survive this break.
+> Your phrases will vanish along with their likes, and offers to talk will burn. Conversations run on their own timers: the ones where you set ten minutes will not survive this break. If you are sitting at a table, you will stand up from it — the game goes on without you.
+
+- **The table stays and the person leaving stands up from it — settled 2026-08-27.** A person's phrases are deleted, but a table is not a phrase: people are sitting at it, and removing it would throw out of the game those who have nothing to do with somebody else's break. It would also hand the founder the power screen 19 takes away from them: nobody owns a table. Coming back, they will find the game moved on or gone — exactly as if they had stood up themselves.
+- **A private person's offer disappears** with the phrases: it is a phrase with a non-empty discount (screen 17).
+- **A support answer survives the break** — it waits with the identity, and the identity has not gone anywhere (screen 14).
 
 ## The screen while away
 
@@ -38,5 +42,5 @@ After an hour of continuous use, one line — "you have been here an hour: step 
 ## Open questions
 
 - How to show the cost of leaving when someone has a dozen conversations with different spans: as a list, a number, or one sentence.
-- What happens if a person leaves "until morning" and "morning" follows the device's time zone, which changed while travelling.
+- ~~"Until morning" across a change of time zone~~ — counted by the zone **at the moment of leaving**: the person chose morning where they were falling asleep. A zone shifting on a journey does not recompute the span, or a flight east would cut the break short in the middle of the night (settled 2026-08-27).
 - Whether to show the offer to step away to someone who has already stepped away today.

@@ -12,6 +12,7 @@ The app's main screen. Short messages from people nearby, newest at the bottom l
 
 - The feed: phrases, offers and tables in one stream.
 - **A language filter in the header** — up to three languages, cleared with one tap (`00-mechanics_EN.md` §8).
+- **A line "you are at a table — return"** in the header while you are sitting at one (settled 2026-08-27). A table does not appear in the conversations list — it lives by the rules of the feed — and without this line somebody who looked away for a minute would lose a game with live people without any notice (screen 7, screen 19).
 - A line under the feed: "**N more messages in other languages — show**".
 - A filter icon — opens a panel with the age, radius and mode filters.
 

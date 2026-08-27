@@ -1,4 +1,6 @@
-# Screen 13 — Empty and Edge States
+# Screen 11 — Empty and Edge States
+
+> This was screen 13 until 2026-08-27. Number 13 was held by two screens at once — this one and moving the identity — while eleven stood empty: screen 11 was dropped along with moving the paper code to registration, screen 12 along with the social link field. Referring to "screen 13" had become ambiguous, and numbering exists precisely for references.
 
 ## Purpose
 

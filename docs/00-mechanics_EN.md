@@ -852,10 +852,12 @@ with an hour by default, the control sits in the conversation header, and each s
 governs only their own (§2). Asking for it before a person has seen who they are
 talking to demands a decision before there is anything to base it on.
 
-### Open
-
-- What the match card shows to whoever accepted first — that the other has already
-  answered, or only that there is no answer yet — is undecided.
+**Whoever accepts first sees only "no answer yet" — settled 2026-08-27.** Neither
+whether the other answered, nor whether they opened the card. It is the same
+reason there is no "last seen" and no "read": a fact about someone else's action
+presses. "Saw it and said nothing" reads as a refusal, though the person may
+simply have closed the app. The cost is accepted: the wait is blind, right up to
+the match expiring.
 
 
 ---

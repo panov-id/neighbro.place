@@ -26,7 +26,7 @@ Neighbro n’est pas une brocante. **La vente ou la publicité de biens et servi
 
 ## Signalements et blocages
 
-Si un message enfreint les règles — signale-le. Les signalements et les blocages réduisent le quota de publication de l’auteur. Un blocage masque le message seulement chez toi. Tu peux aussi **bloquer un utilisateur** — tu ne verras plus son contenu. Nous fournissons ces outils et la **pré-modération par IA**, mais nous ne sommes **pas responsables du comportement des autres utilisateurs** ; chacun est responsable de ses actes.
+Si un message enfreint les règles — signale-le. Un blocage masque le message seulement chez toi. Tu peux aussi **bloquer un utilisateur** — tu ne verras plus son contenu. Nous fournissons ces outils et la **pré-modération par IA**, mais nous ne sommes **pas responsables du comportement des autres utilisateurs** ; chacun est responsable de ses actes.
 
 ## Conséquences des infractions
 
