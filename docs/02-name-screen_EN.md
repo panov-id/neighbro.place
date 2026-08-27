@@ -6,10 +6,10 @@ The one step of signing up: name, age and PIN. It ends here — the feed comes n
 
 ## Screen elements
 
-- A name field — **required**, up to **24 characters**: that is what fits the conversation header and the match card at 375px without an ellipsis.
-- Age — **a number of years** (settled 2026-08-26: the same as the node stores in its `age` column; once a year the app asks again, "still 38?").
-- A six-digit PIN, entered twice.
-- **The paper recovery code**: sixteen characters in groups, shown once, with a confirmation — type two of the groups back.
+- A name field — **required**, up to **24 characters**: that is what fits the conversation header and the match card at 375px without an ellipsis. A counter shows what is left; the limit counts graphemes and **the node enforces it** (`xor.ad/docs/chat_EN.md` §8.2), not this field alone.
+- Age — **a number of years** (settled 2026-08-26: the same as the node stores in its `age` column; once a year the app asks again, "still 38?"). Next to the field, a line saying **"13 and over"**, said before the input rather than after it.
+- A six-digit PIN, entered twice. An obvious one (`000000`, `123456`, one's own birth year) produces the line "this PIN is easy to guess" — and does **not** lock: the button stays live.
+- **The paper recovery code**: sixteen characters in **four groups of four**, shown once, with a confirmation — type back **two of the four groups** (the format comes from `xor.ad/docs/chat_EN.md` §8.2: Crockford base32 without `I`, `L`, `O`, `U`, which are confused with one and zero; case does not matter).
 - A line saying the identity lives on this device, and what brings it back.
 - A "next" button — icon only, no text label (same as screen 1).
 
@@ -18,6 +18,8 @@ The one step of signing up: name, age and PIN. It ends here — the feed comes n
 - **The name is required.** It is published text: the other person sees it on the match card and in the chat, so it goes through the same moderation queue as a phrase — but **at the first publication**, not here: until then it is visible to nobody (`00-mechanics_EN.md` §5).
 - **Age is asked before the feed**, because the feed itself depends on it: it is cut by age bands, and without the number there is nothing to assemble it from. What is asked is the number of years, not a date of birth: a full date is more precise than the product needs and works against the minimisation stated in the policy.
 - **The PIN is required and asked here.** It locks an open tab and takes part in encrypting everything on disk. It cannot be deferred: the terminal client writes its key file immediately (`00-mechanics_EN.md` §1).
+- **An obvious PIN warns rather than forbids — settled 2026-08-26.** A ban would hit exactly the person who barely reached the end of the single registration screen, and the gain is smaller than it looks: a million options are no defence with or without a list — the node's share and the ten-attempt counter are.
+- **The lower age bound is said out loud — settled 2026-08-26.** The database carries `CHECK (age BETWEEN 13 AND 120)`, and until this decision a twelve-year-old got a refusal from the node with not one word about why. The cost is accepted and known: the line does hint which number to type in order to pass — but there is no age verification here at all, the spec calls it self-declaration, and silence would add no check, only take the explanation away from the honest.
 - **The paper code is issued here — settled 2026-08-26** (overriding the move to the first chat of 2026-08-18). The reason is not that there is something to lose before the chat, but that the cost of being wrong is asymmetric: a screen that fails to convince mends itself — the person returns a day later; a device lost without a code never comes back.
 - **The code is shown once and confirmed by typing two groups.** Without the confirmation the "next" button stays inactive: "next" gets pressed unread, and recovery cannot ask afterwards.
 - After the button, straight to the feed. There is no separate geolocation screen: position and radius live inside the feed.
@@ -43,7 +45,7 @@ A separate line about the conversations, because the code does not bring those b
 ## Open questions
 
 - The name field's placeholder is not defined yet.
-- A name length limit is not defined yet.
-- Whether the warning is shown only here or stays reachable in settings.
-- The format of the code — which characters, grouped how — comes from the spec but is not fixed on the screen.
-- What happens if the person closes the tab between seeing the code and confirming it.
+- Whether the warning about losing the identity is shown only here or stays reachable in settings.
+- ~~A name length limit~~ — **24 graphemes, refused by the node** (settled 2026-08-26). The item sat here as open while the number stood a paragraph above in this same file; what was missing was the rule on the node, and now it exists.
+- ~~The format of the code~~ — **four groups of four, Crockford base32 without `I`, `L`, `O`, `U`**, confirmed with two of the four groups. Not a decision but a transfer from the spec: it was written there and missing here.
+- ~~What happens if the person closes the tab between seeing the code and confirming it~~ — the answer stood in this screen's own "Logic": there is no identity, and registration starts again with a new code.
