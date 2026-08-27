@@ -446,12 +446,25 @@ user-generated content.
 
 ### A report
 
-**A report names its cause — settled 2026-08-26.** The list is short and mirrors
-the classes of refusal: rudeness, dangerous, explicit, spam. The cause changes no
-threshold and re-checks nothing — it is there because an Article 16 notice has to
-say what exactly was complained about, and because a person works through reports
-in the panel. Collecting it just in case would be one more record about people, so
-its purpose is named here plainly.
+**A report explains in the person's own words rather than picking a class —
+amended 2026-08-27, reversing the list of 2026-08-26.** A short list mirroring the
+classes of refusal used to stand here: rudeness, dangerous, explicit, spam. The
+argument against it is written in the legal spec (`xor.ad/docs/dsa/SPEC_EN.md` §3)
+and carries more weight: **any list would be incomplete, and a wrongly chosen
+category obstructs the review more than its absence does**. The old entry cited the
+same Article 16 — "a notice has to say what exactly was complained about" — and drew
+the wrong conclusion from a right requirement: what must explain is the notifier's
+text, not a checkbox from our list.
+
+**The justification is mandatory, and without it the form does not send:** an empty
+notice creates no "actual knowledge" under Article 16(3). The cost is named plainly
+— reporting takes a second longer than tapping a button, and some people will stop
+there. In exchange, whoever goes through states their case in words instead of
+fitting it to four labels.
+
+The classes of refusal (rudeness, dangerous, explicit, spam) have not gone anywhere
+— but they belong to **moderating a publication**, not to a report: our queue picks
+them when it refuses an author, and they are never shown to a person in the form.
 
 **A report is a vote against showing a message, not a verdict.** Whoever reports
 stops seeing the message at once, with no hearing and no waiting. At the same
