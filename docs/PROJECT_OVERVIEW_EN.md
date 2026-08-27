@@ -42,7 +42,7 @@ NEIGHBRO sits in an empty niche between "dating" and "district chat": not about 
 
 ### 3.3. Feed
 - Short messages from people nearby. New ones at the bottom, chat-style — not a stack of posts on top.
-- AI detects each message's language: by default ~95% of the feed is in your language, ~5% in other languages spoken in your region (ratios configurable).
+- The **node** detects each message's language with a local library on its own machine — no text leaves for that. The feed is filtered by **up to three languages** (taken from the browser by default), the filter clears with one tap, and the line "N more in other languages" always sits under it (`00-mechanics_EN.md` §8). The old "~95% / ~5%, ratios configurable" was retired on 2026-08-26: shares decided for the person silently, while the "N more" line leaves the decision to them.
 - Lively and slightly non-serious — closer to Pure than to a corporate wall.
 
 ### 3.4. Posting
@@ -133,7 +133,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 ### 9.1. Deepening the core (low risk, strengthens what exists)
 - **Reactions beyond likes** — light emoji reactions (that don't drive matching) to enliven the feed.
 - **Topics/moods** — pick a mood tag when posting (chatter / help / meet up / recommendation), filter the feed by it.
-- **"Pulse of the place"** — the splash already shows live infographics; grow it into a district mini-dashboard: who's online, what's being talked about, activity spikes.
+- ~~**"Pulse of the place"**~~ — dropped on 2026-08-26 along with the live numbers on the splash (screen 1). "Who's online" reports somebody else's presence, and the spec keeps exactly one exception to that rule (`xor.ad/docs/chat_EN.md` §8.2); a district density dashboard is the measuring instrument the radius handle's steps were built to close. What survives of the idea: the step "how many are talking nearby" on the handle itself, and that is already done.
 - **Voice flashes** — a short (≤10s) voice message, also ephemeral.
 - **Better chat** — typing/read indicators, in-chat reactions, ephemeral photos in chat only (the feed stays text-only).
 
@@ -145,7 +145,7 @@ Grouped by horizon and risk. The core idea stays ephemeral — this is **not** a
 ### 9.3. Growth and retention (medium risk)
 - **Local "flash" events** — temporary rooms around an event (concert, match, festival) with an extended TTL for its duration.
 - **Neighbourhood streaks** — a light mechanic: a district with a consistently lively feed earns a "living place" status (no personal profiles).
-- **Multilingual bridges** — there's already a 5% foreign-language mix + AI detection; add optional tap-to-translate for a truly cross-lingual feed.
+- ~~**Multilingual bridges**~~ — dropped on 2026-08-26. There is no 5% mix any more (there is a filter of up to three languages), and translation was ruled out separately and on its own grounds: it would mean a neighbour's text going to an external translator — one more processor in the policy, one more contract, one more place where someone's words sit with a third party (`00-mechanics_EN.md` §8). For a product that promises nothing will remain, that is a bad trade.
 
 ### 9.4. Platform and scale (longer horizon)
 - **New faces (storefronts)** for new regions/languages on the same gate — an Asian face, a Latin American face, etc.

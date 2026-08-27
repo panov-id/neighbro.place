@@ -17,7 +17,7 @@ A neighbourhood offer — a post with a mandatory discount, and the only form of
 ## Creating one
 
 - A **venue** signs in by email — a separate account, not a device identity. Every location is verified by **an envelope with a code sent to its physical address**: that is the one thing making abuse expensive.
-- A **private author** sets nothing up: their offer is an ordinary phrase with a non-empty discount, and they have no right to a link or a promo code.
+- A **private author** sets nothing up: their offer is an ordinary phrase with a non-empty discount, and they have no right to a link or a promo code. **It is entered in the composer** (screen 4): a collapsed "I'm offering a discount" line under the text, holding the value and the conditions. Until 2026-08-27 this path was promised here but there was nowhere to type the discount — the columns lived in the schema with no interface to them.
 - An offer is published straight to the feed and goes through the same moderation queue as a phrase (`00-mechanics_EN.md` §5).
 - **There is deliberately no auto-repeat and no scheduling.** Showing it again is done by hand, with a button.
 
