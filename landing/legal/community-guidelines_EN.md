@@ -24,7 +24,7 @@ Neighbro is not a marketplace. **Selling or advertising goods or services, solic
 
 ## Reports and blocks
 
-If a message breaks the rules, report it. Reports and blocks reduce the author's posting quota. Blocking hides a message only for you, not for everyone. You can also **block a user** — you won't see their content again. We provide these tools and **AI pre-moderation** to help, but we are **not responsible for other users' behavior**; each person is responsible for how they act.
+If a message breaks the rules, report it: it disappears from your feed at once, and once enough people report it, it goes for everyone. **Reporting and blocking do not touch the author's posting quota** — one tap must not quietly narrow somebody's voice. Blocking hides a message only for you, not for everyone. You can also **block a user** — you won't see their content again. We provide these tools and **AI pre-moderation** to help, but we are **not responsible for other users' behavior**; each person is responsible for how they act.
 
 ## Consequences of violations
 

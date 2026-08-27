@@ -11,7 +11,9 @@ A neighbourhood offer — a post with a mandatory discount, and the only form of
 - An offer stands among ordinary phrases and is **marked as an offer** — otherwise advertising would pass itself off as a neighbour.
 - The discount is **mandatory** and visible on the card; conditions are a separate line, and empty means "no conditions".
 - A venue additionally gets: its name, a promo code and an external link. A private author gets neither link nor promo code.
-- The button differs: a venue's card carries **"Save"**, a private author's carries a **like**, as any phrase does, and a like may lead to a conversation by the usual rules.
+- The button differs: a venue's card carries **"Save"**, a private author's carries a **like**, and it leads to a conversation at once.
+- **An offer can be liked without a live phrase of your own — settled 2026-08-27.** An ordinary like requires the liker to have a live phrase (`00-mechanics_EN.md` §11): otherwise no match could ever come of it, since a match counts only while both phrases are alive. On an offer the match is one-sided and the argument does not hold — and the rule without this proviso would cancel the mechanism itself: to collect stools somebody is giving away you would first have to write something of your own. The proviso is written into the spec as well (`xor.ad/docs/chat_EN.md` §8.4).
+- **The language filter does not hide an offer** (`00-mechanics_EN.md` §8): the Greek bakery across the road is just as useful to a Russian-speaking neighbour. It is the only exception to the language filter.
 - The link opens through our own redirect, which can be switched off; a warning about leaving the site is shown first.
 
 ## Creating one
@@ -24,6 +26,8 @@ A neighbourhood offer — a post with a mandatory discount, and the only form of
 ## Logic
 
 - **An offer takes no ordinary quota slot** (`00-mechanics_EN.md` §3): offers have their own limits — a share of the feed and a rate limit per venue. The baker stays a neighbour with their own five phrases.
+- **Age bands do not apply to venue offers — settled 2026-08-27.** A band separates teenagers and adults **in conversation**, and a coffee shop is not somebody to talk to: a venue has no age and no like, and no conversation is born from its card. The cost is named plainly: a teenager sees the whole commercial feed of the district, including what must not be sold to them — and what protects here is not the band but the moderation queue's stop categories, which publish such things to nobody.
+- **A private person's offer disappears when they step away**, like any phrase of theirs (screen 20): "step away" deletes phrases along with their likes, and a private offer is a phrase with a non-empty discount.
 - **Reports hide an offer automatically**, and a pattern of them moves the venue to `suspended`.
 - **The save counter is not shown to the venue** — with free placement it is an unverifiable number, and promising it would be dishonest.
 

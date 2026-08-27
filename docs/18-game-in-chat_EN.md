@@ -2,7 +2,7 @@
 
 ## Purpose
 
-A shared board for two inside a conversation: dominoes, draughts, chess. The screen was created on 2026-08-26: the spec describes the game in §6 and puts a 🎲 button in the chat header, while no storefront had a screen for it.
+A shared board for two inside a conversation — **a field and a set of pieces**, not a list of names (amended 2026-08-27: the heading still carried "dominoes, draughts, chess", although the decision of 2026-08-26 describes a game by primitives, and the classes already stand below). The screen was created on 2026-08-26: the spec describes the game in §6 and puts a 🎲 button in the chat header, while no storefront had a screen for it.
 
 **There are deliberately no rules.** The engine draws the board and lets pieces be moved freely; how to play is for the two to agree. It is a way to start talking rather than a contest, so there is no score, no winner and no move validation here.
 
@@ -10,7 +10,7 @@ A shared board for two inside a conversation: dominoes, draughts, chess. The scr
 
 - The **🎲 "suggest a game"** button in the conversation header → pick a board → an offer goes to the other person → they accept, and the board opens for both.
 - Changing the game uses the same offer. A refusal breaks nothing: the conversation carries on in words.
-- The board lives inside the conversation and **disappears with it** — the silence timer runs out, or the conversation is ended by hand, and the board is gone.
+- The board lives inside the conversation and **goes out for both at the first death** (amended 2026-08-27): spans are now each person's own, and the board leaves with the conversation key as soon as it goes out for either side (`xor.ad/docs/chat_EN.md` §8.13). There is nothing to wait for: neither side can write or move any more anyway.
 
 ## Screen elements
 
@@ -21,7 +21,8 @@ A shared board for two inside a conversation: dominoes, draughts, chess. The scr
 
 ## Logic
 
-- **A move pushes the conversation's timer.** Activity is any shared action, not only text: the game exists precisely so that one can be silent in words (`xor.ad/docs/chat_EN.md` §8.10).
+- **Your own move holds your conversation exactly as your own message does** (settled 2026-08-27). The timer counts from your last action, and a move is an action: the game exists precisely so that one can be silent in words. **Their move does not push your timer** — for the same reason their line does not: whoever is silent is silent.
+- Play in silence long enough and the conversation lives for both — each pushes their own timer with their own moves. A spectator who only watches somebody else move loses it exactly as if they had left.
 - **Turn-taking is an agreement, not a rule.** Both switch it on if it suits them, and off the same way. Wiring turns into the engine is not allowed: the whole point is the absence of rules.
 - **The board state is encrypted with the same key as the messages** and is never written to the database — it is in transit, like the messages themselves (`xor.ad/docs/chat_EN.md` §8.13).
 - Synchronisation goes over the same socket as the replies.
@@ -52,5 +53,5 @@ The four operations on a piece — **take, place, rotate, flip** — cover the f
 ## Open questions
 
 - The set of boards at launch: dominoes, draughts and chess, or starting with one.
-- What happens to the board if one of the two loses connection mid-move.
+- ~~What happens to the board on a lost connection~~ — **whoever returns takes the state from the peer** (settled 2026-08-27), over the same encrypted channel: the node carries but does not store — there is no board in the database and there will not be. The cost is named: if both drop at once, the game is lost for good, with nowhere to restore it from.
 - Whether an undo is needed at all, given there are no rules and so no "wrong" moves.
