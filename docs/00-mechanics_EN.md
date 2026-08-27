@@ -519,9 +519,13 @@ machine.
   lost.
 - Whether chat messages are checked as strictly as feed messages — the documents
   say "the same" but without the captcha; whether to soften the rest is undecided.
-- **The machine catches about half.** Measured on human-labelled data across nine
-  languages: 0.55 of what people call offensive is caught, and 0.07 of ordinary
-  messages are blocked for nothing. Reports take the other half — without them
+- **The machine catches less than half — recomputed 2026-08-27.** Measured on
+  human-labelled data across nine languages, at the point where the system will
+  actually run: **0.46** of what people call offensive is caught, at **0.07** of ordinary
+  messages blocked for nothing. This said 0.55 — those are the **native** arm's
+  numbers, and the arm chosen is **translation** (`xor.ad/docs/chat_EN.md` §8.14):
+  at the same cost of a mistake it catches less on average and twice as much in
+  the worst language.[retired] Reports take the other half — without them
   moderation does not work, and they are part of it rather than an addition to it.
 - The gap the group-attack threshold sits in is **narrow**: 0.53 against 0.77 on
   the probe sets. On live data it may narrow further — measure again.
@@ -534,9 +538,11 @@ machine.
 - The German set, the only one available, is labelled on political tweets rather
   than neighbourhood talk. Its 0.26 measures a mismatch of tasks, not the work of
   moderation.
-- Whether reports count from people the author has blocked — otherwise blocking
-  protects nobody, and a feud between two turns into five votes.
-- Whether hiding lowers the author's ceiling the way blocking does (§3).
+- ~~Whether reports count from people the author has blocked~~ — **they do not**,
+  and it is written a paragraph above in this same section. The question stood open
+  next to its own answer (removed 2026-08-27).
+- ~~Whether hiding lowers the author's ceiling~~ — **it does not, in either
+  direction**, also above in this section (removed 2026-08-27).
 - What to do with reports arriving on a message that is already hidden.
 **Settled, so it is not raised again:** there are no help contacts here and there
 will not be — the Service is not about that. A message saying someone feels bad
