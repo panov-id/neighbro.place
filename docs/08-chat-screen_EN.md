@@ -6,7 +6,7 @@ A private conversation between two people, opened after both accepted the match 
 
 ## Screen elements
 
-- The header: the peer's **name and age**. Tapping the name opens the **safety code** — a string derived from both identities' long-term keys (`xor.ad/docs/chat_EN.md` §8.13), with an explanation of what it is for.
+- The header: the peer's **name and age**, and a **key-comparison mark** beside the name (added 2026-08-28). The mark exists because a guarantee nobody knows about works only on paper — and this one closes the single hole in the encryption: us substituting a key. Tapping the mark or the name opens the **safety code** — a string derived from both identities' long-term keys (`xor.ad/docs/chat_EN.md` §8.13), with an explanation of what it is for.
 - The line of replies — short messages back and forth.
 - Lines about new likes between these two — right in the conversation (screen 6).
 - An input with a **256 character** counter.
@@ -30,6 +30,7 @@ A private conversation between two people, opened after both accepted the match 
 - **There are no links in a conversation** — they are stripped, as in the feed; the one place a link lives is a neighbourhood offer (`00-mechanics_EN.md` §5).
 - **Encryption happens on the devices**: the key is derived by the two of them and the node carries ciphertext (`xor.ad/docs/chat_EN.md` §8.13). A conversation is not merely unchecked — there is nothing to read it with.
 - **History sits on the device** in IndexedDB, encrypted with the vault key made of the PIN and the node's share. It exists neither with us nor on another device.
+- **A draft reply lives while the conversation is open and never reaches the disk — decided 2026-08-28.** Go out to the list and back, and the text is there; close the app, and it is gone. This **differs** from a phrase's draft (screen 4), which survives leaving the screen and sits in encrypted storage, and the difference is deliberate: publishing is an intention that outlives a screen, while a conversation disappears by itself, and a draft outliving it would outlive the thing that was meant to vanish.
 
 ## Open questions
 
