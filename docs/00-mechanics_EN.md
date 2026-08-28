@@ -222,7 +222,7 @@ bakery stays a neighbour with their five even while an offer of theirs is up.
 Place is set **twice here, and differently each time**. The two knobs are easy to
 confuse because both are about distance, so they are pulled apart here.
 
-**The viewing radius** is the reader's knob, on screen 3. A circle on a map that a
+**The viewing radius** is the reader's knob, on screen 3. A circle on a diagram (no face draws a map, 2026-08-28) that a
 person stretches with a slider: "show me what is near me." It decides what reaches
 the feed.
 
@@ -266,7 +266,7 @@ fix. A person has to see the difference between "we worked it out" and "we measu
 you" — otherwise they either decide they were tracked, or trust a circle that is a
 kilometre off.
 
-**A "where am I" button** asks for precise location — on request, not on arrival.
+**There is no "where am I" button — decided 2026-08-28.** [retired] This used to read: a "where am I" button asks for precise location — on request, not on arrival. A precise position is **never** requested: the place is worked out from indirect signals and refined by hand on the diagram. A permission we never ask for is a permission that cannot leak, and declining to have the conversation removes a whole class of questions from the privacy policy.
 Press it and the circle lands for real and the "approximate" label goes. Leave it
 and everything works on the guess. The permission is asked **for one point**, not
 for tracking: position is not read in the background and does not refresh itself.

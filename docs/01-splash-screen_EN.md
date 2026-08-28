@@ -10,12 +10,35 @@ An animation themed around neighbourliness, friendship and shared activities —
 
 ## Screen elements
 
-- Icon animation themed around neighbourliness, friendship and shared activities.
+- Icon animation themed around neighbourliness, friendship and shared activities — **the main thing on the screen**.
+- **One line saying what this is** (added 2026-08-28): that neighbours nearby are
+  talking and that what is said disappears. Without numbers — those are forbidden
+  here by a separate decision — but with words: nobody should go through
+  registration without understanding where they have arrived.
+- **Two ways in** (added 2026-08-28): "create an identity" and, quieter and
+  smaller, "I already have one". The second leads to a choice: a code from another
+  device (screen 13) or the paper recovery code.
 - A "next" button — icon only, no text label.
 
 ## Logic
 
 - Nothing is asked and nothing is required: the screen is passed with one tap.
+- **The second way in closes a gap between the faces — decided 2026-08-28.** In the
+  terminal the first screen offers three paths: create an identity, move one here,
+  raise one from the paper code. On the web the splash offered one — "next", that
+  is, registration. Someone who has an identity and a new device went nowhere: the
+  paper code is issued on screen 2 and there was no place to use it. The core is
+  one, and the faces have no right to differ on which entrances exist.
+- **The application's splash and the landing's splash are different, by design**
+  (decided 2026-08-28). The landing speaks to a passer-by; the application's splash
+  is the threshold of a home, separating a storefront full of text from a place
+  where everything disappears. The price is accepted: someone arriving from the
+  landing sees two animations in a row.
+- **The screen's job is to show the character of the place** (decided 2026-08-28),
+  so the animation stays the content rather than the background: the line and the
+  two entrances sit at the bottom and do not compete with it. Language and rules
+  are **not** added here — they belong on screen 2, where a person has already
+  stopped to read.
 - `prefers-reduced-motion` turns off the animation and the fades — the rule is shared (`00-mechanics_EN.md` §4).
 - **There are no live numbers on the splash — settled 2026-08-26, retiring them together with the zero rule.** "How many people are online nearby, how many messages in the last hour" used to stand here, and it is gone for two reasons, either of which would be enough on its own.
 
