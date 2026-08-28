@@ -20,6 +20,7 @@ They were not split for a simple reason: the bottom navigation has exactly four 
 - Contrast — **three steps**: normal, raised, maximum (settled 2026-08-26).
 - The default silence timer for new conversations.
 - **Step away** — 20 minutes, an hour, or until morning (screen 20). From here, because there is nowhere else.
+- **Hidden phrases** — a list with a way back (added 2026-08-28, screen 5). Short-lived by construction: a hidden phrase disappears with its own span, like any other.
 
 **Identity (separated and labelled):**
 
