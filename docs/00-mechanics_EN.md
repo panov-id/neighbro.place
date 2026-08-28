@@ -174,7 +174,7 @@ The second is immediate: delete, and the slot is free that instant, and you can
 write again. The delete key does not punish, it makes room; otherwise changing
 your mind would cost you the chance to say it differently.
 
-While all five are taken, publishing is unavailable. That is not a refusal and not
+While all four are taken, publishing is unavailable. That is not a refusal and not
 an error — it is a feed full of your own messages, and there are two ways out:
 wait, or take one down.
 
@@ -204,8 +204,8 @@ ends. You may be wrong for free twice; tuning your wording against the filter, n
 
 **An offer does not take a slot.** Neighbourhood offers have their own quota — a system limit
 on their share of the feed and a frequency cap per business (specification in
-`xor.ad/docs/offers/`). Five live messages is about being a neighbour, and the owner of the
-bakery stays a neighbour with their five even while an offer of theirs is up.
+`xor.ad/docs/offers/`). Four live messages is about being a neighbour, and the owner of the
+bakery stays a neighbour with their four even while an offer of theirs is up.
 
 ### Open
 
@@ -804,7 +804,7 @@ happened or what to do about it.
 
 | Refusal | What is said | What next |
 |---|---|---|
-| quota (§3) | all five slots are taken, when the next one frees | wait, or take one down |
+| quota (§3) | all four slots are taken, when the next one frees | wait, or take one down |
 | moderation (§5) | what exactly did not pass | edit the text and send again |
 | no network | there is no connection, what you wrote is kept | retry when there is |
 | conversation expired (§2) | the time ran out, the exchange is gone | go back to the feed |
