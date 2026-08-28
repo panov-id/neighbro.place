@@ -825,11 +825,9 @@ of the product reads as a malfunction.
 
 ### Open
 
-- Whether a moderation refusal can be appealed, and where that goes.
-- The exact wordings are not written. They belong to the UX layer; only the rule
-  belongs here.
-- How specific the moderation cause is: a category ("this reads as an insult")
-  or a pointer at the actual word.
+- ~~Whether a moderation refusal can be appealed~~ — **there is no appeal** (settled in §5); the text is edited and sent again. The question stood open next to its answer in the neighbouring section (removed 2026-08-28).
+- ~~The exact wordings~~ — written on 2026-08-28: `xor.ad/docs/refusal-wordings_EN.md`. Only the rule still belongs here.
+- ~~How specific the moderation cause is~~ — **the class only, with no pointer at the word** (decided 2026-08-28). Highlighting the fragment is a literal instruction for going around the filter, and there is no appeal; the price is accepted and named: seven phrases in a hundred are blocked for nothing and their authors will not learn what to change.
 
 
 ---
