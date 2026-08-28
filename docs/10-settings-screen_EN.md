@@ -18,16 +18,18 @@ They were not split for a simple reason: the bottom navigation has exactly four 
 
 - A theme switch: light, dark, or as in the system.
 - Contrast — **three steps**: normal, raised, maximum (settled 2026-08-26).
-- The default silence timer for new conversations.
+- **The default silence span applies to new conversations only** (decided 2026-08-28): it does not touch those already open. The price is named — a person changes the default and does not see why the current conversation still runs on the old one — but the opposite would mean one tap in the settings killing a conversation with an hour left in it.
 - **Step away** — 20 minutes, an hour, or until morning (screen 20). From here, because there is nowhere else.
+- **A default zone and mode for new phrases** (added 2026-08-28): the composer opens with them, and changing them per phrase is no longer required. The price is named: privacy stops being a decision made for **each** phrase, while different phrases often want different things — so the default is visible in the composer and editable right there.
 - **Hidden phrases** — a list with a way back (added 2026-08-28, screen 5). Short-lived by construction: a hidden phrase disappears with its own span, like any other.
 
-**Identity (separated and labelled):**
+**Identity and security — a screen of its own (decided 2026-08-28):**
 
-- **Move to another device** (screen 13).
-- **Change the PIN.** Possible and necessary: the PIN locks the disk, not the identity, and a PIN somebody watched you type cannot otherwise be changed except by moving to another device. Changing it re-encrypts the local database and takes a new share from the node (§8.2).
-- **Re-issue the paper code** — **only on presenting the current one**. Otherwise whoever steals an identity writes themselves a new code first and locks the owner out forever: the insurance disappears exactly when it is needed (§8.2). The previous code is dead afterwards.
-- **Start over** — a new identity in place of this one. Before the button, it is counted on the spot **how much exactly will go**: live phrases, open conversations, offers waiting. On its own line: that the paper code becomes useless, because the identity it brings back will no longer exist. As on the stepping-away screen, the price is shown in numbers before the press, not in words after it.
+- An **"Identity and security"** item leads to screen 12: moving the device,
+  changing the PIN, reissuing the paper code, what is stored on the device,
+  starting over. All of them are irreversible, and they used to sit one scroll
+  away from the theme switch — a separate screen works here as distance rather
+  than decoration.
 
 ## Logic
 
