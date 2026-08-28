@@ -26,7 +26,7 @@ Neighbro ist kein Flohmarkt. **Verkauf oder Bewerbung von Waren und Dienstleistu
 
 ## Meldungen und Blockierungen
 
-Verstößt eine Nachricht gegen die Regeln — melde sie. Meldungen und Blockierungen senken das Veröffentlichungskontingent des Autors. Eine Blockierung verbirgt die Nachricht nur bei dir. Du kannst auch **einen Nutzer blockieren** — du siehst seine Inhalte nicht mehr. Wir stellen diese Werkzeuge und die **KI-Vormoderation** bereit, sind aber **nicht für das Verhalten anderer Nutzer verantwortlich**; jeder ist für sein eigenes Handeln verantwortlich.
+Verstößt eine Nachricht gegen die Regeln — melde sie. Eine Blockierung verbirgt die Nachricht nur bei dir. Du kannst auch **einen Nutzer blockieren** — du siehst seine Inhalte nicht mehr. Wir stellen diese Werkzeuge und die **KI-Vormoderation** bereit, sind aber **nicht für das Verhalten anderer Nutzer verantwortlich**; jeder ist für sein eigenes Handeln verantwortlich. **Melden und Blockieren berühren die Beitragsquote der Autorin oder des Autors nicht** — ein Tippen darf eine fremde Stimme nicht stillschweigend beschneiden.
 
 ## Folgen von Verstößen
 
