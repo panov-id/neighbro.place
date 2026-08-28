@@ -11,8 +11,9 @@ Everything a person has put into the feed and that is still alive: **phrases, of
 - A list of what is published and not yet gone, each marked by type: phrase, offer, table.
 - A countdown timer to disappearance and a manual delete button on each entry.
 - A phrase and an offer carry their **like count** (settled 2026-08-27).
-- A table carries the number of people sitting and a "return" button (screen 19).
-- The remaining posting quota (how many of the 5 phrases are still available).
+- A table carries the number of people sitting, a "return" button and a **"get up"** button (decided 2026-08-28: the table stays alive).
+- **A "say it again" button** on an expiring or expired phrase (added 2026-08-28): it opens the composer with the same text. The price is named: this is a direct path to repeating the same thing forever, and the only thing holding it is the ceiling of four publications an hour.
+- The remaining posting quota (how many of the 4 phrases are still available).
 
 ## Logic
 
@@ -28,4 +29,4 @@ Everything a person has put into the feed and that is still alive: **phrases, of
 
 - ~~Whether manual deletion restores the quota~~ — the slot frees that instant (`00-mechanics_EN.md` §3).
 - How this screen is opened from the main interface (an icon in the feed, a separate menu item) is not defined yet.
-- What "delete" means for a table with people sitting at it — closing it for everyone or simply leaving — is undecided. For a phrase and an offer deletion is unambiguous; for a table it is not.
+- ~~What "delete" means for a table~~ — **you get up and the table lives on** (decided 2026-08-28). The same as stepping away: nobody owns a table, and one person leaving does not take the game from the others. So the table's button is labelled differently from a phrase's: "get up", not "delete".
