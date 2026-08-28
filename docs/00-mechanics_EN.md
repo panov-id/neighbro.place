@@ -760,6 +760,7 @@ holds it for the same periods as the server**.
 | settings: conversation lifetime, language filter, zone | local storage | same |
 | the consent choice and its date | local storage | same — it is the proof of consent |
 | conversations: messages, times, status | IndexedDB, encrypted with Web Crypto | until the conversation expires (§2) |
+| the draft of an unsent phrase or table | the same, encrypted | until it is sent or cleared (2026-08-28) |
 
 **A conversation is erased on the device by the same rule as on the server** — by
 your own silence (§2). Not "at roughly the same time", but by the same number.
