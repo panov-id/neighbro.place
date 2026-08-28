@@ -24,8 +24,12 @@ Repositories:
   sosed's copy of the generator — the two files are kept identical.
 - The brand in `title` is `neighbro` across all languages, rather than the translated
   `brand` key.
-- No custom 404 page: on sosed it turned out that Bunny cannot substitute one for 404s
-  coming from storage.
+- No custom 404 page. **The reason was recorded imprecisely — clarified
+  2026-08-28:** it is not that it cannot, but that the wrong field was tested.
+  `ErrorPageCustomCode` covers origin errors, while the field that substitutes a
+  file is `Custom404FilePath` — measured across the panel's environments on
+  2026-08-25, serving the named file under code 404. The page is reachable;
+  declining it stays a decision about price.
 
 ## Done
 
@@ -64,6 +68,13 @@ Repositories:
 - [x] **SPEC** — sections on addresses and languages, and on analytics and consent.
 - [x] **`deploy/run-node.sh`** — Node in a container locally, on the runner in CI.
 
+## Verified live on 2026-08-28
+
+By request rather than by reading (`xor.ad/scripts/check-seo-live.sh`): the
+sitemap serves **12 URLs**, the root's head carries **11** `hreflang` links,
+`robots.txt` points at the sitemap, `www` redirects to the apex with a `301`, and
+html is cached `public, max-age=300`. Everything matched what was promised.
+
 ## Remaining
 
 - [x] `ANALYTICS_ID` = `G-K7EP39DDK9` set in the `production` environment
@@ -76,5 +87,11 @@ Repositories:
 - [x] Production shipped 2026-07-27; the domain is verified by a TXT record and the
       sitemap is submitted to Search Console (`https://neighbro.place/sitemap.xml`,
       12 URLs).
-- [ ] Verify live in a browser: no requests to Google domains before consent (our own
-      counter still runs — it needs none), no CSP violations in the console.
+- [x] **Checked in a browser on 2026-08-28**
+      (`xor.ad/scripts/check-analytics-gate.sh`): with a clean profile, meaning no
+      consent, the page makes 24 requests and **not one** goes to the counter's
+      domains. The check first went red on the page's own CSP headers — the
+      counter's domain sits in them, and headers go into the network log too; it
+      now counts the `url` fields of requests. And the check has a check of its own
+      (`--self-test`): a page that really does load the counter must set it off, or
+      a green answer is indistinguishable from blindness.
