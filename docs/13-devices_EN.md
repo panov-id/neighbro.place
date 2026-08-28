@@ -13,6 +13,12 @@ Move the identity to another device. The screen was rewritten on 2026-08-26: it 
 
 ## Logic
 
+- **Raising an identity from the paper code is not described here — open since
+  2026-08-28.** The splash now sends both kinds of person here: the one with a code
+  from another device and the one holding a paper code. The first path is described
+  in full below; the second exists on no screen — in the terminal it is
+  `depth restore`, on the web it is nowhere.
+
 - The invite is **single-use** and lives **two minutes**; entry may be wrong **five times** before it burns (`xor.ad/docs/chat_EN.md` §8.2).
 - **No link and no QR code — amended 2026-08-27.** A QR and a link with the key in the fragment after `#` used to stand here, and the reasoning about the fragment was sound: browsers do not send it to a server. But that construction is gone. §8.2 of the spec says it outright: "**moving an identity is a code, not a link**… the pairing lives entirely inside the clients, no separate page exists for it and no separate domain is registered." The QR existed for the sake of a long link — and left with it (`xor.ad/docs/depth-client_EN.md` §5.4).
 - **Nine characters, Crockford base32** without `I`, `L`, `O`, `U`: they get confused with one and zero. Case does not matter, the dashes need not be typed.
