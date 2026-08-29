@@ -6,14 +6,18 @@ A support contact button, reachable from the app at any time.
 
 ## Screen elements
 
-- A support button/icon — always available.
+- A support button/icon — always available. **With a mark when an answer is waiting** (decided 2026-08-29): a dot on the icon itself rather than in the inbox. The inbox collects conversations between people, and the platform's own voice in that list would read as one more neighbour. The price is named plainly: the dot is seen only by someone who looks there, and people look there rarely.
+- **Common questions above the input** (added 2026-08-29): where a phrase went, why liking is unavailable, where a conversation disappeared to. These are the product's three most frequent "it broke" cases, which are in fact how it works. The price is named: a list in front of the field reads as an attempt to talk you out of writing, so it stays short and does not block the field.
 - A message input for the support request.
+- **A line about where the answer will arrive** (added 2026-08-29): "the answer comes here, into this application; leave an email if you might lose access to your identity". The warning belongs **here** rather than on the start-over screen: there the decision is already made, here the person is still choosing what to pay.
+- **Your own tickets as a list** (added 2026-08-29): number, date, answer. Today the number is shown once and never again. The price is accepted: a product that erases everything gains a list that lives a year — which is honest, because the ticket is kept for a year anyway (`00-mechanics_EN.md` §7).
 - A send button.
 
 ## Logic
 
 - The sent message lands in a table of our own database, beside the node.
 - A new ticket fires a notification (email/webhook) for the team.
+- **No number is promised for the reply time — decided 2026-08-29.** The line tells the truth: "we read everything, we do not answer at once — there are few of us". A number here would be a promise held by one person on holiday. The exception is a report of something unlawful: it enters the notice register and takes its deadlines, and that is said in a line of its own, because those deadlines are the law's rather than ours.
 - There's no automated handling — just logging the request and notifying the team.
 - **A confirmation is shown immediately**, with a request number: a person has to see that they were heard (settled 2026-08-26).
 - **The answer arrives in the app at the next visit — settled 2026-08-27.** No email is needed for that: the answer waits attached to the identity and is shown when the person comes back. The mechanism is not new — it is exactly how the legal spec delivers an Article 17 statement of reasons to someone with no contact (`xor.ad/docs/dsa/SPEC_EN.md` §7). The screen used to know one path only — email — and demanded it precisely where a person feels bad and is asking for help.
@@ -26,5 +30,5 @@ A support contact button, reachable from the app at any time.
 ## Open questions
 
 - Exactly where the button is reachable from (feed header, settings, a separate icon) is not defined yet.
-- How a person learns an answer has arrived if they have not visited for a week: the inbox collects reasons about conversations and matches (§8.12), and a support answer is not yet on that list.
+- ~~How a person learns an answer has arrived~~ — **by the mark on the support button** (decided 2026-08-29, above). The answer deliberately does not enter the inbox.
 - ~~Confirmation and reply~~ — settled 2026-08-26 (above).
