@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 10 August 2026**
+**Last updated: 29 August 2026**
 
 ## 1. Who we are (controller)
 
@@ -15,19 +15,20 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 3. What we process
 
 - **Device identity.** An identifier and a key pair created in your browser, so the Service can work without a traditional account. **We do not fingerprint your browser.** The identity is tied to this browser: clearing site data or a private window creates a new one. Your identity lives on one device at a time. You can move it to another yourself by typing a nine-character code shown on the first, and the first one freezes when you do — there is no code to scan and no second device running alongside. If you clear the data, the identity comes back only with the paper recovery code you were shown once when you created it; without that code neither we nor you can bring it back, and the conversations do not come back either way.
-- **Area.** An approximate area worked out from your time zone, IP address and browser language, or a point you place by hand. Two settings are yours: how far you look, and how precisely you are seen. **Exact coordinates are requested only when you press "where am I"**, are used to place your point once, and are not read in the background. Declining changes nothing else.
+- **Area.** An approximate area worked out from your time zone, IP address and browser language, or a point you place by hand. Two settings are yours: how far you look, and how precisely you are seen. **We never ask your browser for your exact coordinates — there is no button that does, and the permission is never requested.** Your point is placed from those indirect signals and moved by hand on a diagram; a permission nobody can grant is a permission that cannot leak.
 - **Age.** The age you enter, and your age-filter preference, to keep the space appropriate.
 - **Name.** The display name you optionally set.
 - **Content.** The messages, likes (plus/skip), and chats you create — most of which fades and is deleted automatically.
 - **Waitlist email.** If you request access: your email address, the source of the request, which face you came through, and the language, colour and light-or-dark setting you were using — the last three so the email we send you looks like the site you asked from.
 - **Technical data.** Basic logs (e.g. IP, timestamp, user agent) needed for security and to run the Service.
+- **Following a link in an offer.** A business offer may carry a link, and it is the only place in the Service where one exists. The link goes through **our own redirect** rather than straight out, so that we can switch it off if the destination turns bad. Passing through it we increment **one number: how many times that offer's link was followed.** We do not record who followed it, when, from which address, or with which browser, and the number is shown to the business as a count and nothing else. Saved offers are not counted at all: they sit on your device and nothing about them reaches us.
 - **Error logs.** When something breaks, we record a technical error report (error message, page URL, your browser's user agent, and non-identifying context) so we can diagnose and fix it. Used only for reliability, not profiling.
 - **A report of illegal content.** If you report content as illegal, we keep your reasons, your name and email address (we ask for neither where the report concerns the sexual abuse of children), and **a copy of the reported content taken at that moment** — because the content itself disappears on its timer, and without the copy we could neither examine the report nor justify what we did. We keep this to comply with a legal obligation, not because you consented, and it is used for nothing else.
 
 ## 4. Why we process it (legal bases)
 
 - **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content.
-- **Consent**: the waitlist email, precise location via "where am I", and website analytics. Each is asked for separately and can be withdrawn at any time — ask us and the waitlist entry goes.
+- **Consent**: the waitlist email and website analytics. Each is asked for separately and can be withdrawn at any time — ask us and the waitlist entry goes. Precise location is not on this list because we never ask for it.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 
@@ -45,7 +46,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 
 We match by **area**, not by precise location, and we never display your exact position or your distance to anyone else. The area is approximate by default and is marked as such.
 
-Your message is tied to a **zone around you rather than to a point** — you choose how large that zone is — so that a handful of messages cannot lead anyone to an address. If you press **"where am I"**, your browser asks you for precise coordinates; they place your point once and are not kept as a track.
+Your message is tied to a **zone around you rather than to a point** — you choose how large that zone is — so that a handful of messages cannot lead anyone to an address. Your browser is never asked for precise coordinates: the point comes from your time zone, address and language, and you move it by hand.
 
 ## 6a. Moderation
 

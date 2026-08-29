@@ -10,6 +10,7 @@ A neighbourhood offer — a post with a mandatory discount, and the only form of
 
 - An offer stands among ordinary phrases and is **marked as an offer** — otherwise advertising would pass itself off as a neighbour.
 - The discount is **mandatory** and visible on the card; conditions are a separate line, and empty means "no conditions".
+- **The discount's term is mandatory and sits on the card — decided 2026-08-29:** the date and time until which it holds (`discount_until`, ≤90 days). It is **not** the card's lifetime: the card leaves the feed after 4:20 like any phrase, while the discount lives until its own hour. Without this field a saved card could not honestly say whether it still holds, and "while stocks last" in the conditions covered supplies but never time.
 - A venue additionally gets: its name, a promo code and an external link. A private author gets neither link nor promo code.
 - The button differs: a venue's card carries **"Save"**, a private author's carries a **like**, and it leads to a conversation at once.
 - **An offer can be liked without a live phrase of your own — settled 2026-08-27.** An ordinary like requires the liker to have a live phrase (`00-mechanics_EN.md` §11): otherwise no match could ever come of it, since a match counts only while both phrases are alive. On an offer the match is one-sided and the argument does not hold — and the rule without this proviso would cancel the mechanism itself: to collect stools somebody is giving away you would first have to write something of your own. The proviso is written into the spec as well (`xor.ad/docs/chat_EN.md` §8.4).
@@ -30,9 +31,13 @@ A neighbourhood offer — a post with a mandatory discount, and the only form of
 - **A private person's offer disappears when they step away**, like any phrase of theirs (screen 20): "step away" deletes phrases along with their likes, and a private offer is a phrase with a non-empty discount.
 - **Reports hide an offer automatically**, and a pattern of them moves the venue to `suspended`.
 - **The save counter is not shown to the venue** — with free placement it is an unverifiable number, and promising it would be dishonest.
+- **The click count, however, is shown, and that is not a contradiction (recorded 2026-08-29).** The screen named only what is withheld and stayed silent about the other half. The difference is what we know for certain: a click goes through our own redirect, so the number is ours and verifiable; a save sits on the device and nothing about it ever leaves. Only the **count** is kept — not who went, not when, not from which address (`xor.ad/docs/offers/SPEC_EN.md` §6.2).
+- **A saved offer outlives the feed — decided 2026-08-29.** The card leaves after 4:20, while the saved one stays on the device with its discount, promo code, address and a mark saying **"no longer in the feed"**; past `discount_until` it says **"the term has passed"** and greys out rather than vanishing: a person has to understand why they were refused, not guess where it went.
+  **The price is named:** this is the **first place in the product where content outlives 4:20**. So the list of saved offers is named on screen 12 among what is stored on the device, and it is erased along with the history.
+  **The legal side is unsettled and moved to the roadmap** (`xor.ad/docs/roadmap_EN.md` §2): what binds a business on an expired saved card, and what to do with the copy of an offer taken down on a report.
 
 ## Open questions
 
 - ~~What marks an offer~~ — **the word "offer" and the size of the discount**, right on the card (settled 2026-08-26). A border or a background is not distinguishable in every theme, and a venue icon reads as a neighbour's avatar — advertising disguised as a person.
-- What "Save" looks like once pressed, and where saved offers live, is undefined.
+- ~~Where the saved offers live~~ — **a local list on the device, and nothing about it ever leaves** (`xor.ad/docs/offers/SPEC_EN.md`; the screen kept this open although the spec answered it). What is undrawn is the button's state after the press, and the list itself.
 - The creation screen for a venue is not drawn: the fields are known from the spec, the look is not.
