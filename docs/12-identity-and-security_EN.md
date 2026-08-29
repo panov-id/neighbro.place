@@ -24,7 +24,9 @@ scroll away from the theme switch. A separate screen is not decoration but
   owner out forever: the insurance would vanish exactly when it is needed. The
   previous code is dead afterwards.
 - **What is stored on this device** (added 2026-08-28): the size of the local
-  database and an **"erase conversation history"** button. The product promises a
+  database, the **list of saved offers** (added 2026-08-29 — the only thing that
+  outlives 4:20, so it is named here explicitly) and an **"erase conversation
+  history"** button. The product promises a
   great deal about storage — and this is the only place where the promise can be
   seen and handled. Erasing is irreversible and takes only the history: the
   identity, the phrases and the open conversations remain, but the earlier
