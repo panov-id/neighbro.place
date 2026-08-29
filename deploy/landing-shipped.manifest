@@ -38,6 +38,11 @@ manifest.json
 # legal texts, fetched by the pages rather than inlined
 legal/*.md
 
+# the revisions those texts are at: date plus digest per document, generated at
+# deploy time from deploy/legal-revisions.json. The node fetches it to decide
+# whether what a person accepted is still what the document says (29.08.2026).
+legal-manifest.json
+
 # IndexNow proves ownership by serving its key at the root. Named in full rather
 # than as *.txt: the guard matches with fnmatch, whose * crosses '/', so *.txt
 # allowed any .txt at any depth — a rule that reads like «the key» and means «any

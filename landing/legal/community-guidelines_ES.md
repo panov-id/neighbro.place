@@ -1,6 +1,6 @@
 # Normas de la comunidad — neighbro.place
 
-**Última actualización: 13 de agosto de 2026**
+**Última actualización: 27 de agosto de 2026**
 
 **Estas normas se publican en varios idiomas. La versión en inglés es la que rige; las traducciones se ofrecen por comodidad.**
 

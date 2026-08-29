@@ -24,6 +24,14 @@ Interface states for missing data or reached limits, rather than the normal usag
 - **A table outside your bands** — there is no state and there will not be: someone outside the bands is not shown the table at all, because a greyed-out card would itself report who is sitting where (screen 19).
 - **Geolocation does not exist as a state — edit of 2026-08-28.** Permission is never requested, so "no access" is not an edge case but the norm: the point is worked out from the time zone, the address and the language, labelled as approximate, the circle is wider, and everything is refined by hand on the diagram (`00-mechanics_EN.md` §4).
 
+- **A document changed while the person was away — state added 2026-08-29.**
+  The feed reads as usual; at the first attempt to publish or open a chat the
+  node answers `legal_reacceptance_required` (`xor.ad/docs/protocol_EN.md` §6),
+  and the person lands on a screen listing the documents that changed, with one
+  checkbox. Reading is left alone **deliberately**: someone who came to read a
+  reply should get the reply, not a legal text. The guidelines never come here —
+  their new revision is recorded silently (screen 15).
+
 ## Open questions
 
 - Exact copy and visuals for each state are not defined yet.
