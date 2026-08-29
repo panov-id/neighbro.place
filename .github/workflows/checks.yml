@@ -25,6 +25,16 @@ jobs:
       - name: the documents do not contradict each other
         run: node landing/check-legal-consistency.mjs
 
+      # A document that misdates itself is a consent record pointing at the
+      # wrong text, and it happened: the guidelines changed on 2026-08-27 and
+      # kept announcing 13 August. This runs on every branch so the day the
+      # header and the bytes part ways is the day it is caught.
+      - name: every document's date matches its text
+        run: python3 deploy/check-legal-revisions.py
+
+      - name: and the check itself goes red when broken
+        run: python3 deploy/check-legal-revisions.py --self-test
+
       - name: the policy this landing will be served under
         run: bash landing/test-security-headers.sh
 

@@ -1,6 +1,6 @@
 # Community Guidelines — neighbro.place
 
-**Last updated: 13 August 2026**
+**Last updated: 27 August 2026**
 
 **These rules are published in several languages. The English version is the one that applies; translations are provided for convenience.**
 

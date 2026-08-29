@@ -87,8 +87,20 @@ print(latest.isoformat())
 PYEOF
 }
 
+# The pair a person's consent actually points at: a date **and** the digest of
+# the text under it. The date alone is a line a human types, and it had already
+# failed — the guidelines were edited on 27.08.2026 and went on announcing
+# 13 August until 29.08.2026, because nothing was holding the header against the
+# bytes. check-legal-revisions.py holds them, and it stops the deploy rather
+# than shipping a document that misdates itself.
+legal_manifest() {
+  python3 "$ROOT_DIR/deploy/check-legal-revisions.py" >&2
+  cat "$ROOT_DIR/deploy/legal-revisions.json"
+}
+
 LEGAL_REVISION="$(legal_revision)"
 echo "== legal revision: ${LEGAL_REVISION}"
+LEGAL_MANIFEST="$(legal_manifest)"
 
 # The bar is the whole of Article 14(6) here — there is no account to mail — and
 # both of its failure modes are invisible on the day they appear: markup nobody
@@ -106,8 +118,19 @@ window.__XOR_CONFIG__ = {
   alphaUrl: "${ALPHA_URL:-}",
   analyticsId: "${ANALYTICS_ID:-}",
   legalRevision: "${LEGAL_REVISION}",
+  // Per document: the date it declares, the digest of its substance, and what a
+  // change to it costs a person who already accepted — "required" sends them to
+  // a consent screen before they can publish or open a chat, "silent" only
+  // re-records and marks screen 15. Decided 29.08.2026; the node reads the same
+  // file from /legal-manifest.json.
+  legalDocuments: ${LEGAL_MANIFEST},
 };
 EOF
+
+# The same manifest as a file of its own: the node needs it to decide whether an
+# identity's accepted revision is still current, and reading config.js from a
+# server means parsing JavaScript for a fact that is JSON.
+printf '%s\n' "$LEGAL_MANIFEST" > "$STAGE/legal-manifest.json"
 
 # Pre-render one page per language into the staging copy: the root becomes English and
 # every other language gets its own folder, each with translated text already in the HTML

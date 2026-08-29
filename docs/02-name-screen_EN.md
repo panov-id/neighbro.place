@@ -50,8 +50,9 @@ begins.
   2026-08-28.** The requirement stands in `xor.ad/docs/dsa/SPEC_EN.md` §7.1 and in
   the terminal client ("a face without accepted documents does not work"), and this
   screen had no such element at all: a person registered having accepted nothing.
-  The **date and hash** of the accepted text are stored next to the identity
-  (decided 2026-08-29, screen 15) — on a new revision the documents are shown
+  The **date and hash** of the accepted text are stored next to the identity —
+  a row per each of the three documents in `legal_acceptances` (decided
+  2026-08-29, screen 15; the schema is in `xor.ad/docs/migrations-step1_EN.md`) — on a new revision the documents are shown
   again, and "new" is decided by the hash rather than by the memory of whoever
   edited the file.
 - **The name is required.** It is published text: the other person sees it on the match card and in the chat, so it goes through the same moderation queue as a phrase — but **at the first publication**, not here: until then it is visible to nobody (`00-mechanics_EN.md` §5).
