@@ -202,6 +202,13 @@ the first two refusals in a day cost nothing, the text is edited and sent again.
 From the third refusal in that same day the ceiling drops by one until the day
 ends. You may be wrong for free twice; tuning your wording against the filter, no.
 
+**A table does not take a slot either — decided 2026-08-30.** A table is put up
+from the same composer and stands in the same feed, but it is a meeting place
+rather than an utterance: playing and speaking are different things, and one does
+not take the other away. There is no per-person count of tables and no share of
+the feed either, and the only thing that puts out a forgotten table is the
+silence at it.
+
 **An offer does not take a slot.** Neighbourhood offers have their own quota — a system limit
 on their share of the feed and a frequency cap per business (specification in
 `xor.ad/docs/offers/`). Four live messages is about being a neighbour, and the owner of the

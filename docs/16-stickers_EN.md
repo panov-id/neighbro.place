@@ -2,9 +2,11 @@
 
 ## Purpose
 
-Decorative stickers **in a conversation** (see the README's "Beyond the alpha" section). Not part of day0/the alpha.
+Decorative stickers **in a conversation and at a table** (see the README's "Beyond the alpha" section). Not part of day0/the alpha.
 
-**In conversations only — settled 2026-08-27.** It used to say "for messages/chat", which argued with screen 4: the feed is text, image attachments are unavailable, and an image is possible only on a promoted message. A sticker in place of a phrase would be an image in the feed — an exception to a rule that holds precisely because it has none. The cost is accepted: the feed stays dry to look at, and the feed is the first thing a newcomer sees.
+**In a conversation and at a table — clarified 2026-08-30.** It was first recorded as "in a conversation only"; a table is not a conversation, and the question would have surfaced in code. At a table the stickers are the same and follow the same rules, but **the node sees them**: a table has no end-to-end encryption by construction (screen 19). There are still no stickers in the feed.
+
+**Not in the feed — settled 2026-08-27.** It used to say "for messages/chat", which argued with screen 4: the feed is text, image attachments are unavailable, and an image is possible only on a promoted message. A sticker in place of a phrase would be an image in the feed — an exception to a rule that holds precisely because it has none. The cost is accepted: the feed stays dry to look at, and the feed is the first thing a newcomer sees.
 
 ## Logic
 
