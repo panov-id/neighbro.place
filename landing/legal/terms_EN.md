@@ -1,6 +1,6 @@
 # Neighbro — Terms & Conditions
 
-**Last updated: 10 August 2026**
+**Last updated: 30 August 2026**
 
 ## 1. Who we are
 
@@ -73,7 +73,7 @@ These community rules are also set out, in plain language, in our **Community Gu
 - **What an offer is.** An offer is a post by a local business that must carry a **discount**, available to anyone who comes and asks for it. Publication is **free**: we take no money and no barter for it, and there is no paid placement of any kind.
 - **We are not a party.** An offer is the business's **own proposal**. Any agreement that follows is between you and that business; we do not sell or supply anything in it, and we are not responsible for the goods, the service, or the discount itself.
 - **A published discount must be honoured.** A business that announces a discount is obliged to give it. If it refuses, you can complain from the offer. Complaints are **private** — never shown publicly, and never revealing who complained. Repeated well-founded complaints suspend the business.
-- **Review and removal.** Offers are reviewed before they are shown, and we may reject or remove any of them. An offer without a discount is rejected. So are offers for **alcohol, tobacco, gambling, financial services, medicine and supplements, or weapons**, and offers whose terms depend on **who a person is** rather than where they are — a discount may depend on place, never on sex, age, origin, or the like.
+- **Review and removal.** Offers pass automated checks before publication — a discount must be present, banned categories are refused, and the link is checked against reputation lists and may not use a shortener. A person looks at an offer **after** a complaint, not before. We may reject or remove any offer. An offer without a discount is rejected. So are offers for **alcohol, tobacco, gambling, financial services, medicine and supplements, or weapons**, and offers whose terms depend on **who a person is** rather than where they are — a discount may depend on place, never on sex, age, origin, or the like.
 - **Links and codes exist only in offers.** Ordinary messages and posts carry no links. A promo code shown in an offer belongs to the **business's own system**: we do not issue it, do not verify it, and do not count its use. An external link leads to a site we do not run; if a link is phishing or harmful, report it from the screen shown before you leave and it is switched off.
 - **Images.** An offer may carry an image; ordinary messages and chats may not (§2).
 - **No guarantees to businesses.** Offers fade like everything else and are shown at a limited rate — no more than one offer per ten ordinary posts in a reader's feed, fewer when the feed is quiet. There are no statistics, no targeting guarantees, no scheduling, and no automatic repetition.
