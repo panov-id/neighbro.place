@@ -928,6 +928,16 @@ touch either for the sake of playing together (settled 2026-08-26).
 
 **Coming back.** Leaving early is possible but takes a confirmation — otherwise a button meant to help you break off brings you back in three minutes. On return: **a clean feed and no summaries**: a count of what was missed would restore the very pull the departure was for.
 
+**A phrase in the queue leaves with everything else (2026-08-30).** Leaving
+deletes the unpublished as well: no "accepted but unpublished while the author is
+away" state is created. The price: a phrase may have been seconds from a verdict
+and vanished without being seen by anyone.
+
+**The hour counter is reset by a break (2026-08-30).** The prompt "you have been
+here an hour, step away?" counts continuous use, so after a return the hour runs
+again and the line may come back. Dismissing it with a tap still silences it for
+the rest of the day — but that concerns dismissal, not leaving.
+
 **No limit on frequency.** Step away as often as you like: there is nothing to abuse, a person loses only their own.
 
 ### How the product notices the pull
