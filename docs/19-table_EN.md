@@ -17,6 +17,11 @@ A table is a shared board several neighbours sit around. The screen was created 
 
 ## Logic
 
+- **A table does not consume the posting quota — decided 2026-08-30.** The mechanics said as much about offers in plain words and stayed silent about tables, although they are placed from the same composer and stand in the same feed. Decided in favour of "does not": a table is a **meeting place, not an utterance**, and paying for it with a voice in the feed would be wrong. Putting up a table and speaking in phrases are different things, and one must not take the other away.
+- **There is no per-person count of tables and no share of the feed — decided 2026-08-30, and the price is named.** Offers have a share (one card per ten ordinary ones); tables deliberately do not. Which means a neighbourhood's feed **can be flooded with tables**, and the only thing standing against it is the sliding silence span: a table lives from its last move, and empty tables go out on their own. If flooding turns real, a limiter will have to be built, and it is **not described** — recorded as an open item rather than forgotten.
+- **Stickers exist at a table, as they do in a conversation — decided 2026-08-30.** The same catalogue, the same "one sticker instead of a line" rule, the same name for the terminal and the screen reader (screen 16).
+  **But there is a difference, and it is spoken on screen:** in a conversation the sticker's identifier travels inside the ciphertext and the node does not know which sticker was sent; **at a table there is no encryption by construction**, and the node sees the sticker exactly as it sees the lines and the board. Hiding that is out for the same reason the screen already states the visibility of speech: someone who read about stickers in a conversation will carry the expectation here.
+  **A sticker needs no moderation queue** even here: the images and the names are ours, from the catalogue, and a user cannot send their own.
 - **No hard cap on numbers.** As many as sit down, play; the limit is the readability of the board, not a rule.
 - **A table lives from its last move — on one span shared by everyone** (clarified 2026-08-27). A move or a line from any sitter pushes it alike. This differs from a conversation, where each side has its own count: there two people are involved, while here the company changes, and a separate count would mean the table exists in different states for those sitting at it. When they leave it disappears with the board and everything said at it.
 - **A table with one sitter is a normal state** (settled 2026-08-27): it is visible in the feed, people can pull up a chair, and that person is precisely waiting for company. It disappears on the same silence span. Closing it when the last guest stands up would take the table away from whoever set it up and is waiting for the first.
@@ -32,6 +37,7 @@ A table is a shared board several neighbours sit around. The screen was created 
 
 ## Open questions
 
+- **There is no limiter on the number of tables (opened 2026-08-30).** It was decided to build neither a quota nor a share; if feeds start filling with tables, something else will be needed, and what exactly has not been thought out.
 - How a table looks in the feed: a card with the board, a line with the game's name, the number of sitters — undefined.
 - How many replies a returning person sees if they left and came back: from scratch, or from where they left.
 - What a person sees when they are told "come sit at the table" and the table is invisible to them by the bands — no separate explanation exists on the screen.
