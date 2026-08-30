@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 29 August 2026**
+**Last updated: 30 August 2026**
 
 ## 1. Who we are (controller)
 
@@ -21,6 +21,8 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 - **Content.** The messages, likes (plus/skip), and chats you create — most of which fades and is deleted automatically.
 - **Waitlist email.** If you request access: your email address, the source of the request, which face you came through, and the language, colour and light-or-dark setting you were using — the last three so the email we send you looks like the site you asked from.
 - **Technical data.** Basic logs (e.g. IP, timestamp, user agent) needed for security and to run the Service.
+- **Counters about your identity.** Totals — how many likes you gave and received, how many matches and chats you have had. Numbers only: no text, no names, nobody you spoke to.
+- **Content-security-policy reports.** When your browser blocks something our page tried to load, it posts a report: the page, what was blocked, which rule stopped it, your browser's user agent and the time. No identifier and no address; kept 30 days. It tells us our own page is misconfigured.
 - **Following a link in an offer.** A business offer may carry a link, and it is the only place in the Service where one exists. The link goes through **our own redirect** rather than straight out, so that we can switch it off if the destination turns bad. Passing through it we increment **one number: how many times that offer's link was followed.** We do not record who followed it, when, from which address, or with which browser, and the number is shown to the business as a count and nothing else. Saved offers are not counted at all: they sit on your device and nothing about them reaches us.
 - **Error logs.** When something breaks, we record a technical error report (error message, page URL, your browser's user agent, and non-identifying context) so we can diagnose and fix it. Used only for reliability, not profiling.
 - **A report of illegal content.** If you report content as illegal, we keep your reasons, your name and email address (we ask for neither where the report concerns the sexual abuse of children), and **a copy of the reported content taken at that moment** — because the content itself disappears on its timer, and without the copy we could neither examine the report nor justify what we did. We keep this to comply with a legal obligation, not because you consented, and it is used for nothing else.
@@ -35,7 +37,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 5. Retention and ephemerality
 
 - **A feed message** lives 4 hours 20 minutes and is then **deleted, not hidden**. What remains is a counter of how many there were, without the text and without the author.
-- **A chat** lives on your device for the shorter of the two times the two of you chose. On our servers it is **not stored at all** — only carried until it is delivered.
+- **A chat's contents** live on your device for the shorter of the two times the two of you chose. On our servers they are **not stored at all** — only carried until delivered, and encrypted the whole way. **What our node does keep is the outline of a conversation**: that one exists between two identities, when it last moved, the span each of you chose, and when it ended. Not a word of what was said, and no copy of it.
 - **Profile data** (identity, year of birth, name, your settings) is kept while you use the Service in this browser.
 - **A waitlist email** is kept until launch and for one year after, then deleted — sooner if you ask.
 - **A report of illegal content**, the copy taken with it, and the explanation sent to the author: **1 year**, then deleted — an anonymous count is all that remains. **A business profile and the complaints about its offers**: kept while the business publishes, and deleted a year after its last offer.
