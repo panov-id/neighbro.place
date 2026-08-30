@@ -18,6 +18,8 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 - **The table stays and the person leaving stands up from it — settled 2026-08-27.** A person's phrases are deleted, but a table is not a phrase: people are sitting at it, and removing it would throw out of the game those who have nothing to do with somebody else's break. It would also hand the founder the power screen 19 takes away from them: nobody owns a table. Coming back, they will find the game moved on or gone — exactly as if they had stood up themselves.
 - **A private person's offer disappears** with the phrases: it is a phrase with a non-empty discount (screen 17).
 - **A support answer survives the break** — it waits with the identity, and the identity has not gone anywhere (screen 14).
+- **A phrase waiting in the moderation queue vanishes with the rest — decided 2026-08-30.** If the person leaves, everything of theirs leaves, the unpublished included. The price is named plainly: a phrase may have been seconds from a verdict and disappear without ever being seen by anyone, its author included. In exchange there is no "accepted but unpublished because the author stepped away" state, which the mechanics do not have and which would have to be explained in words.
+- **Saved offers survive the break** (screen 17): they sit on the device and are not your phrases.
 
 ## The screen while away
 
@@ -33,8 +35,11 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 ## After coming back
 
 - A clean feed that fills up again.
+- **Conversations that outlived the span are in place — and it shows that something was said in them (decided 2026-08-30).** No new element was needed: the **"waiting for your reply"** mark has sat in a conversation's row since 2026-08-28 whenever the last line is theirs, and it is computed **on the device** — the line is already here, and the node knows nothing about visits.
+  **How this differs from the summary the whole thing exists to refuse.** A summary tells you **what** you missed and thereby pulls you back into the feed; the mark says only that in **your** conversation the move is yours. No number, no preview, no "while you were away".
 - **No summaries**: no "while you were away", no count of what was missed.
-- Five free quota slots.
+- **Four free quota slots.**
+  [retired] This used to say "Five free quota slots": the number changed on 2026-08-28 and the screen stayed behind until 2026-08-30. The marker sits on its own line deliberately — on a shared one it would exempt the live statement as well.
 
 ## The offer to step away
 
@@ -42,6 +47,6 @@ After an hour of continuous use, one line — "you have been here an hour: step 
 
 ## Open questions
 
-- How to show the cost of leaving when someone has a dozen conversations with different spans: as a list, a number, or one sentence.
+- ~~How to show the cost of leaving with a dozen conversations~~ — **one sentence with two numbers** (decided 2026-08-30): "3 phrases will vanish, 2 conversations out of 7 will not survive". A list of names is rejected deliberately: an inventory of the people you are abandoning, placed in front of the leave button, is guilt as a list — precisely the device used to hold people. The price is accepted: a person will not see which conversation they are losing, and will not get to write one last line.
 - ~~"Until morning" across a change of time zone~~ — counted by the zone **at the moment of leaving**: the person chose morning where they were falling asleep. A zone shifting on a journey does not recompute the span, or a flight east would cut the break short in the middle of the night (settled 2026-08-27).
-- Whether to show the offer to step away to someone who has already stepped away today.
+- ~~Whether to offer stepping away to someone who has already stepped away today~~ — **yes, the hour counter restarts after a return** (decided 2026-08-30). The hour counts **continuous** use, and a person who came back and sat for another hour really did sit for another hour. The rule "dismissed by a tap, gone for the rest of the day" stays, but it concerns dismissal rather than a break: leaving resets the counter.
