@@ -274,9 +274,11 @@ you" — otherwise they either decide they were tracked, or trust a circle that 
 kilometre off.
 
 **There is no "where am I" button — decided 2026-08-28.** [retired] This used to read: a "where am I" button asks for precise location — on request, not on arrival. A precise position is **never** requested: the place is worked out from indirect signals and refined by hand on the diagram. A permission we never ask for is a permission that cannot leak, and declining to have the conversation removes a whole class of questions from the privacy policy.
-Press it and the circle lands for real and the "approximate" label goes. Leave it
-and everything works on the guess. The permission is asked **for one point**, not
-for tracking: position is not read in the background and does not refresh itself.
+[retired] What stood here was the rest of that retired button: "press it and the
+circle lands for real", "the permission is asked for one point". Removed
+2026-08-31: the marker above sat on one line while the flow was described by the
+three that followed, and they read as current. The product asks for no location
+permission of any kind, in any of its faces.
 
 Refusing breaks nothing: the approximate point remains, and so does the hand-placed
 one.
@@ -338,20 +340,20 @@ answered:
 - `storage.estimate` — how much room there is for chat history in IndexedDB.
 - `onLine` — whether there is a network right now.
 
-**What we do not read by default.** WebGL, canvas, the font list, core count,
+**What we do not read at all.** WebGL, canvas, the font list, core count,
 memory size — all available without permission, all of it makes a UID steadier.
-Without the box ticked at signup (§1) we do not take it.
+We do not take it: not "without the box ticked" but **never**.
 
 The line falls exactly along purpose. Everything above is read **so as not to
-ask** — to place a circle, to guess the theme, to pick a layout. The wider set is
-read **in order to recognise**, and so it is asked for separately, unticked by
-default, and used for nothing but holding an identity together. It does not reach
-analytics, feed ranking or advertising.
+ask** — to place a circle, to guess the theme, to pick a layout. Reading anything
+**in order to recognise** is something the product cannot do and does not intend to.
 
-> **Legal.** Reading any of the above is harmless on its own, but assembling
-> signals into a stable identifier is profiling, and in Europe that needs consent.
-> It is asked for at signup (§1). What exactly belongs in the wider set has to be
-> listed before the consent can be worded.
+**[retired] What stood here was the wider set with a box of its own** — "asked for
+separately, unticked by default" — and a paragraph about consent to profiling. The
+fingerprint went with the second checkbox (§1), while these three paragraphs
+outlived the decision and described, until 2026-08-31, a mechanism that does not
+exist. They also made the privacy policy wrong: it states that we do not
+fingerprint, and that is the truth.
 
 ### Open
 
@@ -623,9 +625,9 @@ untrue, and here they do not disagree anywhere except where it says so.
 | reports and blocks | server | moderation and personal hiding | a block while it holds; a report until it is reviewed |
 | the quota | server | the limit | derived from live messages, not stored separately |
 | identity: the UID | server | recognition between visits | until the browser is lost |
-| year of birth, name | server, inside the UID | age separation, a byline | with the identity |
-| connected devices | server | showing one's devices and disconnecting any | until revoked, or with the identity |
-| the link to you | server | to share inside a chat | with the identity |
+| age and name | server, on the identity row | the age band, a byline | with the identity |
+| ~~connected devices~~ | — | — | [retired] row dropped 2026-08-31: there is one live session, and no list of devices exists or will (§8.2 of the spec) |
+| ~~the link to you~~ | — | — | [retired] row dropped 2026-08-31: the product has no links at all, and a transfer is a nine-character code |
 | a support message | our own database | to answer and investigate | 1 year |
 
 ### The storefront and the plumbing
@@ -765,7 +767,7 @@ holds it for the same periods as the server**.
 |---|---|---|
 | the encrypted UID | local storage | until the person clears the browser |
 | settings: conversation lifetime, language filter, zone | local storage | same |
-| the consent choice and its date | local storage | same — it is the proof of consent |
+| the consent choice and its date | **the server**, `legal_acceptances` | proof of acceptance: a date and the digest of the text's substance | edited 2026-08-31; [retired] it used to live in local storage |
 | conversations: messages, times, status | IndexedDB, encrypted with Web Crypto | until the conversation expires (§2) |
 | the draft of an unsent phrase or table | the same, encrypted | until it is sent or cleared (2026-08-28) |
 | the draft of a reply in a conversation | **not stored**: the open screen's memory only | — (2026-08-28) |
@@ -781,12 +783,18 @@ is shown.
 in the tab's memory. Otherwise someone else's message would outlive its 4:20 on
 my phone — and that is precisely the promise the product makes to its author.
 
-**Clearing the browser destroys the identity for good.** There is nothing to
-restore it with: no email, no password, no code — by the design in §1 there
-should not be. This has to be said plainly at sign-up, not discovered later. The
-pleasant converse follows from the same fact: **the "delete everything" button
-really does delete everything**, immediately, with no letters and no
-confirmations.
+**Clearing the browser takes the identity away — unless the paper code was kept
+(edited 2026-08-31).** [retired] This used to read "destroys it for good; there is
+nothing to restore it with: no email, no password, no code". The code arrived on
+2026-08-26 and is issued at registration: sixteen characters, shown once, raise
+the identity on a clean device (§8.2 of the spec). There is still no email and no
+password and there will not be — but "nothing" is no longer true, and that has to
+be said in the same place, at sign-up.
+
+The pleasant converse remains: **the "delete everything" button really does delete
+everything**, immediately, with no letters and no confirmations. Since 2026-08-31
+it has a term: a closed identity is deleted after 30 days, a window for whoever
+pressed it in anger and wants back in with the paper code.
 
 ### Open
 
