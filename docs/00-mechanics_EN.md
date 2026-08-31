@@ -235,8 +235,11 @@ the feed.
 
 **The blur radius** is the author's knob, on screen 4, at every publication. A
 message is tied not to exact coordinates but to a **zone around them**, and the
-slider says how much larger than a point that zone is. It exists for one reason:
-so that a couple of messages cannot lead anyone to a doorway.
+knob says how much larger than a point that zone is. The knob is **stepped — five
+positions: 100 m, 300 m, 1 km, 3 km, 10 km** (2026-08-31; a free number of metres
+was itself becoming a mark by which one author's messages could be joined up). It
+exists for one reason: so that a couple of messages cannot lead anyone to a
+doorway.
 
 Blur **does not decide who sees**. Visibility is decided by the other person's
 viewing radius: a message shows up for those whose circle **overlaps** your zone —
