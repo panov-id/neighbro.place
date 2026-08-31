@@ -20,7 +20,7 @@ The screen from which anything at all appears in the feed. Opened by the "Say" b
   There is no separate entity here and there will not be: a private offer is the same feed record with a non-empty discount, and the whole machinery of a post — geo, lifetime, like, match, chat — comes to it for free. The columns existed in the schema (`discount_value`, `conditions`) and screen 17 promised them, but there was nowhere to type them.
 
   A private person gets no link and no promo code — those belong to venues, and the way in there is different: email, an account, an envelope with a code to a physical address.
-- **The quota remainder next to the button** (added 2026-08-28): "third of five". Until now a person learned about the limit only when refused — and the limit is hard, and this is the screen that runs into it.
+- **The quota remainder next to the button** (added 2026-08-28): "third of four". Until now a person learned about the limit only when refused — and the limit is hard, and this is the screen that runs into it.
 - **A preview of the card** (added 2026-08-28): how the phrase will look in a neighbour's feed, with its mode label and the discount if there is one. It matters most at the first publication: until then a person has not seen a single card of someone else's from this side.
 - The send button.
 

@@ -1,6 +1,6 @@
 # Neighbro — Terms & Conditions
 
-**Last updated: 30 August 2026**
+**Last updated: 31 August 2026**
 
 ## 1. Who we are
 
@@ -66,7 +66,7 @@ These community rules are also set out, in plain language, in our **Community Gu
 ## 9. Content and ephemerality
 
 - **Your content.** You keep ownership of what you post. You grant us a limited, non-exclusive license to host, display, and distribute your content **within the Service** for the purpose of operating it.
-- **Ephemeral by design.** Content fades and is not recoverable. Chat history is kept only as long as the chat is active and is deleted thereafter; we do not provide export or long-term archives.
+- **Ephemeral by design.** Content fades and is not recoverable. Chat contents are never stored on our servers — they are carried encrypted and gone; on your device they live for the shorter of the two spans the two of you chose; we do not provide export or long-term archives.
 
 ## 10. Offers
 
@@ -105,7 +105,7 @@ These community rules are also set out, in plain language, in our **Community Gu
 
 ## 14. Privacy and data protection
 
-- We process the **minimum data** needed to run an ephemeral, area-based, low-identity service. Details are set out in our Privacy Policy (to be published alongside these Terms).
+- We process the **minimum data** needed to run an ephemeral, area-based, low-identity service. Details are set out in our [Privacy Policy](/legal.html#privacy).
 - Under the **GDPR** and Cyprus data-protection law you have rights of access, rectification, erasure, restriction, objection, and portability. Contact **support@neighbro.place** to exercise them.
 - Because the Service is ephemeral, much content is deleted automatically over time.
 
