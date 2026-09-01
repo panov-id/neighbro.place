@@ -31,7 +31,7 @@ begins.
 
 ## Screen elements
 
-- A name field — **required**, up to **24 characters**: that is what fits the conversation header and the match card at 375px without an ellipsis. A counter shows what is left; the limit counts graphemes and **the node enforces it** (`xor.ad/docs/chat_EN.md` §8.2), not this field alone.
+- A name field — **required**, up to **24 graphemes**: that is what fits the conversation header and the match card at 375px without an ellipsis. A counter shows what is left; the limit counts graphemes and **the node enforces it** (`xor.ad/docs/chat_EN.md` §8.2), not this field alone.
 - Age — **a number of years** (settled 2026-08-26: the same as the node stores in its `age` column; once a year the app asks again, "still 38?"). Next to the field, a line saying **"13 and over"**, said before the input rather than after it.
 - A six-digit PIN, entered twice. An obvious one (`000000`, `123456`, one's own birth year) produces the line "this PIN is easy to guess" — and does **not** lock: the button stays live.
 - **The paper recovery code**: sixteen characters in **four groups of four**, shown once, with a confirmation — type back **two of the four groups** (the format comes from `xor.ad/docs/chat_EN.md` §8.2: Crockford base32 without `I`, `L`, `O`, `U`, which are confused with one and zero; case does not matter).
