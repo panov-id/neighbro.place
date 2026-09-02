@@ -26,6 +26,28 @@ A private conversation between two people, opened after both accepted the match 
 - **The conversation key and the game board go out for both at the first death** (§8.13). So neither side can write, even while the other still counts the conversation as alive: they keep their own history — it sits under the vault key, not the conversation key — but not the conversation.
 - **"End it" is not the same as expiry.** Silence is not a decision; a button is, and so it works symmetrically: it ends the conversation for both at once. The confirmation is mandatory, because the other side loses its history without having agreed to it.
 - **The peer has stepped away** (`00-mechanics_EN.md` §13) — a line saying **"stepped away"** replaces the input, with no time of return and no time of leaving. This is the only place in the whole product where anyone's presence is reported, and it is allowed because the person declared the state themselves rather than the system inferring it.
+- **A broken connection is a state of the screen, not silence (added 2026-09-02).**
+  The socket breaks on every node restart and every network change on the
+  person's side; the protocol accounts for it (`xor.ad/docs/protocol_EN.md`
+  §4.4) and the screen, until now, did not. What is seen:
+  - **Reconnecting.** A bar in the conversation header, the input alive, what
+    was typed kept. A reply sent at that moment queues on the device with the
+    same error status as any undelivered one and goes out by itself once the
+    connection is back.
+  - **The identity moved to another device** (the node closed the socket with
+    code `4002`). Reconnecting is pointless: the conversation closes and the
+    person is told the identity now lives on another device.
+  - **The conversation ended** (code `4003`) — not a connection error but the
+    tombstone described above.
+  - **The app is out of date** (code `4004`) — the node does not support this
+    version; a line asks to update and no reconnect is attempted.
+  Telling these four apart is mandatory: a client that does not either hammers a
+  closed door or shows a live identity as dead.
+- **The first load of a conversation is a state of its own (added 2026-09-02).**
+  The history lives on the device and is decrypted with the vault key, which is
+  not instant. While it runs — a skeleton of replies, not an empty screen: an
+  empty screen, in a product where conversations disappear by themselves, reads
+  as "everything was erased".
 - **Conversations are not moderated** — neither for rudeness nor for explicitness: they never leave the pair of devices. Only what is published to the feed is checked (`00-mechanics_EN.md` §5).
 - **There are no links in a conversation** — they are stripped, as in the feed; the one place a link lives is a neighbourhood offer (`00-mechanics_EN.md` §5).
 - **Encryption happens on the devices**: the key is derived by the two of them and the node carries ciphertext (`xor.ad/docs/chat_EN.md` §8.13). A conversation is not merely unchecked — there is nothing to read it with.

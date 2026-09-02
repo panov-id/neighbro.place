@@ -16,6 +16,17 @@ Interface states for missing data or reached limits, rather than the normal usag
 - **A first visit with no phrase of your own (added 2026-08-29).** The feed is full but liking is impossible: a match counts only while both sides have a live phrase. This is a state of its own because until now it lived as a single dimmed icon on a card — a person saw an inactive button and did not understand that the product was waiting for their first word. A line explains it and leads to the composer (screen 5).
 - **The queue has stalled (added 2026-08-29).** Moderation is answering more slowly than usual, or not at all. The phrase stays dimmed for its author and a second one cannot be sent — the same as waiting for a name, but the reason differs and so must the wording: not "checking" but "the check is taking longer". How many seconds separate the two is undecided (`xor.ad/docs/refusal-wordings_EN.md`).
 - **A support answer is waiting (added 2026-08-29).** A mark on the support button rather than in the inbox: the platform's voice does not mix with conversations between people (screen 14).
+- **No network (added 2026-09-02).** A line of its own rather than a mention
+  inside the neighbouring state: the person has no connection, and it is fixed
+  on their side — flight mode, a tunnel, data run out. The tone differs from the
+  one below accordingly: not "we could not do it". What was typed is kept, the
+  feed shows the last thing it managed to receive, and says that it is stale.
+- **Waiting for the first answer (added 2026-09-02).** Neither emptiness nor an
+  error: the request went out, the answer has not arrived. A skeleton of cards
+  instead of an empty screen — otherwise a first visit to a quiet
+  neighbourhood is indistinguishable from an app that does not work, and those
+  are exactly the two seconds in which a person decides whether the product
+  keeps its place on the phone.
 - **The node is unreachable (added 2026-08-29).** Separate from "no network": there the person has no connection, here we are not answering. The difference is not cosmetic — in the second case it is our fault, and the tone differs: "we could not do it", not "there is no connection". What was typed is kept either way.
 - **A moderation refusal** — the phrase did not pass, the class of reason is named, the text stays at hand (screen 4, wordings in `xor.ad/docs/refusal-wordings_EN.md`).
 - **The fifth refusal in a row** — fifteen minutes without posting; the feed, likes and conversations keep working, and the refusal says so.
