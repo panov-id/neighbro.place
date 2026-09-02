@@ -206,8 +206,17 @@ ends. You may be wrong for free twice; tuning your wording against the filter, n
 from the same composer and stands in the same feed, but it is a meeting place
 rather than an utterance: playing and speaking are different things, and one does
 not take the other away. There is no per-person count of tables and no share of
-the feed either, and the only thing that puts out a forgotten table is the
-silence at it.
+there is no per-person count of tables, and the only thing that puts out a
+forgotten table is the silence at it.
+
+**Tables take at most a quarter of the delivered cards — decided 2026-09-02.**
+This used to say there was no share of the feed at all: any number could be
+created, and nothing stopped someone burying a neighbourhood in tables for free,
+since a table spends no phrase quota. The limit is placed on the **showing**
+rather than on the person — the feed is protected and whoever calls people to
+play is not punished. The consequence has to be said out loud: authors always see
+their own table, a neighbour may not see it in this delivery, and this line is
+the answer to "why is my table not visible".
 
 **An offer does not take a slot.** Neighbourhood offers have their own quota — a system limit
 on their share of the feed and a frequency cap per business (specification in

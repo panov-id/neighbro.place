@@ -50,7 +50,10 @@ scroll away from the theme switch. A separate screen is not decoration but
 
 ## Open questions
 
-- How the screen opens from the settings — a list item or a line at the bottom —
+- ~~How the screen opens from the settings~~ — **as an item in the settings list**
+  (decided 2026-09-02), by the general rule for entrances: a screen is opened from the
+  place that makes you want it, and identity and security is wanted in settings.
+  What that item looks like is not drawn. Formerly: a list item or a line at the bottom —
   is not drawn.
 - Whether to show the local database's size exactly (in megabytes) or as a band,
   like the feed's density, is undecided. An exact number here is not an

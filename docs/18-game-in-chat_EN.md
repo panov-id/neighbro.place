@@ -60,7 +60,7 @@ The four operations on a piece — **take, place, rotate, flip** — cover the f
 
 ## Open questions
 
-- The set of boards at launch: dominoes, draughts and chess, or starting with one.
+- ~~The set of boards at launch~~ — **all three at once: dominoes, draughts, chess** (decided 2026-09-02). The engine is one and knows no rules, so a third board costs a third set of pieces and a board's markings, not a third engine. The price is named: three times the artwork of starting with one.
 - ~~What happens to the board on a lost connection~~ — **whoever returns takes the state from the peer** (settled 2026-08-27), over the same encrypted channel: the node carries but does not store — there is no board in the database and there will not be. The cost is named: if both drop at once, the game is lost for good, with nowhere to restore it from.
 - ~~Whether an undo is needed at all~~ — **there is one, but as a request rather than a button (decided 2026-08-29).** "Put it back" sends a proposal to the others; once **everyone** agrees, the board steps back once. There is no unilateral undo for the same reason there is no turn order and no table owner: nobody holds power over a shared board.
   **The engine keeps exactly one previous snapshot**, not a history: it sits in memory, is encrypted under the same key and never reaches the database, like the board itself. Two steps back are impossible, and that is not an omission.

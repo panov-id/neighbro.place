@@ -29,6 +29,6 @@ A support contact button, reachable from the app at any time.
 
 ## Open questions
 
-- Exactly where the button is reachable from (feed header, settings, a separate icon) is not defined yet.
+- ~~Exactly where the button is reachable from~~ — **from wherever a person is stuck** (decided 2026-09-02): a refusal state, an error, the settings. There will be no separate icon in the header of every screen — the entrance sits at the place of the event, as for the other screens. The promise that support is "always reachable from the app" holds because getting stuck only happens where the button is.
 - ~~How a person learns an answer has arrived~~ — **by the mark on the support button** (decided 2026-08-29, above). The answer deliberately does not enter the inbox.
 - ~~Confirmation and reply~~ — settled 2026-08-26 (above).

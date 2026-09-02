@@ -28,5 +28,5 @@ Everything a person has put into the feed and that is still alive: **phrases, of
 ## Open questions
 
 - ~~Whether manual deletion restores the quota~~ — the slot frees that instant (`00-mechanics_EN.md` §3).
-- How this screen is opened from the main interface (an icon in the feed, a separate menu item) is not defined yet.
+- ~~How this screen is opened from the main interface~~ — **from the feed, where the need arises** (decided 2026-09-02). People look for their own phrases where they see them; there will be no "me" section listing screens — every screen is entered from the place that makes you want it.
 - ~~What "delete" means for a table~~ — **you get up and the table lives on** (decided 2026-08-28). The same as stepping away: nobody owns a table, and one person leaving does not take the game from the others. So the table's button is labelled differently from a phrase's: "get up", not "delete".

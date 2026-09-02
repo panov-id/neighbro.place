@@ -27,7 +27,7 @@ Decorative stickers **in a conversation and at a table** (see the README's "Beyo
 
 ## Open questions
 
-- Where in the app the sticker catalog is opened from is not defined yet.
+- ~~Where the sticker catalogue is opened from~~ — **from the conversation's input field** (decided 2026-09-02). A sticker is a reply of its own rather than a decoration, so it is picked where a reply is written; there is no catalogue section of its own in the app.
 - ~~The catalogue size at which preloading stops being free~~ — **the ceiling is named: 150 KB over the wire** (decided 2026-08-29, above). The weight of a single image is not measured — there is nothing to measure yet.
 - **Reporting a sticker is narrowed, not closed (2026-08-29).** With a name in the catalogue, an Article 16 notice can carry the sticker's identifier and name without revealing a word of the conversation: both sit publicly in the catalogue. What that looks like in the form, and what goes into the snapshot, is not described in `xor.ad/docs/dsa/SPEC_EN.md`.
 - ~~How many stickers per message~~ — **one, and instead of text** (settled 2026-08-26): a sticker is a reply of its own, not a decoration on a phrase.
