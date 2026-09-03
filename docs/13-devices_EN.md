@@ -56,6 +56,14 @@ Move the identity to another device **or raise it from the paper code** (decided
 
 ## Open questions
 
-- Two minutes was taken as reasonable but never tried on real people: is it enough to walk to the second device.
-- What to do if a move is started and abandoned: the invite burns by itself, but the "moving" state on the screen is not described.
+- ~~Two minutes was taken as reasonable but never tried on real people~~ — **the
+  lifetime stays two minutes and gains an "extend" button (decided 2026-09-03)**.
+  There is nothing to try the number against today, and the choice is between two
+  different troubles: a long lifetime is a long window in which a code read over
+  your shoulder still works; a short one strands whoever got distracted on the way
+  to the second device. The button removes the second trouble without creating the
+  first: it **issues a new code and puts out the old one** rather than extending it.
+  The price is named: one more button on the screen and one more branch in the
+  transfer flow.
+- ~~What to do if a move is started and abandoned~~ — **the "moving" state is described above** (decided 2026-08-29). Closed in the Russian half that day and left open here until 2026-09-03: the halves are checked for numbers, not for which of them still calls a question open.
 - How the two confirmation lines ("called itself", "when") are shown is not drawn.

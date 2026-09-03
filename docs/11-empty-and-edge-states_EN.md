@@ -43,8 +43,41 @@ Interface states for missing data or reached limits, rather than the normal usag
   reply should get the reply, not a legal text. The guidelines never come here —
   their new revision is recorded silently (screen 15).
 
+## Wordings
+
+**Written 2026-09-03, before the drawing — and that is a decision.** A mockup
+with "Lorem ipsum" lies about the layout: a long line breaks it exactly where
+nobody expected, a short one leaves a hole. Below is what a person reads; the
+look stays open.
+
+One voice for all of them: say what happened and what to do next. No apologising
+twice, no explaining how the system is built, no "oops".
+
+| State | Heading | Line under it | Action |
+|---|---|---|---|
+| Quota spent | That is all for now | Your four phrases are still alive. When one frees up, you can speak again. | My messages |
+| First phrase waiting for a name | Looking at your name | Once the name is accepted, the phrase goes out to the neighbours. | — |
+| Nobody nearby | Quiet around here | Nobody in your circle is talking right now. A wider circle, more voices. | Widen the circle |
+| First visit with no phrase of your own | Say something first | A like opens a conversation only when both of you have a live phrase. | Write one |
+| The queue is stuck | The check is running late | The phrase is not lost, it is waiting its turn. | — |
+| A support reply is waiting | You have a reply | The support reply is in the support section. | Open |
+| No network | No connection | The internet seems to be gone. What you typed is here, the feed is what made it through. | Retry |
+| Waiting for the first answer | — | (a skeleton of cards, no text) | — |
+| The node is unreachable | This one is on us | We are not answering — that is our side. What you typed is here. | Retry |
+| Moderation refusal | This will not go out | *(the class of reason — `xor.ad/docs/refusal-wordings_EN.md`)* | Edit |
+| Fifth refusal in a row | Fifteen minutes off | The feed, likes and conversations all work — only new phrases are paused. | — |
+| The conversation ended for the other person | The conversation ended | There is nothing here any more. | Close |
+| The other person stepped away | Stepped away | — | — |
+| A document changed | Something changed | Read what is different and accept it — writing does not work until you do. | Read |
+
+Three lines are deliberately empty. "Stepped away" has no second line because we
+do not know when they are back and will not invent it. "Waiting for the first
+answer" has no text at all: the skeleton already says a load is running, and a
+caption under it turns a second of waiting into an event. The moderation refusal
+has a shared heading, while the reason arrives from the node — one per class.
+
 ## Open questions
 
-- Exact copy and visuals for each state are not defined yet.
+- ~~Exact copy for each state~~ — **written 2026-09-03, the "Wordings" section above**. What stays open is the **visual**: how these lines sit on the screen, with or without an icon, where the action goes.
 - ~~Whether the quota recovers over time~~ — **there are two counts and they differ** (decided 2026-08-29). A slot frees **only** when a phrase disappears: it expired or was taken down. The "four per hour" ceiling is a sliding window and releases by itself. So a person can see a free slot and still be refused, and the other way round; a refusal must name which of the two is holding them (`xor.ad/docs/refusal-wordings_EN.md`).
 - ~~Behaviour when geolocation access is denied~~ — settled 2026-08-26 (above).

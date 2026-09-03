@@ -55,6 +55,12 @@ scroll away from the theme switch. A separate screen is not decoration but
   place that makes you want it, and identity and security is wanted in settings.
   What that item looks like is not drawn. Formerly: a list item or a line at the bottom —
   is not drawn.
-- Whether to show the local database's size exactly (in megabytes) or as a band,
+- ~~Whether to show the local database's size exactly or as a band~~ — **exactly, in
+  megabytes** (decided 2026-09-03). The bands in the feed are not there for looks: an
+  exact count by radius is an instrument for working out where an author stands. Here
+  there is nothing and nobody to work out: a person is looking at **their own** device
+  and their own conversations, and the only question they are answering is "is this
+  worth the room on my phone". A band of "a little / noticeable" does not answer it.
+  Formerly: exactly (in megabytes) or as a band,
   like the feed's density, is undecided. An exact number here is not an
   instrument, but a third digit is of no use either.

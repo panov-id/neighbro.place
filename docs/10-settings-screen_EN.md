@@ -43,5 +43,5 @@ They were not split for a simple reason: the bottom navigation has exactly four 
 ## Open questions
 
 - ~~The contrast slider's range and step~~ — there is no slider: three steps, each checked by arithmetic against 4.5:1, as in the panel. A continuous control inevitably has positions below the threshold, and accessibility stops being a guarantee.
-- The silence timer defaults to an hour; whether it can be set here for all future conversations or only inside a conversation is undecided.
-- How exactly the "Identity" block is set apart — by a heading, by colour, or on a screen of its own — is not drawn; all that is settled is that it is set apart (2026-08-27).
+- ~~The silence timer's default~~ — **an hour, and the setting changes only future conversations** (decided 2026-08-28, above).
+- ~~How exactly the "Identity" block is set apart~~ — **on screen 12 of its own** (decided 2026-08-28).
