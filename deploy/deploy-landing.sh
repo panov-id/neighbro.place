@@ -114,6 +114,7 @@ cat > "$STAGE/config.js" <<EOF
 // Generated at deploy time — ${SOURCE_TAG} → ${RELAY_API_URL}
 window.__XOR_CONFIG__ = {
   apiUrl: "${RELAY_API_URL}",
+  reportUrl: "${RELAY_REPORT_URL:-${RELAY_API_URL}}",
   publishableKey: "${RELAY_PUBLISHABLE_KEY:-}",
   alphaUrl: "${ALPHA_URL:-}",
   analyticsId: "${ANALYTICS_ID:-}",
