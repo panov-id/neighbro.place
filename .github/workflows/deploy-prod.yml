@@ -26,6 +26,10 @@ jobs:
           BUNNY_PULL_ZONE_ID: ${{ secrets.BUNNY_PULL_ZONE_ID }}
           BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
           RELAY_API_URL: ${{ secrets.RELAY_API_URL }}
+          # The Article 16 intake has a host of its own, outside the blocking
+          # WAF on the api host: a notice quoting a <script> tag or a ../ path
+          # is refused there (measured 03.09.2026). Public address, not a secret.
+          RELAY_REPORT_URL: https://report.relay.panov.id
           RELAY_PUBLISHABLE_KEY: ${{ secrets.RELAY_PUBLISHABLE_KEY }}
           ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
           SEARCH_CONSOLE_TOKEN: ${{ secrets.SEARCH_CONSOLE_TOKEN }}

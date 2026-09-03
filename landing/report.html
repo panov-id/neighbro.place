@@ -98,6 +98,7 @@
       <select name="target_kind" id="kind">
         <option value="feed_message">A message in the feed</option>
         <option value="offer">An offer from a business</option>
+        <option value="table_line">A line at a table</option>
         <option value="chat">Something in a chat</option>
         <option value="other">Something else</option>
       </select>
@@ -165,6 +166,9 @@
 <script>
   var CFG = window.__XOR_CONFIG__ || {};
   var API_URL = CFG.apiUrl || "";
+  // The notice goes to its own host: the api host blocks bodies that quote
+  // an attack, which is most of what a real notice contains.
+  var REPORT_URL = CFG.reportUrl || CFG.apiUrl || "";
   var PUBLISHABLE_KEY = CFG.publishableKey || "";
   var form = document.getElementById("reportForm");
   var result = document.getElementById("result");
@@ -220,7 +224,7 @@
     send.disabled = true;
     send.textContent = "Sending…";
 
-    fetch(API_URL + "/report", {
+    fetch(REPORT_URL + "/report", {
       method: "POST",
       headers: (function () {
         var h = { "Content-Type": "application/json" };

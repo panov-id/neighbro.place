@@ -1,6 +1,6 @@
 # Normas de la comunidad — neighbro.place
 
-**Última actualización: 13 de agosto de 2026**
+**Última actualización: 27 de agosto de 2026**
 
 **Estas normas se publican en varios idiomas. La versión en inglés es la que rige; las traducciones se ofrecen por comodidad.**
 
@@ -26,7 +26,7 @@ Neighbro no es un mercadillo. **La venta o publicidad de bienes y servicios, la 
 
 ## Denuncias y bloqueos
 
-Si un mensaje incumple las normas — denúncialo. Las denuncias y bloqueos reducen la cuota de publicación del autor. Un bloqueo oculta el mensaje solo para ti. También puedes **bloquear a un usuario** — no volverás a ver su contenido. Ofrecemos estas herramientas y la **premoderación por IA**, pero **no somos responsables del comportamiento de otros usuarios**; cada persona es responsable de sus actos.
+Si un mensaje incumple las normas — denúncialo. Un bloqueo oculta el mensaje solo para ti. También puedes **bloquear a un usuario** — no volverás a ver su contenido. Ofrecemos estas herramientas y la **premoderación por IA**, pero **no somos responsables del comportamiento de otros usuarios**; cada persona es responsable de sus actos. **Denunciar y bloquear no afectan a la cuota de publicaciones del autor**: un toque no debe recortar en silencio la voz de otra persona.
 
 ## Consecuencias de las infracciones
 

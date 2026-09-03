@@ -45,5 +45,6 @@ exec docker run --rm \
   --user "$(id -u):$(id -g)" \
   --env SITE_ORIGIN \
   --env RELAY_API_URL \
+  --env RELAY_REPORT_URL \
   --env ANALYTICS_ID \
   "$NODE_IMAGE" node "$@"

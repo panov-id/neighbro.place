@@ -74,20 +74,32 @@ for (const page of pages) {
 // only in production, so a malformed value stops the deploy instead of shipping
 // a policy nobody will read. An empty value stays legal: a stand without a
 // relay is a stand, not a mistake.
-const configured = process.env.RELAY_API_URL || "";
-let relay = "";
-if (configured) {
+function origin(name) {
+  const configured = process.env[name] || "";
+  if (!configured) return "";
   try {
     const parsed = new URL(configured);
     if (parsed.origin !== configured.replace(/\/$/, "")) {
       throw new Error(`expected a bare origin, got ${configured}`);
     }
-    relay = parsed.origin;
+    return parsed.origin;
   } catch (error) {
-    console.error(`RELAY_API_URL is not a usable CSP source: ${error.message}`);
+    console.error(`${name} is not a usable CSP source: ${error.message}`);
     process.exit(1);
   }
 }
+
+const relay = origin("RELAY_API_URL");
+
+// An Article 16 notice goes to its own host, not to the api one: the api host
+// sits behind a WAF that blocks a report quoting the attack it is reporting —
+// `<script>` or `../` in the text is exactly what a notifier has to send. The
+// deploy has been passing RELAY_REPORT_URL since the intake moved, while this
+// policy was still built from RELAY_API_URL alone, so the browser would have
+// blocked the very request the move was meant to let through: the form posts,
+// connect-src refuses, and the notifier sees nothing at all. Empty stays legal
+// and means the page falls back to apiUrl, which is the old behaviour.
+const report = origin("RELAY_REPORT_URL");
 
 // Where the browser says the policy blocked something. The hashes are computed
 // from the markup at deploy time, so the policy drifts by construction, and the
@@ -131,7 +143,7 @@ const csp = [
   // recomputed here on every deploy, so markup can be edited freely.
   `style-src 'self' 'unsafe-hashes' ${[...styles, ...styleAttributes].join(" ")}`,
   `script-src 'self' ${[...scripts, ...analytics.script].join(" ")}`.replace(/\s+/g, " "),
-  `connect-src 'self' ${[relay, ...analytics.connect].filter(Boolean).join(" ")}`.trim(),
+  `connect-src 'self' ${[relay, report, ...analytics.connect].filter(Boolean).join(" ")}`.trim(),
   ...(reportTo ? [`report-uri ${reportTo}`, "report-to csp"] : []),
   "upgrade-insecure-requests",
 ].join("; ");
