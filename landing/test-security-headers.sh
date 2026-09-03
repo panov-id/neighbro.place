@@ -36,8 +36,9 @@ printf '%s' '<!doctype html><html><head><base href="/">
 printf '%s' '<!doctype html><html><body><p style="color:red">x</p><script>window.lang="ru"</script></body></html>' \
   > "$WORK/stage/ru/index.html"
 
-build() { # build <relay> [analytics id]
-  RELAY_API_URL="$1" ANALYTICS_ID="${2:-}" node "$BUILDER" "$WORK/stage" 2>&1
+build() { # build <relay> [analytics id] [report host]
+  RELAY_API_URL="$1" ANALYTICS_ID="${2:-}" RELAY_REPORT_URL="${3:-}" \
+    node "$BUILDER" "$WORK/stage" 2>&1
 }
 
 # --- the value of the relay address ------------------------------------------
@@ -91,6 +92,71 @@ if [ $? -ne 0 ]; then
   fail "a trailing slash is accepted" "$output"
 else
   pass "a trailing slash is accepted"
+fi
+
+# --- the address an Article 16 notice is sent to ------------------------------
+#
+# It is a host of its own: the api host sits behind a WAF that blocks a report
+# quoting the attack it reports. The deploy has been passing RELAY_REPORT_URL
+# since the intake moved, while the policy was built from RELAY_API_URL alone —
+# so connect-src refused the very request the move existed to allow, and the
+# notifier saw nothing. These cases hold the two halves: the value is validated
+# like the api one, and it reaches connect-src.
+
+for bad_report in "https://report.example/v1" "not a url"; do
+  output="$(build "https://relay.example" "" "$bad_report")"
+  status=$?
+  label="refuses report value '$bad_report'"
+  if [ $status -eq 0 ]; then
+    fail "$label" "exited 0"
+  elif ! printf '%s' "$output" | grep -qi 'RELAY_REPORT_URL is not a usable CSP source'; then
+    fail "$label" "message does not name the variable: $output"
+  else
+    pass "$label"
+  fi
+done
+
+output="$(build "https://relay.example" "" "https://report.example")"
+if [ $? -ne 0 ]; then
+  fail "a report host builds" "$output"
+else
+  printf '%s' "$output" > "$WORK/report.json"
+  python3 - "$WORK/report.json" <<'PY2'
+import json, sys
+data = json.load(open(sys.argv[1]))
+headers = {h["name"]: h["value"] for h in data["headers"]}
+csp = headers["Content-Security-Policy"]
+connect = [d for d in csp.split(";") if d.strip().startswith("connect-src")][0]
+failed = 0
+def check(name, condition, detail=""):
+    global failed
+    if condition:
+        print(f"  ok   {name}")
+    else:
+        failed += 1
+        print(f"  FAIL {name} — {detail}")
+check("the report host is in connect-src", "https://report.example" in connect, connect)
+check("the api host is still in connect-src", "https://relay.example" in connect, connect)
+# csp-report goes to the api host, not the report one: it is a browser report,
+# not an Article 16 notice, and nothing about it is quoted from an attack.
+check("csp reporting still points at the api host",
+      headers.get("Reporting-Endpoints", "").count("https://relay.example/csp-report") == 1,
+      headers.get("Reporting-Endpoints", ""))
+sys.exit(1 if failed else 0)
+PY2
+  [ $? -eq 0 ] || failed=$((failed + 1))
+fi
+
+# No report host is legal and means the page falls back to the api one.
+output="$(build "https://relay.example")"
+if [ $? -ne 0 ]; then
+  fail "an empty report host is allowed" "$output"
+else
+  if printf '%s' "$output" | grep -q 'report.example'; then
+    fail "an empty report host is allowed" "invented an endpoint"
+  else
+    pass "an empty report host is allowed"
+  fi
 fi
 
 # --- what the policy says, with a relay and no analytics ---------------------

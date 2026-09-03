@@ -276,7 +276,11 @@ if [ "${SKIP_SECURITY_HEADERS:-}" = "1" ]; then
   echo "SKIP_SECURITY_HEADERS=1 — the policy is left exactly as it is on the zone." >&2
 elif [ -n "${BUNNY_PULL_ZONE_ID:-}" ] && [ -n "${BUNNY_API_KEY:-}" ]; then
   echo "Building the security headers from the staged copy…"
+  # RELAY_REPORT_URL идёт сюда наравне с RELAY_API_URL: политика обязана
+  # разрешить тот хост, на который страница шлёт уведомление по ст.16, иначе
+  # connect-src отклонит запрос молча и заявитель не увидит ничего.
   HEADERS_JSON="$(RELAY_API_URL="$RELAY_API_URL" ANALYTICS_ID="${ANALYTICS_ID:-}" \
+    RELAY_REPORT_URL="${RELAY_REPORT_URL:-}" \
     RUN_NODE_MOUNT="$STAGE" bash "$ROOT_DIR/deploy/run-node.sh" \
     landing/security-headers.mjs "$STAGE")"
 
