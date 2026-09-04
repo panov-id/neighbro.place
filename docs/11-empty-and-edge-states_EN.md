@@ -29,6 +29,7 @@ Interface states for missing data or reached limits, rather than the normal usag
   keeps its place on the phone.
 - **The node is unreachable (added 2026-08-29).** Separate from "no network": there the person has no connection, here we are not answering. The difference is not cosmetic — in the second case it is our fault, and the tone differs: "we could not do it", not "there is no connection". What was typed is kept either way.
 - **A moderation refusal** — the phrase did not pass, the class of reason is named, the text stays at hand (screen 4, wordings in `xor.ad/docs/refusal-wordings_EN.md`).
+- **A published phrase of yours was restricted** — the Article 17 statement of reasons is shown in the app at the next sign-in, because the author usually has no email (screen 9; added 2026-09-04).
 - **The fifth refusal in a row** — fifteen minutes without posting; the feed, likes and conversations keep working, and the refusal says so.
 - **A conversation ended for the other person** — a gravestone on the open screen, a marked row in the list (screens 7 and 8).
 - **The other person stepped away** — a line saying "away" instead of the input field, with no span (screen 8).
@@ -74,6 +75,7 @@ twice, no explaining how the system is built, no "oops".
 | The other person stepped away | Stepped away | — | — |
 | The identity moved to another device | Your identity is not here any more | You moved it to another device. It no longer works on this one, and the correspondence stays here. | — |
 | The app is out of date | Time to update | This version no longer talks to the node. Reload the page and everything is where you left it. | Reload |
+| A published phrase was restricted | Your phrase was hidden | What happened, why, who decided and what to do next — all of it here. | Read |
 | A document changed | Something changed | Read what is different and accept it — writing does not work until you do. | Read |
 
 Three lines are deliberately empty. "Stepped away" has no second line because we
