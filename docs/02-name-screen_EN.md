@@ -47,7 +47,8 @@ begins.
 ## Logic
 
 - **The terms are accepted before the first screen, not after — recorded
-  2026-08-28.** The requirement stands in `xor.ad/docs/dsa/SPEC_EN.md` §7.1 and in
+  2026-08-28.** The requirement rests on DSA Article 14 and the checklist that
+  tracks it (`xor.ad/docs/dsa/CHECKLIST_EN.md`, the section on document revisions), and on
   the terminal client ("a face without accepted documents does not work"), and this
   screen had no such element at all: a person registered having accepted nothing.
   The **date and hash** of the accepted text are stored next to the identity —

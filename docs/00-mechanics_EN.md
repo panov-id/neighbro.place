@@ -150,8 +150,17 @@ sees that and spends no words: nothing goes into the void. And nothing reaches
 Petya — what disappeared is not revived by someone else's activity.
 
 **The ending is announced in advance.** For its last minutes a message or a chat is
-shown fading: you can see it going, and there is time to answer. The disappearance
-itself is silent — no headstones, because what was promised is that nothing stays.
+shown fading: you can see it going, and there is time to answer.
+
+**Nothing stays of the content, but the fact that it ended is shown — edited
+2026-09-04 after the review panel.** This said "the disappearance itself is
+silent — no headstones", and it argued with two screens at once: whoever had the
+chat open is left with a "this conversation has ended" headstone until they
+touch it (screen 8), and for the other person it sits in the list marked "ended"
+until their own span runs out (screen 7). The reason given there is stronger than
+the old wording: a silent "you cannot write here" is indistinguishable from a
+fault. The promise that nothing stays is about the correspondence, not about the
+fact that the conversation is over.
 
 ### Open
 
