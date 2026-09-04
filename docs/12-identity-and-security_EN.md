@@ -15,6 +15,45 @@ scroll away from the theme switch. A separate screen is not decoration but
 ## Screen elements
 
 - **Move to another device** — a nine-character code (screen 13).
+
+### Unlocking the tab — added 2026-09-04
+
+Until today this screen did not exist **at all**, though the mechanics have
+required it since day one ("the PIN locks an open tab against whoever picked the
+device up", `00-mechanics_EN.md` §1) and the spec puts a mandatory text on it.
+Found by a review panel: someone building from this screen set would have drawn
+neither the input nor the warning, and ten taps into someone else's phone would
+have destroyed their correspondence silently.
+
+- **The lock closes on leaving the tab and after 5 minutes without a touch**
+  (decided 2026-09-04). Leaving is the same `visibilitychange` already measured
+  for stepping away (`00-mechanics_EN.md` §11). The price is named: switch to
+  another tab and back, and it is six digits again — and the mistakes go into the
+  same counter of ten.
+- **The lock shows the PIN field and nothing else.** No name, no number of
+  conversations, no preview of the last line. Whoever picked the phone up off the
+  table does not even learn the name — and the name is what neighbours find a
+  person by in the feed (screen 6). The price is accepted: the owner cannot see
+  whether anything new arrived until they enter six digits. There is deliberately
+  no "something new" marker here: it would give away the rhythm of someone's
+  conversations, the very metadata for which push was dropped (G8,
+  `xor.ad/docs/open-work_EN.md`).
+- **The counter stays quiet until the seventh attempt, and from the seventh it
+  speaks plainly.** The wording is fixed by the spec (`xor.ad/docs/chat_EN.md`
+  §8.2) and must not drift:
+
+  > 3 attempts left. After that the correspondence on this device is gone —
+  > neither we nor you will be able to bring it back.
+
+- **The tenth mistake burns the node's share, and this device's correspondence is
+  gone for good.** The identity itself survives: name, age and the paper code go
+  on working; the history does not, because there is nothing left to decrypt it
+  with. That is why the warning is mandatory and stands before the last attempt
+  rather than after it.
+- **Only the PIN unlocks it.** Neither the paper code nor a move to another
+  device opens this lock: the share belongs to the device, not to the identity
+  (`xor.ad/docs/chat_EN.md` §8.2), and it cannot be reached from anywhere — not
+  even from a live session of the same identity.
 - **Change the PIN.** The PIN locks the disk, not the identity, and a PIN someone
   has seen cannot be changed any other way except by moving to another device.
   Changing it re-encrypts the local database and takes a new share from the node

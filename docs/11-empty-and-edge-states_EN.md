@@ -56,6 +56,8 @@ twice, no explaining how the system is built, no "oops".
 | State | Heading | Line under it | Action |
 |---|---|---|---|
 | Quota spent | That is all for now | Your four phrases are still alive. When one frees up, you can speak again. | My messages |
+| Tab locked | Enter your PIN | Six digits and you are back. | — |
+| Locked, fewer than four attempts left | Enter your PIN | 3 attempts left. After that the correspondence on this device is gone — neither we nor you will be able to bring it back. | — |
 | First phrase waiting for a name | Looking at your name | Once the name is accepted, the phrase goes out to the neighbours. | — |
 | Nobody nearby | Quiet around here | Nobody in your circle is talking right now. A wider circle, more voices. | Widen the circle |
 | First visit with no phrase of your own | Say something first | A like opens a conversation only when both of you have a live phrase. | Write one |
