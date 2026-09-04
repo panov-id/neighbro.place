@@ -8,6 +8,8 @@ Everything a person has put into the feed and that is still alive: **phrases, of
 
 - **A separate block on top** — the phrase being checked or waiting for its name to be accepted, with the reason for the wait (settled 2026-08-26). It takes no slot, but a person has to see that their text did not vanish, and understand why a second one cannot be sent.
 - **A rejected phrase sits in the same block on top**, with the reason and the text at hand: fix it and send again (screen 4 promises this but does not say where; here, settled 2026-08-27).
+
+  **It lives on the device, and it cannot live anywhere else — recorded 2026-09-04 after the review panel.** The node does not keep it: a rejected `feed_messages` row is deleted and the reason goes to the author (`xor.ad/docs/chat_EN.md` §13). So the block on top can only be assembled from local storage, and it now has its own row in the table in §9. Until this edit the screen promised to show something nobody stored: close the tab as the verdict lands, and there is nothing to show.
 - A list of what is published and not yet gone, each marked by type: phrase, offer, table.
 - A countdown timer to disappearance and a manual delete button on each entry.
 - A phrase and an offer carry their **like count** (settled 2026-08-27).

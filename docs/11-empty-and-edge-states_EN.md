@@ -32,6 +32,8 @@ Interface states for missing data or reached limits, rather than the normal usag
 - **The fifth refusal in a row** — fifteen minutes without posting; the feed, likes and conversations keep working, and the refusal says so.
 - **A conversation ended for the other person** — a gravestone on the open screen, a marked row in the list (screens 7 and 8).
 - **The other person stepped away** — a line saying "away" instead of the input field, with no span (screen 8).
+- **The identity moved to another device** — the node closed the socket with `4002`, the conversation closes, reconnecting is pointless (screen 8; added 2026-09-04).
+- **The app is out of date** — the node does not support this version, code `4004`, no reconnection is attempted (screen 8; added 2026-09-04).
 - **A table outside your bands** — there is no state and there will not be: someone outside the bands is not shown the table at all, because a greyed-out card would itself report who is sitting where (screen 19).
 - **Geolocation does not exist as a state — edit of 2026-08-28.** Permission is never requested, so "no access" is not an edge case but the norm: the point is worked out from the time zone, the address and the language, labelled as approximate, the circle is wider, and everything is refined by hand on the diagram (`00-mechanics_EN.md` §4).
 
@@ -70,6 +72,8 @@ twice, no explaining how the system is built, no "oops".
 | Fifth refusal in a row | Fifteen minutes off | The feed, likes and conversations all work — only new phrases are paused. | — |
 | The conversation ended for the other person | The conversation ended | There is nothing here any more. | Close |
 | The other person stepped away | Stepped away | — | — |
+| The identity moved to another device | Your identity is not here any more | You moved it to another device. It no longer works on this one, and the correspondence stays here. | — |
+| The app is out of date | Time to update | This version no longer talks to the node. Reload the page and everything is where you left it. | Reload |
 | A document changed | Something changed | Read what is different and accept it — writing does not work until you do. | Read |
 
 Three lines are deliberately empty. "Stepped away" has no second line because we

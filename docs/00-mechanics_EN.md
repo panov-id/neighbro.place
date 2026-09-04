@@ -791,6 +791,7 @@ holds it for the same periods as the server**.
 | the consent choice and its date | **the server**, `legal_acceptances` | proof of acceptance: a date and the digest of the text's substance | edited 2026-08-31; [retired] it used to live in local storage |
 | conversations: messages, times, status | IndexedDB, encrypted with Web Crypto | until the conversation expires (§2) |
 | the draft of an unsent phrase or table | the same, encrypted | until it is sent or cleared (2026-08-28) |
+| a rejected phrase with its reason | the same, encrypted | until it is fixed and sent again, or cleared by hand (2026-09-04) |
 | the draft of a reply in a conversation | **not stored**: the open screen's memory only | — (2026-08-28) |
 
 **A conversation is erased on the device by the same rule as on the server** — by
