@@ -86,9 +86,11 @@ than offering nothing.
 
 ### Open
 
-- How long a device-connection invite should live, and how the list of one's own devices
-  is shown, is undecided.
-  That is settled by trying it, not by reasoning about it.
+- ~~How the list of one's own devices is shown~~ — removed 2026-09-07: no such
+  list exists or will, an identity has one live session ([retired] row in §7). The
+  only live part was the first half, and that is settled too: **a transfer code
+  lives two minutes** (`xor.ad/docs/chat_EN.md`, screen 13). What stood here was
+  about "connecting" a second device, which the product does not have.
 - Whether the warning is shown once at signup or stays reachable afterwards — in
   settings, say — is undecided.
 
@@ -164,14 +166,19 @@ fact that the conversation is over.
 
 ### Open
 
-- How long before the end the fading starts is undecided. It may differ between a
-  message and a chat.
+- ~~How long before the end the fading starts for a chat~~ — settled: **in the
+  last quarter of its own span** (`xor.ad/docs/chat_EN.md` §5). A share, not fixed
+  minutes: 2:30 on a ten-minute chat, a quarter of an hour on an hourly one, 65
+  minutes on "while we're talking". The old `min(20 minutes, span / 3)` was
+  dropped there (removed 2026-09-07).
+- How long before the end a **feed phrase** fades is undecided. A share is no use
+  here: 4:20 is the same for everyone, so it needs one number.
 
 ---
 
 ## 3. The quota
 
-**The quota is five messages alive at once, not five a day.** It says how much of
+**The quota is four messages alive at once, not four a day** (edited 2026-08-28; [retired] it used to be "five alive at once"; the English kept saying five until 2026-09-07, twelve lines above its own "while all four are taken"). It says how much of
 yours is standing in the feed right now.
 
 A slot frees the moment a message goes, and it does not matter how it went:
@@ -186,6 +193,15 @@ your mind would cost you the chance to say it differently.
 While all four are taken, publishing is unavailable. That is not a refusal and not
 an error — it is a feed full of your own messages, and there are two ways out:
 wait, or take one down.
+
+**There are in fact two limits, and the second was never written in here — edited
+2026-09-07.** Besides four live phrases there is **no more than four per hour**
+(screen 4, edited 2026-08-28; it used to be five and eight per 64 minutes). The
+second limit plugs the hole the paragraph above opens: since taking a phrase down
+frees its slot at once, cycling your own would let you speak without any limit at
+all. The first limit is about room in the neighbours' feed, the second is about
+pace. Only the first stood here, in the section declared the single source of the
+rules.
 
 **A report does not touch the quota.** It does two things: it removes the message
 from the feed for the person who reported it, and it adds one to that message's
@@ -205,11 +221,23 @@ nothing to occupy; but the next one cannot be sent either, or waiting would stac
 queue around the ceiling. This happens once: the name is checked at the first
 publication and at every change, and changing it requires a clean slate.
 
-**A message refused by moderation takes no slot — until the third one.** A message
-that did not pass the filter never reached the feed, so it has nothing to occupy:
-the first two refusals in a day cost nothing, the text is edited and sent again.
-From the third refusal in that same day the ceiling drops by one until the day
-ends. You may be wrong for free twice; tuning your wording against the filter, no.
+**A message refused by moderation takes no slot at all.** A message that did not
+pass the filter never reached the feed, so it has nothing to occupy: a refusal
+costs nothing, the text is edited and sent again.
+
+**A run of refusals is stopped by a pause, not by the ceiling — settled
+2026-09-07.** Five refusals in a row close sending for 15 minutes; the feed,
+likes and chats keep working, and that is said plainly, or a silent refusal of
+everything reads as a ban. The wording is written:
+`xor.ad/docs/refusal-wordings_EN.md` §4.
+
+[retired] This used to read "from the third refusal in that same day the ceiling
+drops by one until the day ends". It was a second punishment for the same
+behaviour, with a different threshold and a different counter, and neither of the
+two files knew about the other. The pause was chosen: its wording already exists,
+it creates no day-long state beside the identity, and it needs no floating ceiling
+shown on screen 4. The cost is named — a pause bites harder: for 15 minutes
+nothing can be said at all, where a lowered ceiling still left three slots.
 
 **A table does not take a slot either — decided 2026-08-30.** A table is put up
 from the same composer and stands in the same feed, but it is a meeting place
@@ -237,8 +265,9 @@ bakery stays a neighbour with their four even while an offer of theirs is up.
 - ~~How far a block lowers the ceiling~~ — dropped 2026-08-26: it does not lower
   it at all, so the questions of its strength, of stacking and of telling the author
   are gone with it.
-- Whether the author sees that a third refusal by moderation has dropped their
-  ceiling, and knows why, is undecided. That is the only remaining way down.
+- ~~Whether the author sees that a third refusal by moderation has dropped their
+  ceiling~~ — removed 2026-09-07 along with the drop itself: the ceiling no longer
+  floats, a run of refusals is stopped by a pause, and its wording is written.
 
 ---
 
@@ -378,8 +407,11 @@ fingerprint, and that is the truth.
 
 ### Open
 
-- The defaults and bounds of both knobs are undecided: neither the viewing radius
-  nor the amount of blur.
+- ~~The defaults and bounds of both knobs~~ — both are decided, and the question
+  stood next to its own answers (removed 2026-09-07). **Viewing radius: 3 km by
+  default, from 500 m to 25 km** (settled 2026-08-26, screen 3). **Blur radius:
+  five steps, 100 m · 300 m · 1 km · 3 km · 10 km, 300 m by default** (2026-08-31;
+  the steps are named earlier in this same section, the default on screen 4).
 - ~~How a zone meets a circle~~ — settled 2026-08-26: **overlap is enough**. The
   rule has moved into the body of the section.
 - Whether a hand-placed or a measured point is remembered between visits is
@@ -540,15 +572,19 @@ machine.
 
 ### Open
 
-- The wording of the refusals is unwritten. There need to be as many as there are
-  classes of refusal.
+- ~~The wording of the refusals is unwritten~~ — written on 2026-08-28,
+  `xor.ad/docs/refusal-wordings_EN.md`: six sections, a text for every class. §10
+  of this same file has known that since that day, while the question stood here
+  for another ten (removed 2026-09-07).
 - **There is no appeal** — settled. A refusal is final; the text is edited and
   sent again. The price is measured and stated plainly: about 7% of ordinary
   messages are blocked for nothing, and their authors have nowhere to go. What
   softens it is that a refusal names its cause (§10) and that the text is not
   lost.
-- Whether chat messages are checked as strictly as feed messages — the documents
-  say "the same" but without the captcha; whether to soften the rest is undecided.
+- ~~Whether chat messages are checked as strictly as feed messages~~ — the
+  question described a state that no longer exists: a chat is **not checked at
+  all**, written a few paragraphs above in this same section. There is no
+  strictness to compare (removed 2026-09-07).
 - **The machine catches less than half — recomputed 2026-08-27.** Measured on
   human-labelled data across nine languages, at the point where the system will
   actually run: **0.46** of what people call offensive is caught, at **0.07** of ordinary
@@ -679,13 +715,29 @@ is on the server but tied to nothing that identifies anyone. It cannot be restor
 not out of strictness but because there is nothing to restore it from.
 
 **Who does the deleting.** Every duration needs a doer — a job, not an intention.
-Today there are two: the page-view prune and message expiry. The other durations
-have no doer yet.
+
+**Recounted against the code on 2026-09-07**
+(`xor.ad/relay/node/src/lib/scheduled.ts`). There are **three** jobs, and each
+re-arms itself a day ahead:
+
+| Job | What it prunes |
+|---|---|
+| `prune_pageviews` | page views, on their own 14-day window |
+| `prune_objects` | everything else the policy promised a window for |
+| `prune_dsa_records` | Article 16 notices and the statements of reasons answering them, a year |
+
+[retired] This used to read "today there are two: the page-view prune and message
+expiry". Wrong in both directions: `prune_objects` and `prune_dsa_records` went
+unnamed, and there is no feed-message expiry among the jobs — nor can there be,
+since the node has no feed in its code yet. The line described an intention, right
+beside its own sentence about an intention not being a doer.
 
 ### Open
 
 - The pruning jobs for the waitlist, the logs, the client errors and the audit log
-  are unwritten. A duration without a job is not a duration.
+  are unwritten. A duration without a job is not a duration. Some of them may
+  already be covered by `prune_objects` — which ones is not visible from its name
+  and is not recorded in this file (2026-09-07).
 - How long a report waits "until reviewed" if no review happens.
 - Backups: if they exist, everything we deleted lives on inside them. Their
   lifetime is undecided.
@@ -765,9 +817,11 @@ opposite end of the line and the phrase reads as broken.
 
 ### Open
 
-- Browser language is not the language a person writes in. Some keep the system
-  in English and write in Russian. Whether a manual feed-language choice is
-  needed alongside the automatic one is undecided.
+- ~~Whether a manual feed-language choice is needed alongside the automatic one~~
+  — it is needed and it exists: "the default comes from the browser, **but the
+  person edits the list themselves**", up to three languages. Written in the first
+  paragraph of this same section, together with the very argument the question was
+  asked for: the phone is in English, they write in Russian (removed 2026-09-07).
 - What to do when detection is unsure: a short "ok" or "👍" has no language at
   all. Whether to show those to everyone or hide them is undecided.
 - The "another N in other languages" counter reveals district activity to
@@ -820,15 +874,27 @@ pressed it in anger and wants back in with the paper code.
 
 ### Open
 
-- Where the conversation encryption key is kept and what protects it. If it sits
-  next to the data in the same store, encryption defends against a look in the
-  debugger but not against whoever is holding the phone.
+- ~~Where the conversation encryption key is kept and what protects it~~ —
+  described in full, `xor.ad/docs/chat_EN.md` §13, and by exactly the answer the
+  question feared. The vault key **cannot be assembled from the disk alone**:
+  `material = Argon2id(PIN, device salt, 64 MB, t=3)`, `key = HKDF(local ‖ share)`,
+  where the share comes from the node and only after the PIN is proven, with the
+  node counting the attempts (ten). The share itself sits in the database
+  encrypted under the node's key (edited 2026-08-21 after review). A share belongs
+  to a device, not to an identity (removed 2026-09-07).
 - The browser may evict IndexedDB on its own when space runs out. The
   conversation would vanish early — whether that counts as normal behaviour or
   deserves a warning.
 - Several tabs at once: whose timer is authoritative and how they agree.
-- Whether an explicit "forget this device" is needed separately from "delete
-  everything".
+- ~~Whether an explicit "forget this device" is needed separately from "delete
+  everything"~~ — built under a different name on 2026-09-04, screen 12
+  "Unlocking the tab": the lock closes when you leave the tab and after five
+  minutes without a touch, and opens with the PIN. No separate button is needed
+  (removed 2026-09-07).
+- What the lock does not cover is still open: **a device that is out of reach** —
+  lost or given away. An identity has one live session and the paper code
+  outweighs it; but there is nothing today that puts out a session elsewhere
+  without raising the identity anew.
 
 ---
 
@@ -949,7 +1015,7 @@ touch either for the sake of playing together (settled 2026-08-26).
 
 **What happens at the moment of leaving:**
 
-- **Your own phrases are deleted for good**, along with the likes they collected. The quota slots free up at once: come back and you write anew, with all five available.
+- **Your own phrases are deleted for good**, along with the likes they collected. The quota slots free up at once: come back and you write anew, with all four available (edited 2026-09-07: this said "five" — a relic of the old quota, marked [retired] in §3 back on 2026-08-28).
 - **Matches burn.** For whoever was waiting on an answer, the offer simply disappears — with no explanation of who left or why.
 - **Conversations run on their own timers** and are not frozen: your silence keeps counting. So a departure "until morning" is survived only by conversations with a long span, and every ten-minute one is gone. This is said **before** the press, on the screen where the span is chosen, not after.
 - **The screen goes empty**: no feed, no conversations, no counters — one line and the time remaining.
