@@ -88,9 +88,12 @@ than offering nothing.
 
 - ~~How the list of one's own devices is shown~~ — removed 2026-09-07: no such
   list exists or will, an identity has one live session ([retired] row in §7). The
-  only live part was the first half, and that is settled too: **a transfer code
-  lives two minutes** (`xor.ad/docs/chat_EN.md`, screen 13). What stood here was
-  about "connecting" a second device, which the product does not have.
+  only live part was the first half, and it is settled: **a transfer code lives
+  two minutes, with "extend" beside it** (decided 2026-09-03, screen 13 —
+  `13-devices_EN.md`). What stood here was about "connecting" a second device,
+  which the product does not have. (Address and span corrected 2026-09-07 after a
+  review panel: this pointed at "screen 13" inside `chat_EN.md`, which has no
+  screens at all, and said nothing about extending.)
 - Whether the warning is shown once at signup or stays reachable afterwards — in
   settings, say — is undecided.
 
@@ -167,10 +170,13 @@ fact that the conversation is over.
 ### Open
 
 - ~~How long before the end the fading starts for a chat~~ — settled: **in the
-  last quarter of its own span** (`xor.ad/docs/chat_EN.md` §5). A share, not fixed
-  minutes: 2:30 on a ten-minute chat, a quarter of an hour on an hourly one, 65
-  minutes on "while we're talking". The old `min(20 minutes, span / 3)` was
-  dropped there (removed 2026-09-07).
+  last quarter of its own span**, screen 7 (`07-chat-list_EN.md`): "through the
+  last quarter of your own span the row is shown fading". A share, not fixed minutes:
+  2:30 on a ten-minute chat, a quarter of an hour on an hourly one, 65 minutes on
+  "while we're talking" (removed 2026-09-07, address corrected the same day after
+  a review panel: this pointed at §5 of the spec, where the quarter is the
+  **silence counter** rather than the fading, and `chat_EN.md` §8.6 says outright
+  that the quarter is "a threshold for showing, not a span").
 - How long before the end a **feed phrase** fades is undecided. A share is no use
   here: 4:20 is the same for everyone, so it needs one number.
 
@@ -178,8 +184,11 @@ fact that the conversation is over.
 
 ## 3. The quota
 
-**The quota is four messages alive at once, not four a day** (edited 2026-08-28; [retired] it used to be "five alive at once"; the English kept saying five until 2026-09-07, twelve lines above its own "while all four are taken"). It says how much of
-yours is standing in the feed right now.
+**The quota is four messages alive at once, not four a day** (edited 2026-08-28;
+[retired] it used to be "five alive at once". The English kept saying five until
+2026-09-07, twelve lines above its own "while all four are taken" — the edit
+never reached the translation). It says how much of yours is standing in the feed
+right now.
 
 A slot frees the moment a message goes, and it does not matter how it went:
 
@@ -697,6 +706,7 @@ untrue, and here they do not disagree anywhere except where it says so.
 | the audit log: who changed what in the panel | database | settling disputes, and our own protection | **1 year** |
 | server logs | the node | incident review | **30 days** |
 | client errors | Bunny Storage | incident review | **30 days** |
+| CSP violation reports: the page, the user agent, the time | Bunny Storage | incident review | **30 days** (row added 2026-09-07: the collection had been written since the endpoint was built and swept by nothing — it got a doer on 2026-08-30, but the promise was never in this table) |
 | panel users: email, role | database | access | while the access exists |
 
 ### Rules, not only durations
@@ -723,7 +733,7 @@ re-arms itself a day ahead:
 | Job | What it prunes |
 |---|---|
 | `prune_pageviews` | page views, on their own 14-day window |
-| `prune_objects` | everything else the policy promised a window for |
+| `prune_objects` | six collections in object storage: the audit log (a year), server logs, client errors (two collections) and CSP reports — 30 days each; the waitlist has no window, see below |
 | `prune_dsa_records` | Article 16 notices and the statements of reasons answering them, a year |
 
 [retired] This used to read "today there are two: the page-view prune and message
@@ -734,10 +744,21 @@ beside its own sentence about an intention not being a doer.
 
 ### Open
 
-- The pruning jobs for the waitlist, the logs, the client errors and the audit log
-  are unwritten. A duration without a job is not a duration. Some of them may
-  already be covered by `prune_objects` — which ones is not visible from its name
-  and is not recorded in this file (2026-09-07).
+- ~~The pruning jobs for the waitlist, the logs, the client errors and the audit
+  log are unwritten~~ — **wrong for three of the four, removed 2026-09-07 after a
+  review panel**. Counted against `xor.ad/relay/node/tools/prune_objects.ts`: the
+  audit log, the server logs and both client-error collections have a doer. The
+  entry was written by this same file on the same morning as the table above it,
+  and described the state before that code.
+- **The waitlist has no window, and that is a decision rather than an oversight.**
+  The promise is "until launch and a year after", the launch date is unknown, so
+  the job skips that collection every run and records it as `skipped`. The number
+  arrives with the date, through `WAITLIST_RETENTION_DAYS`. That is waiting on an
+  external event, not an open question.
+- Durations that genuinely have no doer: **a business profile and the complaints
+  about its offers** (a year from the last offer) and **a support message** (a
+  year). Both rows stand in the table above, and none of the three jobs touches
+  them (2026-09-07).
 - How long a report waits "until reviewed" if no review happens.
 - Backups: if they exist, everything we deleted lives on inside them. Their
   lifetime is undecided.
@@ -875,8 +896,10 @@ pressed it in anger and wants back in with the paper code.
 ### Open
 
 - ~~Where the conversation encryption key is kept and what protects it~~ —
-  described in full, `xor.ad/docs/chat_EN.md` §13, and by exactly the answer the
-  question feared. The vault key **cannot be assembled from the disk alone**:
+  described in full, `xor.ad/docs/chat_EN.md` §8.2 (address corrected 2026-09-07
+  after a review panel: this said §13, which is "Build order" — the link sent the
+  reader where the answer is not), and by exactly the answer the question
+  feared. The vault key **cannot be assembled from the disk alone**:
   `material = Argon2id(PIN, device salt, 64 MB, t=3)`, `key = HKDF(local ‖ share)`,
   where the share comes from the node and only after the PIN is proven, with the
   node counting the attempts (ten). The share itself sits in the database
@@ -892,9 +915,14 @@ pressed it in anger and wants back in with the paper code.
   minutes without a touch, and opens with the PIN. No separate button is needed
   (removed 2026-09-07).
 - What the lock does not cover is still open: **a device that is out of reach** —
-  lost or given away. An identity has one live session and the paper code
-  outweighs it; but there is nothing today that puts out a session elsewhere
-  without raising the identity anew.
+  lost or given away. The tab lock (screen 12) closes what is visible on screen,
+  and the paper code puts out the **network** half: a transfer freezes the
+  previous session. It puts out no part of the local half: the vault share
+  belongs to the device, and no file anywhere says that moving an identity burns
+  the previous device's share. So after the move the old phone goes on decrypting,
+  with its own PIN, the conversations gathered on it. The control that is missing
+  is **revoking the share**, not ending a session: the node knows the share and
+  can delete it (sharpened 2026-09-07 after a review panel).
 
 ---
 
