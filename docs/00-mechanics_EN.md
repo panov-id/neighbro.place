@@ -212,6 +212,16 @@ all. The first limit is about room in the neighbours' feed, the second is about
 pace. Only the first stood here, in the section declared the single source of the
 rules.
 
+**Stepping away does not reset the hourly limit — settled 2026-09-07 after a
+review panel.** Leaving does free the live slots (§13), and rightly so: the
+phrases are deleted for good, so there is nothing left occupying the feed. The
+hourly counter is about the pace of speech rather than room in the feed, and it
+**survives the departure**. Without this line the rule was undone by one button:
+four phrases, twenty minutes away, four more — eight in twenty-five minutes
+instead of four in an hour, and at the cost of exactly the silence the limit asks
+for. The fifteen-minute pause (below) survives a departure too, for the same
+reason.
+
 **A report does not touch the quota.** It does two things: it removes the message
 from the feed for the person who reported it, and it adds one to that message's
 report counter. For everyone else the message stays **while the counter is under
@@ -235,10 +245,20 @@ pass the filter never reached the feed, so it has nothing to occupy: a refusal
 costs nothing, the text is edited and sent again.
 
 **A run of refusals is stopped by a pause, not by the ceiling — settled
-2026-09-07.** Five refusals in a row close sending for 15 minutes; the feed,
-likes and chats keep working, and that is said plainly, or a silent refusal of
-everything reads as a ban. The wording is written:
+2026-09-07.** Five refusals **within an hour** close sending for 15 minutes; the
+feed, likes and chats keep working, and that is said plainly, or a silent refusal
+of everything reads as a ban. The wording is written:
 `xor.ad/docs/refusal-wordings_EN.md` §4.
+
+**Within an hour, not "in a row" — sharpened 2026-09-07 after a review panel.**
+"In a row" means any successful publication resets the run, and the limit is then
+undone by alternating: four probes, one deliberately clean phrase, four more
+probes. A person has four publications an hour, so that is sixteen probes against
+the filter an hour instead of five. A window closes this without adding a single
+control: the period is the same hour the publishing limit uses, and both counters
+live by one set of rules — they survive a departure, a new tab and a reload. The
+cost is named: someone who honestly got it wrong five times in an hour waits
+fifteen minutes, even though they published something good in between.
 
 [retired] This used to read "from the third refusal in that same day the ceiling
 drops by one until the day ends". It was a second punishment for the same
@@ -1043,7 +1063,7 @@ touch either for the sake of playing together (settled 2026-08-26).
 
 **What happens at the moment of leaving:**
 
-- **Your own phrases are deleted for good**, along with the likes they collected. The quota slots free up at once: come back and you write anew, with all four available (edited 2026-09-07: this said "five" — a relic of the old quota, marked [retired] in §3 back on 2026-08-28).
+- **Your own phrases are deleted for good**, along with the likes they collected. The quota slots free up at once: come back and you write anew, with all four available (edited 2026-09-07: this said "five" — a relic of the old quota, marked [retired] in §3 back on 2026-08-28). **What frees is the slots, and only the slots**: the hourly limit of four publications, the refusal counter and whatever is left of the fifteen-minute pause all survive the departure (§3, added 2026-09-07). Otherwise the button meant to help you break off would double as a way to speak twice as fast.
 - **Matches burn.** For whoever was waiting on an answer, the offer simply disappears — with no explanation of who left or why.
 - **Conversations run on their own timers** and are not frozen: your silence keeps counting. So a departure "until morning" is survived only by conversations with a long span, and every ten-minute one is gone. This is said **before** the press, on the screen where the span is chosen, not after.
 - **The screen goes empty**: no feed, no conversations, no counters — one line and the time remaining.

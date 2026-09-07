@@ -38,7 +38,7 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 - **Conversations that outlived the span are in place — and it shows that something was said in them (decided 2026-08-30).** No new element was needed: the **"waiting for your reply"** mark has sat in a conversation's row since 2026-08-28 whenever the last line is theirs, and it is computed **on the device** — the line is already here, and the node knows nothing about visits.
   **How this differs from the summary the whole thing exists to refuse.** A summary tells you **what** you missed and thereby pulls you back into the feed; the mark says only that in **your** conversation the move is yours. No number, no preview, no "while you were away".
 - **No summaries**: no "while you were away", no count of what was missed.
-- **Four free quota slots.**
+- **Four free quota slots — and nothing else (sharpened 2026-09-07).** The hourly limit of four publications, the refusal counter and whatever is left of the fifteen-minute pause all **survive** the departure (`00-mechanics_EN.md` §3). A review panel showed what staying quiet about it cost: four phrases, twenty minutes away, four more — eight in twenty-five minutes instead of four in an hour. The screen has to say this **before** the press, in the same place it speaks about matches burning: a person leaves to break off, not to buy a second hour of speech, and finding the counter still running on return would read as a punishment for having left.
   [retired] This used to say "Five free quota slots": the number changed on 2026-08-28 and the screen stayed behind until 2026-08-30. The marker sits on its own line deliberately — on a shared one it would exempt the live statement as well.
 
 ## The offer to step away
