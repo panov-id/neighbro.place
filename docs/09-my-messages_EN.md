@@ -8,6 +8,9 @@ Everything a person has put into the feed and that is still alive: **phrases, of
 
 - **A separate block on top** — the phrase being checked or waiting for its name to be accepted, with the reason for the wait (settled 2026-08-26). It takes no slot, but a person has to see that their text did not vanish, and understand why a second one cannot be sent.
 - **A rejected phrase sits in the same block on top**, with the reason and the text at hand: fix it and send again (screen 4 promises this but does not say where; here, settled 2026-08-27).
+- **A restricted phrase sits in the same block, and it is a different thing from a rejected one (added 2026-09-04).** A rejected phrase was never published; a restricted one stood in the feed and was taken down. So this is not "fix it and send again" but the full Article 17 statement of reasons: what happened, why, whether automation was involved, the grounds, and what to do next (`xor.ad/docs/refusal-wordings_EN.md` §6).
+
+  **It is shown here because there is nowhere else.** The author usually has no email — an identity is a key pair and we do not ask for electronic contact — and Art. 17(2) requires no letter in that case. The spec requires more (`xor.ad/docs/dsa/SPEC_EN.md` §7): silent removal contradicts the "a refusal is explained" principle, so the statement waits in the app and is shown at the next sign-in with that identity.
 
   **It lives on the device, and it cannot live anywhere else — recorded 2026-09-04 after the review panel.** The node does not keep it: a rejected `feed_messages` row is deleted and the reason goes to the author (`xor.ad/docs/chat_EN.md` §13). So the block on top can only be assembled from local storage, and it now has its own row in the table in §9. Until this edit the screen promised to show something nobody stored: close the tab as the verdict lands, and there is nothing to show.
 - A list of what is published and not yet gone, each marked by type: phrase, offer, table.

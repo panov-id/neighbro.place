@@ -14,7 +14,7 @@ Interface states for missing data or reached limits, rather than the normal usag
 - **The first phrase is waiting on its name.** Until the queue accepts the name, the phrase has not reached the feed and a second cannot be sent. A state of its own, separate from an exhausted quota: no slot is taken, but the button is inactive (edit of 2026-08-26).
 - **No one nearby.** No live phrases within the selected radius (screen 3). The screen does not leave the person in a void: a line says it is quiet nearby and offers to widen the circle — **with the step of how many phrases would then appear**: "a few", "about a dozen", "dozens" (settled 2026-08-26, the steps are in `00-mechanics_EN.md` §4). There is no exact number here for the same reason there is none on the handle itself: a counter tied to a radius is a measuring instrument, and an exact figure lets one work out the ring holding a single particular phrase. The circle does not grow by itself: otherwise a person sees people ten kilometres away and takes them for neighbours.
 - **A first visit with no phrase of your own (added 2026-08-29).** The feed is full but liking is impossible: a match counts only while both sides have a live phrase. This is a state of its own because until now it lived as a single dimmed icon on a card — a person saw an inactive button and did not understand that the product was waiting for their first word. A line explains it and leads to the composer (screen 5).
-- **The queue has stalled (added 2026-08-29).** Moderation is answering more slowly than usual, or not at all. The phrase stays dimmed for its author and a second one cannot be sent — the same as waiting for a name, but the reason differs and so must the wording: not "checking" but "the check is taking longer". How many seconds separate the two is undecided (`xor.ad/docs/refusal-wordings_EN.md`).
+- **The queue has stalled (added 2026-08-29).** Moderation is answering more slowly than usual, or not at all. The phrase stays dimmed for its author and a second one cannot be sent — the same as waiting for a name, but the reason differs and so must the wording: not "checking" but "the check is taking longer". After **60 seconds** "checking…" becomes "taking longer than usual" — decided 2026-09-08, the number lives in `xor.ad/docs/facts/limits.tsv` (`refusal.checking.longer`). There is no refusal: the phrase stays in the queue and goes out when the queue clears (`xor.ad/docs/refusal-wordings_EN.md`).
 - **A support answer is waiting (added 2026-08-29).** A mark on the support button rather than in the inbox: the platform's voice does not mix with conversations between people (screen 14).
 - **No network (added 2026-09-02).** A line of its own rather than a mention
   inside the neighbouring state: the person has no connection, and it is fixed
@@ -29,6 +29,7 @@ Interface states for missing data or reached limits, rather than the normal usag
   keeps its place on the phone.
 - **The node is unreachable (added 2026-08-29).** Separate from "no network": there the person has no connection, here we are not answering. The difference is not cosmetic — in the second case it is our fault, and the tone differs: "we could not do it", not "there is no connection". What was typed is kept either way.
 - **A moderation refusal** — the phrase did not pass, the class of reason is named, the text stays at hand (screen 4, wordings in `xor.ad/docs/refusal-wordings_EN.md`).
+- **A published phrase of yours was restricted** — the Article 17 statement of reasons is shown in the app at the next sign-in, because the author usually has no email (screen 9; added 2026-09-04).
 - **The fifth refusal in a row** — fifteen minutes without posting; the feed, likes and conversations keep working, and the refusal says so.
 - **A conversation ended for the other person** — a gravestone on the open screen, a marked row in the list (screens 7 and 8).
 - **The other person stepped away** — a line saying "away" instead of the input field, with no span (screen 8).
@@ -74,6 +75,7 @@ twice, no explaining how the system is built, no "oops".
 | The other person stepped away | Stepped away | — | — |
 | The identity moved to another device | Your identity is not here any more | You moved it to another device. It no longer works on this one, and the correspondence stays here. | — |
 | The app is out of date | Time to update | This version no longer talks to the node. Reload the page and everything is where you left it. | Reload |
+| A published phrase was restricted | Your phrase was hidden | What happened, why, who decided and what to do next — all of it here. | Read |
 | A document changed | Something changed | Read what is different and accept it — writing does not work until you do. | Read |
 
 Three lines are deliberately empty. "Stepped away" has no second line because we
