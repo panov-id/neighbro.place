@@ -271,9 +271,27 @@ nothing can be said at all, where a lowered ceiling still left three slots.
 **A table does not take a slot either — decided 2026-08-30.** A table is put up
 from the same composer and stands in the same feed, but it is a meeting place
 rather than an utterance: playing and speaking are different things, and one does
-not take the other away. There is no per-person count of tables and no share of
-there is no per-person count of tables, and the only thing that puts out a
-forgotten table is the silence at it.
+not take the other away. There is no per-person count of tables, and the only
+thing that puts out a forgotten table is the silence at it. (A fragment of an
+earlier revision stood here — the same thought twice in a line and a half; fixed
+2026-09-09.)
+
+**You can sit at one table — decided 2026-09-09.** Put up as many as you like, but
+sitting down at a second without standing up from the first is refused. That is
+what bounds the burying of the feed: a table nobody sits at does not reach the
+selection, and twenty tables of one person yield one card. The limit does not look
+at an identity — it looks at whether a living person is at the table — and so it
+does not put an author into the ranking, which §4 avoids on purpose.
+
+**Which tables reach that quarter — random ones, and the quarter is counted after
+blocks (decided 2026-09-09).** Not "the liveliest first": a table with one person
+sitting at it makes no moves, it is waiting for its first guest — and an order by
+activity would bury exactly the tables a table exists for. The price: the
+selection is not stable between refreshes and a table you saw can be lost, and
+there is a way back to your own — the line in the feed's header. The quarter is
+counted against what a person can see: otherwise whoever blocked somebody would
+see fewer tables than their neighbour, so a block would quietly punish the person
+who used it — which was ruled out on 2026-08-26.
 
 **Tables take at most a quarter of the delivered cards — decided 2026-09-02.**
 This used to say there was no share of the feed at all: any number could be
@@ -1021,9 +1039,24 @@ the match expiring.
 
 ## 12. Games and tables
 
-**A game here is a way to start talking, not a contest.** The engine draws the board
-and lets pieces move; there are no rules, no score and no winner. The two agree
-between themselves — including whether to take turns: the toggle exists, but both
+**A game here is a way to start talking, not a contest.** But since 2026-09-09 the
+engine has **minimal rules and a score**: watching the rules by hand is work, and
+putting it on somebody who came to play is wrong. The earlier "no rules, no score and
+no winner" (2026-08-26) is overturned; there is still no winner as far as the engine
+is concerned — people name one with the "congratulate the winner" button.
+
+**The scope of the rules differs by class of board:** where a rule is cheap and
+unambiguous everything is checked (dominoes), where it is expensive only turn order,
+the end of a round and the score are (chess). The breakdown by class is in
+`xor.ad/docs/chat_EN.md` §6, along with the "see the basic rules" button. The price
+is named: the behaviour is uneven, and there is no guessing where the engine will
+correct you.
+
+**The score lives as long as the conversation or the table does** and outlives
+neither: no history of wins, no mark on an identity — §1 promises no trace is left.
+
+The two still agree between themselves — including whether to take turns: the toggle
+exists, but both
 switch it on.
 
 **A move counts as activity, exactly like a reply.** A conversation and a table live
