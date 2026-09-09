@@ -29,9 +29,71 @@ A table is a shared board several neighbours sit around. The screen was created 
 - **Whoever joins does not see what came before.** The board arrives as it stands, the replies only from the moment they sat down (settled 2026-08-26). The same rule as moving an identity: history does not appear out of nowhere.
 - **Talk at a table is public.** Replies go through the same moderation queue as the feed (`00-mechanics_EN.md` §5): strangers sit at a table, and "there are two of us, nobody sees" is not true here. The cost is named plainly: a 2.8 second median per reply is felt more at a table than in the feed.
 - **Age bands — everyone with everyone.** You may join only if you are inside every sitter's band and they are inside yours (`xor.ad/docs/chat_EN.md` §8.2). The same rule as for a pair, applied to all at once.
-- **"Play again" is a proposal, not a command (decided 2026-08-29).** A game has ended — the table stays; those who agree play on, and **whoever declines stands up from it**. If one person is left, the table does not close but waits: that is the normal state described below. If everyone declines, the table goes with the game.
-- **An undo at a table takes the agreement of everyone seated (decided 2026-08-29, screen 18).** The more people, the more expensive it is to take a move back, and that is deliberate: a cheap undo in company is precisely how somebody else's game gets spoiled.
+- **"Play again" is a proposal, not a command (decided 2026-08-29).** A game has ended — the table stays; those who agree play on, and **whoever declines stops playing but stays as a spectator** (clarified 2026-09-09: with applications in place, sitting and playing are different things, and "not another game" stopped meaning "I am leaving these people"). To play again they apply like anybody else, and they may not be taken back. If one person is left, the table does not close but waits: that is the normal state described below. If everyone declines, the table goes with the game.
+- **An undo at a table takes the agreement of everyone playing (decided 2026-08-29, clarified 2026-09-09, screen 18).** Everyone playing, not everyone seated: a spectator is not in the game, and letting them block a take-back would give power over a game to somebody who does not move in it. The more people, the more expensive it is to take a move back, and that is deliberate: a cheap undo in company is precisely how somebody else's game gets spoiled.
 - **The majority of those sitting can ask someone to leave.** Two out of three say "enough" and the person stands up. Nobody owns a table: the neighbour who started the game does not become its master.
+- **Sitting down and playing are different things (decided 2026-09-09).** Whoever
+  sits down gets **the chat and the board**; to play, they apply **for the next
+  round**. A game in progress is not interrupted by anyone arriving — otherwise
+  "sit down" would mean stepping into other people's game halfway through.
+  **A spectator sees the whole board except the hands.** A hand is private by
+  construction and visible only to its owner (`xor.ad/docs/chat_EN.md` §6), so a
+  spectator cannot whisper anybody's cards — nobody but the holder sees them.
+- **The play is visible in the table's conversation — decided 2026-09-09.** Every
+  move becomes a line ("Anya placed a tile on e4") and stands in the table's feed
+  alongside the speech. It needs no moderation queue: the engine composes the text
+  from the class of board and a coordinate. It is cut off at the moment of sitting
+  down, like everything else: somebody who sat down does not see the moves made
+  before them. **Why:** a spectator sees the board but could not tell what had
+  happened, and somebody returning to a table starts from nothing and catches up
+  through the lines.
+- **Game state and the score at a table live in the database — decided 2026-09-09**
+  (`table_games` and `table_scores`, `xor.ad/docs/chat_EN.md` §6.1). In a pair the
+  game stays in the node's memory; here it does not — at a table speech and board
+  are public by construction, and there is nobody to hide the state from. **The read
+  cuts out the players' hands:** the node sees everything but hands over nobody
+  else's hand — your own hand and the backs of the others, and this is the only
+  place where the answer depends on who is asking.
+- **The line-up for a new game is confirmed — 30 seconds (decided 2026-09-09).**
+  Once "play again" is pressed, everyone who was playing and everyone whose
+  application was accepted gets a confirmation: **30 seconds** to say "I am here".
+  Whoever does not confirm is not thrown out — they **become a spectator**, and can
+  return to the game by applying.
+  **A game, a round and a move are different things:** the confirmation is asked
+  per game, not per round, or dominoes would turn into a questionnaire.
+  **The others see a count without names** — "2 of 4 confirmed" and a countdown. A
+  list by name would be the very presence indicator the product has nowhere (see
+  above on "when somebody was last online").
+  Thirty seconds are **chosen, not measured**: enough for somebody with the phone
+  in hand, not enough for somebody who put it down — and the second is what needs
+  filtering out.
+- **A "congratulate the winner" button (2026-09-09)** — an addressed gesture, not a
+  verdict: the engine knows no rules and cannot decide a winner. Whoever presses it
+  picks who they congratulate, and a line appears at the table. No score and no
+  history of wins is kept.
+- **The application is opening words, the refusal is an explanation, and both are
+  visible to everyone at the table.** Ordinary lines: the same moderation queue,
+  the same 128 characters, the same report. An addressed application "to the
+  players only" would have introduced a private message to a stranger with no
+  mutual like — which exists nowhere. The price is accepted and it is unpleasant:
+  a public "we are not taking you, because…" is read by everyone sitting there.
+- **The players decide, and a silent refusal is not allowed.** Those in the game
+  vote; spectators do not decide who gets in. The refuse button stays inactive
+  until an explanation is written. The deadline is **the start of the next
+  round**: whoever has not objected by then did not object.
+- **One table at a time (decided 2026-09-09).** Sitting down at a second table
+  without standing up from the first is refused. That is also what guards the feed
+  against being buried: set up as many tables as you like, but sit at one, and a
+  table nobody is sitting at does not reach the feed.
+- **Tables reach the quarter of the feed at random, and the quarter is counted
+  after blocks (decided 2026-09-09).** Not "the liveliest first": a table with one
+  person sitting at it makes no moves — it is waiting for a guest — and any order
+  by activity would bury exactly the tables this screen exists for. The price: the
+  selection is not stable between refreshes and a table you saw can be lost —
+  there is a way back to your own, the line in the header. The quarter is counted
+  against what a person can see, or whoever blocked somebody would see fewer
+  tables than their neighbour, and a block would quietly punish the person who
+  used it.
 - **Being shown out is not being locked out — decided 2026-09-08** (`xor.ad/docs/chat_EN.md` §6). No "may not return" list is kept: that is a trace about a person, and the product promises no trace is left. Until somebody blocks, the person shown out sits back down with the same gesture, as often as they like.
   What locks the door is not a list but a **block**, and it is stronger than it looks: the check is symmetric, so one side is enough. One person at the table blocks, and the table disappears not only for them but for the person shown out, who then has nowhere to come back to. The price is accepted: between the eviction and the block there is a gap, and in it an eviction is a request to leave rather than a lock.
 - **A block hides the table entirely.** If someone you blocked is sitting there, the table is not shown to you at all. The cost is named: one person can hide someone else's game from you simply by joining it.
