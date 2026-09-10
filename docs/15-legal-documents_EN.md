@@ -7,7 +7,17 @@ Access to the Terms of Service, Privacy Policy, and Community Guidelines.
 ## Screen elements
 
 - Links to three documents: Terms of Service, Privacy Policy, Community Guidelines.
-- **A revision date under each link** (added 2026-08-29), and, if the text changed after the person accepted it, a note beside it: "changed since you accepted".
+- **A revision date under each link** (added 2026-08-29), and, if the text changed after the person **read** it, a note beside it: "changed since".
+  **It is held by a read mark on the device — clarified 2026-09-10.** This used to
+  read "after the person accepted it", and there was nothing to compute that from:
+  the rules re-accept silently (`reaccept: silent`), the node writes the new row
+  into the journal itself, and the journal then states that the person accepted the
+  new revision. There is no "accepted silently" mark in `legal_acceptances`. As it
+  stands now: the device remembers the hash of the revision the person **opened**,
+  and the screen compares it with `/legal-manifest.json`. The node learns nothing
+  new — the mark is local. The cost is named: after an identity moves to a new
+  device there is no reading history there, and the note reappears on all three
+  documents.
 - **A "contest a moderator's decision" link** (added 2026-08-29).
 - **Who the operator is and where to write** (added 2026-08-29): Evgenii Panov, brands PSYTICAN & PEJEDED, Limassol, Cyprus; support@neighbro.place.
 
