@@ -1,19 +1,19 @@
 {
   "documents": {
     "guidelines": {
-      "date": "2026-08-27",
+      "date": "2026-09-10",
       "reaccept": "silent",
-      "sha256": "06c7ed4c1b1619a388f05a1855b4073617e8bf5d1e6f91475432a92f1404abad"
+      "sha256": "ea80d9c4e4a3f7ad046ca9970a77e5598c7b1a599f79f70efd6e295428854551"
     },
     "privacy": {
-      "date": "2026-08-30",
+      "date": "2026-09-10",
       "reaccept": "required",
-      "sha256": "557b06275f242b03882e15a3ec0ba1f40f89b0d1d0fef5f7f5b6d64cb2a3876b"
+      "sha256": "ab353d0546d0c0ac0a431c07957e9e93bc2ae5e2aedffd0c29dedd59f6e08f1a"
     },
     "terms": {
-      "date": "2026-08-31",
+      "date": "2026-09-10",
       "reaccept": "required",
-      "sha256": "94847c51689e164de6108eb8325dc0813ec0aebe45d21f96a30fa3b62b3a9f11"
+      "sha256": "4a09425a6c2d25541c7d91e1f23f9768743fe8916b6a0d973a344d9f1c632f7d"
     }
   }
 }

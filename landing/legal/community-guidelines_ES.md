@@ -1,6 +1,6 @@
 # Normas de la comunidad — neighbro.place
 
-**Última actualización: 27 de agosto de 2026**
+**Última actualización: 10 de septiembre de 2026**
 
 **Estas normas se publican en varios idiomas. La versión en inglés es la que rige; las traducciones se ofrecen por comodidad.**
 
@@ -10,7 +10,7 @@
 
 El contenido debe mantenerse dentro de las normas de una sociedad tranquila y pacífica. Lo que se **publica** — el muro y las ofertas del barrio — se revisa automáticamente con **modelos de IA** antes de aparecer, no después.
 
-**Un chat no se revisa.** Viaja cifrado de un dispositivo a otro y no podemos leerlo. Las reglas de abajo rigen allí igualmente; lo que cambia es cómo se hacen cumplir — mediante la denuncia de la otra persona, no mediante una revisión por nuestra parte.
+**Un chat no se revisa.** Viaja cifrado de un dispositivo a otro y no podemos leerlo. **El tablero de juego es la excepción desde el 09/09/2026:** el tablero y las jugadas no van cifrados, los vemos y contrastamos las jugadas con las reglas del juego. Las palabras seguimos sin leerlas; una jugada en un tablero no son palabras. Las reglas de abajo rigen allí igualmente; lo que cambia es cómo se hacen cumplir — mediante la denuncia de la otra persona, no mediante una revisión por nuestra parte.
 
 ## Sé un buen vecino
 

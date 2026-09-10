@@ -1,6 +1,6 @@
 # Neighbro — Terms & Conditions
 
-**Last updated: 31 August 2026**
+**Last updated: 10 September 2026**
 
 ## 1. Who we are
 
@@ -66,7 +66,7 @@ These community rules are also set out, in plain language, in our **Community Gu
 ## 9. Content and ephemerality
 
 - **Your content.** You keep ownership of what you post. You grant us a limited, non-exclusive license to host, display, and distribute your content **within the Service** for the purpose of operating it.
-- **Ephemeral by design.** Content fades and is not recoverable. Chat contents are never stored on our servers — they are carried encrypted and gone; on your device they live for the shorter of the two spans the two of you chose; we do not provide export or long-term archives.
+- **Ephemeral by design.** Content fades and is not recoverable. Chat contents are never stored on our servers — they are carried encrypted and gone. **A game played inside a chat is the exception, named here since 2026-09-10:** its board, its moves and the score are not encrypted and their current state is held by us while the conversation lives, because we check the moves against the rules of the game. What was said is still never stored; on your device they live for the shorter of the two spans the two of you chose; we do not provide export or long-term archives.
 
 ## 10. Offers
 
@@ -84,7 +84,7 @@ These community rules are also set out, in plain language, in our **Community Gu
 - **Offers sit in the same feed.** An offer appears among ordinary posts at a fixed rate — no more than one offer per ten posts (§10) — and is never ordered ahead of them.
 - **Offers are commercial, and identifiable as such.** An offer carries the name of the business it comes from and the discount it promises, so it reads as a business's message rather than a neighbour's. **Nobody pays us for placement**: there is no sponsorship, no boosting, and no third party paying to have something shown.
 - **No targeting on people.** Offers are never targeted by profiling — not on your behaviour, not on special categories such as health, beliefs, or origin, and not on data about minors. **Place is the only thing** that decides who can see an offer.
-- **How moderation works.** Every feed message is checked **before** it is published by automated systems, **including AI models**. Chats are **not** checked and are not stored on our servers, so we cannot examine what is written inside them. Decisions on reports of illegal content are taken by **a person**, not by a machine.
+- **How moderation works.** Every feed message is checked **before** it is published by automated systems, **including AI models**. Chats are **not** checked and are not stored on our servers, so we cannot examine what is written inside them. A game board inside a chat is the exception: we see the moves, because we judge them by the rules of the game — and moves are made of a class of board and a coordinate, not of your words. Decisions on reports of illegal content are taken by **a person**, not by a machine.
 - **Complaining about what you see.** You can complain about a message from the message itself — that is a vote against showing it, not an accusation. You can complain about an offer from the offer if the discount it promised was refused, or if the offer itself misleads. The quality of what a business sold you is **not** something we can judge: we are not a party to that deal (§10), and we will say so and point you to the business and to consumer redress.
 - **Reporting illegal content.** Anything you consider **illegal** can be reported from the [report form](/report.html) or to **support@neighbro.place**, by users and by authorities alike; the form is the shortest route and that address is our point of contact. Tell us **why** you believe it is illegal and **where** it is, and give your **name and email** — except where the report concerns the sexual abuse of children, when we ask for neither. We confirm receipt, examine it, and tell you what we decided, why, and how to contest it.
 - **Decisions are explained.** If your message is not published, or your content is removed or hidden, you are told **what was done and why**, whether automated means were involved, and what you can do about it. Nothing is removed silently. We never tell an author who reported them.
