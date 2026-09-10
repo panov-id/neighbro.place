@@ -4,7 +4,8 @@
 
 The application's main screen. Short messages from people nearby, **the newest on top** (decided 2026-08-28; it used to be "at the bottom, like a chat"). The price of the change is named: the feed stops reading like a conversation, but skimming wins — someone dropping in for a minute sees what is new at once rather than after scrolling.
 
-**Three different things live in the feed, and each is labelled:** neighbours' phrases, **offers** (screen 17) and **tables** (screen 19). They run as one stream ordered by time, not on separate shelves. An offer is labelled with the word "offer" and the size of the discount, a table with the name of the game and the number of people sitting at it; offers carry a quota — no more than one commercial card per ten ordinary ones (`xor.ad/docs/chat_EN.md` §8.3). This screen used to describe phrases only, although both of its neighbours in the feed were described on their own screens.
+**Three different things live in the feed, and each is labelled:** neighbours' phrases, **offers** (screen 17) and **tables** (screen 19). They run as one stream ordered by time, not on separate shelves. An offer is labelled with the word "offer" and the size of the discount, a table with the name of the game and the number of people sitting at it; both of the feed's other inhabitants carry a share of their own, and the two differ: **offers — no more than one commercial card per ten ordinary ones**, **tables — no more than a quarter of the delivered cards** (`xor.ad/docs/chat_EN.md` §8.3; the tables' share was decided 2026-09-02). The screen did not name the tables' share until 2026-09-10, although the feed is the one place where the two meet and compete for the same cards.
+**Tables reach their quarter at random, and the quarter is counted after blocks (2026-09-09).** Not "the liveliest first": a table with one person sitting at it makes no moves — it is waiting for a guest — and an order by activity would bury exactly the tables the table screen exists for. The price: the selection is not stable between refreshes and a table you saw can be lost; there is a way back to your own — the line in the header (below). This screen used to describe phrases only, although both of its neighbours in the feed were described on their own screens.
 
 **Your own phrase awaiting review is visible here to you alone** — dimmed, labelled as under review (screen 4). It is in nobody else's feed.
 
@@ -12,7 +13,7 @@ The application's main screen. Short messages from people nearby, **the newest o
 
 - The feed: phrases, offers and tables in one stream.
 - **A language filter in the header** — up to three languages, cleared with one tap (`00-mechanics_EN.md` §8).
-- **A line "you are at a table — return"** in the header while you are sitting at one (settled 2026-08-27). A table does not appear in the conversations list — it lives by the rules of the feed — and without this line somebody who looked away for a minute would lose a game with live people without any notice (screen 7, screen 19).
+- **A line "you are at a table — return"** in the header while you are sitting at one (settled 2026-08-27). **There is exactly one such line, and since 2026-09-09 that is a guarantee rather than a coincidence:** you can sit at only one table at a time, so the question of what to show for three tables is gone by construction. A table does not appear in the conversations list — it lives by the rules of the feed — and without this line somebody who looked away for a minute would lose a game with live people without any notice (screen 7, screen 19).
 - A line under the feed: "**N more messages in other languages — show**".
 - A filter icon — opens a panel with the age, radius and mode filters.
 

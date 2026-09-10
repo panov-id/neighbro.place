@@ -30,6 +30,8 @@ The screen from which anything at all appears in the feed. Opened by the "Say" b
 - The same stepped blur knob: a table has a zone, and it is seen by those whose viewing circle crosses it.
 - A "set it up" button.
 - From there the table lives by the rules of screen 19: anyone within the radius may sit down, bands are checked each with each, the majority removes a sitter, and whoever set it up **does not become its owner** — nobody holds sole power over a table, its founder included.
+- **Setting up a table means sitting down at it, and standing up from the previous one (a consequence of the 2026-09-09 decisions).** A table with nobody sitting at it does not reach the feed, so setting one up has to seat its author: otherwise they would put up something nobody sees. And one may sit at only one table at a time — so the same button lifts them from the table they were at. **The screen says so before the tap, not after:** nobody should leave somebody else's game silently by pressing "set up".
+- **Whoever sets a table up is playing from the first second, and later arrivals are spectators until they apply (2026-09-09).** Their `playing_from` is set immediately: they are alone at the table, and there is nobody to ask. Everybody who sits down later gets the chat and the board, and applies for the next game to play (screen 19).
 
 ## Logic
 
