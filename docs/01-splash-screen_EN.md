@@ -18,6 +18,15 @@ An animation themed around neighbourliness, friendship and shared activities —
 - **Two ways in** (added 2026-08-28): "create an identity" and, quieter and
   smaller, "I already have one". The second leads to a choice: a code from another
   device (screen 13) or the paper recovery code.
+- **A language switcher — an icon, brought back here on 2026-09-10.** On
+  2026-08-28 it moved from here to screen 2, and that left a hole: the "what this
+  is" line and both ways in are read in the browser's language, and the language
+  can only be corrected after they have been read. The very person the line was
+  written for — someone who does not understand where they have arrived — was the
+  one who could not understand it. Here it is a language code or a globe with no
+  label; the full choice with a list stays on screen 2, and what is chosen
+  travels there with the person. The cost is accepted: the splash now has four
+  elements instead of three.
 - A "next" button — icon only, no text label.
 
 ## Logic

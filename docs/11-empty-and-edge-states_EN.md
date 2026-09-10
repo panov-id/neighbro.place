@@ -35,6 +35,10 @@ Interface states for missing data or reached limits, rather than the normal usag
 - **The other person stepped away** — a line saying "away" instead of the input field, with no span (screen 8).
 - **The identity moved to another device** — the node closed the socket with `4002`, the conversation closes, reconnecting is pointless (screen 8; added 2026-09-04).
 - **The app is out of date** — the node does not support this version, code `4004`, no reconnection is attempted (screen 8; added 2026-09-04).
+- **An application is waiting (added 2026-09-10).** Somebody applied for the next game at a table and is waiting (screen 19). Neither emptiness nor a refusal: the players decide by the start of the next game. While waiting they are a spectator — they see the board and talk in the chat.
+- **You were not taken into the game (added 2026-09-10).** The refusal came with an explanation, and it stands as an ordinary line in the table's conversation, because an application and a refusal are ordinary lines there. There is no separate screen; the state is that the person stays a spectator and may apply again.
+- **You did not confirm in time (added 2026-09-10).** The 30 seconds for confirming the line-up ran out and the person became a spectator (`table.confirm.window`). The line is required: without it they come back to the board and find themselves out of the game for no reason at all — and there was a reason, namely that they were not there.
+- **Your own table with nobody sitting at it (added 2026-09-10).** An empty table does not reach the selection and goes out on silence; only its author sees it, in the list of their own (screen 9). The line explains why it is not in the feed — otherwise the author reads it as a fault.
 - **A table outside your bands** — there is no state and there will not be: someone outside the bands is not shown the table at all, because a greyed-out card would itself report who is sitting where (screen 19).
 - **Geolocation does not exist as a state — edit of 2026-08-28.** Permission is never requested, so "no access" is not an edge case but the norm: the point is worked out from the time zone, the address and the language, labelled as approximate, the circle is wider, and everything is refined by hand on the diagram (`00-mechanics_EN.md` §4).
 
@@ -76,6 +80,10 @@ twice, no explaining how the system is built, no "oops".
 | The identity moved to another device | Your identity is not here any more | You moved it to another device. It no longer works on this one, and the correspondence stays here. | — |
 | The app is out of date | Time to update | This version no longer talks to the node. Reload the page and everything is where you left it. | Reload |
 | A published phrase was restricted | Your phrase was hidden | What happened, why, who decided and what to do next — all of it here. | Read |
+| An application is waiting | Waiting for an answer | The players will decide by the start of the next game. Watch and talk meanwhile. | — |
+| You were not taken into the game | Not taken in | The reason is in the table's conversation. You can apply again. | To the table |
+| You did not confirm in time | You are watching now | The confirmation waited 30 seconds. You can ask for the next game again. | Apply |
+| Your own table with nobody at it | Nobody at the table | An empty table is not shown in the feed. Sit down at it and it will be seen again. | Sit down |
 | A document changed | Something changed | Read what is different and accept it — writing does not work until you do. | Read |
 
 Three lines are deliberately empty. "Stepped away" has no second line because we

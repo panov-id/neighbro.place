@@ -11,11 +11,32 @@ They were not split for a simple reason: the bottom navigation has exactly four 
 **About you:**
 
 - **Name.** Changes only on a clean slate — while there is no live phrase and no open conversation; an accepted name is frozen, a rejected one is always editable (§8.2). A new one goes through the same moderation queue as a phrase.
-- **Age.** Upward only, and the 20 → 21 step is **irreversible**: the warning comes before saving, not after. Once a year the app asks again, "still 38?" — silence changes nothing.
+- **Age.** Editable freely **within your own band** — clarified 2026-09-10, where
+  this read "upward only", which took the typo away from people: 38 instead of 37
+  could not be fixed, though the typo is exactly why age was made editable (screen
+  2). Upward only applies to **crossing the 20/21 border**, and that is
+  **irreversible** (`xor.ad/docs/chat_EN.md` §8.2): an adult does not walk back
+  into the teenage sandbox, or the bands lose their meaning. The warning comes
+  before saving, not after. Once a year the app asks again, "still 38?" — silence
+  changes nothing.
+- **A change of age is visible to the people you talk to — said here since
+  2026-09-10.** A system line goes into every open conversation, "your
+  correspondent changed their age: 39" (`xor.ad/docs/chat_EN.md` §8.2), and the
+  feed filters are re-clamped to the new band. The screen was silent about it, and
+  a person edited the number without knowing everyone they talk to would read it.
+  There is no such line for the name and there cannot be: with a conversation open
+  the name is frozen.
 - **Feed languages** — up to three, taken from the browser by default, edited here (`00-mechanics_EN.md` §8). The feed header only clears the filter with a tap; the list itself lives here.
 
 **The app:**
 
+- **Interface language — added 2026-09-10.** Until that day it existed nowhere but
+  registration: the switcher sat on screen 2 and on the splash, and after
+  registration there was nowhere to change the language of the labels. It sits
+  **here rather than beside "Feed languages"**, because it is a setting of the
+  app, not a fact about the person: the first decides what language the labels are
+  in, the second whose messages to show (`00-mechanics_EN.md` §8). Taken from the
+  browser by default, and from the choice afterwards.
 - A theme switch: light, dark, or as in the system.
 - Contrast — **three steps**: normal, raised, maximum (settled 2026-08-26).
 - **The default silence span applies to new conversations only** (decided 2026-08-28): it does not touch those already open. The price is named — a person changes the default and does not see why the current conversation still runs on the old one — but the opposite would mean one tap in the settings killing a conversation with an hour left in it.

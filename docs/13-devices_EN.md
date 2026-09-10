@@ -9,7 +9,17 @@ Move the identity to another device **or raise it from the paper code** (decided
 - A "move to another device" button — shows **nine characters** in large type, in groups of three: `K7Q - M3F - 2X9`.
 - The invite's lifetime: two minutes, after which the code stops working.
 - On the new device, a field where those characters are typed by hand.
+- An **"extend"** button beside the timer (decided 2026-09-03, added to the
+  screen's elements 2026-09-10): it **issues a new code and puts out the old
+  one**, rather than extending it — a longer life would otherwise mean a longer
+  window for a code seen over your shoulder.
 - A line saying this device will go still once the move is done.
+- **The screen opens in two different shapes — said 2026-09-10.** With an identity
+  (from settings) a person sees what is listed above: they are handing over.
+  Without one (from the splash, "I already have one") they see **a choice of two
+  fields**: the nine characters of a move or the sixteen of a paper code — because
+  they are receiving. The elements used to be described only from the handing-over
+  side, while the splash leads both here.
 
 ## Logic
 
@@ -18,7 +28,10 @@ Move the identity to another device **or raise it from the paper code** (decided
   node finds the identity by the hash of one half of the code, hands over the
   wrapped long-lived key, and the device unwraps it. From there it goes as at
   registration: **a new PIN, a new share, a new paper code shown once**, and the
-  previous one is dead. The old session goes still under the one-live-session rule
+  previous one goes out **at the moment the new one is confirmed by typing two
+  groups** (clarified 2026-09-10): otherwise a break at this step would leave a
+  live identity with no safety net at all. The cost: while the copying is going
+  on, both codes are alive. The old session goes still under the one-live-session rule
   (`xor.ad/docs/chat_EN.md` §8.2).
   **The difference from a move, said out loud:** a move happens from a live device
   and is confirmed on it, while a recovery happens when there is nobody left to

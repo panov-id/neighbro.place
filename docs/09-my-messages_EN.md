@@ -17,6 +17,10 @@ Everything a person has put into the feed and that is still alive: **phrases, of
 - A countdown timer to disappearance and a manual delete button on each entry.
 - A phrase and an offer carry their **like count** (settled 2026-08-27).
 - A table carries the number of people sitting, a "return" button and a **"get up"** button (decided 2026-08-28: the table stays alive).
+- **Your table and the table you are sitting at have been different things since 2026-09-09.** You may set up any number of tables and sit at only one, so this list can hold **your own tables without you**. They carry different buttons and a different note:
+  - at a table where you are sitting — "return" and "get up", as before;
+  - at your own table without you — **"sit down"**, with a line saying it will lift you from the table you are at now: leaving somebody else's game silently is no more allowed from here than from the composer (screen 4);
+  - **if nobody is sitting at it — a note saying "not visible in the feed"**. An empty table does not reach the selection and goes out on silence: this list is the only place it is still visible, and only to whoever set it up.
 - **A "say it again" button** on an expiring or expired phrase (added 2026-08-28): it opens the composer with the same text. The price is named: this is a direct path to repeating the same thing forever, and the only thing holding it is the ceiling of four publications an hour.
 - The remaining posting quota (how many of the 4 phrases are still available).
 
