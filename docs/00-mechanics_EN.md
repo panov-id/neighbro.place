@@ -32,7 +32,8 @@ deferred PIN would mean keys lying on disk in the open (`xor.ad/docs/chat_EN.md`
 
 **An identity has exactly one live session.** That is not "one device forever":
 an identity **moves** — the previous device goes still, its conversations stay on
-disk encrypted, and they come back with the identity if it is brought back. What
+disk, but no key opens them any more: the move burns the share (§9), and bringing
+the identity back does not bring them back. What
 does not happen is one identity living on a phone and a laptop at once: two
 devices are two neighbours. That is deliberate, because the key of each chat lives
 on the device and cannot be handed to all of them at once.

@@ -46,8 +46,8 @@ Move the identity to another device **or raise it from the paper code** (decided
 - **What leaves and what stays — in numbers, before the press (added 2026-08-29):**
   how many conversations will fall silent until the key is reissued, how many live
   phrases stay in the feed (they stay: phrases belong to the identity, not to the
-  device), and that the local history goes nowhere but becomes unreadable without
-  the identity. The same rule as on the step-away and start-over screens: the cost
+  device), and that the local history goes nowhere but becomes unreadable for good —
+  even if the identity is brought back here. The same rule as on the step-away and start-over screens: the cost
   is shown as numbers before, not as words after.
 
 - The invite is **single-use** and lives **two minutes**; entry may be wrong **five times** before it burns (`xor.ad/docs/chat_EN.md` §8.2).
@@ -63,7 +63,7 @@ Move the identity to another device **or raise it from the paper code** (decided
 
 ## What has to be said to the person
 
-> The identity will move to another device. Here it will go still: new messages stop arriving, and the conversations stay on disk encrypted, returning if you bring the identity back.
+> The identity will move to another device. Here it will go still: new messages stop arriving, and the conversations on this device become unreadable for good — even if you bring the identity back here.
 
 > On the new device the conversations will be the same but empty: it has no history and nowhere to get one.
 

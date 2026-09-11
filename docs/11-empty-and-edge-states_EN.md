@@ -77,7 +77,7 @@ twice, no explaining how the system is built, no "oops".
 | Fifth refusal in a row | Fifteen minutes off | The feed, likes and conversations all work — only new phrases are paused. | — |
 | The conversation ended for the other person | The conversation ended | There is nothing here any more. | Close |
 | The other person stepped away | Stepped away | — | — |
-| The identity moved to another device | Your identity is not here any more | You moved it to another device. It no longer works on this one, and the correspondence stays here. | — |
+| The identity moved to another device | Your identity is not here any more | The identity was brought up on another device. It no longer works here, and the correspondence on this device will not open again. If it was not you, you have your paper code. | Enter the code |
 | The app is out of date | Time to update | This version no longer talks to the node. Reload the page and everything is where you left it. | Reload |
 | A published phrase was restricted | Your phrase was hidden | What happened, why, who decided and what to do next — all of it here. | Read |
 | An application is waiting | Waiting for an answer | The players will decide by the start of the next game. Watch and talk meanwhile. | — |
