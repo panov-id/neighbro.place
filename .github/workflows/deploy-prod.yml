@@ -31,7 +31,14 @@ jobs:
           # is refused there (measured 03.09.2026). Public address, not a secret.
           RELAY_REPORT_URL: https://report.relay.panov.id
           RELAY_PUBLISHABLE_KEY: ${{ secrets.RELAY_PUBLISHABLE_KEY }}
-          ANALYTICS_ID: ${{ secrets.ANALYTICS_ID }}
+          # Аналитика снята 11.09.2026 вместе с последним основанием на согласии
+          # (реестр по ст. 30, §9): согласие тянуло за собой ст. 8 GDPR, то есть
+          # вопрос о возрасте цифрового согласия и о родителе, механизма для
+          # которого у продукта нет. Политика уже говорит, что счётчика нет —
+          # значит его не должно быть и в выкате. Переменная не передаётся, и
+          # пустой analyticsId в config.js не грузит скрипт и не рисует баннер.
+          # Секрет в репозитории оставлен: значение публично видно в config.js и
+          # секретом не является, а решение должно жить здесь, а не в кабинете.
           SEARCH_CONSOLE_TOKEN: ${{ secrets.SEARCH_CONSOLE_TOKEN }}
           LANDING_ENV: prod
           RUN_NODE_NATIVE: '1'
