@@ -293,6 +293,25 @@ counted against what a person can see: otherwise whoever blocked somebody would
 see fewer tables than their neighbour, so a block would quietly punish the person
 who used it — which was ruled out on 2026-08-26.
 
+**Two shares divide one selection, and nobody had added them up — done 2026-09-10.**
+Tables take up to a quarter of the cards, offers up to one in ten ordinary ones. The
+two are measured against different bases, so they cannot be added by eye: computed,
+**no more than 31.8% of the selection is taken by something other than neighbours'
+phrases** (with tables at their 25% ceiling, offers are left 6.8%). The first draft
+of this paragraph said "more than a third" — an estimate rather than a calculation,
+and it overstated. Both are ceilings rather than norms, and they are only reached
+where there really are many tables and many venues.
+
+**The order when there is not enough room — phrases first, then tables, then offers
+(decided 2026-09-10).** The offer gives way, and not out of taste: §3 already calls
+an offer a guest in the neighbours' feed and a table a meeting place of the
+neighbours themselves. A guest gives way to the host.
+**The price is stated plainly:** in a small neighbourhood a café may not appear at
+all, though its offer is alive and passed moderation — and the venue will have to be
+told why it is not visible. That is cheaper than the reverse: a table with one
+person sitting at it that misses the selection never gathers company, while an offer
+waits for the next one.
+
 **Tables take at most a quarter of the delivered cards — decided 2026-09-02.**
 This used to say there was no share of the feed at all: any number could be
 created, and nothing stopped someone burying a neighbourhood in tables for free,
@@ -623,6 +642,7 @@ machine.
   `xor.ad/docs/refusal-wordings_EN.md`: six sections, a text for every class. §10
   of this same file has known that since that day, while the question stood here
   for another ten (removed 2026-09-07).
+- **There is no appeal against an automatic refusal, and since 2026-09-10 the terms say so.** They used to promise "write to support and a person will look again" — a single promise for two different decisions, and therefore untrue for one of them: a decision **on a report** is taken by a person and can be looked at again; a refusal **before publication** is taken by a model, and there is nobody to appeal to. The document now distinguishes the two instead of covering both with one sentence.
 - **There is no appeal** — settled. A refusal is final; the text is edited and
   sent again. The price is measured and stated plainly: about 7% of ordinary
   messages are blocked for nothing, and their authors have nowhere to go. What
@@ -961,6 +981,12 @@ pressed it in anger and wants back in with the paper code.
   with its own PIN, the conversations gathered on it. The control that is missing
   is **revoking the share**, not ending a session: the node knows the share and
   can delete it (sharpened 2026-09-07 after a review panel).
+  **Closed 2026-09-11: any move of an identity burns the share** — recovery by
+  paper code and voluntary transfer alike (`xor.ad/docs/chat_EN.md` §8.2). One rule
+  rather than two: only the person can tell "lost" from "just moving", and they
+  would have to be asked at the very moment they are typing sixteen characters and
+  inventing a PIN. The cost: moving for an evening kills the history on the
+  previous device for good.
 
 ---
 
@@ -1064,8 +1090,12 @@ from the last movement rather than the last word: the game exists so that one ca
 silent in words, and it would be absurd if a conversation died under the hands of two
 people happily pushing draughts around.
 
-**The board for two lives inside the conversation** (screen 18): encrypted with the
-same key, never written to the database, gone when the conversation goes.
+**The board for two lives inside the conversation** (screen 18): the position sits
+in a game cache on the node and goes when the conversation goes — rewritten
+2026-09-10, where this read "never written to the database". **It stopped being encrypted on
+2026-09-09** — this used to read "encrypted with the same key" — because only
+whoever sees the board can keep to the rules. The node knows what two people play
+and how, and does not know what they say: the conversation is encrypted as before.
 
 **A table is a thing of its own** (screen 19). Several neighbours sit around it, it
 shows up in the feed by radius, and it lives by the feed's rules rather than the

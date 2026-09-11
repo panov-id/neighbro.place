@@ -20,6 +20,16 @@ separate panel that is opened rather than kept open.
   happened, and describes it in the product's words rather than the code's.
 - **Errors that concern the person**: no connection, refused by quota, refused by
   age, phrase too long, the table no longer exists.
+- **What the system did on the person's behalf — added 2026-09-10.** People
+  remember their own actions; what was done for them looks like a breakage: "the
+  move timed out, a pass was recorded", "three passes in a row — you are a
+  spectator now", "the line-up was not confirmed in time". The rules were
+  introduced on 2026-09-10 (screen 19), and without a line in the console a person
+  only sees the board move on without them.
+- **A change of route for a message — added 2026-09-10.** A report support cannot
+  take travels the way the Article 16 form does (screen 14), and that is said in a
+  line: "sent as a report of illegal content". A silent move looks like the text
+  went missing — at exactly the moment somebody is reporting something serious.
 - **A timestamp** on every line, from the device's clock.
 
 ## What is not in it — decided, not forgotten (2026-09-09)

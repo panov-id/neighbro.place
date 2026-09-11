@@ -39,7 +39,8 @@ begins.
 - **Acceptance of the terms and the rules** (added 2026-08-28): a checkbox with
   links that open the documents right here. Without it the "next" button stays
   inactive.
-- **A language switcher** (moved here from the splash on 2026-08-28): taken from
+- **A language switcher** (moved here from the splash on 2026-08-28; an icon came
+  back to the splash on 2026-09-10, the full list stayed here): taken from
   the browser by default, but someone whose phone is in a language they do not read
   has to be able to fix that before typing their own name.
 - A "next" button — icon only, no text label (same as screen 1).
@@ -67,7 +68,13 @@ begins.
 - Signing up completes on this step: the keys are born on the device, the node mints an identifier and keeps only the public half of the key.
 
 - **Agreement with the documents is a separate checkbox**, not a line under the button (settled 2026-08-26). It is the contract everything else rests on, and the accepted revision is recorded with the identity. Links to the three documents sit beside it (screen 15).
-- **Breaking off halfway means there is no identity.** Close the tab between seeing the code and confirming it, and signing up is not complete: come back and you start again, with a new code. Otherwise an identity without insurance would exist, and the code cannot be shown twice.
+- **Breaking off halfway means there is no identity** — and since 2026-09-10 it is
+  said what exactly it is not. The exchange with the node for the vault share
+  happens before the code is shown, so a row on the node exists by then; it is
+  marked unfinished, passes no membership check at all — no feed, no match, no
+  chat — and is removed after **1 hour**. The order of the steps was deliberately
+  left alone: writing at the end would either take the offline out of step 2 or
+  put both halves of the key on the device. Close the tab between seeing the code and confirming it, and signing up is not complete: come back and you start again, with a new code. Otherwise an identity without insurance would exist, and the code cannot be shown twice.
 
 ## What has to be said to the person
 

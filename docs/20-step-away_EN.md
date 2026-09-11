@@ -15,6 +15,13 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 > Your phrases will vanish along with their likes, and offers to talk will burn. Conversations run on their own timers: the ones where you set ten minutes will not survive this break. If you are sitting at a table, you will stand up from it — the game goes on without you.
 
 - **A board in a private conversation leaves with the person leaving — clarified 2026-08-29.** Screen 20 discussed the table in detail and said nothing about a paired board, although the case is just as common. The rule is now explicit: in a pair, one person leaving ends the game (screen 18) — there is nobody to wait for. A table is the opposite, and that is below.
+  **The game cache leaves with the game — added 2026-09-10.** Since 2026-09-10 the
+  position for a pair sits on the node (screen 18), and the cascade only takes it
+  when the conversation dies — while stepping away does not kill it: it lives on
+  its own spans. So the row is removed by the departure itself, by the same motion
+  that ends the game. Otherwise somebody back in twenty minutes would find the
+  conversation alive, the game over, and the position sitting on the node until
+  its own span ran out.
 - **The table stays and the person leaving stands up from it — settled 2026-08-27.** A person's phrases are deleted, but a table is not a phrase: people are sitting at it, and removing it would throw out of the game those who have nothing to do with somebody else's break. It would also hand the founder the power screen 19 takes away from them: nobody owns a table. Coming back, they will find the game moved on or gone — exactly as if they had stood up themselves.
 - **A private person's offer disappears** with the phrases: it is a phrase with a non-empty discount (screen 17).
 - **A support answer survives the break** — it waits with the identity, and the identity has not gone anywhere (screen 14).

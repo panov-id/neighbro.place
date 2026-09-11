@@ -4,7 +4,8 @@
 
 The application's main screen. Short messages from people nearby, **the newest on top** (decided 2026-08-28; it used to be "at the bottom, like a chat"). The price of the change is named: the feed stops reading like a conversation, but skimming wins — someone dropping in for a minute sees what is new at once rather than after scrolling.
 
-**Three different things live in the feed, and each is labelled:** neighbours' phrases, **offers** (screen 17) and **tables** (screen 19). They run as one stream ordered by time, not on separate shelves. An offer is labelled with the word "offer" and the size of the discount, a table with the name of the game and the number of people sitting at it; offers carry a quota — no more than one commercial card per ten ordinary ones (`xor.ad/docs/chat_EN.md` §8.3). This screen used to describe phrases only, although both of its neighbours in the feed were described on their own screens.
+**Three different things live in the feed, and each is labelled:** neighbours' phrases, **offers** (screen 17) and **tables** (screen 19). They run as one stream ordered by time, not on separate shelves. An offer is labelled with the word "offer" and the size of the discount, a table with the name of the game and the number of people sitting at it; both of the feed's other inhabitants carry a share of their own, and the two differ: **offers — no more than one commercial card per ten ordinary ones**, **tables — no more than a quarter of the delivered cards** (`xor.ad/docs/chat_EN.md` §8.3; the tables' share was decided 2026-09-02). The screen did not name the tables' share until 2026-09-10, although the feed is the one place where the two meet and compete for the same cards.
+**Tables reach their quarter at random, and the quarter is counted after blocks (2026-09-09).** Not "the liveliest first": a table with one person sitting at it makes no moves — it is waiting for a guest — and an order by activity would bury exactly the tables the table screen exists for. The price: the selection is not stable between refreshes and a table you saw can be lost; there is a way back to your own — the line in the header (below). This screen used to describe phrases only, although both of its neighbours in the feed were described on their own screens.
 
 **Your own phrase awaiting review is visible here to you alone** — dimmed, labelled as under review (screen 4). It is in nobody else's feed.
 
@@ -12,7 +13,7 @@ The application's main screen. Short messages from people nearby, **the newest o
 
 - The feed: phrases, offers and tables in one stream.
 - **A language filter in the header** — up to three languages, cleared with one tap (`00-mechanics_EN.md` §8).
-- **A line "you are at a table — return"** in the header while you are sitting at one (settled 2026-08-27). A table does not appear in the conversations list — it lives by the rules of the feed — and without this line somebody who looked away for a minute would lose a game with live people without any notice (screen 7, screen 19).
+- **A line "you are at a table — return"** in the header while you are sitting at one (settled 2026-08-27). **There is exactly one such line, and since 2026-09-09 that is a guarantee rather than a coincidence:** you can sit at only one table at a time, so the question of what to show for three tables is gone by construction. A table does not appear in the conversations list — it lives by the rules of the feed — and without this line somebody who looked away for a minute would lose a game with live people without any notice (screen 7, screen 19).
 - A line under the feed: "**N more messages in other languages — show**".
 - A filter icon — opens a panel with the age, radius and mode filters.
 
@@ -31,6 +32,16 @@ The application's main screen. Short messages from people nearby, **the newest o
 
 ## Logic
 
+- **The feed has a size: 30 cards, then "show more" — decided 2026-09-10.** The size
+  used to be named nowhere, and that silence promised more than the product can give:
+  the quota limits **a person** (four live phrases, four an hour) while **an area** is
+  limited by nothing. Somewhere dense a phrase leaves the visible part within minutes,
+  and the 4:20 span stops meaning "this is how long I am heard". Paging goes by time
+  and the order stays chronological — there is no ranking and none is being added.
+  The thirty are **chosen, not measured** (`xor.ad/docs/facts/limits.tsv`,
+  `feed.page.size`): that is what people scroll in one go without losing the thread.
+  The cost is named plainly: **somewhere dense not everybody will hear you, and paging
+  does not fix that** — it lets you read on, not be read.
 - The filters are part of the feed's interface, not a separate onboarding step.
 - **Language is a filter, not a set of shares (amended 2026-08-26).** What stood here was "about 95% in the user's language, 5% in other languages of the region, both shares configurable via environment variable". That was a [retired] different mechanic from `00-mechanics_EN.md` §8, and it loses for one reason: shares decide for the person silently. A filter is up to three languages, taken from `navigator.languages` by default, edited by hand, cleared with a tap, with the line "N more in other languages" always under the feed. A person always knows the district is livelier than their feed, and never mistakes the filter's silence for the district's.
 - **The node detects the language** with a local library, on its own machine: no text leaves in order to be identified. "AI" in the old wording was imprecise — there is no external service here and there will not be.

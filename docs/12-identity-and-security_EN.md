@@ -70,6 +70,18 @@ have destroyed their correspondence silently.
   seen and handled. Erasing is irreversible and takes only the history: the
   identity, the phrases and the open conversations remain, but the earlier
   conversations inside them go silent, as after a move.
+- **The game is not listed here, and that has to be said out loud — added
+  2026-09-10.** Since 2026-09-09 the board and the moves are not encrypted, and a
+  person is entitled to ask where they live. The answer: **here as well — rewritten
+  2026-09-10.** In a pair the position, whose turn and the score sit in a game cache
+  on the node: a judge without the position cannot judge, and a node restart happens
+  on every deploy. Not one reply is in there, and the cache leaves with the
+  conversation — at once, not by its own span. This used to read "they are neither
+  on the device nor in the database"; that was untrue from the day the cache was
+  introduced. At a table the state sits in the node's database beside the table:
+  everything there is public by construction. **Lines of play are the exception and
+  do live here:** they are replies in the conversation, and the "erase conversation
+  history" button takes them with the rest.
 - **Start over** — a new identity in place of this one. Before the button, the
   cost is counted **on the spot**: live phrases, open conversations, waiting
   offers. On its own line: that the paper code becomes useless, because the

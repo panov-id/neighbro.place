@@ -13,7 +13,7 @@ A table is a shared board several neighbours sit around. The screen was created 
 - **A table is set up from the composer** (screen 4, the "table" tab): the game, the zone, a "set it up" button. Until 2026-08-27 that path did not exist — this screen described pulling up a chair to a table nobody could put there.
 - **Getting back to a table goes through the line in the feed header** (settled 2026-08-27). A table is not in the conversations list: it is not a conversation. The cost is named: narrow the circle or leave the radius and the line still returns you, but finding the table in the feed again will not work.
 - A **"pull up a chair"** button — open to anyone within the radius, with no invitation and no application.
-- Who is sitting is visible; when anyone was last online is not, as everywhere else.
+- Who is sitting is visible, **and since 2026-09-10 that is two numbers: "N playing, M watching"**. A single number would have lied to expectation: somebody saw "six at the table", sat down and found two playing with a queue of four ahead of them. When anyone was last online is still not shown, as everywhere else.
 
 ## Logic
 
@@ -31,6 +31,14 @@ A table is a shared board several neighbours sit around. The screen was created 
 - **Age bands — everyone with everyone.** You may join only if you are inside every sitter's band and they are inside yours (`xor.ad/docs/chat_EN.md` §8.2). The same rule as for a pair, applied to all at once.
 - **"Play again" is a proposal, not a command (decided 2026-08-29).** A game has ended — the table stays; those who agree play on, and **whoever declines stops playing but stays as a spectator** (clarified 2026-09-09: with applications in place, sitting and playing are different things, and "not another game" stopped meaning "I am leaving these people"). To play again they apply like anybody else, and they may not be taken back. If one person is left, the table does not close but waits: that is the normal state described below. If everyone declines, the table goes with the game.
 - **An undo at a table takes the agreement of everyone playing (decided 2026-08-29, clarified 2026-09-09, screen 18).** Everyone playing, not everyone seated: a spectator is not in the game, and letting them block a take-back would give power over a game to somebody who does not move in it. The more people, the more expensive it is to take a move back, and that is deliberate: a cheap undo in company is precisely how somebody else's game gets spoiled.
+- **A move has a deadline — 5 minutes, then a pass (decided 2026-09-10).** The
+  engine has been checking the turn order since 2026-09-09, so the game used to
+  stop on whoever was not there: left, shown out, or with the phone put down —
+  the others waited for the table to die. A missed move becomes a pass, and
+  **3 passes in a row make a spectator** — the same as an unconfirmed roster.
+  The five minutes are **chosen, not measured**, and chosen at the upper bound:
+  that is how long you may think in chess without being absent. The cost is
+  named: a pass will land on someone who was thinking.
 - **The majority of those sitting can ask someone to leave.** Two out of three say "enough" and the person stands up. Nobody owns a table: the neighbour who started the game does not become its master.
 - **Sitting down and playing are different things (decided 2026-09-09).** Whoever
   sits down gets **the chat and the board**; to play, they apply **for the next
@@ -47,12 +55,15 @@ A table is a shared board several neighbours sit around. The screen was created 
   before them. **Why:** a spectator sees the board but could not tell what had
   happened, and somebody returning to a table starts from nothing and catches up
   through the lines.
+  **There is no "…" menu on lines of play (2026-09-10):** there is nothing to report and nothing to hide — the text is machine-made, it has no author, and it is never the target of an Article 16 notice.
 - **Game state and the score at a table live in the database — decided 2026-09-09**
   (`table_games` and `table_scores`, `xor.ad/docs/chat_EN.md` §6.1). In a pair the
-  game stays in the node's memory; here it does not — at a table speech and board
-  are public by construction, and there is nobody to hide the state from. **The read
-  cuts out the players' hands:** the node sees everything but hands over nobody
-  else's hand — your own hand and the backs of the others, and this is the only
+  game sits in a cache with the conversation's span; here it sits beside the
+  table — at a table speech and board
+  are public by construction, and there is nobody to hide the state from. **The read cuts
+  out what is hidden — three kinds of it, clarified 2026-09-10:** the hand, the
+  undrawn stock (boneyard, deck) and the guessed word. The node sees everything and
+  hands over only what is declared open — your own hand and the backs of the others, and this is the only
   place where the answer depends on who is asking.
 - **The line-up for a new game is confirmed — 30 seconds (decided 2026-09-09).**
   Once "play again" is pressed, everyone who was playing and everyone whose
@@ -61,6 +72,12 @@ A table is a shared board several neighbours sit around. The screen was created 
   return to the game by applying.
   **A game, a round and a move are different things:** the confirmation is asked
   per game, not per round, or dominoes would turn into a questionnaire.
+  **In a pair there is no count at all — decided 2026-09-10:** "1 of 2 confirmed"
+  is a binary answer about a named person — "my opponent is at their screen" —
+  exactly the presence indicator the product does not have. In a pair a button
+  and a countdown remain, and the other side's confirmation shows as a result:
+  the game started, or it did not. The cost: thirty seconds of silence in a pair
+  read as a freeze.
   **The others see a count without names** — "2 of 4 confirmed" and a countdown. A
   list by name would be the very presence indicator the product has nowhere (see
   above on "when somebody was last online").
@@ -81,6 +98,18 @@ A table is a shared board several neighbours sit around. The screen was created 
   vote; spectators do not decide who gets in. The refuse button stays inactive
   until an explanation is written. The deadline is **the start of the next
   round**: whoever has not objected by then did not object.
+  **An application is only made for a free seat — decided 2026-09-10.** No seats and
+  the button is inactive, saying why: "no seats, wait for the game to end".
+  Otherwise a table for two with twenty hopefuls gathered twenty public lines and
+  the conversation at the table drowned in them. The cost: whoever taps at the right
+  moment sits down, not whoever waited longest; a table of neighbours has no queue
+  with a number and a deadline.
+  **What lets you in is a free seat, not silence — clarified 2026-09-10.** This
+  used to mean that anyone unopposed was taken: consent cost nothing, a refusal
+  cost public words. Now a game has its own number of seats (chess two, dominoes
+  up to four), and those unopposed sit down **in the order they applied**, while
+  seats last. Whoever does not fit is not refused: they are an applicant for the
+  next round.
 - **One table at a time (decided 2026-09-09).** Sitting down at a second table
   without standing up from the first is refused. That is also what guards the feed
   against being buried: set up as many tables as you like, but sit at one, and a
@@ -96,7 +125,13 @@ A table is a shared board several neighbours sit around. The screen was created 
   used it.
 - **Being shown out is not being locked out — decided 2026-09-08** (`xor.ad/docs/chat_EN.md` §6). No "may not return" list is kept: that is a trace about a person, and the product promises no trace is left. Until somebody blocks, the person shown out sits back down with the same gesture, as often as they like.
   What locks the door is not a list but a **block**, and it is stronger than it looks: the check is symmetric, so one side is enough. One person at the table blocks, and the table disappears not only for them but for the person shown out, who then has nowhere to come back to. The price is accepted: between the eviction and the block there is a gap, and in it an eviction is a request to leave rather than a lock.
-- **A block hides the table entirely.** If someone you blocked is sitting there, the table is not shown to you at all. The cost is named: one person can hide someone else's game from you simply by joining it.
+- **A block separates at the seat — rewritten 2026-09-10.** A table with someone you blocked at it is still not shown to you, and **sitting down beside each other is refused both ways**: neither them into a table where you sit, nor you into one where they do. This used to read "one person can hide someone else's game from you simply by joining it" — and that was not the whole cost: by joining a game in progress, an outsider cut it off for you mid-move, and for the others at the table for no reason at all.
+  **A table does not vanish and come back instantly — decided 2026-09-10:** the set
+  of visible tables is computed when the feed is opened. Otherwise "block, look,
+  unblock" would answer whether a named person is at a table right now — and the
+  product shows nowhere who is at their screen. The cost: after lifting a block you
+  will not see the table straight away.
+  **If the block happens while you are already at the same table,** the game ends and the one who leaves is **whoever did the blocking**. That is said before the button, not after: the cost falls on whoever made the decision.
 - **Someone outside the bands does not see the table at all — settled 2026-08-27.** No greyed card, no "you cannot join" line: such a card would itself report who is sitting where, and would tease a teenager with what is off limits. The cost is accepted: a person may not understand why a neighbour is talking about a table they cannot see.
 
 ## Open questions

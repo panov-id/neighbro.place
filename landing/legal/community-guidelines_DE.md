@@ -1,6 +1,6 @@
 # Community-Regeln — neighbro.place
 
-**Zuletzt aktualisiert: 27. August 2026**
+**Zuletzt aktualisiert: 10. September 2026**
 
 **Diese Regeln erscheinen in mehreren Sprachen. Maßgeblich ist die englische Fassung; Übersetzungen dienen der Bequemlichkeit.**
 
@@ -10,7 +10,7 @@
 
 Inhalte müssen im Rahmen der Normen einer ruhigen, friedlichen Gesellschaft bleiben. Was **veröffentlicht** wird — der Feed und die Nachbarschaftsangebote — wird automatisch von **KI-Modellen** geprüft, bevor es erscheint, nicht danach.
 
-**Ein Chat wird nicht geprüft.** Er läuft verschlüsselt von einem Gerät zum anderen, und wir können ihn nicht lesen. Die Regeln unten gelten dort genauso; anders ist nur, wie sie durchgesetzt werden — durch eine Meldung deines Gegenübers, nicht durch eine Prüfung auf unserer Seite.
+**Ein Chat wird nicht geprüft.** Er läuft verschlüsselt von einem Gerät zum anderen, und wir können ihn nicht lesen. **Ein Spielbrett ist die Ausnahme, seit dem 09.09.2026:** Brett und Züge sind nicht verschlüsselt, wir sehen sie und gleichen die Züge mit den Spielregeln ab. Worte lesen wir weiterhin nicht; ein Zug auf einem Brett ist kein Wort. Die Regeln unten gelten dort genauso; anders ist nur, wie sie durchgesetzt werden — durch eine Meldung deines Gegenübers, nicht durch eine Prüfung auf unserer Seite.
 
 ## Sei ein guter Nachbar
 

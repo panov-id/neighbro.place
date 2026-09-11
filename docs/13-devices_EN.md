@@ -9,7 +9,17 @@ Move the identity to another device **or raise it from the paper code** (decided
 - A "move to another device" button — shows **nine characters** in large type, in groups of three: `K7Q - M3F - 2X9`.
 - The invite's lifetime: two minutes, after which the code stops working.
 - On the new device, a field where those characters are typed by hand.
+- An **"extend"** button beside the timer (decided 2026-09-03, added to the
+  screen's elements 2026-09-10): it **issues a new code and puts out the old
+  one**, rather than extending it — a longer life would otherwise mean a longer
+  window for a code seen over your shoulder.
 - A line saying this device will go still once the move is done.
+- **The screen opens in two different shapes — said 2026-09-10.** With an identity
+  (from settings) a person sees what is listed above: they are handing over.
+  Without one (from the splash, "I already have one") they see **a choice of two
+  fields**: the nine characters of a move or the sixteen of a paper code — because
+  they are receiving. The elements used to be described only from the handing-over
+  side, while the splash leads both here.
 
 ## Logic
 
@@ -18,7 +28,10 @@ Move the identity to another device **or raise it from the paper code** (decided
   node finds the identity by the hash of one half of the code, hands over the
   wrapped long-lived key, and the device unwraps it. From there it goes as at
   registration: **a new PIN, a new share, a new paper code shown once**, and the
-  previous one is dead. The old session goes still under the one-live-session rule
+  previous one goes out **at the moment the new one is confirmed by typing two
+  groups** (clarified 2026-09-10): otherwise a break at this step would leave a
+  live identity with no safety net at all. The cost: while the copying is going
+  on, both codes are alive. The old session goes still under the one-live-session rule
   (`xor.ad/docs/chat_EN.md` §8.2).
   **The difference from a move, said out loud:** a move happens from a live device
   and is confirmed on it, while a recovery happens when there is nobody left to
@@ -43,7 +56,7 @@ Move the identity to another device **or raise it from the paper code** (decided
 - **The key does not pass through us here either:** stretching the code yields two halves — one by which the node **finds** the invitation, the other that **unwraps** the envelope, and the second never leaves for the server. The node sees a `lookup_id` and two opaque envelopes (§8.2).
 - The new device asks for **its own PIN**: the vault share belongs to a device, not to an identity.
 - Once the move happens, **the previous device goes still immediately**: its signature is no longer accepted and it receives no new messages, not even in open conversations.
-- **The disk is not wiped.** The local database stays encrypted, and if the identity is brought back the conversations come back with it.
+- **The disk is not wiped, but the key to it is gone — rewritten 2026-09-11.** This used to read "if the identity is brought back the conversations come back with it". True, and dangerous: nothing put out the previous device's vault share, so after a move the old phone kept reading everything it had accumulated with its own PIN — including in the hands of whoever found it. Now **any move of an identity burns the previous device's share**, recovery by paper code and voluntary transfer alike. The local database stays on the disk, encrypted and unreadable for good. The cost is accepted and it is real: move to a laptop for an evening and come back, and the history on the phone is dead.
 - **On the new device the conversations are the same and the history is empty**: the messages are not in the node's database, so there is nothing to download. Older conversations stay silent there until the chat key is reissued (`xor.ad/docs/chat_EN.md` §8.13).
 - **Confirmation on the old device is mandatory.** Before the identity leaves, it shows two lines — how the new device named itself and when — and waits for "it's me". **The network line was removed on 2026-08-29**, and the price is recorded in the spec: it was the only verifiable signal here, while the device label is sent by the same side that is asking for the move. Without it no move happens (§14 of the spec). Honestly about the limit: if somebody was talked into pressing, this will not save them; the step gives a pause and a fact.
 - There is no grace period: leaving, you close the door at once. The insurance against theft is **the paper code issued at registration (screen 2)**. This used to point at screen 11, which does not exist: the code moved to registration on 2026-08-26 and the reference stayed behind.

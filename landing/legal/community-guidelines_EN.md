@@ -1,6 +1,6 @@
 # Community Guidelines — neighbro.place
 
-**Last updated: 27 August 2026**
+**Last updated: 10 September 2026**
 
 **These rules are published in several languages. The English version is the one that applies; translations are provided for convenience.**
 
@@ -8,7 +8,7 @@
 
 Content must stay within the norms of a calm, peaceful society. What is **published** — the feed and neighbourhood offers — is screened automatically by **AI models** before it appears, not after.
 
-A **chat is not screened.** It travels encrypted from one device to the other, and we cannot read it. The rules below hold there all the same; what differs is how they are met — by the person you are talking to reporting a message, not by a check on our side.
+A **chat is not screened.** It travels encrypted from one device to the other, and we cannot read it. A **game board is the exception, since 2026-09-09**: the board and the moves are not encrypted, we see them, and we check the moves against the rules of the game. Words are still ours to not read; a move on a board is not words. The rules below hold there all the same; what differs is how they are met — by the person you are talking to reporting a message, not by a check on our side.
 
 ## Be a good neighbor
 
