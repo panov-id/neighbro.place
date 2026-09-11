@@ -240,12 +240,21 @@ def self_test(root):
                         encoding="utf-8")
 
     def edit_translation_date(copy):
+        # День сдвигается разбором, а не заменой конкретной цифры. Прежде здесь
+        # стояло line.replace("27", "13") — привязка к тому, что в русских
+        # правилах стоит 27 августа. 11.09.2026 дата стала другой, замена
+        # перестала срабатывать, и случай тихо проходил зелёным: самопроверка
+        # проверяла, что проверка краснеет, и сама же перестала это делать.
         path = copy / "landing/legal/community-guidelines_RU.md"
         lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
         for i, line in enumerate(lines[:10]):
-            if "2026" in line:
-                lines[i] = line.replace("27", "13")
+            day = re.search(r"\b([0-9]{1,2})\b", line)
+            if "2026" in line and day:
+                shifted = "13" if day.group(1) != "13" else "14"
+                lines[i] = line[:day.start(1)] + shifted + line[day.end(1):]
                 break
+        else:
+            raise AssertionError("в первых строках правил нет дня — ломать нечего")
         path.write_text("".join(lines), encoding="utf-8")
 
     def edit_both(copy):

@@ -17,6 +17,12 @@ The section holding everything to do with talking: offers waiting for an answer,
 - The tabs live **inside the section**, not in the bottom navigation: that has exactly four items (`Feed` / `Chats` / `Say` / `Me`), and a fifth does not fit a narrow screen (`xor.ad/docs/chat_EN.md` §9).
 - An **offer** is a match waiting on acceptance — yours, theirs, or both. It disappears when either of the two phrases expires.
 - A **conversation** enters the list once both have accepted, and lives until silence eats it — each side by their own count (`00-mechanics_EN.md` §2).
+- **The mark is placed by your attempt, not by their clock — clarified 2026-09-10.**
+  The line used to appear the instant their span ran out, and that gave away their
+  setting: the time of their last message is on your screen, there are only four
+  spans, and the difference named the one they chose. Now a conversation is marked
+  "ended" when you open it or try to write. The cost: the list does not tell a live
+  conversation from a dead one until you look into it.
 - **A conversation that ended for the other side stays in the list, marked "ended" — settled 2026-08-27.** It lives until **your** span: the history reads, the input is closed, and neither side can write. The mark is mandatory, on the same grounds that gave §5 its headstone: a silent "I cannot write here" is indistinguishable from a fault. The cost is accepted — a row for a conversation that no longer exists sits in the list for a while; but learning it ended only by opening it is worse than seeing it at once.
 - **Fading shows in the row itself**: through the last quarter of your own span the row is shown fading. There is no separate "Fading" section and will not be — a conversation would move between sections on a timer, disappearing from view exactly when there is least time left (§3 of the spec).
 - **After "not now" the entry disappears, but for a few seconds a line stays at the bottom: "declined · undo"** (decided 2026-08-28, screen 6). The refusal is recorded **at once**, not when those seconds run out: otherwise closing the app would leave the offer hanging for whoever refused. The undo is a request of its own, possible while the line is visible and while the match is still alive; after that the refusal is final.

@@ -25,6 +25,16 @@ The set of actions available on a message card in the feed: like, hide, block, r
 
   **A justification in the person's own words is mandatory.** Without it the form does not send: an empty notice creates no "actual knowledge" under Article 16(3) and gives nothing to work from. The cost is named: reporting takes a second longer than tapping a button.
 
+  **One form, two outcomes — decided 2026-09-04 after the review panel.** Until this edit a single tap did two things at once: it voted for hiding by threshold and declared itself an Article 16 notice. The legal spec keeps them apart (`xor.ad/docs/dsa/SPEC_EN.md` §1: "a report about a message and a report about an offer are different entities"), and the published terms promise a person the same. Now the screen is built that way too:
+
+  - **The vote always happens.** The phrase leaves your feed, the message's counter goes up, the audience-share threshold works as before. This is a viewer's filter; it needs no name, no email and no review.
+  - **A checkbox, "I believe this is illegal", turns the report into an Article 16 notice.** It is not ticked by default. With it the form shows the remaining Article 16(2) fields — an optional name and email, and the good-faith confirmation ("the information is accurate and complete to the best of my knowledge") — along with the line from §5.1 of the spec: if the report concerns the sexual abuse of children, leave the name and email empty.
+  - **A ticked box promises three things**, and the form says them plainly: the notice gets a number, the acknowledgement arrives immediately and automatically (Art. 16(4)), and the decision with its reason arrives the same way (Art. 16(5)). With no email, the acknowledgement is shown in the app at the next sign-in.
+
+  **The menu stayed three words long, and that is a consequence rather than a compromise.** A fourth item would have been the longest and the rarest, while what needs separating is not the menu items but what happens after sending. Someone who simply does not want to see a phrase never reads about Article 16; someone who saw something illegal meets the checkbox where they have already decided to be loud.
+
+  **The place fills itself in, and without it there would be nothing to review.** The form opens from the card with `target_kind=feed_message` and `target_id`, so the content snapshot is taken as the notice is created (`xor.ad/docs/dsa/SPEC_EN.md` §4). This is not convenience: a phrase lives 4:20, and a notice typed by hand from the storefront footer reaches the node when there is nothing left to capture — `snapshot_state = target_gone`, and the review has to work from a description instead of the phrase itself.
+
 ## Open questions
 
 - ~~Whether a report hides the message personally~~ — it does, immediately (`00-mechanics_EN.md` §5).

@@ -15,6 +15,13 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 > Your phrases will vanish along with their likes, and offers to talk will burn. Conversations run on their own timers: the ones where you set ten minutes will not survive this break. If you are sitting at a table, you will stand up from it — the game goes on without you.
 
 - **A board in a private conversation leaves with the person leaving — clarified 2026-08-29.** Screen 20 discussed the table in detail and said nothing about a paired board, although the case is just as common. The rule is now explicit: in a pair, one person leaving ends the game (screen 18) — there is nobody to wait for. A table is the opposite, and that is below.
+  **The game cache leaves with the game — added 2026-09-10.** Since 2026-09-10 the
+  position for a pair sits on the node (screen 18), and the cascade only takes it
+  when the conversation dies — while stepping away does not kill it: it lives on
+  its own spans. So the row is removed by the departure itself, by the same motion
+  that ends the game. Otherwise somebody back in twenty minutes would find the
+  conversation alive, the game over, and the position sitting on the node until
+  its own span ran out.
 - **The table stays and the person leaving stands up from it — settled 2026-08-27.** A person's phrases are deleted, but a table is not a phrase: people are sitting at it, and removing it would throw out of the game those who have nothing to do with somebody else's break. It would also hand the founder the power screen 19 takes away from them: nobody owns a table. Coming back, they will find the game moved on or gone — exactly as if they had stood up themselves.
 - **A private person's offer disappears** with the phrases: it is a phrase with a non-empty discount (screen 17).
 - **A support answer survives the break** — it waits with the identity, and the identity has not gone anywhere (screen 14).
@@ -38,7 +45,7 @@ A temporary departure for someone who has been sitting here too long. Not "a pau
 - **Conversations that outlived the span are in place — and it shows that something was said in them (decided 2026-08-30).** No new element was needed: the **"waiting for your reply"** mark has sat in a conversation's row since 2026-08-28 whenever the last line is theirs, and it is computed **on the device** — the line is already here, and the node knows nothing about visits.
   **How this differs from the summary the whole thing exists to refuse.** A summary tells you **what** you missed and thereby pulls you back into the feed; the mark says only that in **your** conversation the move is yours. No number, no preview, no "while you were away".
 - **No summaries**: no "while you were away", no count of what was missed.
-- **Four free quota slots.**
+- **Four free quota slots — and nothing else (sharpened 2026-09-07).** The hourly limit of four publications, the refusal counter and whatever is left of the fifteen-minute pause all **survive** the departure (`00-mechanics_EN.md` §3). A review panel showed what staying quiet about it cost: four phrases, twenty minutes away, four more — eight in twenty-five minutes instead of four in an hour. The screen has to say this **before** the press, in the same place it speaks about matches burning: a person leaves to break off, not to buy a second hour of speech, and finding the counter still running on return would read as a punishment for having left.
   [retired] This used to say "Five free quota slots": the number changed on 2026-08-28 and the screen stayed behind until 2026-08-30. The marker sits on its own line deliberately — on a shared one it would exempt the live statement as well.
 
 ## The offer to step away
