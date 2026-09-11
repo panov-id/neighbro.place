@@ -8,6 +8,23 @@ A private conversation between two people, opened after both accepted the match 
 
 - The header: the peer's **name and age**, and a **key-comparison mark** beside the name (added 2026-08-28). The mark exists because a guarantee nobody knows about works only on paper — and this one closes the single hole in the encryption: us substituting a key. Tapping the mark or the name opens the **safety code** — a string derived from both identities' long-term keys (`xor.ad/docs/chat_EN.md` §8.13), with an explanation of what it is for.
 - The line of replies — short messages back and forth.
+- **A "…" menu on the other person's line — added 2026-09-11.** Two actions: **block**
+  and **report**. Screen 6 promised exactly this ("block them and report it"), while the
+  conversation had no menu, no button and no route — the same class of gap fixed for the
+  table on 2026-08-28 and for the offer on 2026-09-04: the legal path exists, the
+  interface one does not. And this is the most closed place in the product: a
+  conversation is not moderated by construction, so a report is the only protection.
+  **Blocking** introduces nothing new: the mechanic is the one from the feed (screen 5),
+  and it puts the conversation out for both.
+  **A report goes with target kind `chat`, and the person writes the body themselves.**
+  There is no snapshot and there cannot be — replies are encrypted on the devices and the
+  node does not hold them; the notice gets `snapshot_state = not_accessible`, which the
+  specification already knows and hands to a person
+  (`xor.ad/docs/dsa/SPEC_EN.md`). The cost is accepted and named: **it will be examined
+  on one side's word**, with no proof. That is a claim, not evidence, and it is treated
+  accordingly.
+  **The route is the support one (screen 14):** a quotation of the other person's line
+  may contain the very thing being reported, and the WAF cuts such bodies on the way in.
 - Lines about new likes between these two — right in the conversation (screen 6).
 - **Lines about moves — in the same place (2026-09-09).** "Anya placed a tile on e4", "Petya flicked": these words used to exist for the screen reader alone, and now they stand in the conversation. They are not encrypted, unlike the replies beside them — they are part of the game state.
 - **The score of the games — in the board's header, while the conversation lives.** It accumulates between games (3:2 after five) and goes out with the conversation: no history of wins, no mark on an identity.
@@ -19,6 +36,20 @@ A private conversation between two people, opened after both accepted the match 
 
 ## Logic
 
+- **The product introduces people; keeping in touch is yours — said out loud
+  2026-09-10.** This is the first place it is stated plainly, and stating it is needed
+  because the product leads to a meeting — the terms warn outright that it ends in
+  meeting a stranger — while after "seven, by the fountain" it offers nothing: no
+  links, and the span counts from **your own** silence, so an hour of quiet before the
+  meeting kills the conversation. Once you have agreed, swap whatever neighbours swap;
+  the conversation here exists to decide whether it is worth swapping at all.
+  **Why a longer span does not fix it.** Extending a conversation "until the meeting"
+  would mean holding a record that two people intend to meet at a given hour — the
+  first trace to outlive the feed, and the least pleasant one imaginable. Counting from
+  the other side's message instead of your own would undo the decision of 2026-08-26
+  and let a persistent person keep a conversation alive indefinitely. The cost is
+  accepted and it is real: some conversations will move to other messengers by the
+  second line, and it will be empty here.
 - **The reply limit is 256 characters and it comes from the server** (`max_message_length`), not baked into the client. The counter is the client's; the node is what refuses.
   The second limit, **2048 bytes of ciphertext** (`max_ciphertext_bytes`), is not shown to the person: with an honest 256 characters it is unreachable — even a string of nothing but emoji comes to 1404 bytes, and hitting 2048 takes 378 characters. It guards against a forged client, not against a real conversation.
 - **Two statuses: delivered and error.** "✓" means the node passed it on; an error gives a line with a retry rather than vanishing quietly. **There is no "read"** and will not be: the node has no business knowing who opened a conversation and when.

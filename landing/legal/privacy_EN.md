@@ -30,7 +30,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 4. Why we process it (legal bases)
 
 - **To provide the Service** (performance of a contract / taking steps at your request): device identity, area, age, name, content.
-- **Consent**: the waitlist email and website analytics. Each is asked for separately and can be withdrawn at any time — ask us and the waitlist entry goes. Precise location is not on this list because we never ask for it.
+- **Consent**: nothing, since 2026-09-10. This line used to name the waitlist email and website analytics. The waitlist now rests on **steps taken at your request before a contract** — you leave an address asking to be called, and that is the request; ask us and the entry still goes. Website analytics are gone altogether (§12). Precise location was never on this list, because we never ask for it.
 - **Legitimate interests**: security, abuse prevention, keeping the Service reliable — balanced against your rights.
 - **Legal obligation**: where we must retain or disclose data by law.
 
@@ -66,7 +66,7 @@ We do not sell your data. We share it only with service providers ("processors")
 
 - **Hosting and storage** (Bunny) — serving the site, and object storage for what the Service keeps. Our database is our own and runs beside the node: it is not a third party, and nobody else holds it.
 - **Email delivery** (Resend) — the letter that answers a waitlist request, and the invitations the admin panel sends.
-- **Analytics** (Google Analytics 4) — measuring site usage on **neighbro.place**, and only if you accept it in the cookie banner.
+- ~~Analytics (Google Analytics 4)~~ — **removed 2026-09-10**. Visits are counted by our own counter, which sends nothing anywhere.
 
 **Donations are not in this list.** If you follow the donation link in our footer, you leave the Service. PayPal then handles your payment under its own terms as an **independent controller**, not as our processor: we do not send it your data, we receive no payment details, and we cannot tell who donated. Donating is never required to use the Service.
 
@@ -82,7 +82,9 @@ You have the rights to **access, rectify, erase, restrict, object to, and port**
 
 ## 10. Children
 
-The Service is for users **13+**. Under 18 needs a parent or guardian's consent; a higher digital-consent age may apply in your country. We do not knowingly process data of children below the applicable age.
+The Service is for users **13+**, and we do not verify age — we ask, and we take the answer. Saying otherwise would be a claim we cannot back: any check strong enough to be worth something would mean collecting documents from everybody, which is a worse trade than the one it fixes.
+
+This section used to say that anybody under 18 needs a parent's consent. We have removed that sentence rather than kept it as decoration: nobody was asked for such a consent, nothing recorded it, and a promise nobody keeps is worse than an absence stated plainly. **What we do instead is build the product so that a 13-year-old is not thrown in with adults:** under-21s and over-20s do not see each other's messages at all, nothing is ever targeted at anybody by profile, and nothing is stored to build one from. If you are a parent and something here concerns you, write to **support@neighbro.place** — a person reads it.
 
 ## 11. Security
 
@@ -92,7 +94,7 @@ We take reasonable technical and organizational measures to protect data. No met
 
 We use browser **local storage** for your device identity and preferences (name, age, language, theme). We do not use advertising cookies and we do not sell or share data with ad networks.
 
-**Analytics on the website.** On **neighbro.place** we measure visits with **Google Analytics 4** (Google Ireland Limited). It is **off by default**: the analytics script is not downloaded and no cookie is set until you press "accept" in the cookie banner. If you decline, nothing is loaded and nothing is sent. Legal basis is your **consent**.
+**Analytics on the website — removed on 2026-09-10.** This used to describe Google Analytics 4, off by default and loaded only after you pressed "accept" in a cookie banner. There is no banner any more and no analytics script: visits are counted by our own counter on our own server, which sets no cookie, sends nothing to anybody, and keeps detail for 14 days before reducing it to a number. Nothing here now rests on your consent, which is also why nothing here asks a 13-year-old for a parent's.
 
 If you accept, Google Analytics sets cookies and processes your IP address (truncated — we enable IP anonymization), page addresses, referrer, approximate location derived from the IP, and device/browser data, and we record one event when a waitlist signup succeeds. Data may be processed outside the EEA under the safeguards in section 8. We do not use it for advertising or profiling.
 

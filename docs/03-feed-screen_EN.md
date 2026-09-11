@@ -32,6 +32,16 @@ The application's main screen. Short messages from people nearby, **the newest o
 
 ## Logic
 
+- **The feed has a size: 30 cards, then "show more" — decided 2026-09-10.** The size
+  used to be named nowhere, and that silence promised more than the product can give:
+  the quota limits **a person** (four live phrases, four an hour) while **an area** is
+  limited by nothing. Somewhere dense a phrase leaves the visible part within minutes,
+  and the 4:20 span stops meaning "this is how long I am heard". Paging goes by time
+  and the order stays chronological — there is no ranking and none is being added.
+  The thirty are **chosen, not measured** (`xor.ad/docs/facts/limits.tsv`,
+  `feed.page.size`): that is what people scroll in one go without losing the thread.
+  The cost is named plainly: **somewhere dense not everybody will hear you, and paging
+  does not fix that** — it lets you read on, not be read.
 - The filters are part of the feed's interface, not a separate onboarding step.
 - **Language is a filter, not a set of shares (amended 2026-08-26).** What stood here was "about 95% in the user's language, 5% in other languages of the region, both shares configurable via environment variable". That was a [retired] different mechanic from `00-mechanics_EN.md` §8, and it loses for one reason: shares decide for the person silently. A filter is up to three languages, taken from `navigator.languages` by default, edited by hand, cleared with a tap, with the line "N more in other languages" always under the feed. A person always knows the district is livelier than their feed, and never mistakes the filter's silence for the district's.
 - **The node detects the language** with a local library, on its own machine: no text leaves in order to be identified. "AI" in the old wording was imprecise — there is no external service here and there will not be.

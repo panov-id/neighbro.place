@@ -642,6 +642,7 @@ machine.
   `xor.ad/docs/refusal-wordings_EN.md`: six sections, a text for every class. §10
   of this same file has known that since that day, while the question stood here
   for another ten (removed 2026-09-07).
+- **There is no appeal against an automatic refusal, and since 2026-09-10 the terms say so.** They used to promise "write to support and a person will look again" — a single promise for two different decisions, and therefore untrue for one of them: a decision **on a report** is taken by a person and can be looked at again; a refusal **before publication** is taken by a model, and there is nobody to appeal to. The document now distinguishes the two instead of covering both with one sentence.
 - **There is no appeal** — settled. A refusal is final; the text is edited and
   sent again. The price is measured and stated plainly: about 7% of ordinary
   messages are blocked for nothing, and their authors have nowhere to go. What
@@ -980,6 +981,12 @@ pressed it in anger and wants back in with the paper code.
   with its own PIN, the conversations gathered on it. The control that is missing
   is **revoking the share**, not ending a session: the node knows the share and
   can delete it (sharpened 2026-09-07 after a review panel).
+  **Closed 2026-09-11: any move of an identity burns the share** — recovery by
+  paper code and voluntary transfer alike (`xor.ad/docs/chat_EN.md` §8.2). One rule
+  rather than two: only the person can tell "lost" from "just moving", and they
+  would have to be asked at the very moment they are typing sixteen characters and
+  inventing a PIN. The cost: moving for an evening kills the history on the
+  previous device for good.
 
 ---
 
