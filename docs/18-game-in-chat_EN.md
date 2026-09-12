@@ -75,7 +75,7 @@ The four operations on a piece — **take, place, rotate, flip** — cover the f
 
 - **In cards, uno and backgammon the node shuffles and rolls, and it sees the layout.** This is the one place in the product where the node knows contents: it does not read messages or a board without randomness, but it does read a deck it deals itself. Fair randomness works no other way: if somebody's phone shuffles, that phone sees the others' cards.
 - **Your own hand is visible only to you**; everyone else sees backs.
-- **A word guessed in hangman goes through the queue**, like a phrase: another person will see it. Refused — guess another.
+- **A word set in hangman goes through the queue**, like a phrase: another person will see it, and so will our server — the word is not encrypted (2026-09-12). Refused — guess another.
 - **Zooming on a large board is fine.** Go and backgammon do not fit a phone without it, and that is the price of the game rather than a fault.
 - **The "touch target no smaller than 44 px" rule does not extend to a board's cells — decided 2026-08-29.** Two documents disagreed: the screen allowed zoom while `xor.ad/docs/accessibility-and-i18n_EN.md` demanded 44 px of any target. It is resolved in favour of zoom, and the line is drawn by meaning: 44 px is about **controls** — buttons and menus, where a miss takes you somewhere else; a board's cell is a surface a person magnifies themselves, and a miss on it costs one move back. The price is named: this is the first exception in a list that had held without any.
 

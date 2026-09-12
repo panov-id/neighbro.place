@@ -949,8 +949,10 @@ be said in the same place, at sign-up.
 
 The pleasant converse remains: **the "delete everything" button really does delete
 everything**, immediately, with no letters and no confirmations. Since 2026-08-31
-it has a term: a closed identity is deleted after 30 days, a window for whoever
-pressed it in anger and wants back in with the paper code.
+it has a term: a closed identity is deleted after 30 days, and nothing brings it back
+within them — the paper code does not find a closed one (decided 2026-09-11). The term
+exists for the handling — a report or a statement of reasons tied to that identity —
+not for whoever changed their mind.
 
 ### Open
 

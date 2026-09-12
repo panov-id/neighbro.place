@@ -12,7 +12,7 @@ What happens on a mutual like and how a conversation opens. **Edit of 2026-08-26
 
   > This chat is not checked. Nobody reads what you write here — not us, not a filter.
   > It is encrypted on your devices: our server carries it and cannot read it.
-  > A game is the exception: the server sees the moves and the board, or it could not keep to the rules.
+  > A game is the exception: the server sees the moves, the board and the word set in hangman, or it could not keep to the rules.
   > If someone behaves badly, block them and report them, attaching a copy from your own device.
 
   This is **not** a second consent or a checkbox: "talk" stays the single press. The text sits here because this is the last moment at which nothing has been opened (§8.5).
