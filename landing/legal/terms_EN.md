@@ -1,6 +1,6 @@
 # Neighbro — Terms & Conditions
 
-**Last updated: 10 September 2026**
+**Last updated: 12 September 2026**
 
 ## 1. Who we are
 
@@ -66,7 +66,7 @@ These community rules are also set out, in plain language, in our **Community Gu
 ## 9. Content and ephemerality
 
 - **Your content.** You keep ownership of what you post. You grant us a limited, non-exclusive license to host, display, and distribute your content **within the Service** for the purpose of operating it.
-- **Ephemeral by design.** Content fades and is not recoverable. Chat contents are never stored on our servers — they are carried encrypted and gone. **A game played inside a chat is the exception, named here since 2026-09-10:** its board, its moves and the score are not encrypted and their current state is held by us while the conversation lives, because we check the moves against the rules of the game. What was said is still never stored; on your device they live for the shorter of the two spans the two of you chose; we do not provide export or long-term archives.
+- **Ephemeral by design.** Content fades and is not recoverable. Chat contents are kept on our servers only until they are delivered — encrypted the whole way and unreadable to us — and then they are gone. **A game played inside a chat is the exception, named here since 2026-09-10:** its board, its moves and the score are not encrypted and their current state is held by us while the conversation lives, because we check the moves against the rules of the game. What was said is still never stored; on your device they live for the shorter of the two spans the two of you chose; we do not provide export or long-term archives.
 
 ## 10. Offers
 

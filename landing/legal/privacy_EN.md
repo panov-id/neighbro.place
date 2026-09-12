@@ -1,6 +1,6 @@
 # Neighbro — Privacy Policy
 
-**Last updated: 10 September 2026**
+**Last updated: 12 September 2026**
 
 ## 1. Who we are (controller)
 
@@ -37,7 +37,7 @@ Neighbro is **ephemeral, area-based, and low-identity by design**. We process th
 ## 5. Retention and ephemerality
 
 - **A feed message** lives 4 hours 20 minutes and is then **deleted, not hidden**. What remains is a counter of how many there were, without the text and without the author.
-- **A chat's contents** live on your device for the shorter of the two times the two of you chose. On our servers they are **not stored at all** — only carried until delivered, and encrypted the whole way. **What our node does keep is the outline of a conversation**: that one exists between two identities, when it last moved, the span each of you chose, and when it ended. Not a word of what was said, and no copy of it. **One thing more, since 2026-09-10: if you play a game inside a chat, the node keeps the state of that game** — the position on the board, whose turn it is, the players' hands and the score of the pair. It is not encrypted, because the node judges the play by the rules and a judge without the position cannot judge. No reply of yours is in there, it is tied to the conversation, and it is deleted the moment the conversation is.
+- **A chat's contents** live on your device for the shorter of the two times the two of you chose. On our servers they are **kept only until delivered** — if you are away when one arrives, it waits for you, encrypted, until you come back or until the conversation ends, and we cannot read it at any moment of that. **What our node does keep is the outline of a conversation**: that one exists between two identities, when it last moved, the span each of you chose, and when it ended. Not a word of what was said, and no copy of it. **One thing more, since 2026-09-10: if you play a game inside a chat, the node keeps the state of that game** — the position on the board, whose turn it is, the players' hands and the score of the pair. It is not encrypted, because the node judges the play by the rules and a judge without the position cannot judge. No reply of yours is in there, it is tied to the conversation, and it is deleted the moment the conversation is.
 - **Profile data** (identity, year of birth, name, your settings) is kept while you use the Service in this browser.
 - **A waitlist email** is kept until launch and for one year after, then deleted — sooner if you ask.
 - **A report of illegal content**, the copy taken with it, and the explanation sent to the author: **1 year**, then deleted — an anonymous count is all that remains. **A business profile and the complaints about its offers**: kept while the business publishes, and deleted a year after its last offer.
