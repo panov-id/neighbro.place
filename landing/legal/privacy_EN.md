@@ -56,7 +56,7 @@ Every message is checked before it is published, **on our own servers**: the tex
 
 **We do not classify what a message is about, and we never infer which groups you belong to.** No feed is filtered on such a basis. The result of a check is not stored beside the message.
 
-**Chats are not checked.** What you write inside a chat is not checked at all and is not read by us — it travels from your device to the other person's, encrypted, and we cannot open it. One exception exists and it comes from the other side: if the person you are talking to reports a message as illegal, their own device attaches the copy, because we have none to attach. That copy is kept for a year with the report. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
+**Chats are not checked.** What you write inside a chat is not checked at all and is not read by us — it travels from your device to the other person's, encrypted, and we cannot open it. One exception exists and it comes from the other side: if the person you are talking to reports a message as illegal, they describe it in their own words and quote what they choose — their device attaches nothing, and we have nothing to attach. What they wrote is kept for a year with the report. Moderation governs what is published to the feed, where strangers see it; two people talking is not publication.
 
 If a message is not published, you are told, and told why.
 

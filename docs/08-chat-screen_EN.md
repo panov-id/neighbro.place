@@ -25,6 +25,10 @@ A private conversation between two people, opened after both accepted the match 
   accordingly.
   **The route is the support one (screen 14):** a quotation of the other person's line
   may contain the very thing being reported, and the WAF cuts such bodies on the way in.
+  **No anonymity is promised here — written down 2026-09-11.** The target is a `chat_id`,
+  and a conversation is known to two people: the other one will work out that it was you.
+  The line "we do not attach who you are" from screen 5 is about the feed and is not
+  carried over here; the decision still arrives only by email, if you left one.
 - Lines about new likes between these two — right in the conversation (screen 6).
 - **Lines about moves — in the same place (2026-09-09).** "Anya placed a tile on e4", "Petya flicked": these words used to exist for the screen reader alone, and now they stand in the conversation. They are not encrypted, unlike the replies beside them — they are part of the game state.
 - **The score of the games — in the board's header, while the conversation lives.** It accumulates between games (3:2 after five) and goes out with the conversation: no history of wins, no mark on an identity.

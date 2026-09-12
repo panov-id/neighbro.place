@@ -1,6 +1,6 @@
 # Community-Regeln — neighbro.place
 
-**Zuletzt aktualisiert: 10. September 2026**
+**Zuletzt aktualisiert: 12. September 2026**
 
 **Diese Regeln erscheinen in mehreren Sprachen. Maßgeblich ist die englische Fassung; Übersetzungen dienen der Bequemlichkeit.**
 
@@ -18,7 +18,7 @@ Neighbro ist für gute Nachbarn. Behandle Menschen so, wie du auf deiner eigenen
 
 ## Vollständig verboten
 
-**Belästigung, Mobbing (Bullying), Beschämung, Einschüchterung, Drohungen und jedes antisoziale, grausame oder erniedrigende Verhalten**, ebenso Inhalte über Drogen, sexuelle Inhalte und das Anbieten sexueller Dienstleistungen. Solche Nachrichten werden nie veröffentlicht: die Prüfung weist sie ab, bevor sie in den Feed gelangen, und die Autorin oder der Autor erfährt davon — nichts verschwindet stillschweigend. Dies ist ein Dienst für Nachbarn, nicht zum Daten: es gibt keine Einstellung, die sexuelle Inhalte einschaltet. Im Chat gibt es diese Prüfung nicht, und erlaubt ist dort nichts davon — wenn dir so etwas geschickt wird, melde es, und dein Gerät hängt die Kopie an, denn wir haben keine.
+**Belästigung, Mobbing (Bullying), Beschämung, Einschüchterung, Drohungen und jedes antisoziale, grausame oder erniedrigende Verhalten**, ebenso Inhalte über Drogen, sexuelle Inhalte und das Anbieten sexueller Dienstleistungen. Solche Nachrichten werden nie veröffentlicht: die Prüfung weist sie ab, bevor sie in den Feed gelangen, und die Autorin oder der Autor erfährt davon — nichts verschwindet stillschweigend. Dies ist ein Dienst für Nachbarn, nicht zum Daten: es gibt keine Einstellung, die sexuelle Inhalte einschaltet. Im Chat gibt es diese Prüfung nicht, und erlaubt ist dort nichts davon — wenn dir so etwas geschickt wird, melde es und beschreibe mit eigenen Worten, was passiert ist: wir haben keine Kopie, und dein Gerät schickt auch keine.
 
 ## Kein Verkauf und keine Werbung
 

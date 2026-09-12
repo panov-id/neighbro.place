@@ -1,6 +1,6 @@
 # Règles de la communauté — neighbro.place
 
-**Dernière mise à jour : 10 septembre 2026**
+**Dernière mise à jour : 12 septembre 2026**
 
 **Ces règles sont publiées en plusieurs langues. La version anglaise fait foi ; les traductions sont fournies à titre de commodité.**
 
@@ -18,7 +18,7 @@ Neighbro est fait pour les bons voisins. Traite les gens comme tu voudrais qu’
 
 ## Totalement interdit
 
-**Le harcèlement, le harcèlement scolaire (bullying), l’humiliation, l’intimidation, les menaces et tout comportement antisocial, cruel ou dégradant**, ainsi que le contenu sur la drogue, le contenu sexuel et l’offre de services sexuels. De tels messages ne sont jamais publiés : la vérification les refuse avant qu’ils n’atteignent le fil, et leur auteur en est informé — rien ne disparaît en silence. C’est un service pour voisins, pas pour rencontres : aucun réglage n’active le contenu sexuel. Dans une conversation, cette vérification n’existe pas, et rien de tout cela n’y est autorisé non plus — si on vous envoie cela, signalez-le, et c’est votre appareil qui joint la copie, car nous n’en avons aucune.
+**Le harcèlement, le harcèlement scolaire (bullying), l’humiliation, l’intimidation, les menaces et tout comportement antisocial, cruel ou dégradant**, ainsi que le contenu sur la drogue, le contenu sexuel et l’offre de services sexuels. De tels messages ne sont jamais publiés : la vérification les refuse avant qu’ils n’atteignent le fil, et leur auteur en est informé — rien ne disparaît en silence. C’est un service pour voisins, pas pour rencontres : aucun réglage n’active le contenu sexuel. Dans une conversation, cette vérification n’existe pas, et rien de tout cela n’y est autorisé non plus — si on vous envoie cela, signalez-le et décrivez avec vos mots ce qui s’est passé : nous n’avons aucune copie, et votre appareil n’en envoie aucune non plus.
 
 ## Aucune vente ni promotion
 

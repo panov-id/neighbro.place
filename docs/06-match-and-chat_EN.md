@@ -13,7 +13,7 @@ What happens on a mutual like and how a conversation opens. **Edit of 2026-08-26
   > This chat is not checked. Nobody reads what you write here — not us, not a filter.
   > It is encrypted on your devices: our server carries it and cannot read it.
   > A game is the exception: the server sees the moves, the board and the word set in hangman, or it could not keep to the rules.
-  > If someone behaves badly, block them and report them, attaching a copy from your own device.
+  > If someone behaves badly, block them and report them: describe in your own words what happened.
 
   This is **not** a second consent or a checkbox: "talk" stays the single press. The text sits here because this is the last moment at which nothing has been opened (§8.5).
 - **The game is called out separately in the warning — added 2026-09-09.** That day the board came out from under end-to-end encryption: only whoever sees it can keep to the rules (`xor.ad/docs/chat_EN.md` §6). Without this line the text above stayed formally true — "what you write here" is the conversation, and it is still closed — but somebody who read it and sat down to play would have assumed nobody sees the moves either. This is the last screen before an irreversible tap, and silence here costs more than an extra line.

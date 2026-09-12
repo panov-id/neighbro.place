@@ -1,6 +1,6 @@
 # Normas de la comunidad — neighbro.place
 
-**Última actualización: 10 de septiembre de 2026**
+**Última actualización: 12 de septiembre de 2026**
 
 **Estas normas se publican en varios idiomas. La versión en inglés es la que rige; las traducciones se ofrecen por comodidad.**
 
@@ -18,7 +18,7 @@ Neighbro es para buenos vecinos. Trata a la gente como querrías que te tratasen
 
 ## Totalmente prohibido
 
-**El acoso, el hostigamiento (bullying), la humillación, la intimidación, las amenazas y cualquier conducta antisocial, cruel o degradante**, así como el contenido sobre drogas, el contenido sexual y la oferta de servicios sexuales. Esos mensajes nunca se publican: la revisión los rechaza antes de que lleguen al muro, y su autor es informado — nada desaparece en silencio. Este es un servicio para vecinos, no para ligar: no existe ningún ajuste que active el contenido sexual. En el chat no hay tal revisión, y allí tampoco está permitido nada de esto — si te envían algo así, denúncialo, y la copia la adjunta tu dispositivo, porque nosotros no tenemos ninguna.
+**El acoso, el hostigamiento (bullying), la humillación, la intimidación, las amenazas y cualquier conducta antisocial, cruel o degradante**, así como el contenido sobre drogas, el contenido sexual y la oferta de servicios sexuales. Esos mensajes nunca se publican: la revisión los rechaza antes de que lleguen al muro, y su autor es informado — nada desaparece en silencio. Este es un servicio para vecinos, no para ligar: no existe ningún ajuste que active el contenido sexual. En el chat no hay tal revisión, y allí tampoco está permitido nada de esto — si te envían algo así, denúncialo y describe con tus palabras lo ocurrido: no tenemos ninguna copia y tu dispositivo tampoco la envía.
 
 ## Nada de ventas ni promoción
 
