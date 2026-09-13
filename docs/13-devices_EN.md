@@ -6,7 +6,7 @@ Move the identity to another device **or raise it from the paper code** (decided
 
 ## Screen elements
 
-- A "move to another device" button — shows **nine characters** in large type, in groups of three: `K7Q - M3F - 2X9`.
+- A "move to another device" button — asks for the PIN first (§8.2, 2026-09-11), then shows **nine characters** in large type, in groups of three: `K7Q - M3F - 2X9`.
 - The invite's lifetime: two minutes, after which the code stops working.
 - On the new device, a field where those characters are typed by hand.
 - An **"extend"** button beside the timer (decided 2026-09-03, added to the

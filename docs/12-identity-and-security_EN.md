@@ -14,7 +14,7 @@ scroll away from the theme switch. A separate screen is not decoration but
 
 ## Screen elements
 
-- **Move to another device** — a nine-character code (screen 13).
+- **Move to another device** — a nine-character code (screen 13). **It will ask for the PIN** — so will changing the PIN and starting over (decided 2026-09-11): while the tab is unlocked those buttons are within a stranger's reach, and none of them can be undone. "Erase conversation history" does not ask: there is nothing to check, the history sits here and nowhere else.
 
 ### Unlocking the tab — added 2026-09-04
 
